@@ -35,11 +35,9 @@ class Activity extends Controller
     public function poster(Request $request){
 
         $flag = $request->input('flag','吃饭了吗');
-        $pic_re = Jiayu::first();
-
+        $pic_re = Jiayu::orderBy('id','DESC')->first();
         $image = new Image();
-        $img_name = "163695879189909.jpg";
-        $path = "images/20211115/".$img_name;
+        $path = $pic_re->path;
 
         $newimageName = 'new'.time() . rand(10000, 99999) .'.jpg';
         $newpath = 'images/' . date('Ymd').'/'.$newimageName;
