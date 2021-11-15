@@ -23,6 +23,7 @@
 <body>
 
 <div style="margin-left:30%">
+    <img src="<?= asset("/jy/12.png") ?>" class="img-rounded">
     <h1>我是海报 {{$newimageName}}</h1>
     <form class="form-horizontal" method="post" action="<?=route('poster')?>">
         <div class="input-group">
