@@ -9,17 +9,17 @@ var winnerList=[
     {
         id:'1',
         name:'上海报资格',
-	logo:'./15j@2x.png',
+        logo:'../images/15jf@2x.png',
         probability:'1%',
     },{
         id:'2',
         name:'M365个人版+爱奇艺季卡',
-        logo:'./10j@2x.png',
+        logo:'../images/10j@2x.png',
         probability:'3%',
     },{
         id:'3',
         name:'319 限量多彩 “新”意套装（M365+精巧鼠标）',
-        logo:'./123.png',
+        logo:'../images/123.png',
         probability:'96%',
     }
 ]; //奖品列表
@@ -187,6 +187,7 @@ var number = winnerList.length;
             }
         }
     }
+
 
 
 

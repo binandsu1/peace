@@ -10,7 +10,7 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
           integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="<?= asset("/jy/lottery.css") ?>">
     <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
     <!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
     <!--[if lt IE 9]>
@@ -23,13 +23,21 @@
 <div style="margin-left:30%">
     <h1>我是抽奖页面 当前 flag： {{$flag}}</h1>
     <br>
-    <h1>大转盘 呜呜呜</h1>
-     <br>
+    <div class='winnerBox'>
+    <div class="turnplate_box">
+        <canvas id="myCanvas" width="260px" height="260px">抱歉！浏览器不支持。</canvas>
+        <button id="tupBtn" class="turnplatw_btn">
+	<img src="<?= asset('/jy/guding@2x.png')?>" class="turnplatw_img">
+            <div class="goIcon"></div>
+        </button>
+    </div>
+</div>
+     <br>sssss
     @foreach(config('prize') as $k=>$v)
     <button type="button"  class="btn btn-default"><a href="{{route('win-prize',['prize'=>"$k",'flag'=>request('flag')])}}">中奖{{$k}}：{{$v}}</a></button>
     @endforeach
-</div>
-
+</div>sss
+{{ URL::asset('../resources/js/lottery.js') }}
 
 <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
 <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"
@@ -38,6 +46,8 @@
 <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
         integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
-        crossorigin="anonymous"></script>
+	crossorigin="anonymous"></script>
+<script src="<?=asset("/jy/lottery.js")?>></script>
+<script src="<?=asset('/jy/awardRotate.js')?>"></script>
 </body>
 </html>
