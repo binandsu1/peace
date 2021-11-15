@@ -1,6 +1,6 @@
 //旋转角度
 var angles;
-
+var shb = "<?=asset('/jy/123.png')?>";
 // 园的半径
 var radius = 130;
 //转盘初始化
@@ -9,20 +9,23 @@ var winnerList=[
     {
         id:'1',
         name:'上海报资格',
-	logo:'./123.png',
+	    logo:"http://121.196.217.164/jy/123.png",
         probability:'1%',
     },{
         id:'2',
         name:'M365个人版+爱奇艺季卡',
-	logo:'./123.png',
+	logo:'http://121.196.217.164/jy/123.png',
         probability:'3%',
     },{
         id:'3',
         name:'319 限量多彩 “新”意套装（M365+精巧鼠标）',
-        logo:'./123.png',
+        logo:'http://121.196.217.164/jy/123.png',
         probability:'96%',
     }
-]; //奖品列表
+];
+console.log(winnerList);
+
+//奖品列表
 // 有几份扇形
 var number = winnerList.length;
      $(document).ready(function(){
