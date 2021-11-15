@@ -29,7 +29,7 @@
         <button type="submit" class="btn btn-success">生成</button>
     </form>
     <br>
-    <img src="http://peace.local/images/20211115/{{$newimageName}}" class="img-rounded">
+    <img src="http://121.196.217.164/images/20211115/{{$newimageName}}" class="img-rounded">
     <br>
 
 </div>
