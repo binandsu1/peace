@@ -23,7 +23,6 @@
 <body>
 
 <div style="margin-left:30%">
-    <img src="<?= asset("/jy/12.png") ?>" class="img-rounded">
     <h1>我是海报 {{$newimageName}}</h1>
     <form class="form-horizontal" method="post" action="<?=route('poster')?>">
         <div class="input-group">
@@ -37,7 +36,6 @@
 
 </div>
 
-<script src="<?= asset("/jy/lottery.js") ?>"></script>
 <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
 <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"
         integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
