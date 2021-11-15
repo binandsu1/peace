@@ -25,7 +25,12 @@ Route::get('/upView', [\App\Http\Controllers\Yuser::class,'upView']);
 Route::any('/upViewSub', [\App\Http\Controllers\Yuser::class,'upViewSub'])->name('up-view-sub');
 
 
-
+Route::any('/activityIndex', [\App\Http\Controllers\Activity::class,'activityIndex'])->name('activity-index');
+Route::any('/activityUp', [\App\Http\Controllers\Activity::class,'activityUp'])->name('activity-up');
+Route::any('/activityDown', [\App\Http\Controllers\Activity::class,'activityDown'])->name('activity-down');
+Route::any('/luckyDraw', [\App\Http\Controllers\Activity::class,'luckyDraw'])->name('lucky-draw');
+Route::any('/winPrize', [\App\Http\Controllers\Activity::class,'winPrize'])->name('win-prize');
+Route::any('/poster', [\App\Http\Controllers\Activity::class,'poster'])->name('poster');
 
 
 

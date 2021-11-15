@@ -11,7 +11,9 @@
         "laravel/framework": "^8.65",
         "laravel/sanctum": "^2.12",
         "laravel/tinker": "^2.5",
-        "vladimir-yuldashev/laravel-queue-rabbitmq": "11.1"
+        "twbs/bootstrap": "^5.1",
+        "vladimir-yuldashev/laravel-queue-rabbitmq": "11.1",
+        "intervention/image": "^2.4"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

@@ -56,7 +56,7 @@ class Yuser extends Controller
         $data['pic_name'] = $imageName;
         $data['type'] = $type;
         $data['path'] = $path . "/" . $imageName;
-        UpPicJob::dispatch($data);
+        UpPicJob::dispatchNow($data);
 
     }
 
