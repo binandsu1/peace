@@ -55,7 +55,13 @@
 
 </div>
 <script type="text/javascript" src="https://cache.amap.com/lbs/static/addToolbar.js"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
+    $(function(){
+
+        as();
+
+    });
 
     //地图加载
     var map = new AMap.Map("container", {
