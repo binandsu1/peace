@@ -52,14 +52,11 @@
 {{--        <p id='result'></p><hr>--}}
 {{--        <p ></p>--}}
 {{--    </div>--}}
-<input type="text" id="as">
+
 </div>
 <script type="text/javascript" src="https://cache.amap.com/lbs/static/addToolbar.js"></script>
 <script type="text/javascript">
-    function as(value){
-        document.getElementById('as').value = value;
 
-    }
     //地图加载
     var map = new AMap.Map("container", {
         resizeEnable: true
@@ -116,6 +113,8 @@
         // document.getElementById('result').innerHTML = '失败原因排查信息:'+data.message;
     }
 
+    function as(value = '微软'){
+
     //关键字搜索
     AMap.service(["AMap.PlaceSearch"], function() {
         //构造地点查询类
@@ -129,8 +128,9 @@
             autoFitView: true // 是否自动调整地图视野使绘制的 Marker点都处于视口的可见范围
         });
         //关键字查询
-        placeSearch.search('微软');
+        placeSearch.search(value);
     });
+    }
 </script>
 </body>
 </html>
