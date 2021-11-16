@@ -18,7 +18,7 @@ class Activity extends Controller
     }
 
     public function activityDown(){
-        echo '活动线下';
+        return view('map');
     }
 
     public function luckyDraw(Request $request){

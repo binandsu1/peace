@@ -27,7 +27,7 @@
 <div style="height: 800px;width: 380px; ">
 
         <br>
-    <div id="container" style="height: 330px;width: 380px;"></div>
+    <div id="container" style="height: 300px;width: 380px;"></div>
     <div id="myPageTop" style="height: 70px;width: 380px;">
         <table>
             <tr>
