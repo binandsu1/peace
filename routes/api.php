@@ -34,6 +34,7 @@ Route::any('/poster', [\App\Http\Controllers\Activity::class,'poster'])->name('p
 
 Route::any('/map', [\App\Http\Controllers\Activity::class,'map'])->name('map');
 Route::any('/phone', [\App\Http\Controllers\Activity::class,'phone'])->name('phone');
+Route::any('/mgc', [\App\Http\Controllers\Activity::class,'mgc'])->name('mgc');
 
 
 

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Controllers\AipContentCensor;
 use App\Jobs\UpPicJob;
 use App\Models\Jiayu;
 use Illuminate\Http\Request;
@@ -79,6 +79,19 @@ class Activity extends Controller
         }
         $image = Jiayu::orderBy('id','DESC')->first();
         return view('phone',compact('image'));
+    }
+//我这里就是调用了一个 serveice 你的文件没更新下来
 
+    public function mgc(){
+
+        $client = new AipContentCensor('25176769', 'rU4t2Kabjo1w8q8ytUiDwxCb', 'ocUascqCQ4OqdVNDzqlhuhj4F3DL69YU');
+        $token = $client->getAccessToken();
+
+        $result = $client->checkFlag("傻逼");
+        if (!$result) {
+            echo "您立的flag中有违规词汇，请您检查后重新提交哦！";
+        }else{
+            echo 'good';
+        }
     }
 }
