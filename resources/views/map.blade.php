@@ -24,11 +24,11 @@
 <link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css" />
 </head>
 <body>
-<div style="height: 800px;width: 500px; ">
+<div style="height: 800px;width: 400px; ">
 
         <br>
-    <div id="container" style="height: 300px;width: 500px;"></div>
-    <div id="myPageTop" style="height: 70px;width: 500px;">
+    <div id="container" style="height: 300px;width: 400px;"></div>
+    <div id="myPageTop" style="height: 70px;width: 400px;">
         <table>
             <tr>
                 <td>
@@ -42,16 +42,16 @@
             </tr>
         </table>
     </div>
-    <div   style="height: 30px;width: 500px;">
+    <div   style="height: 30px;width: 400px;">
         <button onclick="as('微软')">门店查询</button>
         <button onclick="as('微软售后')">售后服务站</button>
     </div>
-    <div id="panel"  style="height: 200px;width: 500px;"></div>
-    <div class="info" style="height: 200px;width: 500px;">
-        <h4 id='status'></h4><hr>
-        <p id='result'></p><hr>
-        <p ></p>
-    </div>
+    <div id="panel"  style="height: 200px;width: 400px;"></div>
+{{--    <div class="info" style="height: 200px;width: 500px;">--}}
+{{--        <h4 id='status'></h4><hr>--}}
+{{--        <p id='result'></p><hr>--}}
+{{--        <p ></p>--}}
+{{--    </div>--}}
 
 </div>
 <script type="text/javascript" src="https://cache.amap.com/lbs/static/addToolbar.js"></script>
@@ -101,20 +101,20 @@
     });
     //解析定位结果
     function onComplete(data) {
-        document.getElementById('status').innerHTML='定位成功'
-        var str = [];
-        str.push('定位结果：' + data.position);
-        str.push('定位类别：' + data.location_type);
-        if(data.accuracy){
-            str.push('精度：' + data.accuracy + ' 米');
-        }//如为IP精确定位结果则没有精度信息
-        str.push('是否经过偏移：' + (data.isConverted ? '是' : '否'));
-        document.getElementById('result').innerHTML = str.join('<br>');
+        // document.getElementById('status').innerHTML='定位成功'
+        // var str = [];
+        // str.push('定位结果：' + data.position);
+        // str.push('定位类别：' + data.location_type);
+        // if(data.accuracy){
+        //     str.push('精度：' + data.accuracy + ' 米');
+        // }//如为IP精确定位结果则没有精度信息
+        // str.push('是否经过偏移：' + (data.isConverted ? '是' : '否'));
+        // document.getElementById('result').innerHTML = str.join('<br>');
     }
     //解析定位错误信息
     function onError(data) {
-        document.getElementById('status').innerHTML='定位失败'
-        document.getElementById('result').innerHTML = '失败原因排查信息:'+data.message;
+        // document.getElementById('status').innerHTML='定位失败'
+        // document.getElementById('result').innerHTML = '失败原因排查信息:'+data.message;
     }
 
     function as(value = '微软'){
