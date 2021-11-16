@@ -120,7 +120,7 @@
             autoFitView: true // 是否自动调整地图视野使绘制的 Marker点都处于视口的可见范围
         });
 
-        var cpoint = [116.405467, 39.907761]; //中心点坐标
+        var cpoint = [116.44007,39.96972]; //中心点坐标
         placeSearch.searchNearBy('', cpoint, 200, function(status, result) {
 
         });
