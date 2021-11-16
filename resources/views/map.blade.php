@@ -24,11 +24,11 @@
 <link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css" />
 </head>
 <body>
-<div style="height: 800px;width: 400px; ">
+<div style="height: 800px;width: 380px; ">
 
         <br>
-    <div id="container" style="height: 300px;width: 400px;"></div>
-    <div id="myPageTop" style="height: 70px;width: 400px;">
+    <div id="container" style="height: 300px;width: 380px;"></div>
+    <div id="myPageTop" style="height: 70px;width: 380px;">
         <table>
             <tr>
                 <td>
@@ -42,11 +42,11 @@
             </tr>
         </table>
     </div>
-    <div   style="height: 30px;width: 400px;">
+    <div   style="height: 30px;width: 380px;">
         <button onclick="as('微软')">门店查询</button>
         <button onclick="as('微软售后')">售后服务站</button>
     </div>
-    <div id="panel"  style="height: 200px;width: 400px;"></div>
+    <div id="panel"  style="height: 200px;width: 380px;"></div>
 {{--    <div class="info" style="height: 200px;width: 500px;">--}}
 {{--        <h4 id='status'></h4><hr>--}}
 {{--        <p id='result'></p><hr>--}}
