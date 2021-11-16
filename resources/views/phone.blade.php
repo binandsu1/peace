@@ -24,15 +24,15 @@
 
 <div style="margin-left:30%">
     <h1>phone</h1>
-    <input type="file" accept="image/*" capture="camera"> 相机
+    <form class="form-horizontal" method="post" action="<?=route('phone')?>" enctype="multipart/form-data">
 
-    <input type="file" accept="video/*" capture="camcorder"> 录像
-
-    <input type="file" accept="audio/*" capture="microphone"> 系统相册
-
-    <input type="file" accept="image/*" multiple> 多选
+        <input type="file" name="image" accept="image/*" capture="camera"> 相机
 
 
+        <button type="submit" class="btn btn-success">go</button>
+    </form>
+    {{$image->path}}
+    <img src="http://121.196.217.164/{{$image->path}}" class="img-rounded">
 </div>
 
 <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->

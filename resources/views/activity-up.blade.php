@@ -45,7 +45,7 @@
         <br>
         <button type="submit" class="btn btn-success">go</button>
     </form>
-
+    <img src="http://121.196.217.164/images/20211115/{{$newimageName}}" class="img-rounded">
 
 </div>
 

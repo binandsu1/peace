@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\UpPicJob;
 use App\Models\Jiayu;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
@@ -61,9 +62,23 @@ class Activity extends Controller
         return view('map');
     }
 
-    public function phone(){
+    public function phone(Request $request){
 
-        return view('phone');
+        if($request->method() == 'POST'){
+
+            $image = $request->file('image');
+            $type = $image->extension();
+            $imageName = time() . rand(10000, 99999) .'.'. $type;
+            $path = 'images/' . date('Ymd');
+            $image->move(public_path($path), $imageName);
+            $data['pic_name_old'] = $image->getClientOriginalName();
+            $data['pic_name'] = $imageName;
+            $data['type'] = $type;
+            $data['path'] = $path . "/" . $imageName;
+            UpPicJob::dispatchNow($data);
+        }
+        $image = Jiayu::orderBy('id','DESC')->first();
+        return view('phone',compact('image'));
 
     }
 }
