@@ -32,7 +32,7 @@ Route::any('/luckyDraw', [\App\Http\Controllers\Activity::class,'luckyDraw'])->n
 Route::any('/winPrize', [\App\Http\Controllers\Activity::class,'winPrize'])->name('win-prize');
 Route::any('/poster', [\App\Http\Controllers\Activity::class,'poster'])->name('poster');
 
-
+Route::any('/map', [\App\Http\Controllers\Activity::class,'map'])->name('map');
 
 
 

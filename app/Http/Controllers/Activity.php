@@ -55,4 +55,9 @@ class Activity extends Controller
         $face_img->save($save_path);
         return view('poster',compact('pic_re','newimageName'));
     }
+
+
+    public function map(){
+        return view('map');
+    }
 }
