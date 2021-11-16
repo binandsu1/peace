@@ -60,4 +60,10 @@ class Activity extends Controller
     public function map(){
         return view('map');
     }
+
+    public function phone(){
+
+        return view('phone');
+
+    }
 }
