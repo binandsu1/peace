@@ -29,7 +29,7 @@
         <input type="file" name="image" accept="image/*" capture="camera"> 相机
 
 
-        <button type="submit" class="btn btn-success">go</button>
+        <button type="submit" class="btn btn-success">开始上传</button>
     </form>
     {{$image->path}}
 {{--    <img src="http://121.196.217.164/{{$image->path}}" class="img-rounded">--}}
