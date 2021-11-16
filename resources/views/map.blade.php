@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
     <title>输入提示后查询</title>
-{{--    <link rel="stylesheet" href="https://cache.amap.com/lbs/static/main1119.css"/>--}}
+
     <script type="text/javascript"
             src="https://webapi.amap.com/maps?v=1.4.15&key=2219e657cb9af608c613f57dabd81523&plugin=AMap.Autocomplete,AMap.PlaceSearch"></script>
     <script type="text/javascript" src="https://cache.amap.com/lbs/static/addToolbar.js"></script>
@@ -14,19 +14,25 @@
     .info{
         width:26rem;
     }
+
+    #panel {
+        right: 10px;
+        width: 280px;
+    }
+
 </style>
 <link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css" />
 </head>
 <body>
-<div style="height: 500px;width: 500px; ">
+<div style="height: 800px;width: 500px; ">
 
 
     <div id="container" style="height: 200px;width: 500px;"></div>
-    <div id="myPageTop" style="height: 200px;width: 500px;">
+    <div id="myPageTop" style="height: 100px;width: 500px;">
         <table>
             <tr>
                 <td>
-                    <label>请输入关键字： 微软门店   微软售后服务站  </label>
+                    <label>请输入关键字： 微软门店   微软售后服务站   </label>
                 </td>
             </tr>
             <tr>
@@ -36,10 +42,7 @@
             </tr>
         </table>
     </div>
-
-
-    <div id="panel" style="height: 200px;width: 500px;"></div>
-
+    <div id="panel"  style="height: 200px;width: 500px;"></div>
 {{--    <div class="info" style="height: 200px;width: 500px;">--}}
 {{--        <h4 id='status'></h4><hr>--}}
 {{--        <p id='result'></p><hr>--}}
@@ -47,7 +50,7 @@
 {{--    </div>--}}
 
 </div>
-
+<script type="text/javascript" src="https://cache.amap.com/lbs/static/addToolbar.js"></script>
 <script type="text/javascript">
     //地图加载
     var map = new AMap.Map("container", {
@@ -104,13 +107,11 @@
         // document.getElementById('result').innerHTML = '失败原因排查信息:'+data.message;
     }
 
-
-    //周边搜索
+    //关键字搜索
 
     AMap.service(["AMap.PlaceSearch"], function() {
         //构造地点查询类
         var placeSearch = new AMap.PlaceSearch({
-            type: '餐饮服务', // 兴趣点类别
             pageSize: 5, // 单页显示结果条数
             pageIndex: 1, // 页码
             city: "010", // 兴趣点城市
@@ -119,15 +120,11 @@
             panel: "panel", // 结果列表将在此容器中进行展示。
             autoFitView: true // 是否自动调整地图视野使绘制的 Marker点都处于视口的可见范围
         });
-
-        var cpoint = [116.44007,39.96972]; //中心点坐标
-        placeSearch.searchNearBy('', cpoint, 200, function(status, result) {
-
-        });
+        //关键字查询
+        placeSearch.search('微软');
     });
 </script>
 </body>
 </html>
-
 
 
