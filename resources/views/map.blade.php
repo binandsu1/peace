@@ -10,54 +10,56 @@
             src="https://webapi.amap.com/maps?v=1.4.15&key=2219e657cb9af608c613f57dabd81523&plugin=AMap.Autocomplete,AMap.PlaceSearch"></script>
     <script type="text/javascript" src="https://cache.amap.com/lbs/static/addToolbar.js"></script>
 
-    <style>
-        .info {
-            width: 26rem;
-        }
+<style>
+    .info{
+        width:26rem;
+    }
 
-        #panel {
-            right: 10px;
-            width: 280px;
-        }
+    #panel {
+        right: 10px;
+        width: 280px;
+    }
 
-    </style>
-    <link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css"/>
+</style>
+<link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css" />
 </head>
 <body>
 <div style="height: 800px;width: 500px; ">
 
-    <br>
+        <br>
     <div id="container" style="height: 300px;width: 500px;"></div>
     <div id="myPageTop" style="height: 70px;width: 500px;">
         <table>
             <tr>
                 <td>
-                    <label>请输入关键字： 微软门店 微软售后服务站 </label>
+                    <label>请输入关键字： 微软门店   微软售后服务站   </label>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <input id="tipinput"/>
+                    <input id="tipinput" />
                 </td>
             </tr>
         </table>
     </div>
-    <div style="height: 30px;width: 500px;">
-        <button onclick="haha('微软')">门店查询</button>
-        <button onclick="haha('微软售后')">售后服务站</button>
+    <div   style="height: 30px;width: 500px;">
+        <button onclick="as('微软')">门店查询</button>
+        <button onclick="as('微软售后')">售后服务站</button>
     </div>
-    <div id="panel" style="height: 200px;width: 500px;"></div>
-    {{--    <div class="info" style="height: 200px;width: 500px;">--}}
-    {{--        <h4 id='status'></h4><hr>--}}
-    {{--        <p id='result'></p><hr>--}}
-    {{--        <p ></p>--}}
-    {{--    </div>--}}
-    {{--<input type="text" id="as">--}}
+    <div id="panel"  style="height: 200px;width: 500px;"></div>
+{{--    <div class="info" style="height: 200px;width: 500px;">--}}
+{{--        <h4 id='status'></h4><hr>--}}
+{{--        <p id='result'></p><hr>--}}
+{{--        <p ></p>--}}
+{{--    </div>--}}
+<input type="text" id="as">
 </div>
 <script type="text/javascript" src="https://cache.amap.com/lbs/static/addToolbar.js"></script>
 <script type="text/javascript">
+    function as(value){
+        document.getElementById('as').value = value;
 
-    Window.onload = haha();
+    }
     //地图加载
     var map = new AMap.Map("container", {
         resizeEnable: true
@@ -78,25 +80,24 @@
     }
 
     //定位的
-    AMap.plugin('AMap.Geolocation', function () {
+    AMap.plugin('AMap.Geolocation', function() {
         var geolocation = new AMap.Geolocation({
             enableHighAccuracy: true,//是否使用高精度定位，默认:true
             timeout: 10000,          //超过10秒后停止定位，默认：5s
-            buttonPosition: 'RB',    //定位按钮的停靠位置
+            buttonPosition:'RB',    //定位按钮的停靠位置
             buttonOffset: new AMap.Pixel(10, 20),//定位按钮与设置的停靠位置的偏移量，默认：Pixel(10, 20)
             zoomToAccuracy: true,   //定位成功后是否自动调整地图视野到定位点
 
         });
         map.addControl(geolocation);
-        geolocation.getCurrentPosition(function (status, result) {
-            if (status == 'complete') {
+        geolocation.getCurrentPosition(function(status,result){
+            if(status=='complete'){
                 onComplete(result)
-            } else {
+            }else{
                 onError(result)
             }
         });
     });
-
     //解析定位结果
     function onComplete(data) {
         // document.getElementById('status').innerHTML='定位成功'
@@ -109,7 +110,6 @@
         // str.push('是否经过偏移：' + (data.isConverted ? '是' : '否'));
         // document.getElementById('result').innerHTML = str.join('<br>');
     }
-
     //解析定位错误信息
     function onError(data) {
         // document.getElementById('status').innerHTML='定位失败'
@@ -117,22 +117,20 @@
     }
 
     //关键字搜索
-    function haha(value = '微软') {
-        AMap.service(["AMap.PlaceSearch"], function () {
-            //构造地点查询类
-            var placeSearch = new AMap.PlaceSearch({
-                pageSize: 5, // 单页显示结果条数
-                pageIndex: 1, // 页码
-                city: "010", // 兴趣点城市
-                citylimit: true,  //是否强制限制在设置的城市内搜索
-                map: map, // 展现结果的地图实例
-                panel: "panel", // 结果列表将在此容器中进行展示。
-                autoFitView: true // 是否自动调整地图视野使绘制的 Marker点都处于视口的可见范围
-            });
-            //关键字查询
-            placeSearch.search(value);
+    AMap.service(["AMap.PlaceSearch"], function() {
+        //构造地点查询类
+        var placeSearch = new AMap.PlaceSearch({
+            pageSize: 5, // 单页显示结果条数
+            pageIndex: 1, // 页码
+            city: "010", // 兴趣点城市
+            citylimit: true,  //是否强制限制在设置的城市内搜索
+            map: map, // 展现结果的地图实例
+            panel: "panel", // 结果列表将在此容器中进行展示。
+            autoFitView: true // 是否自动调整地图视野使绘制的 Marker点都处于视口的可见范围
         });
-    }
+        //关键字查询
+        placeSearch.search('微软');
+    });
 </script>
 </body>
 </html>
