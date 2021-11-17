@@ -35,7 +35,6 @@
 
 <body >
  <div>
-        我是头页面
         @yield('content')
 
 </div>

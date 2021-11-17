@@ -5,7 +5,7 @@
     margin: 30px auto;
     /*height: calc(100vh - 98px);*/
     /*background-color: #fd6504 #9470fd;*/
-    background:linear-gradient(to bottom right, #fd6504 , #9470fd)
+   /* background:linear-gradient(to bottom right, #fd6504 , #9470fd)*/
 }
 /* 大转盘样式 */
 .turnplate_box {

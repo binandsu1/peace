@@ -9,12 +9,12 @@ var winnerList=[
     {
         id:'1',
         name:'上海报资格',
-	    logo:"http://121.196.217.164/jy/123.png",
+	    logo:"http://121.196.217.164/jy/袜子.png",
         probability:'1%',
     },{
         id:'2',
         name:'M365个人版+爱奇艺季卡',
-	logo:'http://121.196.217.164/jy/123.png',
+	logo:'http://121.196.217.164/jy/水杯.png',
         probability:'3%',
     },{
         id:'3',
