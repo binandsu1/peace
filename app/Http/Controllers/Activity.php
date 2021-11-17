@@ -94,4 +94,8 @@ class Activity extends Controller
             echo 'good';
         }
     }
+
+    public function view(){
+        return view('view');
+    }
 }
