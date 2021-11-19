@@ -23,7 +23,6 @@ var winnerList=[
         probability:'96%',
     }
 ];
-console.log(winnerList);
 
 //奖品列表
 // 有几份扇形
