@@ -25,6 +25,8 @@ class Activity extends Controller
     }
 
     public function activityUp(){
+
+        return redirect()->away("https://wisepeople.xbaofun.com/wisepeople/oobe/users/storeList");
         return view('activity-up');
     }
 
