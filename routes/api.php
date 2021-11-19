@@ -36,6 +36,8 @@ Route::any('/map', [\App\Http\Controllers\Activity::class,'map'])->name('map');
 Route::any('/phone', [\App\Http\Controllers\Activity::class,'phone'])->name('phone');
 Route::any('/mgc', [\App\Http\Controllers\Activity::class,'mgc'])->name('mgc');
 Route::any('/view', [\App\Http\Controllers\Activity::class,'view'])->name('view');
+Route::any('/baidu', [\App\Http\Controllers\Activity::class,'baidu'])->name('baidu');
+Route::any('/tx', [\App\Http\Controllers\Activity::class,'tx'])->name('tx');
 
 
 

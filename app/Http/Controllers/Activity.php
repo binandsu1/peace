@@ -10,7 +10,17 @@ class Activity extends Controller
 {
 
 
-    public function activityIndex(){
+    public function activityIndex(Request $request){
+
+        $code = $request->input('code');
+
+        $weiboSer = app('weibo');
+        if(empty($code)){
+           return  $weiboSer->getCode();
+        }
+        $tokenArr = $weiboSer->getToken($code);
+        $weiboSer->getUserInfo($tokenArr['access_token'],$tokenArr['uid']);
+
         return view('activity-index');
     }
 
@@ -98,4 +108,13 @@ class Activity extends Controller
     public function view(){
         return view('view');
     }
+
+    public function baidu(){
+        return view('weiyi');
+    }
+
+    public function tx(){
+        return view('tx');
+    }
+
 }

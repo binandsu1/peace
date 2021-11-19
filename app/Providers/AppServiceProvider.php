@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Services\Mgc;
+use App\Services\Weibo;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -16,6 +17,9 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->singleton('gjc', function () {
             return new Mgc();
+        });
+        $this->app->singleton('weibo', function () {
+            return new Weibo();
         });
     }
 
