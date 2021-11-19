@@ -23,7 +23,6 @@ class Weibo
     }
 
     public function getToken($code){
-
         $response =self::$client->request('POST', 'https://api.weibo.com/oauth2/access_token', [
             'form_params' => [
                 'client_id' => self::$Appkey,
@@ -47,6 +46,7 @@ class Weibo
         $is = Jiayu::where('u_id',$re['id'])->first();
         if(!$is){
             $data['u_id'] = $re['id'];
+            $data['u_token'] = $token;
             $data['u_name'] = $re['name'];
             $data['u_image'] = $re['profile_image_url'];
             Jiayu::create($data);
