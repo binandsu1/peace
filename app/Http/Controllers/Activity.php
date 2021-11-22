@@ -167,11 +167,13 @@ class Activity extends Controller
     }
 
 
-    public function unPrizeNum($uid = '0', $gid = '0')
+    public function unPrizeNum(Request $request)
     {
-        $uid = 1;
-        $gid = 1;
-        $is = PrizeNum::where('status', 1)->where('u_id',$uid)->first();
+        $num = $request->input('num');
+        if($num<0){
+            return -1;
+        }
+        $is = PrizeNum::where('status', 1)->where('num',$num)->first();
         if(!$is){
             return -1;
         }
