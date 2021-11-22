@@ -21,7 +21,7 @@
 					<canvas id="demo-canvas"></canvas>
 					<div class="logo_box">
 						<h1>现在就<span style="color:red;">耀</span></h1>
-						<h3>点亮海报活动</h3><br><br><br>
+						<h3>点亮海报活动111</h3><br><br><br>
 						<form action="#" name="f" method="post">
 							<!--<div class="input_outer">-->
 								<!--<span class="u_user"></span>-->
