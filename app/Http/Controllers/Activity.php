@@ -7,6 +7,7 @@ use App\Jobs\UpPicJob;
 use App\Models\Jiayu;
 use App\Models\PrizeNum;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image;
 
 class Activity extends Controller
@@ -140,16 +141,47 @@ class Activity extends Controller
         return view('cash-prize');
     }
 
-    public function makePrizeNum()
+    public function makePrizeNum($uid = '0', $gid = '0')
     {
-        echo '生成兑奖码';
-        for($i=0;$i<10000;$i++){
-            $num = rand(10000000,99999999);
-            $pm = PrizeNum::class;
-            $data['num'] = $num;
-            PrizeNum::create($data);
+        $uid = 1;
+        $gid = 1;
+        $is = PrizeNum::whereIn('status', [1,2])->where('u_id',$uid)->first();
+        if($is){
+            return -1;
         }
+        try {
+            DB::beginTransaction();
+            $is = PrizeNum::where('status', 0)->first();
+            $is->u_id = $uid;
+            $is->gift_id = $gid;
+            $is->status = 1;
+            if (!$is->save()) {
+                return -1;
+            }
+            DB::commit();
+            return $is->num;
+        } catch (\Exception $exception) {
+            DB::rollback();
+            return 0;
+        }
+    }
 
+
+    public function unPrizeNum($uid = '0', $gid = '0')
+    {
+        $uid = 1;
+        $gid = 1;
+        $is = PrizeNum::where('status', 1)->where('u_id',$uid)->first();
+        if(!$is){
+            return -1;
+        }
+        $is->status = 2;
+        $is->un_at = date('Y-m-d H:i:s');
+        $re = $is->save();
+        if($re){
+            return 1;
+        }
+        return 0;
     }
 
 }

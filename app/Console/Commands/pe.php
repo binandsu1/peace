@@ -38,11 +38,17 @@ class pe extends Command
      */
     public function handle()
     {
-        for($i=0;$i<15000;$i++){
+        for($i=0;$i<100000;$i++){
             $num = rand(10000000,99999999);
             $data['num'] = $num;
-            $id = PrizeNum::insertGetId($data);
-            $this->info('刚刚插入的'.$id);
+            $is = PrizeNum::where('num',$num)->first();
+            if(!$is){
+                $id = PrizeNum::insertGetId($data);
+                $this->info('刚刚插入的'.$id);
+            }else{
+                $this->error('刚刚插入的有了'.$num);
+            }
+
         }
     }
 }

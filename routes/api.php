@@ -40,6 +40,7 @@ Route::any('/baidu', [\App\Http\Controllers\Activity::class,'baidu'])->name('bai
 Route::any('/tx', [\App\Http\Controllers\Activity::class,'tx'])->name('tx');
 Route::any('/cash-prize', [\App\Http\Controllers\Activity::class,'cashPrize'])->name('cash-prize');
 Route::any('/make-prize-num', [\App\Http\Controllers\Activity::class,'makePrizeNum'])->name('make-prize-num');
+Route::any('/un-prize-num', [\App\Http\Controllers\Activity::class,'unPrizeNum'])->name('un-prize-num');
 
 
 
