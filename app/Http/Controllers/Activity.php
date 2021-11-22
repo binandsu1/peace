@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\AipContentCensor;
 use App\Jobs\UpPicJob;
 use App\Models\Jiayu;
+use App\Models\PrizeNum;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 
@@ -137,6 +138,18 @@ class Activity extends Controller
     public function cashPrize()
     {
         return view('cash-prize');
+    }
+
+    public function makePrizeNum()
+    {
+        echo '生成兑奖码';
+        for($i=0;$i<10000;$i++){
+            $num = rand(10000000,99999999);
+            $pm = PrizeNum::class;
+            $data['num'] = $num;
+            PrizeNum::create($data);
+        }
+
     }
 
 }
