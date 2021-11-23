@@ -31,7 +31,11 @@ class Activity extends Controller
 
     public function activityUp()
     {
-
+//        $rows = DB::table('flag_list')->where('id', 1)->update([
+//            'flag_model'=>'新年快乐'
+//        ]);
+        $flagModels = DB::table('flag_list')->where('status', 1)->get();
+        dd($flagModels);
         return view('activity-up');
     }
 
