@@ -114,16 +114,28 @@ class Activity extends Controller
 
     }
 
-    public function winPrize(Request $request)
+    // 中奖信息展示页面
+    public function winPrize()
     {
-        $data = $request->all();
-        return view('win-prize', compact('data'));
+//        $data = $request->all();
+
+        // TODO::修改uid的值
+        $prize_code = DB::table("prize_num")->where('u_id', 2)->get(['gift_id', 'num']);
+        $user_info = DB::table("jiayus")->where('id',29)->get(['u_name']);
+        return view('win-prize')->with(['prize_code'=>$prize_code,'user_info'=>$user_info]);
     }
 
-    public function poster(Request $request)
+    public function poster()
     {
 
-        $flag = $request->input('flag', '吃饭了吗');
+//        $flag = $request->input('flag', '吃饭了吗');
+        $flag_ids = DB::table('user_to_flag')->where('uid',2)->get(['flag_id']);
+//        dd($flag_ids);
+        if (!empty($flag_ids)) {
+            foreach ($flag_ids as $k=>$v) {
+                $flag = self::getFlagModel($v->flag_id);
+            }
+        }
         $pic_re = Jiayu::orderBy('id', 'DESC')->first();
         $image = new Image();
         $path = $pic_re->path;
@@ -320,6 +332,34 @@ class Activity extends Controller
                 // 无效状态
                 break;
         }
+    }
+
+    // flag 模板
+    public function getFlagModel($id) {
+        $flag = "";
+        if (!empty($id)) {
+            switch ($id) {
+                case 1:
+                    $flag = "新年365天不加班";
+                    break;
+                case 2:
+                    $flag = "我的工作就是好好生活";
+                    break;
+                case 3:
+                    $flag = "工作创新潮";
+                    break;
+                case 4:
+                    $flag = "生活创新潮";
+                    break;
+                case 5:
+                    $flag = "与我所爱，更近一步";
+                    break;
+                default:
+                    $flag = "";
+                    break;
+            }
+        }
+        return $flag;
     }
 
 }

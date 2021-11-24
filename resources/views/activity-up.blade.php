@@ -108,9 +108,9 @@
 
                 }
             },
-            error: function(request, status, error){
-                alert(error);
-            },
+//            error: function(request, status, error){
+//                alert(error);
+//            },
         });
     };
 

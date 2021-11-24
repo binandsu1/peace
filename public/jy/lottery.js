@@ -145,7 +145,7 @@ var number = winnerList.length;
             animateTo:2880 - angles,
             duration:8000,
             callback:function (){
-             alert(item.name);
+                window.location="/api/winPrize";
                 $('#tupBtn').removeAttr("disabled", true);
             }
         });
