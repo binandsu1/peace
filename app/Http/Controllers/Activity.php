@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Console\Commands\Excel\TeacherToUser;
 use App\Http\Controllers\AipContentCensor;
+use App\Jobs\tt;
 use App\Jobs\UpPicJob;
 use App\Models\Jiayu;
 use App\Models\PrizeNum;
@@ -223,6 +225,12 @@ class Activity extends Controller
             return 1;
         }
         return 0;
+    }
+
+    public function tt(){
+        $data["a"] = 1;
+        $data["b"] = 1;
+        tt::dispatch($data);
     }
 
 }

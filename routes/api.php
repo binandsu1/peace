@@ -42,6 +42,7 @@ Route::any('/cash-prize', [\App\Http\Controllers\Activity::class,'cashPrize'])->
 Route::any('/make-prize-num', [\App\Http\Controllers\Activity::class,'makePrizeNum'])->name('make-prize-num');
 Route::any('/un-prize-num', [\App\Http\Controllers\Activity::class,'unPrizeNum'])->name('un-prize-num');
 Route::any('/set-flag', [\App\Http\Controllers\Activity::class,'setFlag'])->name('set-flag');
+Route::any('/tt', [\App\Http\Controllers\Activity::class,'tt'])->name('tt');
 
 
 
