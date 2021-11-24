@@ -5,22 +5,23 @@ var shb = "<?=asset('/jy/123.png')?>";
 var radius = 130;
 //转盘初始化
 var color = ["#fde284", "#fe9103", "rgba(0,0,0,0.5)", "#ffffff", "#b10105", "#fbc605"];
+
 var winnerList=[
     {
         id:'1',
         name:'上海报资格',
 	    logo:"http://121.196.217.164/jy/袜子.png",
-        probability:'1%',
+        probability:probability1,
     },{
         id:'2',
         name:'M365个人版+爱奇艺季卡',
 	logo:'http://121.196.217.164/jy/水杯.png',
-        probability:'3%',
+        probability:probability2,
     },{
         id:'3',
         name:'319 限量多彩 “新”意套装（M365+精巧鼠标）',
         logo:'http://121.196.217.164/jy/123.png',
-        probability:'96%',
+        probability:probability3,
     }
 ];
 

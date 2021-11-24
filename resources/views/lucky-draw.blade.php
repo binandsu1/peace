@@ -34,9 +34,9 @@
                         </button>
                     </div>
                 </div>
-               <!-- @foreach(config('prize') as $k=>$v)
-                    <button type="button"  class="btn btn-default"><a href="{{route('win-prize',['prize'=>"$k",'flag'=>request('flag')])}}">中奖{{$k}}：{{$v}}</a></button>
-                @endforeach-->
+                {{--@foreach($prize_type as $k=>$v)--}}
+                    {{--<button type="button"  class="btn btn-default"><a href="{{route('win-prize',['prize'=>"$k",'flag'=>request('flag')])}}">中奖{{$k}}：{{$v}}</a></button>--}}
+                {{--@endforeach--}}
             </div>
         </div>
    </div> 
@@ -49,8 +49,15 @@
 <script src="<?=asset('/jy/rAF.js')?>"></script>
 <script src="<?=asset('/jy/demo-1.js')?>"></script>
 
+<script>
+    var probability1 = "<?php if($prize_type == 1) {echo '100%';} else{ echo '0%';} ?>";
+    var probability2 = "<?php if($prize_type == 2) {echo '100%';} else{ echo '0%';} ?>";
+    var probability3 = "<?php if($prize_type == 3) {echo '100%';} else{ echo '0%';} ?>";
+</script>
+
 <!--大转盘-->
 <script src="<?=asset('/jy/awardRotate.js')?>"></script>
 <script src="<?=asset('/jy/lottery.js')?>"></script>
+
 </body>
 </html>

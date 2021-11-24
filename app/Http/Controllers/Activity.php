@@ -12,7 +12,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Redis;
-use Illuminate\Support\Facades\Session;
 
 class Activity extends Controller
 {
@@ -33,7 +32,7 @@ class Activity extends Controller
 
         // TODO::修改uid
         $uid = 2;
-        Session::put('page_status_'.$uid,'1');
+        Redis::set('page_status_'.$uid,'1');
         return view('activity-index');
     }
 
@@ -41,7 +40,7 @@ class Activity extends Controller
     {
         // TODO::修改uid
         $uid = 2;
-        Session::put('page_status_'.$uid,'11');
+        Redis::set('page_status_'.$uid,'11');
         $flagModels = DB::table('flag_list')->where('status', 1)->get(['id','flag_model']);
 
         return view('activity-up')->with('flagModels', $flagModels);
@@ -55,21 +54,19 @@ class Activity extends Controller
 
     public function luckyDraw()
     {
-//        Session::put('user','default');
 
-        $page_status = Session::get('page_status_2');
-
-//        $page_status = session('page_status');
-//        $page_status = 3;
-        dd($page_status);
+        // TODO::修改uid
+        $page_status = Redis::get('page_status_2');
 
         if ($page_status == 12) {
             // 抽奖方法
             $v = rand(1,100);
 
-            $one = 1;
-            $two_start = 2;
+            $one = 1; //1%中奖率
+
+            $two_start = 2; // 3%中奖率
             $two_finish = 4;
+
             $three_start = 5;
             $three_finish = 100;
 
@@ -103,13 +100,18 @@ class Activity extends Controller
             self::makePrizeNum(2,$prize_type);  // 根据中奖类型，取用兑奖码
             // TODO::修改uid
             $uid = 2;
-            Session::put('page_status_'.$uid,'13');
+            Redis::set('page_status_'.$uid,'13');
+            return view('lucky-draw')->with('prize_type',$prize_type);
         } elseif ($page_status == 13) {
             // TODO::修改uid
-            $prize_type = PrizeNum::where('u_id',2)->get('gift_id'); // 非首次进入抽奖页面，沿用首次进入时的抽奖结果
+//            $prize_type = PrizeNum::where('u_id',2)->get('gift_id'); // 非首次进入抽奖页面，沿用首次进入时的抽奖结果
+            $prize_type = DB::table('prize_num')->where('u_id', 2)->get(['gift_id']); // 非首次进入抽奖页面，沿用首次进入时的抽奖结果
+            foreach($prize_type as $v) {
+                $prize_type = $v->gift_id;
+            }
+            return view('lucky-draw')->with('prize_type',$prize_type);
         }
-        dd($prize_type);
-        return view('lucky-draw')->with('prize_type',$prize_type);
+
     }
 
     public function winPrize(Request $request)
@@ -204,7 +206,7 @@ class Activity extends Controller
         }
         // TODO::修改uid
         $uid = 2;
-        Session::put('page_status_'.$uid,'12');
+        Redis::set('page_status_'.$uid,'12');
         return response()->json(['code' => 200]);
 
     }
