@@ -31,12 +31,10 @@ class Activity extends Controller
 
     public function activityUp()
     {
-//        $rows = DB::table('flag_list')->where('id', 1)->update([
-//            'flag_model'=>'新年快乐'
-//        ]);
-        $flagModels = DB::table('flag_list')->where('status', 1)->get()->toArray();
-        dd($flagModels);
-        return view('activity-up');
+
+        $flagModels = DB::table('flag_list')->where('status', 1)->get(['id','flag_model']);
+
+        return view('activity-up')->with('flagModels', $flagModels);
     }
 
     public function activityDown()
@@ -115,9 +113,34 @@ class Activity extends Controller
         $ms = app('mgc');
         $content = '轮法功';
         $bad_word = $ms::getBadWord($content);
+
         if (!empty($bad_word)) {
-            throw new \Exception('包含敏感词:' . current($bad_word));
+            return response()->json(['status' => 'fail','code' => 500,'error' => '包含敏感词',]);
+        } else {
+            return response()->json(['status' => 'success','code' => 200,'message' => '合规']);
         }
+    }
+
+    // 保存flag
+    public function setFlag(Request $request)
+    {
+
+        $customize_flag = $request->input('customize_flag', '');
+        $model_ids = $request->input('model_ids', '');
+
+        if (!empty($customize_flag)) {
+            DB::table('customize_flag')->insert(['uid'=>1, 'customize_flag'=>$model_ids]);
+        }
+
+        if (!empty($model_ids)) {
+            $model_ids = rtrim($model_ids,',');
+            $id_arr = explode(',', $model_ids);
+            foreach ($id_arr as $k => $v) {
+                DB::table('user_to_flag')->insert(['uid'=>1, 'flag_id'=>$v]);
+            }
+        }
+        return response()->json(['code' => 200]);
+
     }
 
     public function view()

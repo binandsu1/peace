@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>login</title>
     <link rel="stylesheet" type="text/css" href="<?= asset('/jy/normalize.css') ?>">
     <link rel="stylesheet" type="text/css" href="<?= asset('/jy/demo.css') ?>">
@@ -22,42 +23,95 @@
             <div class="logo_box">
                 <h1>立下属于你的新年flag</h1>
               	
-        <form class="form-horizontal" method="post" action="<?=route('lucky-draw')?>">
-            <div class="input-group">
-                <input type="text" name="flag" class="form-control" placeholder="请输入flag" aria-describedby="basic-addon1">
-            </div>
-
-            <br>
-            <div class="dropdown">
-                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="true">
-                    请选择 flag
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <li><a href="{{route('lucky-draw',['flag'=>'帝国'])}}">帝国</a></li>
-                    <li><a href="{{route('lucky-draw',['flag'=>'约德尔'])}}">约德尔</a></li>
-                    <li><a href="{{route('lucky-draw',['flag'=>'战斗学院'])}}">战斗学院</a></li>
-                    <li><a href="{{route('lucky-draw',['flag'=>'格斗家'])}}">格斗家</a></li>
-                </ul>
-            </div>
-	  <br>
-<div class="mb2"><a class="act-but submit" href="{{route('activity-up')}}" style="color: #FFFFFF">立下Flag 参与抽奖</a></div>
-            <!--<button type="submit" class="btn btn-success">go</button>-->
-        </form>	       
-
-
-
-
+                <form class="form-horizontal" method="post" action="">
+                    <div class="dropdown">
+                        @foreach($flagModels as $k=>$v)
+                            <li style="list-style: none"><input type="checkbox" name="flags" value="{{$v->id}}"> {{$v->flag_model}}</li>
+                        @endforeach
+                            <li id="customize_li" style="list-style: none; display: none;"><input type="checkbox" name="self_flag" ></li>
+                        <div id="cus_div" class="input-group">
+                            <input id="customize_flag" type="text" name="flag" class="form-control" placeholder="自定义flag" aria-describedby="basic-addon1"><button type="button" onclick="check_mgc()">保存</button>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="mb2" onclick="set_flag()"><a type="button" class="act-but submit" style="color: #FFFFFF">立下Flag 参与抽奖</a></div>
+                </form>
             </div>
         </div>
     </div>
-
-
 </div><!-- /container -->
+<script src="<?=asset('/jy/jquery-1.7.2.min.js')?>"></script>
 <script src="<?=asset('/jy/TweenLite.min.js')?>"></script>
 <script src="<?=asset('/jy/EasePack.min.js')?>"></script>
 <script src="<?=asset('/jy/rAF.js')?>"></script>
 <script src="<?=asset('/jy/demo-1.js')?>"></script>
+<script>
+    // 自定义flag 敏感词检测
+    function check_mgc() {
+        var flag_wb = $('#customize_flag').val();
+        $.ajax({
+            type: "POST",
+            url: "{{ url('/api/mgc') }}",
+            dataType: 'json',
+            header: {'X-CRSF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            data: {
+                "flag_wb": flag_wb,
+            },
+            success: function (data) {
+                if(data.code == '200') {
+                    $("#customize_li").text(flag_wb);
+                    $("#cus_div").css('display','none');
+                    $("#customize_li").css('display','block');
+                } else {
+                    alert('自定义flag包含敏感词，请修改后再次提交！');
+                }
+            },
+//            error: function(request, status, error){
+//                alert(error);
+//            },
+        });
+    };
+
+
+    // 保存flag并前往抽奖
+    function set_flag() {
+
+        var flag_wb = $('#customize_li').text();
+        var chk_value ='';
+        $('input[name="flags"]:checked').each(function(){
+            chk_value += $(this).val()+',';
+        });
+
+        if (flag_wb.length==0) {
+            if (chk_value.length==0) {
+                alert( '您还没有选择任何内容！');
+                return false;
+            }
+        }
+//console.log(chk_value);return false;
+        $.ajax({
+            type: "POST",
+            url: "{{ url('/api/set-flag') }}",
+            dataType: 'json',
+            header: {'X-CRSF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            data: {
+                "customize_flag": flag_wb,
+                "model_ids": chk_value,
+            },
+            success: function (data) {
+                if(data.code == '200'){
+                    window.location="{{route('lucky-draw')}}";
+                } else {
+
+                }
+            },
+            error: function(request, status, error){
+                alert(error);
+            },
+        });
+    };
+
+
+</script>
 </body>
 </html>
