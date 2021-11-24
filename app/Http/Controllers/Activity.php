@@ -45,21 +45,21 @@ class Activity extends Controller
 
     public function luckyDraw()
     {
-        $page_status = $_SESSION['page_status'];
-        if ($page_status == 3) {
-            // 抽奖方法
-            $v = rand(1,100);
-
-            $one = 1;
-            $two_start = 2;
-            $two_finish = 4;
-            $three_start = 5;
-            $three_finish = 100;
-            switch($v) {
-                case $v==$one:
-                    $prize = 1;
-            }
-        }
+//        $page_status = $_SESSION['page_status'];
+//        if ($page_status == 3) {
+//            // 抽奖方法
+//            $v = rand(1,100);
+//
+//            $one = 1;
+//            $two_start = 2;
+//            $two_finish = 4;
+//            $three_start = 5;
+//            $three_finish = 100;
+//            switch($v) {
+//                case $v==$one:
+//                    $prize = 1;
+//            }
+//        }
         return view('lucky-draw', compact('flag'));
     }
 
@@ -121,12 +121,11 @@ class Activity extends Controller
     }
 
 
-    public function mgc()
+    public function mgc(Request $request)
     {
         $ms = app('mgc');
-        $content = '轮法功';
+        $content = $request->input('flag_wb');
         $bad_word = $ms::getBadWord($content);
-
         if (!empty($bad_word)) {
             return response()->json(['status' => 'fail','code' => 500,'error' => '包含敏感词',]);
         } else {
