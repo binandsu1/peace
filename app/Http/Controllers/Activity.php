@@ -31,6 +31,7 @@ class Activity extends Controller
 
     public function activityUp()
     {
+
         $flagModels = DB::table('flag_list')->where('status', 1)->get(['id','flag_model']);
 
         return view('activity-up')->with('flagModels', $flagModels);
@@ -119,15 +120,14 @@ class Activity extends Controller
         return view('phone', compact('image'));
     }
 
-    // 敏感词过滤
-    public function mgc(Request $request)
-    {
-        $flag_wb = $request->input('flag_wb');
-        $client = new AipContentCensor('25176769', 'rU4t2Kabjo1w8q8ytUiDwxCb', 'ocUascqCQ4OqdVNDzqlhuhj4F3DL69YU');
-//        $token = $client->getAccessToken();
 
-        $result = $client->checkFlag($flag_wb);
-        if (!$result) {
+    public function mgc()
+    {
+        $ms = app('mgc');
+        $content = '轮法功';
+        $bad_word = $ms::getBadWord($content);
+
+        if (!empty($bad_word)) {
             return response()->json(['status' => 'fail','code' => 500,'error' => '包含敏感词',]);
         } else {
             return response()->json(['status' => 'success','code' => 200,'message' => '合规']);

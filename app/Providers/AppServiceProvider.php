@@ -15,7 +15,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('gjc', function () {
+        $this->app->singleton('mgc', function () {
             return new Mgc();
         });
         $this->app->singleton('weibo', function () {
