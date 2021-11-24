@@ -45,21 +45,22 @@ class Activity extends Controller
 
     public function luckyDraw()
     {
-//        $page_status = $_SESSION['page_status'];
-//        if ($page_status == 3) {
-//            // 抽奖方法
-//            $v = rand(1,100);
-//
-//            $one = 1;
-//            $two_start = 2;
-//            $two_finish = 4;
-//            $three_start = 5;
-//            $three_finish = 100;
-//            switch($v) {
-//                case $v==$one:
-//                    $prize = 1;
-//            }
-//        }
+        $page_status = session('page_status');
+        dd($page_status);
+        if ($page_status == 3) {
+            // 抽奖方法
+            $v = rand(1,100);
+
+            $one = 1;
+            $two_start = 2;
+            $two_finish = 4;
+            $three_start = 5;
+            $three_finish = 100;
+            switch($v) {
+                case $v==$one:
+                    $prize = 1;
+            }
+        }
         return view('lucky-draw', compact('flag'));
     }
 
@@ -153,7 +154,7 @@ class Activity extends Controller
                 DB::table('user_to_flag')->insert(['uid'=>1, 'flag_id'=>$v]);
             }
         }
-        $_SESSION['page_status'] = 3;
+        $request->session()->put('page_status', '3');
         return response()->json(['code' => 200]);
 
     }
