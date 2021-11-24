@@ -57,7 +57,7 @@ class Activity extends Controller
             $three_finish = 100;
             switch($v) {
                 case $v==$one:
-                    $prize = 
+                    $prize = 1;
             }
         }
         return view('lucky-draw', compact('flag'));
