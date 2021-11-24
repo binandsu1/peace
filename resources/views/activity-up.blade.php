@@ -49,6 +49,9 @@
     // 自定义flag 敏感词检测
     function check_mgc() {
         var flag_wb = $('#customize_flag').val();
+        if (flag_wb.length==0) {
+            return false;
+        }
         $.ajax({
             type: "POST",
             url: "{{ url('/api/mgc') }}",

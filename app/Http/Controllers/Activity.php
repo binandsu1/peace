@@ -45,10 +45,23 @@ class Activity extends Controller
         return view('map');
     }
 
-    public function luckyDraw(Request $request)
+    public function luckyDraw()
     {
-        $flag = $request->input('flag');
-
+//        $page_status = $_SESSION['page_status'];
+//        if ($page_status == 3) {
+//            // 抽奖方法
+//            $v = rand(1,100);
+//
+//            $one = 1;
+//            $two_start = 2;
+//            $two_finish = 4;
+//            $three_start = 5;
+//            $three_finish = 100;
+//            switch($v) {
+//                case $v==$one:
+//                    $prize = 1;
+//            }
+//        }
         return view('lucky-draw', compact('flag'));
     }
 
@@ -110,12 +123,11 @@ class Activity extends Controller
     }
 
 
-    public function mgc()
+    public function mgc(Request $request)
     {
         $ms = app('mgc');
-        $content = '轮法功';
+        $content = $request->input('flag_wb');
         $bad_word = $ms::getBadWord($content);
-
         if (!empty($bad_word)) {
             return response()->json(['status' => 'fail','code' => 500,'error' => '包含敏感词',]);
         } else {
@@ -131,6 +143,7 @@ class Activity extends Controller
         $model_ids = $request->input('model_ids', '');
 
         if (!empty($customize_flag)) {
+            // TODO:修改uid
             DB::table('customize_flag')->insert(['uid'=>1, 'customize_flag'=>$model_ids]);
         }
 
@@ -138,9 +151,11 @@ class Activity extends Controller
             $model_ids = rtrim($model_ids,',');
             $id_arr = explode(',', $model_ids);
             foreach ($id_arr as $k => $v) {
+                // TODO:修改uid
                 DB::table('user_to_flag')->insert(['uid'=>1, 'flag_id'=>$v]);
             }
         }
+        $_SESSION['page_status'] = 3;
         return response()->json(['code' => 200]);
 
     }
