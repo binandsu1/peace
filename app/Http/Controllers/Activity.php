@@ -11,6 +11,8 @@ use App\Models\PrizeNum;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Redis;
+use Illuminate\Support\Facades\Session;
 
 class Activity extends Controller
 {
@@ -28,12 +30,18 @@ class Activity extends Controller
         $tokenArr = $weiboSer->getToken($code);
         $weiboSer->getUserInfo($tokenArr['access_token'], $tokenArr['uid']);
 
+
+        // TODO::修改uid
+        $uid = 2;
+        Session::put('page_status_'.$uid,'1');
         return view('activity-index');
     }
 
     public function activityUp()
     {
-
+        // TODO::修改uid
+        $uid = 2;
+        Session::put('page_status_'.$uid,'11');
         $flagModels = DB::table('flag_list')->where('status', 1)->get(['id','flag_model']);
 
         return view('activity-up')->with('flagModels', $flagModels);
@@ -47,9 +55,15 @@ class Activity extends Controller
 
     public function luckyDraw()
     {
-        $page_status = session('page_status');
+//        Session::put('user','default');
+
+        $page_status = Session::get('page_status_2');
+
+//        $page_status = session('page_status');
+//        $page_status = 3;
         dd($page_status);
-        if ($page_status == 3) {
+
+        if ($page_status == 12) {
             // 抽奖方法
             $v = rand(1,100);
 
@@ -58,12 +72,44 @@ class Activity extends Controller
             $two_finish = 4;
             $three_start = 5;
             $three_finish = 100;
+
             switch($v) {
                 case $v==$one:
-                    $prize = 1;
+                    // TODO::上线前清空Redis计数器
+                    Redis::incr('one_prize',1);
+                    $count1 = Redis::get('one_prize');
+                    if ($count1 > 1019) {
+                        $prize_type = 3;
+                    } else {
+                        $prize_type = 1;
+                    }
+                    break;
+                case $v>=$two_start && $v<=$two_finish:
+                    // TODO::上线前清空Redis计数器
+                    Redis::incr('two_prize',1);
+                    $count2 = Redis::get('two_prize');
+                    if ($count2 > 3000) {
+                        $prize_type = 3;
+                    } else {
+                        $prize_type = 2;
+                    }
+                    break;
+                case $v>=$three_start && $v<=$three_finish:
+                    $prize_type = 3;
+                    break;
             }
+
+            // TODO::修改uid
+            self::makePrizeNum(2,$prize_type);  // 根据中奖类型，取用兑奖码
+            // TODO::修改uid
+            $uid = 2;
+            Session::put('page_status_'.$uid,'13');
+        } elseif ($page_status == 13) {
+            // TODO::修改uid
+            $prize_type = PrizeNum::where('u_id',2)->get('gift_id'); // 非首次进入抽奖页面，沿用首次进入时的抽奖结果
         }
-        return view('lucky-draw', compact('flag'));
+        dd($prize_type);
+        return view('lucky-draw')->with('prize_type',$prize_type);
     }
 
     public function winPrize(Request $request)
@@ -145,7 +191,7 @@ class Activity extends Controller
 
         if (!empty($customize_flag)) {
             // TODO:修改uid
-            DB::table('customize_flag')->insert(['uid'=>1, 'customize_flag'=>$model_ids]);
+            DB::table('customize_flag')->insert(['uid'=>1, 'customize_flag'=>$customize_flag]);
         }
 
         if (!empty($model_ids)) {
@@ -156,7 +202,9 @@ class Activity extends Controller
                 DB::table('user_to_flag')->insert(['uid'=>1, 'flag_id'=>$v]);
             }
         }
-        $request->session()->put('page_status', '3');
+        // TODO::修改uid
+        $uid = 2;
+        Session::put('page_status_'.$uid,'12');
         return response()->json(['code' => 200]);
 
     }
@@ -183,8 +231,8 @@ class Activity extends Controller
 
     public function makePrizeNum($uid = '0', $gid = '0')
     {
-        $uid = 1;
-        $gid = 1;
+//        $uid = 1;
+//        $gid = 1;
         $is = PrizeNum::whereIn('status', [1,2])->where('u_id',$uid)->first();
         if($is){
             return -1;
@@ -231,6 +279,45 @@ class Activity extends Controller
         $data["a"] = 1;
         $data["b"] = 1;
         tt::dispatch($data);
+    }
+
+    // page_status 对照
+    public function page_status_list($page_status) {
+        switch ($page_status) {
+            case 1:
+                // 首页
+                break;
+            case 11: //10+ 均为线上点亮后的状态,可根据具体开发需要增加状态节点
+                // 线上点亮 立flag页面
+                break;
+            case 12:
+                // 首次进入大转盘页面
+                break;
+            case 13:
+                // 多次进入大转盘页面
+                break;
+            case 14:
+                // 奖品展示页面
+                break;
+            case 15:
+                // 点亮个人海报页面
+                break;
+            case 21: // 20+ 均为线下点亮后的状态,可根据具体开发需要增加状态节点
+                //线下点亮立flag
+                break;
+            case 22:
+                // 首次进入大转盘
+                break;
+            case 23:
+                // 多次进入大转盘
+                break;
+            case 24:
+                // 线下门店地图展示
+                break;
+            default:
+                // 无效状态
+                break;
+        }
     }
 
 }
