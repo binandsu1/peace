@@ -39,7 +39,7 @@
                 {{--@endforeach--}}
             </div>
         </div>
-   </div> 
+   </div>
 
 
 </div><!-- /container -->
@@ -53,6 +53,7 @@
     var probability1 = "<?php if($prize_type == 1) {echo '100%';} else{ echo '0%';} ?>";
     var probability2 = "<?php if($prize_type == 2) {echo '100%';} else{ echo '0%';} ?>";
     var probability3 = "<?php if($prize_type == 3) {echo '100%';} else{ echo '0%';} ?>";
+    var token = "<?php echo request('api_token'); ?>";
 </script>
 
 <!--大转盘-->
