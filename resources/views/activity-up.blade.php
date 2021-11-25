@@ -94,7 +94,7 @@
 //console.log(chk_value);return false;
         $.ajax({
             type: "POST",
-            url: "{{ url('/api/set-flag',) }}",
+            url: "{{route('set-flag',['api_token'=>request('api_token')])}}",
             dataType: 'json',
             header: {'X-CRSF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             data: {
