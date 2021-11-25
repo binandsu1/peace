@@ -9,6 +9,7 @@ use App\Jobs\UpPicJob;
 use App\Models\Jiayu;
 use App\Models\PrizeNum;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Redis;
@@ -27,9 +28,16 @@ class Activity extends Controller
             return $weiboSer->getCode();
         }
         $tokenArr = $weiboSer->getToken($code);
-        $weiboSer->getUserInfo($tokenArr['access_token'], $tokenArr['uid']);
+        $api_token = $weiboSer->getUserInfo($tokenArr['access_token'], $tokenArr['uid']);
 
+        return redirect()->route('activity-index-new',['api_token'=>$api_token]);
+    }
 
+    public function activityIndexNew(Request $request)
+    {
+
+        $user = Auth::guard('api')->user();
+        dd($user);
         // TODO::修改uid
         $uid = 2;
         Redis::set('page_status_'.$uid,'1');
@@ -38,6 +46,7 @@ class Activity extends Controller
 
     public function activityUp()
     {
+        dd(Auth::guard('api')->user());
         // TODO::修改uid
         $uid = 2;
         Redis::set('page_status_'.$uid,'11');

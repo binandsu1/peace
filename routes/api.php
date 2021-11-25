@@ -25,6 +25,7 @@ Route::get('/upView', [\App\Http\Controllers\Yuser::class,'upView']);
 Route::any('/upViewSub', [\App\Http\Controllers\Yuser::class,'upViewSub'])->name('up-view-sub');
 
 
+Route::any('/activityIndexNew', [\App\Http\Controllers\Activity::class,'activityIndexNew'])->name('activity-index-new');
 Route::any('/activityIndex', [\App\Http\Controllers\Activity::class,'activityIndex'])->name('activity-index');
 Route::any('/activityUp', [\App\Http\Controllers\Activity::class,'activityUp'])->name('activity-up');
 Route::any('/activityDown', [\App\Http\Controllers\Activity::class,'activityDown'])->name('activity-down');
