@@ -369,5 +369,10 @@ class Activity extends Controller
         }
         return $flag;
     }
+    public function ss(){
+        $user = Auth::guard('api')->user();
+        $uid = $user->id;
+        dd($uid);
+    }
 
 }
