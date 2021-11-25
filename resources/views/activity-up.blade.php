@@ -22,7 +22,7 @@
             <canvas id="demo-canvas"></canvas>
             <div class="logo_box">
                 <h1>立下属于你的新年flag</h1>
-              	
+
                 <form class="form-horizontal" method="post" action="">
                     <div class="dropdown">
                         @foreach($flagModels as $k=>$v)
@@ -94,7 +94,7 @@
 //console.log(chk_value);return false;
         $.ajax({
             type: "POST",
-            url: "{{ url('/api/set-flag') }}",
+            url: "{{ url('/api/set-flag',) }}",
             dataType: 'json',
             header: {'X-CRSF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             data: {
@@ -103,7 +103,7 @@
             },
             success: function (data) {
                 if(data.code == '200'){
-                    window.location="{{route('lucky-draw')}}";
+                    window.location="{{route('lucky-draw',['api_token'=>request('api_token')])}}";
                 } else {
 
                 }
