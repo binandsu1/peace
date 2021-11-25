@@ -37,24 +37,12 @@
                         }
 
                     ?>
-                    {{--<h3>兑奖码：{{$v->num}}</h3>--}}
+                    <h3>兑奖码：<span id="prize_code">{{$code}}</span> <button class="copy_btn" type="button" data-clipboard-target="#prize_code">复制</button></h3>
                 @endforeach
 
                 <br>
                 <div class="mb2"><a class="act-but submit" href="{{route('poster')}}" style="color: #FFFFFF">点亮个人海报，获取礼品兑换码</a></div><br>
 
-                <form action="#" name="f" method="post">
-                    <!--<div class="input_outer">-->
-                    <!--<span class="u_user"></span>-->
-                    <!--<input name="logname" class="text" style="color: #FFFFFF !important" type="text" placeholder="请输入账户">-->
-                    <!--</div>-->
-                    <!--<div class="input_outer">-->
-                    <!--<span class="us_uer"></span>-->
-                    <!--<input name="logpass" class="text" style="color: #FFFFFF !important; position:absolute; z-index:100;"value="" type="password" placeholder="请输入密码">-->
-                    <!--</div>-->
-                    {{--<div class="mb2"><a class="act-but submit" href="{{route('activity-up')}}" style="color: #FFFFFF">线上点亮</a></div><br>--}}
-                    {{--<div class="mb2"><a class="act-but submit" href="{{route('activity-down')}}" style="color: #FFFFFF">线下点亮</a></div>--}}
-                </form>
             </div>
         </div>
     </div>
@@ -65,5 +53,9 @@
 <script src="<?=asset('/jy/EasePack.min.js')?>"></script>
 <script src="<?=asset('/jy/rAF.js')?>"></script>
 <script src="<?=asset('/jy/demo-1.js')?>"></script>
+<script src="<?=asset('/jy/clipboard.min.js')?>"></script>
+<script>
+    new Clipboard('.copy_btn');
+</script>
 </body>
 </html>
