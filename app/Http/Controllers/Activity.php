@@ -9,6 +9,7 @@ use App\Jobs\UpPicJob;
 use App\Models\Jiayu;
 use App\Models\PrizeNum;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Redis;
@@ -27,19 +28,24 @@ class Activity extends Controller
             return $weiboSer->getCode();
         }
         $tokenArr = $weiboSer->getToken($code);
-        $weiboSer->getUserInfo($tokenArr['access_token'], $tokenArr['uid']);
+        $api_token = $weiboSer->getUserInfo($tokenArr['access_token'], $tokenArr['uid']);
 
+        return redirect()->route('activity-index-new',['api_token'=>$api_token]);
+    }
 
-        // TODO::修改uid
-        $uid = 2;
+    public function activityIndexNew(Request $request)
+    {
+
+        $user = Auth::guard('api')->user();
+        $uid = $user->id;
         Redis::set('page_status_'.$uid,'1');
         return view('activity-index');
     }
 
     public function activityUp()
     {
-        // TODO::修改uid
-        $uid = 2;
+        $user = Auth::guard('api')->user();
+        $uid = $user->id;
         Redis::set('page_status_'.$uid,'11');
         $flagModels = DB::table('flag_list')->where('status', 1)->get(['id','flag_model']);
 
@@ -54,7 +60,8 @@ class Activity extends Controller
 
     public function luckyDraw()
     {
-
+        $user = Auth::guard('api')->user();
+        $uid = $user->id;
         // TODO::修改uid
         $page_status = Redis::get('page_status_2');
 
@@ -117,7 +124,8 @@ class Activity extends Controller
     // 中奖信息展示页面
     public function winPrize()
     {
-//        $data = $request->all();
+        $user = Auth::guard('api')->user();
+        $uid = $user->id;
 
         // TODO::修改uid的值
         $prize_code = DB::table("prize_num")->where('u_id', 2)->get(['gift_id', 'num']);

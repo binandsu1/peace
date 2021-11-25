@@ -15,5 +15,6 @@ class Controller extends BaseController
     {
         //用户令牌访问
         //$this->middleware('auth:sanctum')->except('login');
+        //$this->middleware('auth.api');
     }
 }

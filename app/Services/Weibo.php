@@ -49,8 +49,11 @@ class Weibo
             $data['u_token'] = $token;
             $data['u_name'] = $re['name'];
             $data['u_image'] = $re['profile_image_url'];
+            $data['api_token'] = md5($re['id']);
             Jiayu::create($data);
+            return $data['api_token'];
         }
+        return $is->api_token;
     }
 
 
