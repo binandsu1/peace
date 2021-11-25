@@ -2,8 +2,8 @@
 <html lang="en" class="no-js">
 <head>
 <meta charset="UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
-<meta name="viewport" content="width=device-width, initial-scale=1"> 
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>login</title>
 <link rel="stylesheet" type="text/css" href="<?= asset('/jy/normalize.css') ?>">
 <link rel="stylesheet" type="text/css" href="<?= asset('/jy/demo.css') ?>">
@@ -31,7 +31,7 @@
 								<!--<span class="us_uer"></span>-->
 								<!--<input name="logpass" class="text" style="color: #FFFFFF !important; position:absolute; z-index:100;"value="" type="password" placeholder="请输入密码">-->
 							<!--</div>-->
-							<div class="mb2"><a class="act-but submit" href="{{route('activity-up')}}" style="color: #FFFFFF">线上点亮</a></div><br>
+							<div class="mb2"><a class="act-but submit" href="{{route('activity-up',['api_token'=>request('api_token')])}}" style="color: #FFFFFF">线上点亮</a></div><br>
 							<div class="mb2"><a class="act-but submit" href="{{route('activity-down')}}" style="color: #FFFFFF">线下点亮</a></div>
 						</form>
 					</div>
