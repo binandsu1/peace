@@ -129,8 +129,17 @@ class Activity extends Controller
 
         // TODO::修改uid的值
         $prize_code = DB::table("prize_num")->where('u_id', 2)->get(['gift_id', 'num']);
-        $user_info = DB::table("jiayus")->where('id',29)->get(['u_name']);
-        return view('win-prize')->with(['prize_code'=>$prize_code,'user_info'=>$user_info]);
+//        $user_info = DB::table("jiayus")->where('id',29)->get(['id', 'u_name']);
+        // TODO::修改uid
+        $uid = 2;
+        foreach ($prize_code as $v) {
+            $num = $v->num;
+        }
+
+        // 将兑奖码与uid连接后AES对等加密
+        $code = $num.$uid;
+        $encode = self::encrypt($code);
+        return view('win-prize')->with(['prize_code'=>$prize_code, 'code'=>$encode]);
     }
 
     public function poster()
@@ -373,6 +382,51 @@ class Activity extends Controller
         $user = Auth::guard('api')->user();
         $uid = $user->id;
         dd($uid);
+    }
+
+    // AES对等加密兑奖码
+    protected function encrypt($data)
+    {
+        if (empty($data)) {
+            return false;
+        }
+        return openssl_encrypt($data, 'AES-128-ECB', 'love&&peace', 0, '');
+    }
+
+    // AES对等解密兑奖码
+    protected function decrypt($data)
+    {
+        if (empty($data)) {
+            return false;
+        }
+        return openssl_decrypt($data, 'AES-128-ECB', 'love&&peace', 0, '');
+    }
+
+    //线上客服登录页面
+    public function shopLogin() {
+        return view('shop-login');
+    }
+
+    // 线上客服登录验证
+    public function checkOnline(Request $request) {
+        $name = $request->input("name");
+        $pwd = $request->input("pwd");
+
+        if (empty($name) || empty($pwd)) {
+            return response()->json(['code' => 500, 'result' => '用户名或密码错误！']);
+        }
+
+//        $userInfo = DB::table("kf_user")->where('user=? AND pwd=?',[$name, $pwd])->get('id');
+//        dd($userInfo);
+    }
+
+    //线上客服兑奖页面
+    public function exchangeCode(Request $request) {
+        $user_name = $request->input('username');
+        $pwd = $request->input('pwd');
+
+
+
     }
 
 }

@@ -45,6 +45,10 @@ Route::any('/un-prize-num', [\App\Http\Controllers\Activity::class,'unPrizeNum']
 Route::any('/set-flag', [\App\Http\Controllers\Activity::class,'setFlag'])->name('set-flag');
 Route::any('/tt', [\App\Http\Controllers\Activity::class,'tt'])->name('tt');
 Route::any('/ss', [\App\Http\Controllers\Activity::class,'ss'])->name('ss');
+Route::any('/shop-login', [\App\Http\Controllers\Activity::class,'shopLogin'])->name('shop-login');
+Route::any('/exchange-code', [\App\Http\Controllers\Activity::class,'exchangeCode'])->name('exchange-code');
+Route::any('/check-online', [\App\Http\Controllers\Activity::class,'checkOnline'])->name('check-online');
+
 
 
 
