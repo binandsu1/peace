@@ -62,8 +62,7 @@ class Activity extends Controller
     {
         $user = Auth::guard('api')->user();
         $uid = $user->id;
-        // TODO::修改uid
-        $page_status = Redis::get('page_status_2');
+        $page_status = Redis::get('page_status_'.$uid);
 
         if ($page_status == 12) {
             // 抽奖方法
@@ -103,16 +102,13 @@ class Activity extends Controller
                     break;
             }
 
-            // TODO::修改uid
-            self::makePrizeNum(2,$prize_type);  // 根据中奖类型，取用兑奖码
-            // TODO::修改uid
-            $uid = 2;
+            self::makePrizeNum($uid,$prize_type);  // 根据中奖类型，取用兑奖码
+
             Redis::set('page_status_'.$uid,'13');
             return view('lucky-draw')->with('prize_type',$prize_type);
         } elseif ($page_status == 13) {
-            // TODO::修改uid
 //            $prize_type = PrizeNum::where('u_id',2)->get('gift_id'); // 非首次进入抽奖页面，沿用首次进入时的抽奖结果
-            $prize_type = DB::table('prize_num')->where('u_id', 2)->get(['gift_id']); // 非首次进入抽奖页面，沿用首次进入时的抽奖结果
+            $prize_type = DB::table('prize_num')->where('u_id', $uid)->get(['gift_id']); // 非首次进入抽奖页面，沿用首次进入时的抽奖结果
             foreach($prize_type as $v) {
                 $prize_type = $v->gift_id;
             }
@@ -127,11 +123,9 @@ class Activity extends Controller
         $user = Auth::guard('api')->user();
         $uid = $user->id;
 
-        // TODO::修改uid的值
-        $prize_code = DB::table("prize_num")->where('u_id', 2)->get(['gift_id', 'num']);
+        $prize_code = DB::table("prize_num")->where('u_id', $uid)->get(['gift_id', 'num']);
 //        $user_info = DB::table("jiayus")->where('id',29)->get(['id', 'u_name']);
-        // TODO::修改uid
-        $uid = 2;
+
         foreach ($prize_code as $v) {
             $num = $v->num;
         }
@@ -144,10 +138,10 @@ class Activity extends Controller
 
     public function poster()
     {
-
+        $user = Auth::guard('api')->user();
+        $uid = $user->id;
 //        $flag = $request->input('flag', '吃饭了吗');
-        $flag_ids = DB::table('user_to_flag')->where('uid',2)->get(['flag_id']);
-//        dd($flag_ids);
+        $flag_ids = DB::table('user_to_flag')->where('uid',$uid)->get(['flag_id']);
         if (!empty($flag_ids)) {
             foreach ($flag_ids as $k=>$v) {
                 $flag = self::getFlagModel($v->flag_id);
@@ -216,25 +210,24 @@ class Activity extends Controller
     // 保存flag
     public function setFlag(Request $request)
     {
+        $user = Auth::guard('api')->user();
+        $uid = $user->id;
 
         $customize_flag = $request->input('customize_flag', '');
         $model_ids = $request->input('model_ids', '');
 
         if (!empty($customize_flag)) {
-            // TODO:修改uid
-            DB::table('customize_flag')->insert(['uid'=>1, 'customize_flag'=>$customize_flag]);
+            DB::table('customize_flag')->insert(['uid'=>$uid, 'customize_flag'=>$customize_flag]);
         }
 
         if (!empty($model_ids)) {
             $model_ids = rtrim($model_ids,',');
             $id_arr = explode(',', $model_ids);
             foreach ($id_arr as $k => $v) {
-                // TODO:修改uid
-                DB::table('user_to_flag')->insert(['uid'=>1, 'flag_id'=>$v]);
+                DB::table('user_to_flag')->insert(['uid'=>$uid, 'flag_id'=>$v]);
             }
         }
-        // TODO::修改uid
-        $uid = 2;
+
         Redis::set('page_status_'.$uid,'12');
         return response()->json(['code' => 200]);
 
