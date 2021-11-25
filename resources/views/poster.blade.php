@@ -23,16 +23,16 @@
 <body>
 
 <div style="margin-left:30%">
-    <h1>我是海报 {{$newimageName}}</h1>
-    <form class="form-horizontal" method="post" action="<?=route('poster')?>">
-        <div class="input-group">
-            <input type="text" name="flag" class="form-control" placeholder="请输入flag" aria-describedby="basic-addon1">
-        </div>
-        <button type="submit" class="btn btn-success">生成</button>
-    </form>
-    <br>
-    <img src="http://121.196.217.164/images/20211115/{{$newimageName}}" class="img-rounded">
-    <br>
+{{--    <h1>我是海报 {{$newimageName}}</h1>--}}
+{{--    <form class="form-horizontal" method="post" action="<?=route('poster')?>">--}}
+{{--        <div class="input-group">--}}
+{{--            <input type="text" name="flag" class="form-control" placeholder="请输入flag" aria-describedby="basic-addon1">--}}
+{{--        </div>--}}
+{{--        <button type="submit" class="btn btn-success">生成</button>--}}
+{{--    </form>--}}
+{{--    <br>--}}
+    <img src="http://121.196.217.164/{{$pic_re->path}}" class="img-rounded">
+{{--    <br>--}}
 
 </div>
 

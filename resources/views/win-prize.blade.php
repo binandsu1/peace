@@ -41,7 +41,7 @@
                 @endforeach
 
                 <br>
-                <div class="mb2"><a class="act-but submit" href="{{route('poster')}}" style="color: #FFFFFF">点亮个人海报，获取礼品兑换码</a></div><br>
+                <div class="mb2"><a class="act-but submit" href="{{route('poster',['api_token'=>request('api_token')])}}" style="color: #FFFFFF">点亮个人海报，获取礼品兑换码</a></div><br>
 
             </div>
         </div>
