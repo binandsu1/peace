@@ -131,8 +131,8 @@ class Activity extends Controller
         }
 
         // 将兑奖码与uid连接后AES对等加密
-        $code = $num.$uid;
-        $encode = self::encrypt($code);
+        $code = $num.'+'.$uid;
+        $encode = $this->encrypt($code);
         return view('win-prize')->with(['prize_code'=>$prize_code, 'code'=>$encode]);
     }
 
@@ -409,17 +409,89 @@ class Activity extends Controller
             return response()->json(['code' => 500, 'result' => '用户名或密码错误！']);
         }
 
-//        $userInfo = DB::table("kf_user")->where('user=? AND pwd=?',[$name, $pwd])->get('id');
-//        dd($userInfo);
+        $userInfo = DB::table("kf_user")->where(['user'=>$name, 'pwd'=>$pwd])->get('id');
+        if (empty($userInfo)) {
+            return response()->json(['code' => 500, 'result' => '用户名或密码错误！']);
+        }
+        // TODO::这里利用$userInfo->id制作token
+        return response()->json(['code' => 200, 'result' => 'OK']);
+
     }
 
     //线上客服兑奖页面
-    public function exchangeCode(Request $request) {
-        $user_name = $request->input('username');
-        $pwd = $request->input('pwd');
+    public function exchangeCode() {
 
+        return view('exchange-code');
+    }
 
+    // 兑奖码查询
+    public function checkCode(Request $request) {
+        $code = $request->input("code");
+        if (empty($code)) {
+            return response()->json(['code' => 500, 'result' => 'fail1']);
+        }
+        // 兑奖码解码
+        $sum_code = $this->decrypt($code);
+        if (!$sum_code) {
+            return response()->json(['code' => 500, 'result' => 'fail2']);
+        }
+        $code_arr = explode('+', $sum_code);
+        $num = $code_arr[0];
+        $uid = $code_arr[1];
+
+        // 查询兑奖码
+        $codeInfo = DB::table("prize_num")->where(['u_id'=>$uid, 'num'=>$num])->get();
+        if ($codeInfo->isEmpty()) {
+            return response()->json(['code' => 500, 'result' => 'fail3']);
+        }
+
+        if ($codeInfo[0]->gift_id == 1 || $codeInfo[0]->gift_id == 3) {
+            $giftInfo = "319 限量多彩 “新”意套装（M365+精巧鼠标）";
+        } else if ($codeInfo[0]->gift_id == 2) {
+            $giftInfo = "M365个人版+爱奇异季卡";
+        } else {
+            return response()->json(['code' => 500, 'result' => 'fail4']);
+        }
+
+        // 如果兑奖码已经被消费，提示已使用
+        if($codeInfo[0]->status == 2) {
+            $kf_name = DB::table('kf_user')->where('id', $codeInfo[0]->kf_id)->get('user');
+            return response()->json(['code' => 300, 'result' => $giftInfo.' 兑奖客服：'.$kf_name[0]->user]);
+        }
+
+        // 如果兑奖码存在且未被消费，兑奖吧亲
+        if ($codeInfo[0]->status == 1) {
+            // TODO::客服id需要改成动态的
+            $kf_id = 1;
+            $result = DB::table('prize_num')->where(['u_id'=>$uid, 'num'=>$num])->update(['status'=>2, 'kf_id'=>$kf_id]);
+            if (!$result) {
+                return response()->json(['code' => 500, 'result' => 'fail5']);
+            }
+            return response()->json(['code' => 200, 'result' => $giftInfo]);
+        }
 
     }
+
+    // 兑奖码核销
+//    public function useCode(Request $request) {
+//        $code = $request->input("code");
+//
+//        if (empty($code)) {
+//            return response()->json(['code' => 500, 'result' => 'fail']);
+//        }
+//        // 兑奖码解码
+//        $sum_code = $this->decrypt($code);
+//        if (!$sum_code) {
+//            return response()->json(['code' => 300, 'result' => 'fail']);
+//        }
+//        $code_arr = explode('+', $sum_code);
+//        $num = $code_arr[0];
+//        $uid = $code_arr[1];
+//        $result = DB::table('prize_num')->where(['u_id'=>$uid, 'num'=>$num])->update(['status'=>2]);
+//        if (!$result) {
+//            return response()->json(['code' => 500, 'result' => 'fail']);
+//        }
+//        return response()->json(['code' => 200, 'result' => 'OK']);
+//    }
 
 }
