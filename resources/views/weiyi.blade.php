@@ -5,9 +5,9 @@
     <script type="text/javascript" src="//api.map.baidu.com/api?type=webgl&v=1.0&ak=6ho8muDORIA2j1TNIvyG5F8Now40OPLg"></script>
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=6ho8muDORIA2j1TNIvyG5F8Now40OPLg"></script>
     <script type="text/javascript" src="http://libs.baidu.com/jquery/1.7.2/jquery.min.js"></script>
-    <title>本地搜索的结果面板</title>
+    <title>地图</title>
     <style type="text/css">
-        body, html{width: 60%;height: 100%; margin:0;font-family:"微软雅黑";}
+        body, html{width: 100%;height: 100%; margin:0;font-family:"微软雅黑";}
         #l-map{height:300px;width:100%;}
         #r-result{width:100%;}
     </style>
