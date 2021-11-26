@@ -44,6 +44,10 @@ return [
             'driver' => 'token',
             'provider' => 'jiayu',
         ],
+        'kf' => [
+            'driver' => 'token',
+            'provider' => 'kefu',//这个名字和下面的一昂
+        ],
     ],
 
     /*
@@ -71,6 +75,10 @@ return [
         'jiayu' => [
             'driver' => 'eloquent',
             'model' => App\Models\Jiayu::class,
+        ],
+        'kefu' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Kefu::class,
         ],
 
     ],

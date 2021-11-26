@@ -51,7 +51,8 @@
 
         $.ajax({
             type: "POST",
-            url: "{{ url('/api/check-code') }}",
+            {{--url: "{{ url('/api/check-code') }}",--}}
+            url: "{{route('check-code', ['kf_token'=>request('kf_token')])}}",
             dataType: 'json',
             header: {'X-CRSF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             data: {
