@@ -141,7 +141,7 @@ class Activity extends Controller
         $user = Auth::guard('api')->user();
         $uid = $user->id;
         $flag_ids = DB::table('user_to_flag')->where('uid',$uid)->get(['flag_id']);
-        if (!empty($flag_ids)) {
+        if (!$flag_ids->isEmpty()) {
             $flag = '';
             foreach ($flag_ids as $k=>$v) {
                 $flag .= self::getFlagModel($v->flag_id).PHP_EOL;
@@ -412,7 +412,7 @@ class Activity extends Controller
         }
 
         $userInfo = DB::table("kf_user")->where(['user'=>$name, 'pwd'=>$pwd])->get('id');
-        if (empty($userInfo)) {
+        if ($userInfo->isEmpty()) {
             return response()->json(['code' => 500, 'result' => '用户名或密码错误！']);
         }
         // TODO::这里利用$userInfo->id制作token
