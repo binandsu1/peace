@@ -418,7 +418,7 @@ class Activity extends Controller
             return response()->json(['code' => 500, 'result' => '用户名或密码错误！']);
         }
 
-        return response()->json(['code' => 200, 'result' => 'OK', 'token' => $userInfo[0]->kf_token]);
+        return response()->json(['code' => 200, 'result' => 'OK', 'token' => $userInfo[0]->api_token]);
 //        return redirect()->route('exchange-code',['kf_token'=>$userInfo[0]->kf_token]);
 
     }
@@ -433,8 +433,7 @@ class Activity extends Controller
     public function checkCode(Request $request) {
 
         $user = Auth::guard('kf')->user();
-        dd($user);
-//            $kf_id = $user->id;
+        $kf_id = $user->id;
 
         $code = $request->input("code");
         if (empty($code)) {
@@ -471,12 +470,6 @@ class Activity extends Controller
 
         // 如果兑奖码存在且未被消费，兑奖吧亲
         if ($codeInfo[0]->status == 1) {
-            // TODO::客服id需要改成动态的
-            $user = Auth::guard('kf')->user();
-//            dd($user);
-//            $kf_id = $user->id;
-            dd($user);
-//            $kf_id=1;
 
             $result = DB::table('prize_num')->where(['u_id'=>$uid, 'num'=>$num])->update(['status'=>2, 'kf_id'=>$kf_id]);
             if (!$result) {

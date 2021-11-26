@@ -59,7 +59,7 @@
 
         $.ajax({
             type: "POST",
-            url: "{{route('check-online', ['kf_token'=>request('kf_token')])}}",
+            url: "{{route('check-online', ['api_token'=>request('api_token')])}}",
             dataType: 'json',
             header: {'X-CRSF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             data: {
@@ -69,7 +69,7 @@
             success: function (data) {
                 if(data.code == '200'){
                     {{--window.location="{{route('exchange-code', ['kf_token'=>data.token])}}";--}}
-                    window.location="/api/exchange-code?kf_token="+data.token;
+                    window.location="/api/exchange-code?api_token="+data.token;
                 } else {
 					alert("用户名密码错误！")
                 }
