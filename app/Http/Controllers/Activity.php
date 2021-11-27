@@ -22,6 +22,7 @@ class Activity extends Controller
     {
 
         $code = $request->input('code');
+        $type = $request->input('type');
 
         $weiboSer = app('weibo');
         if (empty($code)) {
@@ -30,6 +31,11 @@ class Activity extends Controller
         $tokenArr = $weiboSer->getToken($code);
         $api_token = $weiboSer->getUserInfo($tokenArr['access_token'], $tokenArr['uid']);
 
+        $user = Auth::guard('api')->user();
+        $is_draw = $user->is_draw;
+        if ($is_draw == 2) {
+            return redirect()->route('win-prize2',['api_token'=>$api_token]);
+        }
         return redirect()->route('activity-index-new',['api_token'=>$api_token]);
     }
 
@@ -38,33 +44,63 @@ class Activity extends Controller
 
         $user = Auth::guard('api')->user();
         $uid = $user->id;
-        Redis::set('page_status_'.$uid,'1');
+
         return view('activity-index');
     }
 
+    // 线上立下flag
     public function activityUp()
     {
         $user = Auth::guard('api')->user();
         $uid = $user->id;
-        Redis::set('page_status_'.$uid,'11');
+        $way = $user->way;
+        $api_token = $user->api_token;
         $flagModels = DB::table('flag_list')->where('status', 1)->get(['id','flag_model']);
+        if (empty($way)) {
+            DB::table('jiayus')->where('id',$uid)->update(['way'=>1]);
+        } else {
+            if($way == 2) {
+                // 检测到选择了线下点亮的用户又点击线上点亮后，强制跳转回线下路线
+                return redirect()->route('activity-down',['api_token'=>$api_token])->with('flagModels', $flagModels);
+            }
+        }
 
         return view('activity-up')->with('flagModels', $flagModels);
     }
 
+    // 线下立下flag
     public function activityDown()
     {
-        return redirect()->away("https://wisepeople.xbaofun.com/wisepeople/oobe/users/storeList");
-        return view('map');
+        $user = Auth::guard('api')->user();
+        $uid = $user->id;
+        $way = $user->way;
+        $api_token = $user->api_token;
+        $flagModels = DB::table('flag_list')->where('status', 1)->get(['id','flag_model']);
+        if(empty($way)){
+            DB::table('jiayus')->where('id',$uid)->update(['way'=>2]);
+        } else {
+            if($way == 1) {
+                // 检测到选择了线上点亮的用户又点击线下点亮后，强制跳转回线上路线
+                return redirect()->route('activity-up',['api_token'=>$api_token])->with('flagModels', $flagModels);
+            }
+        }
+
+        return view('activity-down')->with('flagModels', $flagModels);
     }
+
+//    public function activityDown()
+//    {
+//        return redirect()->away("https://wisepeople.xbaofun.com/wisepeople/oobe/users/storeList");
+//        return view('map');
+//    }
 
     public function luckyDraw()
     {
         $user = Auth::guard('api')->user();
         $uid = $user->id;
-        $page_status = Redis::get('page_status_'.$uid);
+        $is_draw = $user->is_draw;
 
-        if ($page_status == 12) {
+        if ($is_draw == 1) {
             // 抽奖方法
             $v = rand(1,100);
 
@@ -79,9 +115,10 @@ class Activity extends Controller
             switch($v) {
                 case $v==$one:
                     // TODO::上线前清空Redis计数器
-                    Redis::incr('one_prize',1);
-                    $count1 = Redis::get('one_prize');
+                    Redis::incr('one_online',1);
+                    $count1 = Redis::get('one_online');
                     if ($count1 > 1019) {
+                        Redis::incr('three_online',1);
                         $prize_type = 3;
                     } else {
                         $prize_type = 1;
@@ -89,30 +126,97 @@ class Activity extends Controller
                     break;
                 case $v>=$two_start && $v<=$two_finish:
                     // TODO::上线前清空Redis计数器
-                    Redis::incr('two_prize',1);
-                    $count2 = Redis::get('two_prize');
+                    Redis::incr('two_online',1);
+                    $count2 = Redis::get('two_online');
                     if ($count2 > 3000) {
+                        Redis::incr('three_online',1);
                         $prize_type = 3;
                     } else {
                         $prize_type = 2;
                     }
                     break;
                 case $v>=$three_start && $v<=$three_finish:
+                    // TODO::上线前清空Redis计数器
+                    Redis::incr('three_online',1);
                     $prize_type = 3;
                     break;
             }
 
             self::makePrizeNum($uid,$prize_type);  // 根据中奖类型，取用兑奖码
 
-            Redis::set('page_status_'.$uid,'13');
+            DB::table('jiayus')->where('id',$uid)->update(['is_draw'=>2]);
             return view('lucky-draw')->with('prize_type',$prize_type);
-        } elseif ($page_status == 13) {
-//            $prize_type = PrizeNum::where('u_id',2)->get('gift_id'); // 非首次进入抽奖页面，沿用首次进入时的抽奖结果
+        } elseif ($is_draw == 2) {
             $prize_type = DB::table('prize_num')->where('u_id', $uid)->get(['gift_id']); // 非首次进入抽奖页面，沿用首次进入时的抽奖结果
             foreach($prize_type as $v) {
                 $prize_type = $v->gift_id;
             }
             return view('lucky-draw')->with('prize_type',$prize_type);
+        }
+
+    }
+
+
+    // 线下大转盘
+    public function luckyDraw2()
+    {
+        $user = Auth::guard('api')->user();
+        $uid = $user->id;
+        $is_draw = $user->is_draw;
+
+        if ($is_draw == 1) {
+            // 抽奖方法
+            $v = rand(1,100);
+
+            $one_start = 1; //33%中奖率
+            $one_finish = 33; //33%中奖率
+
+            $two_start = 34; // 33%中奖率
+            $two_finish = 66;
+
+            $three_start = 67;
+            $three_finish = 100;
+
+            switch($v) {
+                case $v>=$one_start && $v<=$one_finish:
+                    // TODO::上线前清空Redis计数器
+                    Redis::incr('one_offline',1);
+                    $count1 = Redis::get('one_offline');
+                    if ($count1 > 1019) {
+                        Redis::incr('three_offline',1);
+                        $prize_type = 3;
+                    } else {
+                        $prize_type = 1;
+                    }
+                    break;
+                case $v>=$two_start && $v<=$two_finish:
+                    // TODO::上线前清空Redis计数器
+                    Redis::incr('two_offline',1);
+                    $count2 = Redis::get('two_offline');
+                    if ($count2 > 3000) {
+                        Redis::incr('three_offline',1);
+                        $prize_type = 3;
+                    } else {
+                        $prize_type = 2;
+                    }
+                    break;
+                case $v>=$three_start && $v<=$three_finish:
+                    // TODO::上线前清空Redis计数器
+                    Redis::incr('three_offline',1);
+                    $prize_type = 3;
+                    break;
+            }
+
+            self::makePrizeNum($uid,$prize_type);  // 根据中奖类型，取用兑奖码
+            // 更新用户是否已抽奖标识
+            DB::table('jiayus')->where('id',$uid)->update(['is_draw'=>2]);
+            return view('lucky-draw2')->with('prize_type',$prize_type);
+        } elseif ($is_draw == 2) {
+            $prize_type = DB::table('prize_num')->where('u_id', $uid)->get(['gift_id']); // 非首次进入抽奖页面，沿用首次进入时的抽奖结果
+            foreach($prize_type as $v) {
+                $prize_type = $v->gift_id;
+            }
+            return view('lucky-draw2')->with('prize_type',$prize_type);
         }
 
     }
@@ -134,6 +238,25 @@ class Activity extends Controller
         $code = $num.'+'.$uid;
         $encode = $this->encrypt($code);
         return view('win-prize')->with(['prize_code'=>$prize_code, 'code'=>$encode]);
+    }
+
+    // 线下中奖信息展示页面
+    public function winPrize2()
+    {
+        $user = Auth::guard('api')->user();
+        $uid = $user->id;
+
+        $prize_code = DB::table("prize_num")->where('u_id', $uid)->get(['gift_id', 'num']);
+//        $user_info = DB::table("jiayus")->where('id',29)->get(['id', 'u_name']);
+
+        foreach ($prize_code as $v) {
+            $num = $v->num;
+        }
+
+        // 将兑奖码与uid连接后AES对等加密
+        $code = $num.'+'.$uid;
+        $encode = $this->encrypt($code);
+        return view('win-prize2')->with(['prize_code'=>$prize_code, 'code'=>$encode]);
     }
 
     public function poster()
@@ -257,8 +380,6 @@ class Activity extends Controller
 
     public function makePrizeNum($uid = '0', $gid = '0')
     {
-//        $uid = 1;
-//        $gid = 1;
         $is = PrizeNum::whereIn('status', [1,2])->where('u_id',$uid)->first();
         if($is){
             return -1;
@@ -312,21 +433,27 @@ class Activity extends Controller
         switch ($page_status) {
             case 1:
                 // 首页
+//                return "";
                 break;
             case 11: //10+ 均为线上点亮后的状态,可根据具体开发需要增加状态节点
                 // 线上点亮 立flag页面
+                return "activity-up";
                 break;
             case 12:
                 // 首次进入大转盘页面
+                return "lucky-draw";
                 break;
             case 13:
                 // 多次进入大转盘页面
+                return "lucky-draw";
                 break;
             case 14:
                 // 奖品展示页面
+                return "win-prize";
                 break;
             case 15:
                 // 点亮个人海报页面
+                return "";
                 break;
             case 21: // 20+ 均为线下点亮后的状态,可根据具体开发需要增加状态节点
                 //线下点亮立flag
@@ -480,26 +607,17 @@ class Activity extends Controller
 
     }
 
-    // 兑奖码核销
-//    public function useCode(Request $request) {
-//        $code = $request->input("code");
-//
-//        if (empty($code)) {
-//            return response()->json(['code' => 500, 'result' => 'fail']);
-//        }
-//        // 兑奖码解码
-//        $sum_code = $this->decrypt($code);
-//        if (!$sum_code) {
-//            return response()->json(['code' => 300, 'result' => 'fail']);
-//        }
-//        $code_arr = explode('+', $sum_code);
-//        $num = $code_arr[0];
-//        $uid = $code_arr[1];
-//        $result = DB::table('prize_num')->where(['u_id'=>$uid, 'num'=>$num])->update(['status'=>2]);
-//        if (!$result) {
-//            return response()->json(['code' => 500, 'result' => 'fail']);
-//        }
-//        return response()->json(['code' => 200, 'result' => 'OK']);
-//    }
+
+    // 中奖统计后台
+    public function prizeAdmin() {
+        $online1 = Redis::get('one_online');
+        $online2 = Redis::get('two_online');
+        $online3 = Redis::get('three_online');
+        $offline1 = Redis::get('one_offline');
+        $offline2 = Redis::get('two_offline');
+        $offline3 = Redis::get('three_offline');
+        return view('prize-admin')->with(['online1'=>$online1, 'online2'=>$online2, 'online3'=>$online3, 'offline1'=>$offline1, 'offline2'=>$offline2, 'offline3'=>$offline3]);
+    }
+
 
 }

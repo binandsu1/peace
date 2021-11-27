@@ -30,7 +30,9 @@ Route::any('/activityIndex', [\App\Http\Controllers\Activity::class,'activityInd
 Route::any('/activityUp', [\App\Http\Controllers\Activity::class,'activityUp'])->name('activity-up');
 Route::any('/activityDown', [\App\Http\Controllers\Activity::class,'activityDown'])->name('activity-down');
 Route::any('/luckyDraw', [\App\Http\Controllers\Activity::class,'luckyDraw'])->name('lucky-draw');
+Route::any('/luckyDraw2', [\App\Http\Controllers\Activity::class,'luckyDraw2'])->name('lucky-draw2');
 Route::any('/winPrize', [\App\Http\Controllers\Activity::class,'winPrize'])->name('win-prize');
+Route::any('/winPrize2', [\App\Http\Controllers\Activity::class,'winPrize2'])->name('win-prize2');
 Route::any('/poster', [\App\Http\Controllers\Activity::class,'poster'])->name('poster');
 
 Route::any('/map', [\App\Http\Controllers\Activity::class,'map'])->name('map');
@@ -49,6 +51,7 @@ Route::any('/shop-login', [\App\Http\Controllers\Activity::class,'shopLogin'])->
 Route::any('/exchange-code', [\App\Http\Controllers\Activity::class,'exchangeCode'])->name('exchange-code');
 Route::any('/check-online', [\App\Http\Controllers\Activity::class,'checkOnline'])->name('check-online');
 Route::any('/check-code', [\App\Http\Controllers\Activity::class,'checkCode'])->name('check-code');
+Route::any('/prize-admin', [\App\Http\Controllers\Activity::class,'prizeAdmin'])->name('prize-admin');
 
 
 

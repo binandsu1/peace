@@ -32,7 +32,7 @@
 								<!--<input name="logpass" class="text" style="color: #FFFFFF !important; position:absolute; z-index:100;"value="" type="password" placeholder="请输入密码">-->
 							<!--</div>-->
 							<div class="mb2"><a class="act-but submit" href="{{route('activity-up',['api_token'=>request('api_token')])}}" style="color: #FFFFFF">线上点亮</a></div><br>
-							<div class="mb2"><a class="act-but submit" href="{{route('activity-down')}}" style="color: #FFFFFF">线下点亮</a></div>
+							<div class="mb2"><a class="act-but submit" href="{{route('activity-down',['api_token'=>request('api_token')])}}" style="color: #FFFFFF">线下点亮</a></div>
 						</form>
 					</div>
 				</div>

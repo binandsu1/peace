@@ -103,7 +103,7 @@
             },
             success: function (data) {
                 if(data.code == '200'){
-                    window.location="{{route('lucky-draw',['api_token'=>request('api_token')])}}";
+                    window.location="{{route('lucky-draw2',['api_token'=>request('api_token')])}}";
                 } else {
 
                 }
