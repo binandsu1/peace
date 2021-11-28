@@ -41,7 +41,7 @@ class Activity extends Controller
         $api_token = $user->api_token;
         $is_draw = $user->is_draw;
         if ($is_draw == 2) {
-            return redirect()->route('win-prize2', ['api_token'=>$api_token]);
+            return redirect()->route('win-prize3', ['api_token'=>$api_token]);
         }
 
         return view('activity-index');
