@@ -20,7 +20,7 @@
         <div id="large-header" class="large-header">
             <canvas id="demo-canvas"></canvas>
             <div class="logo_box">
-                <h3>恭喜您-线下！</h3>
+                <h3>恭喜您-线下到店展示页面！</h3>
                 @foreach($prize_code as $k=>$v)
                     {{--{{$v->gift_id}}--}}
                     <?php
@@ -41,7 +41,7 @@
                 @endforeach
 
                 <br>
-                <div class="mb2"><a class="act-but submit" href="{{route('store-map',['api_token'=>request('api_token')])}}" style="color: #FFFFFF">查询线下门店</a></div><br>
+                <div class="mb2"><a class="act-but submit" href="{{route('store-map',['api_token'=>request('api_token')])}}" style="color: #FFFFFF">点击</a></div><br>
 
             </div>
         </div>

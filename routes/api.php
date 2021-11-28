@@ -33,13 +33,14 @@ Route::any('/luckyDraw', [\App\Http\Controllers\Activity::class,'luckyDraw'])->n
 Route::any('/luckyDraw2', [\App\Http\Controllers\Activity::class,'luckyDraw2'])->name('lucky-draw2');
 Route::any('/winPrize', [\App\Http\Controllers\Activity::class,'winPrize'])->name('win-prize');
 Route::any('/winPrize2', [\App\Http\Controllers\Activity::class,'winPrize2'])->name('win-prize2');
+Route::any('/winPrize3', [\App\Http\Controllers\Activity::class,'winPrize3'])->name('win-prize3');
 Route::any('/poster', [\App\Http\Controllers\Activity::class,'poster'])->name('poster');
 
 Route::any('/map', [\App\Http\Controllers\Activity::class,'map'])->name('map');
 Route::any('/phone', [\App\Http\Controllers\Activity::class,'phone'])->name('phone');
 Route::any('/mgc', [\App\Http\Controllers\Activity::class,'mgc'])->name('mgc');
 Route::any('/view', [\App\Http\Controllers\Activity::class,'view'])->name('view');
-Route::any('/baidu', [\App\Http\Controllers\Activity::class,'baidu'])->name('baidu');
+Route::any('/store-map', [\App\Http\Controllers\Activity::class,'storeMap'])->name('store-map');
 Route::any('/tx', [\App\Http\Controllers\Activity::class,'tx'])->name('tx');
 Route::any('/cash-prize', [\App\Http\Controllers\Activity::class,'cashPrize'])->name('cash-prize');
 Route::any('/make-prize-num', [\App\Http\Controllers\Activity::class,'makePrizeNum'])->name('make-prize-num');

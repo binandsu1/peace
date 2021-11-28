@@ -239,12 +239,12 @@ class Activity extends Controller
         return view('win-prize')->with(['prize_code'=>$prize_code, 'code'=>$encode]);
     }
 
-    // 线下中奖信息展示页面
+    // 线下中奖信息展示页面（到店前）
     public function winPrize2()
     {
         $user = Auth::guard('api')->user();
         $uid = $user->id;
-        
+
         $prize_code = DB::table("prize_num")->where('u_id', $uid)->get(['gift_id', 'num']);
 //        $user_info = DB::table("jiayus")->where('id',29)->get(['id', 'u_name']);
 
@@ -256,6 +256,25 @@ class Activity extends Controller
         $code = $num.'+'.$uid;
         $encode = $this->encrypt($code);
         return view('win-prize2')->with(['prize_code'=>$prize_code, 'code'=>$encode]);
+    }
+
+    // 线下中奖信息展示页面（到店后）
+    public function winPrize3()
+    {
+        $user = Auth::guard('api')->user();
+        $uid = $user->id;
+
+        $prize_code = DB::table("prize_num")->where('u_id', $uid)->get(['gift_id', 'num']);
+//        $user_info = DB::table("jiayus")->where('id',29)->get(['id', 'u_name']);
+
+        foreach ($prize_code as $v) {
+            $num = $v->num;
+        }
+
+        // 将兑奖码与uid连接后AES对等加密
+        $code = $num.'+'.$uid;
+        $encode = $this->encrypt($code);
+        return view('win-prize3')->with(['prize_code'=>$prize_code, 'code'=>$encode]);
     }
 
     public function poster()
@@ -362,7 +381,7 @@ class Activity extends Controller
         return view('view');
     }
 
-    public function baidu()
+    public function storeMap()
     {
         return view('weiyi');
     }
