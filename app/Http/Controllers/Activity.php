@@ -31,11 +31,6 @@ class Activity extends Controller
         $tokenArr = $weiboSer->getToken($code);
         $api_token = $weiboSer->getUserInfo($tokenArr['access_token'], $tokenArr['uid']);
 
-        $user = Auth::guard('api')->user();
-        $is_draw = $user->is_draw;
-        if ($is_draw == 2) {
-            return redirect()->route('win-prize2',['api_token'=>$api_token]);
-        }
         return redirect()->route('activity-index-new',['api_token'=>$api_token]);
     }
 
@@ -43,7 +38,11 @@ class Activity extends Controller
     {
 
         $user = Auth::guard('api')->user();
-        $uid = $user->id;
+//        $uid = $user->id;
+        $is_draw = $user->is_draw;
+        if ($is_draw == 2) {
+            return redirect()->route('win-prize2');
+        }
 
         return view('activity-index');
     }
