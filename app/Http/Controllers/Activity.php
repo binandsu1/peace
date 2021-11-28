@@ -38,10 +38,10 @@ class Activity extends Controller
     {
 
         $user = Auth::guard('api')->user();
-//        $uid = $user->id;
+        $api_token = $user->api_token;
         $is_draw = $user->is_draw;
         if ($is_draw == 2) {
-            return redirect()->route('win-prize2');
+            return redirect()->route('win-prize2', ['api_token'=>$api_token]);
         }
 
         return view('activity-index');
@@ -244,7 +244,7 @@ class Activity extends Controller
     {
         $user = Auth::guard('api')->user();
         $uid = $user->id;
-
+        
         $prize_code = DB::table("prize_num")->where('u_id', $uid)->get(['gift_id', 'num']);
 //        $user_info = DB::table("jiayus")->where('id',29)->get(['id', 'u_name']);
 
