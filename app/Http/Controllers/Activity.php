@@ -42,7 +42,8 @@ class Activity extends Controller
         $is_draw = $user->is_draw;
         $way = $user->way;
         if ($is_draw == 2 && $way == 2) {
-            return redirect()->route('win-prize3', ['api_token'=>$api_token]);
+//            return redirect()->route('win-prize3', ['api_token'=>$api_token]);
+            $this->winPrize3();
         }
 
         if ($is_draw == 2 && $way == 1) {
