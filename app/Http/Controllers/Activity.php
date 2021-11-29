@@ -45,6 +45,10 @@ class Activity extends Controller
             return redirect()->route('win-prize3', ['api_token'=>$api_token]);
         }
 
+        if ($is_draw == 2 && $way == 1) {
+            return redirect()->route('win-prize', ['api_token'=>$api_token]);
+        }
+
         return view('activity-index');
     }
 
