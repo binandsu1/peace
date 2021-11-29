@@ -66,7 +66,7 @@
 
     function winner2() {
         // TODO::演示结束之后，改为ajax请求
-        window.location="{{route('',['api_token'=>request('api_token')])}}";
+        window.location="{{route('poster2',['api_token'=>request('api_token')])}}";
     }
 </script>
 </body>
