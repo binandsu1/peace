@@ -40,7 +40,8 @@ class Activity extends Controller
         $user = Auth::guard('api')->user();
         $api_token = $user->api_token;
         $is_draw = $user->is_draw;
-        if ($is_draw == 2) {
+        $way = $user->way;
+        if ($is_draw == 2 && $way == 2) {
             return redirect()->route('win-prize3', ['api_token'=>$api_token]);
         }
 
