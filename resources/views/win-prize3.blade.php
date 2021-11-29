@@ -27,12 +27,15 @@
                         switch($v->gift_id) {
                             case 1:
                                 echo "<h3>获得 上海报机会！</h3>";
+                                echo "<div class=\"mb2\"><a class=\"act-but submit\" onclick=\"winner1()\" style=\"color: #FFFFFF\">拍照上传</a></div><br>";
                                 break;
                             case 2:
                                 echo "<h3>获得 ING联名袜子</h3>";
+                                echo "<div class=\"mb2\"><a class=\"act-but submit\" onclick=\"winner2()\" style=\"color: #FFFFFF\">点亮个人海报</a></div><br>";
                                 break;
                             case 3:
                                 echo "<h3>获得 ING联名马克杯</h3>";
+                                echo "<div class=\"mb2\"><a class=\"act-but submit\" onclick=\"winner2()\" style=\"color: #FFFFFF\">点亮个人海报</a></div><br>";
                                 break;
                         }
 
@@ -41,7 +44,8 @@
                 @endforeach
 
                 <br>
-                <div class="mb2"><a class="act-but submit" href="{{route('store-map',['api_token'=>request('api_token')])}}" style="color: #FFFFFF">点击</a></div><br>
+
+                {{--<div class="mb2"><a class="act-but submit" href="{{route('store-map',['api_token'=>request('api_token')])}}" style="color: #FFFFFF">点击</a></div><br>--}}
 
             </div>
         </div>
@@ -54,8 +58,16 @@
 <script src="<?=asset('/jy/rAF.js')?>"></script>
 <script src="<?=asset('/jy/demo-1.js')?>"></script>
 {{--<script src="<?=asset('/jy/clipboard.min.js')?>"></script>--}}
-{{--<script>--}}
-    {{--new Clipboard('.copy_btn');--}}
-{{--</script>--}}
+<script>
+    function winner1() {
+        // TODO::演示结束之后，改为ajax请求
+        window.location="{{route('phone',['api_token'=>request('api_token')])}}";
+    }
+
+    function winner2() {
+        // TODO::演示结束之后，改为ajax请求
+        window.location="{{route('',['api_token'=>request('api_token')])}}";
+    }
+</script>
 </body>
 </html>

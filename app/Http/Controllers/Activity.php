@@ -311,6 +311,41 @@ class Activity extends Controller
         return view('poster', compact('pic_re'));
     }
 
+    // 线下个人海报
+    public function poster2()
+    {
+        $user = Auth::guard('api')->user();
+        $uid = $user->id;
+        $flag_ids = DB::table('user_to_flag')->where('uid',$uid)->get(['flag_id']);
+        if (!$flag_ids->isEmpty()) {
+            $flag = '';
+            foreach ($flag_ids as $k=>$v) {
+                $flag .= self::getFlagModel($v->flag_id).PHP_EOL;
+            }
+        }
+        $pic_re = Jiayu::where('id', $uid)->first();
+        $image = new Image();
+        //原始图路径
+        $path = "images/20211125/bg.png";
+        $newimageName = 'new' . time() . rand(10000, 99999) . '.jpg';
+        $newpath = 'images/' . date('Ymd') . '/' . $newimageName;
+        $face_img = $image::make($path)->resize(530, 800);
+        $face_img->text($flag, 370, 41, function ($font) use ($path) {
+            $font->file(public_path('vista.ttf',777,true));
+            $font->size(12);
+            $font->color('#FF0000');
+            $font->valign('right');
+        });
+
+        $pic_re->path = $newpath;
+        $pic_re->save();
+
+        $save_path = public_path($newpath);
+
+        $face_img->save($save_path);
+        return view('poster', compact('pic_re'));
+    }
+
 
     public function map()
     {

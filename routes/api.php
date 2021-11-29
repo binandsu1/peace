@@ -35,6 +35,7 @@ Route::any('/winPrize', [\App\Http\Controllers\Activity::class,'winPrize'])->nam
 Route::any('/winPrize2', [\App\Http\Controllers\Activity::class,'winPrize2'])->name('win-prize2');
 Route::any('/winPrize3', [\App\Http\Controllers\Activity::class,'winPrize3'])->name('win-prize3');
 Route::any('/poster', [\App\Http\Controllers\Activity::class,'poster'])->name('poster');
+Route::any('/poster2', [\App\Http\Controllers\Activity::class,'poster2'])->name('poster2');
 
 Route::any('/map', [\App\Http\Controllers\Activity::class,'map'])->name('map');
 Route::any('/phone', [\App\Http\Controllers\Activity::class,'phone'])->name('phone');
