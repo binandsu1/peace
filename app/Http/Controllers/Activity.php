@@ -42,8 +42,21 @@ class Activity extends Controller
         $is_draw = $user->is_draw;
         $way = $user->way;
         if ($is_draw == 2 && $way == 2) {
-//            return redirect()->route('win-prize3', ['api_token'=>$api_token]);
-            $this->winPrize3();
+
+            $uid = $user->id;
+
+            $prize_code = DB::table("prize_num")->where('u_id', $uid)->get(['gift_id', 'num']);
+
+            foreach ($prize_code as $v) {
+                $num = $v->num;
+            }
+
+            // 将兑奖码与uid连接后AES对等加密
+            $code = $num.'+'.$uid;
+            $encode = $this->encrypt($code);
+//            return view('win-prize3')->with(['prize_code'=>$prize_code, 'code'=>$encode]);
+
+            return redirect()->route('win-prize3', ['api_token'=>$api_token])->with(['prize_code'=>$prize_code, 'code'=>$encode]);
         }
 
         if ($is_draw == 2 && $way == 1) {
