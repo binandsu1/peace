@@ -91,7 +91,7 @@
                 return false;
             }
         }
-//console.log(chk_value);return false;
+
         $.ajax({
             type: "POST",
             url: "{{route('set-flag',['api_token'=>request('api_token')])}}",
@@ -107,10 +107,7 @@
                 } else {
 
                 }
-            },
-//            error: function(request, status, error){
-//                alert(error);
-//            },
+            }
         });
     };
 

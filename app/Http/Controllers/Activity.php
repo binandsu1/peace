@@ -691,5 +691,10 @@ class Activity extends Controller
         return view('prize-admin')->with(['online1'=>$online1, 'online2'=>$online2, 'online3'=>$online3, 'offline1'=>$offline1, 'offline2'=>$offline2, 'offline3'=>$offline3]);
     }
 
+    // 用户协议
+    public function agreement() {
+        return view('agreement');
+    }
+
 
 }
