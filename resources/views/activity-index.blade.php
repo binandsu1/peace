@@ -10,6 +10,7 @@
 <!--必要样式-->
 <link rel="stylesheet" type="text/css" href="<?= asset('/jy/component.css') ?>">
 
+
 <!--[if IE]>
 <script src="<?=asset('/jy/html5.js')?>"></script>
 <![endif]-->
@@ -34,10 +35,10 @@
 
 		</div><!-- /container -->
 		<script src="<?=asset('/jy/jquery-1.7.2.min.js')?>"></script>
-		<script src="<?=asset('/jy/TweenLite.min.js')?>"></script>
-		<script src="<?=asset('/jy/EasePack.min.js')?>"></script>
-		<script src="<?=asset('/jy/rAF.js')?>"></script>
-		<script src="<?=asset('/jy/demo-1.js')?>"></script>
+		{{--<script src="<?=asset('/jy/TweenLite.min.js')?>"></script>--}}
+		{{--<script src="<?=asset('/jy/EasePack.min.js')?>"></script>--}}
+		{{--<script src="<?=asset('/jy/rAF.js')?>"></script>--}}
+		{{--<script src="<?=asset('/jy/demo-1.js')?>"></script>--}}
 		<script>
 //			var $sq = $("#sqbtn").val();
 

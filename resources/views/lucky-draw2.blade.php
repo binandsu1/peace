@@ -13,6 +13,17 @@
     <!--大转盘-->
     <!--<link rel="stylesheet" href="<?= asset("/jy/sp.css") ?>">-->
     <link rel="stylesheet" href="<?= asset("/jy/lottery.css") ?>">
+    <style>
+        @media screen and (-webkit-min-device-pixel-ratio: 2), screen and (min--moz-device-pixel-ratio: 3) {
+            .demo-1 .large-header {
+                background-image: url("<?= asset('/jy/bg-1.jpg')?>");
+                background-size: 375px 812px;
+                width: 375px;
+                height: 812px;
+                background-repeat: no-repeat;
+            }
+        }
+    </style>
 
     <!--[if IE]>
     <script src="<?=asset('/jy/html5.js')?>"></script>

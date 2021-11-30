@@ -10,6 +10,28 @@
     <link rel="stylesheet" type="text/css" href="<?= asset('/jy/demo.css') ?>">
     <!--必要样式-->
     <link rel="stylesheet" type="text/css" href="<?= asset('/jy/component.css') ?>">
+    <style>
+        @media screen and (-webkit-min-device-pixel-ratio: 2), screen and (min--moz-device-pixel-ratio: 3) {
+            .demo-1 .large-header {
+                background-image: url("<?= asset('/jy/flag-bg1.jpg')?>");
+                background-size: 375px 812px;
+                width: 375px;
+                height: 812px;
+                background-repeat: no-repeat;
+            }
+            .flag-unchecked {
+                background-image: url("<?= asset('/jy/flag-unchecked.png')?>");
+                background-size: auto 50px;
+                background-repeat: no-repeat;
+                background-position: right center;
+                margin:30px 0;
+                font-size: 1.2rem;
+                padding: 6px;
+                border-radius: 50px;
+                color: royalblue;
+            }
+        }
+    </style>
 
     <!--[if IE]>
     <script src="<?=asset('/jy/html5.js')?>"></script>
@@ -21,12 +43,11 @@
         <div id="large-header" class="large-header">
             <canvas id="demo-canvas"></canvas>
             <div class="logo_box">
-                <h1>立下属于你的新年flag</h1>
 
                 <form class="form-horizontal" method="post" action="">
                     <div class="dropdown">
                         @foreach($flagModels as $k=>$v)
-                            <li style="list-style: none"><input type="checkbox" name="flags" value="{{$v->id}}"> {{$v->flag_model}}</li>
+                           <div class="flag-unchecked"><li style="list-style: none"><input type="checkbox" name="flags" value="{{$v->id}}"> {{$v->flag_model}}</li></div>
                         @endforeach
                             <li id="customize_li" style="list-style: none; display: none;"><input type="checkbox" name="self_flag" ></li>
                         <div id="cus_div" class="input-group">
@@ -41,10 +62,10 @@
     </div>
 </div><!-- /container -->
 <script src="<?=asset('/jy/jquery-1.7.2.min.js')?>"></script>
-<script src="<?=asset('/jy/TweenLite.min.js')?>"></script>
-<script src="<?=asset('/jy/EasePack.min.js')?>"></script>
-<script src="<?=asset('/jy/rAF.js')?>"></script>
-<script src="<?=asset('/jy/demo-1.js')?>"></script>
+{{--<script src="<?=asset('/jy/TweenLite.min.js')?>"></script>--}}
+{{--<script src="<?=asset('/jy/EasePack.min.js')?>"></script>--}}
+{{--<script src="<?=asset('/jy/rAF.js')?>"></script>--}}
+{{--<script src="<?=asset('/jy/demo-1.js')?>"></script>--}}
 <script>
     // 自定义flag 敏感词检测
     function check_mgc() {
