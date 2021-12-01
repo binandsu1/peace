@@ -10,7 +10,7 @@
 /* 大转盘样式 */
 .turnplate_box {
     width: 100%;
-    background:url("./zhuanp@2x.png") no-repeat;
+    /*background:url("./zhuanp@2x.png") no-repeat;*/
     background-size: 100% 100%;
     position: relative;
     border-radius: 50%;

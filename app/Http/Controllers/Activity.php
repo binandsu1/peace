@@ -24,6 +24,10 @@ class Activity extends Controller
         $code = $request->input('code');
         $type = $request->input('type');
 
+        if ($type == 'wx') {
+
+        }
+
         $weiboSer = app('weibo');
         if (empty($code)) {
             return $weiboSer->getCode();
@@ -397,6 +401,7 @@ class Activity extends Controller
         $ms = app('mgc');
         $content = $request->input('flag_wb');
         $bad_word = $ms::getBadWord($content);
+//        $bad_word = "";
         if (!empty($bad_word)) {
             return response()->json(['status' => 'fail','code' => 500,'error' => '包含敏感词',]);
         } else {

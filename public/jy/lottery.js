@@ -10,17 +10,17 @@ var winnerList=[
     {
         id:'1',
         name:'上海报资格',
-	    logo:"http://121.196.217.164/jy/袜子.png",
+	    logo:"https://mssocial.una-ad.com/jy/袜子.png",
         probability:probability1,
     },{
         id:'2',
         name:'M365个人版+爱奇艺季卡',
-	logo:'http://121.196.217.164/jy/水杯.png',
+	logo:'https://mssocial.una-ad.com/jy/水杯.png',
         probability:probability2,
     },{
         id:'3',
         name:'319 限量多彩 “新”意套装（M365+精巧鼠标）',
-        logo:'http://121.196.217.164/jy/123.png',
+        logo:'https://mssocial.una-ad.com/jy/prize-online1.png',
         probability:probability3,
     }
 ];

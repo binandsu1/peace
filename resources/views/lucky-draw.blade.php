@@ -15,13 +15,34 @@
     <link rel="stylesheet" href="<?= asset("/jy/lottery.css") ?>">
 
     <style>
-        @media screen and (-webkit-min-device-pixel-ratio: 2), screen and (min--moz-device-pixel-ratio: 3) {
+        @media only screen and (min-width: 375px){
             .demo-1 .large-header {
                 background-image: url("<?= asset('/jy/bg-1.jpg')?>");
                 background-size: 375px 812px;
                 width: 375px;
                 height: 812px;
                 background-repeat: no-repeat;
+                position: fixed;
+            }
+        }
+        @media only screen and (min-width: 414px){
+            .demo-1 .large-header {
+                background-image: url("<?= asset('/jy/bg-1.jpg')?>");
+                background-size: 414px ;
+                width: 414px;
+                /*height: 1024px;*/
+                background-repeat: no-repeat;
+                position: fixed;
+            }
+        }
+        @media only screen and (min-width: 768px){
+            .demo-1 .large-header {
+                background-image: url("<?= asset('/jy/bg-1.jpg')?>");
+                background-size: 768px 1024px;
+                width: 768px;
+                height: 1024px;
+                background-repeat: no-repeat;
+                position: fixed;
             }
         }
     </style>
@@ -35,8 +56,9 @@
     <div class="content">
         <div id="large-header" class="large-header">
             <canvas id="demo-canvas"></canvas>
-            <div class="logo_box">
-                <h3>幸运大转盘</h3>
+            {{--<div class="logo_box">--}}
+                <h3 style="text-align: center;">抽奖页面</h3>
+            {{--</div>--}}
                 <div class='winnerBox'>
                     <div class="turnplate_box">
                         <canvas id="myCanvas" width="260px" height="260px">抱歉！浏览器不支持。</canvas>
@@ -45,7 +67,7 @@
                             <div class="goIcon"></div>
                         </button>
                     </div>
-                </div>
+
                 {{--@foreach($prize_type as $k=>$v)--}}
                     {{--<button type="button"  class="btn btn-default"><a href="{{route('win-prize',['prize'=>"$k",'flag'=>request('flag')])}}">中奖{{$k}}：{{$v}}</a></button>--}}
                 {{--@endforeach--}}

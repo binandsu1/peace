@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {{--<meta name="viewport" content="width=device-width, initial-scale=1">--}}
+    <meta name="viewport" content="width=device-width; initial-scale=1; maximum-scale=1; minimum-scale=1; user-scalable=no;">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>login</title>
     <link rel="stylesheet" type="text/css" href="<?= asset('/jy/normalize.css') ?>">
@@ -11,13 +12,16 @@
     <!--必要样式-->
     <link rel="stylesheet" type="text/css" href="<?= asset('/jy/component.css') ?>">
     <style>
-        @media screen and (-webkit-min-device-pixel-ratio: 2), screen and (min--moz-device-pixel-ratio: 3) {
+
+
+        @media only screen and (min-width: 280px){
             .demo-1 .large-header {
                 background-image: url("<?= asset('/jy/flag-bg1.jpg')?>");
-                background-size: 375px 812px;
-                width: 375px;
-                height: 812px;
+                background-size: 280px 653px;
+                width: 280px;
+                height: 653px;
                 background-repeat: no-repeat;
+                position: fixed;
             }
             .flag-unchecked {
                 background-image: url("<?= asset('/jy/flag-unchecked.png')?>");
@@ -31,6 +35,91 @@
                 color: royalblue;
             }
         }
+        @media only screen and (min-width: 375px){
+            .demo-1 .large-header {
+                background-image: url("<?= asset('/jy/flag-bg1.jpg')?>");
+                background-size: 375px 812px;
+                width: 375px;
+                height: 812px;
+                background-repeat: no-repeat;
+                position: fixed;
+            }
+            .flag-unchecked {
+                background-image: url("<?= asset('/jy/flag-unchecked.png')?>");
+                background-size: auto 50px;
+                background-repeat: no-repeat;
+                background-position: right center;
+                margin:30px 0;
+                font-size: 1.2rem;
+                padding: 6px;
+                border-radius: 50px;
+                color: royalblue;
+            }
+        }
+        @media only screen and (min-width: 414px){
+            .demo-1 .large-header {
+                background-image: url("<?= asset('/jy/flag-bg1.jpg')?>");
+                background-size: 414px ;
+                width: 414px;
+                /*height: 1024px;*/
+                background-repeat: no-repeat;
+                position: fixed;
+            }
+            .flag-unchecked {
+                background-image: url("<?= asset('/jy/flag-unchecked.png')?>");
+                background-size: auto 50px;
+                background-repeat: no-repeat;
+                background-position: right center;
+                margin:30px 0;
+                font-size: 1.2rem;
+                padding: 6px;
+                border-radius: 50px;
+                color: royalblue;
+            }
+        }
+        @media only screen and (min-width: 768px){
+            .demo-1 .large-header {
+                background-image: url("<?= asset('/jy/flag-bg1.jpg')?>");
+                background-size: 768px 1024px;
+                width: 768px;
+                height: 1024px;
+                background-repeat: no-repeat;
+                position: fixed;
+            }
+            .flag-unchecked {
+                background-image: url("<?= asset('/jy/flag-unchecked.png')?>");
+                background-size: auto 50px;
+                background-repeat: no-repeat;
+                background-position: right center;
+                margin:30px 0;
+                font-size: 1.2rem;
+                padding: 6px;
+                border-radius: 50px;
+                color: royalblue;
+            }
+        }
+
+
+        {{--@media screen and (-webkit-min-device-pixel-ratio: 2), screen and (min--moz-device-pixel-ratio: 3) {--}}
+            {{--.demo-1 .large-header {--}}
+                {{--background-image: url("<?= asset('/jy/flag-bg1.jpg')?>");--}}
+                {{--background-size: 375px 812px;--}}
+                {{--width: 375px;--}}
+                {{--height: 812px;--}}
+                {{--background-repeat: no-repeat;--}}
+            {{--}--}}
+            {{--.flag-unchecked {--}}
+                {{--background-image: url("<?= asset('/jy/flag-unchecked.png')?>");--}}
+                {{--background-size: auto 50px;--}}
+                {{--background-repeat: no-repeat;--}}
+                {{--background-position: right center;--}}
+                {{--margin:30px 0;--}}
+                {{--font-size: 1.2rem;--}}
+                {{--padding: 6px;--}}
+                {{--border-radius: 50px;--}}
+                {{--color: royalblue;--}}
+            {{--}--}}
+        {{--}--}}
     </style>
 
     <!--[if IE]>
