@@ -15,6 +15,7 @@ class Weibo
     {       self::$Appkey = env('WbAppKey','4129299852');
             self::$AppSecret = env('WbAppSecret','124c3fea8840764f4c9a5dc5d1d9efe4');
             self::$RedirectUrl = env('WbRedirectUrl','https://mssocial.una-ad.com/api/activityIndex');
+        //          self::$RedirectUrl = env('WbRedirectUrl','http://121.196.217.164/api/activityIndex');
             self::$client = new \GuzzleHttp\Client(['verify' =>false]);
     }
     public function getCode(){
