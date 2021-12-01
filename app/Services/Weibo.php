@@ -46,13 +46,12 @@ class Weibo
     public function getToken($code,$type){
 
         if($type == 'wx'){
-
             $skey = $this->getComponentAccessToken();
             $url = "https://api.weixin.qq.com/sns/oauth2/component/access_token?appid=".self::$WxAppkey."&code=".$code."&grant_type=authorization_code&component_appid=".self::$WxComponentAppkey."&component_access_token=".$skey;
             $response = self::$client->request('GET', $url);
             $body = $response->getBody()->getContents();
             $result = json_decode($body, TRUE);
-           dd($result);
+            return $result;
         }
         if($type == 'wb'){
             $response =self::$client->request('POST', 'https://api.weibo.com/oauth2/access_token', [
@@ -91,6 +90,28 @@ class Weibo
     }
 
 
+    public function getwxUserInfo($token='',$openid=''){
 
+
+        $token = '51_KrLfibtjkBhfRnXX6jth47GMacf3qaNInYQ9bkqjGxJ5Jf2H47WOYuDZt5FfZlEm4NuUP9ZMame63Qx7x39sUw';
+        $openid = 'okvkst86sPefoNe8SwxFG62EHjcI';
+        $url = "https://api.weixin.qq.com/sns/userinfo?access_token=".$token."&openid=".$openid."&lang=zh_CN";
+        $response = self::$client->request('get',$url);
+        $body = $response->getBody()->getContents();
+        $re = json_decode($body, TRUE);
+        $is = Jiayu::where('u_id',$re['unionid'])->first();
+
+        if(!$is){
+            $data['u_id'] = $re['unionid'];
+            $data['u_token'] = '';
+            $data['type'] = 'wx';
+            $data['u_name'] = $re['nickname'];
+            $data['u_image'] = $re['headimgurl'];
+            $data['api_token'] = md5($re['unionid']);
+            Jiayu::create($data);
+            return $data['api_token'];
+        }
+        return $is->api_token;
+    }
 
 }
