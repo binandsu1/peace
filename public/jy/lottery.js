@@ -20,7 +20,7 @@ var winnerList=[
     },{
         id:'3',
         name:'319 限量多彩 “新”意套装（M365+精巧鼠标）',
-        logo:'http://test.sohuyw.cn:8080/jy/prize-online1.png',
+        logo:'https://mssocial.una-ad.com/jy/prize-online1.png',
         probability:probability3,
     }
 ];
