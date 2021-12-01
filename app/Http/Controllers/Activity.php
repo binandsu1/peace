@@ -20,20 +20,30 @@ class Activity extends Controller
 
     public function activityIndex(Request $request)
     {
-
         $code = $request->input('code');
         $type = $request->input('type');
 
+        $weiboSer = app('weibo');
+        $type = 'wx';
+  //$code = '031vde1w3ofEwX2oMf4w3YgWhB2vde1O';
         if ($type == 'wx') {
 
+            if (empty($code)) {
+                return $weiboSer->getCode('wx');
+            }
+
+            $tokenArr = $weiboSer->getToken($code,'wx');
+            dd($tokenArr);
+            echo 'wx';
+        }
+        if($type=='wb'){
+            if (empty($code)) {
+                return $weiboSer->getCode();
+            }
+            $tokenArr = $weiboSer->getToken($code);
+            $api_token = $weiboSer->getUserInfo($tokenArr['access_token'], $tokenArr['uid']);
         }
 
-        $weiboSer = app('weibo');
-        if (empty($code)) {
-            return $weiboSer->getCode();
-        }
-        $tokenArr = $weiboSer->getToken($code);
-        $api_token = $weiboSer->getUserInfo($tokenArr['access_token'], $tokenArr['uid']);
 
         return redirect()->route('activity-index-new',['api_token'=>$api_token]);
     }
