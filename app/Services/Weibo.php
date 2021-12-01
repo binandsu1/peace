@@ -11,14 +11,18 @@ class Weibo
     protected static $WxComponentAppkey;
     protected static $AppSecret;
     protected static $RedirectUrl;
+    protected static $wbRedirectUrl;
+    protected static $wbsRedirectUrl;
     protected static $Skey;
     protected static $client;
 
     public function __construct()
     {
             self::$Appkey = env('WbAppKey','4129299852');
-            self::$AppSecret = env('WbAppSecret','124c3fea8840764f4c9a5dc5d1d9efe4');
+            self::$AppSecret = env('WbAppSecret','c6a0258700216016d286dd1e24933bf7');
             self::$RedirectUrl = env('WbRedirectUrl','https://mssocial.una-ad.com/api/activityIndex');
+            self::$wbRedirectUrl = urlencode(env('WbRedirectUrl','https://mssocial.una-ad.com/api/activityIndex?type=wb'));
+            self::$wbsRedirectUrl = env('WbRedirectUrl','https://mssocial.una-ad.com/api/activityIndex?type=wb');
 
             self::$WxAppkey = env('WxAppkey','wx2055b6314cd25ac1');
             self::$WxComponentAppkey = env('WxComponentAppkey','wx062a1b8f9e01e151');
@@ -31,7 +35,7 @@ class Weibo
             $url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=".self::$WxAppkey."&redirect_uri=".self::$RedirectUrl."?type=wx&response_type=code&scope=snsapi_userinfo&state=STATE&component_appid=".self::$WxComponentAppkey."#wechat_redirect";
         }
         if($type=='wb'){
-            $url = "https://api.weibo.com/oauth2/authorize?client_id=".self::$Appkey."&response_type=code&redirect_uri=".self::$RedirectUrl."?type=wb";
+            $url = "https://api.weibo.com/oauth2/authorize?client_id=".self::$Appkey."&response_type=code&redirect_uri=".self::$wbRedirectUrl;
         }
         return redirect()->away($url);
     }
@@ -59,7 +63,7 @@ class Weibo
                     'client_id' => self::$Appkey,
                     'client_secret' => self::$AppSecret,
                     'grant_type' => 'authorization_code',
-                    'redirect_uri' => self::$RedirectUrl,
+                    'redirect_uri' => self::$wbsRedirectUrl,
                     'code' => $code,
                 ]
             ]);
@@ -80,6 +84,7 @@ class Weibo
         if(!$is){
             $data['u_id'] = $re['id'];
             $data['u_token'] = $token;
+            $data['type'] = $re['wb'];
             $data['u_name'] = $re['name'];
             $data['u_image'] = $re['profile_image_url'];
             $data['api_token'] = md5($re['id']);
@@ -102,7 +107,7 @@ class Weibo
 
         if(!$is){
             $data['u_id'] = $re['unionid'];
-            $data['u_token'] = '';
+            $data['u_token'] = $openid;
             $data['type'] = 'wx';
             $data['u_name'] = $re['nickname'];
             $data['u_image'] = $re['headimgurl'];
