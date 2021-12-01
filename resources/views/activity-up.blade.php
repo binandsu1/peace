@@ -24,7 +24,7 @@
                 position: fixed;
             }
             .flag-unchecked {
-                background-image: url("<?= asset('/jy/flag-unchecked.png')?>");
+                background-image: url("<?= asset('/jy/btn-2.png')?>");
                 background-size: auto 50px;
                 background-repeat: no-repeat;
                 background-position: right center;
@@ -45,7 +45,7 @@
                 position: fixed;
             }
             .flag-unchecked {
-                background-image: url("<?= asset('/jy/flag-unchecked.png')?>");
+                background-image: url("<?= asset('/jy/btn-2.png')?>");
                 background-size: auto 50px;
                 background-repeat: no-repeat;
                 background-position: right center;
@@ -59,14 +59,14 @@
         @media only screen and (min-width: 414px){
             .demo-1 .large-header {
                 background-image: url("<?= asset('/jy/flag-bg1.jpg')?>");
-                background-size: 414px ;
+                background-size: 414px 760px;
                 width: 414px;
-                /*height: 1024px;*/
+                height: 760px;
                 background-repeat: no-repeat;
                 position: fixed;
             }
             .flag-unchecked {
-                background-image: url("<?= asset('/jy/flag-unchecked.png')?>");
+                background-image: url("<?= asset('/jy/btn-2.png')?>");
                 background-size: auto 50px;
                 background-repeat: no-repeat;
                 background-position: right center;
@@ -87,7 +87,7 @@
                 position: fixed;
             }
             .flag-unchecked {
-                background-image: url("<?= asset('/jy/flag-unchecked.png')?>");
+                background-image: url("<?= asset('/jy/btn-2.png')?>");
                 background-size: auto 50px;
                 background-repeat: no-repeat;
                 background-position: right center;
@@ -109,7 +109,7 @@
                 {{--background-repeat: no-repeat;--}}
             {{--}--}}
             {{--.flag-unchecked {--}}
-                {{--background-image: url("<?= asset('/jy/flag-unchecked.png')?>");--}}
+                {{--background-image: url("<?= asset('/jy/btn-2.png')?>");--}}
                 {{--background-size: auto 50px;--}}
                 {{--background-repeat: no-repeat;--}}
                 {{--background-position: right center;--}}
@@ -144,7 +144,7 @@
                         </div>
                     </div>
                     <br>
-                    <div class="mb2" onclick="set_flag()"><a type="button" class="act-but submit" style="color: #FFFFFF">立下Flag 参与抽奖</a></div>
+                    <div class="mb2" onclick="set_flag()"><a type="button" class="act-but submit" style="color: #744323">立下Flag 参与抽奖</a></div>
                 </form>
             </div>
         </div>

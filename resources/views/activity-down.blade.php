@@ -20,7 +20,7 @@
                 background-repeat: no-repeat;
             }
             .flag-unchecked {
-                background-image: url("<?= asset('/jy/flag-unchecked.png')?>");
+                background-image: url("<?= asset('/jy/btn-2.png')?>");
                 background-size: auto 50px;
                 background-repeat: no-repeat;
                 background-position: right center;

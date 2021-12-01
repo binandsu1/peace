@@ -85,7 +85,7 @@
 	line-height: 46px;
 }
 .mb2{
-	margin-bottom: 10px
+	margin-bottom: 10px;
 }
 .mb2 a{
 	text-decoration: none;
@@ -101,5 +101,13 @@
 	text-align: center;
 	font-size: 20px;
 	border-radius: 50px;
-	background: #0096e6;
+	background: #f0dbab;
+}
+
+.act-but2{
+	line-height: 20px;
+	text-align: center;
+	font-size: 20px;
+	border-radius: 50px;
+	background: #ca9b81;
 }
