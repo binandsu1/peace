@@ -30,7 +30,7 @@ class Activity extends Controller
                 return $weiboSer->getCode('wx');
             }
             $tokenArr = $weiboSer->getToken($code, 'wx');
-            $api_token = $weiboSer->getwxUserInfo($tokenArr['access_token'],$tokenArr['okvkst86sPefoNe8SwxFG62EHjcI']);
+            $api_token = $weiboSer->getwxUserInfo($tokenArr['access_token'],$tokenArr['openid']);
         }
         if ($type == 'wb') {
             if (empty($code)) {

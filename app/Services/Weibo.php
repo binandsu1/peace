@@ -93,8 +93,7 @@ class Weibo
     public function getwxUserInfo($token='',$openid=''){
 
 
-        $token = '51_KrLfibtjkBhfRnXX6jth47GMacf3qaNInYQ9bkqjGxJ5Jf2H47WOYuDZt5FfZlEm4NuUP9ZMame63Qx7x39sUw';
-        $openid = 'okvkst86sPefoNe8SwxFG62EHjcI';
+
         $url = "https://api.weixin.qq.com/sns/userinfo?access_token=".$token."&openid=".$openid."&lang=zh_CN";
         $response = self::$client->request('get',$url);
         $body = $response->getBody()->getContents();
