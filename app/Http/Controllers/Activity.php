@@ -20,22 +20,27 @@ class Activity extends Controller
 
     public function activityIndex(Request $request)
     {
-
         $code = $request->input('code');
         $type = $request->input('type');
 
-        if ($type == 'wx') {
-
-        }
-
         $weiboSer = app('weibo');
-        if (empty($code)) {
-            return $weiboSer->getCode();
+        $type = 'wb';
+        if ($type == 'wx') {
+            if (empty($code)) {
+                return $weiboSer->getCode('wx');
+            }
+            $tokenArr = $weiboSer->getToken($code, 'wx');
+            $api_token = $weiboSer->getwxUserInfo($tokenArr['access_token'],$tokenArr['openid']);
         }
-        $tokenArr = $weiboSer->getToken($code);
-        $api_token = $weiboSer->getUserInfo($tokenArr['access_token'], $tokenArr['uid']);
+        if ($type == 'wb') {
+            if (empty($code)) {
+                return $weiboSer->getCode('wb');
+            }
+            $tokenArr = $weiboSer->getToken($code,'wb');
+            $api_token = $weiboSer->getUserInfo($tokenArr['access_token'], $tokenArr['uid']);
+        }
 
-        return redirect()->route('activity-index-new',['api_token'=>$api_token]);
+        return redirect()->route('activity-index-new', ['api_token' => $api_token]);
     }
 
     public function activityIndexNew(Request $request)
@@ -56,15 +61,15 @@ class Activity extends Controller
             }
 
             // 将兑奖码与uid连接后AES对等加密
-            $code = $num.'+'.$uid;
+            $code = $num . '+' . $uid;
             $encode = $this->encrypt($code);
 //            return view('win-prize3')->with(['prize_code'=>$prize_code, 'code'=>$encode]);
 
-            return redirect()->route('win-prize3', ['api_token'=>$api_token])->with(['prize_code'=>$prize_code, 'code'=>$encode]);
+            return redirect()->route('win-prize3', ['api_token' => $api_token])->with(['prize_code' => $prize_code, 'code' => $encode]);
         }
 
         if ($is_draw == 2 && $way == 1) {
-            return redirect()->route('win-prize', ['api_token'=>$api_token]);
+            return redirect()->route('win-prize', ['api_token' => $api_token]);
         }
 
         return view('activity-index');
@@ -77,13 +82,13 @@ class Activity extends Controller
         $uid = $user->id;
         $way = $user->way;
         $api_token = $user->api_token;
-        $flagModels = DB::table('flag_list')->where('status', 1)->get(['id','flag_model']);
+        $flagModels = DB::table('flag_list')->where('status', 1)->get(['id', 'flag_model']);
         if (empty($way)) {
-            DB::table('jiayus')->where('id',$uid)->update(['way'=>1]);
+            DB::table('jiayus')->where('id', $uid)->update(['way' => 1]);
         } else {
-            if($way == 2) {
+            if ($way == 2) {
                 // 检测到选择了线下点亮的用户又点击线上点亮后，强制跳转回线下路线
-                return redirect()->route('activity-down',['api_token'=>$api_token])->with('flagModels', $flagModels);
+                return redirect()->route('activity-down', ['api_token' => $api_token])->with('flagModels', $flagModels);
             }
         }
 
@@ -97,13 +102,13 @@ class Activity extends Controller
         $uid = $user->id;
         $way = $user->way;
         $api_token = $user->api_token;
-        $flagModels = DB::table('flag_list')->where('status', 1)->get(['id','flag_model']);
-        if(empty($way)){
-            DB::table('jiayus')->where('id',$uid)->update(['way'=>2]);
+        $flagModels = DB::table('flag_list')->where('status', 1)->get(['id', 'flag_model']);
+        if (empty($way)) {
+            DB::table('jiayus')->where('id', $uid)->update(['way' => 2]);
         } else {
-            if($way == 1) {
+            if ($way == 1) {
                 // 检测到选择了线上点亮的用户又点击线下点亮后，强制跳转回线上路线
-                return redirect()->route('activity-up',['api_token'=>$api_token])->with('flagModels', $flagModels);
+                return redirect()->route('activity-up', ['api_token' => $api_token])->with('flagModels', $flagModels);
             }
         }
 
@@ -124,7 +129,7 @@ class Activity extends Controller
 
         if ($is_draw == 1) {
             // 抽奖方法
-            $v = rand(1,100);
+            $v = rand(1, 100);
 
             $one = 1; //1%中奖率
 
@@ -134,46 +139,46 @@ class Activity extends Controller
             $three_start = 5;
             $three_finish = 100;
 
-            switch($v) {
-                case $v==$one:
+            switch ($v) {
+                case $v == $one:
                     // TODO::上线前清空Redis计数器
-                    Redis::incr('one_online',1);
+                    Redis::incr('one_online', 1);
                     $count1 = Redis::get('one_online');
                     if ($count1 > 1019) {
-                        Redis::incr('three_online',1);
+                        Redis::incr('three_online', 1);
                         $prize_type = 3;
                     } else {
                         $prize_type = 1;
                     }
                     break;
-                case $v>=$two_start && $v<=$two_finish:
+                case $v >= $two_start && $v <= $two_finish:
                     // TODO::上线前清空Redis计数器
-                    Redis::incr('two_online',1);
+                    Redis::incr('two_online', 1);
                     $count2 = Redis::get('two_online');
                     if ($count2 > 3000) {
-                        Redis::incr('three_online',1);
+                        Redis::incr('three_online', 1);
                         $prize_type = 3;
                     } else {
                         $prize_type = 2;
                     }
                     break;
-                case $v>=$three_start && $v<=$three_finish:
+                case $v >= $three_start && $v <= $three_finish:
                     // TODO::上线前清空Redis计数器
-                    Redis::incr('three_online',1);
+                    Redis::incr('three_online', 1);
                     $prize_type = 3;
                     break;
             }
 
-            self::makePrizeNum($uid,$prize_type);  // 根据中奖类型，取用兑奖码
+            self::makePrizeNum($uid, $prize_type);  // 根据中奖类型，取用兑奖码
 
-            DB::table('jiayus')->where('id',$uid)->update(['is_draw'=>2]);
-            return view('lucky-draw')->with('prize_type',$prize_type);
+            DB::table('jiayus')->where('id', $uid)->update(['is_draw' => 2]);
+            return view('lucky-draw')->with('prize_type', $prize_type);
         } elseif ($is_draw == 2) {
             $prize_type = DB::table('prize_num')->where('u_id', $uid)->get(['gift_id']); // 非首次进入抽奖页面，沿用首次进入时的抽奖结果
-            foreach($prize_type as $v) {
+            foreach ($prize_type as $v) {
                 $prize_type = $v->gift_id;
             }
-            return view('lucky-draw')->with('prize_type',$prize_type);
+            return view('lucky-draw')->with('prize_type', $prize_type);
         }
 
     }
@@ -188,7 +193,7 @@ class Activity extends Controller
 
         if ($is_draw == 1) {
             // 抽奖方法
-            $v = rand(1,100);
+            $v = rand(1, 100);
 
             $one_start = 1; //33%中奖率
             $one_finish = 33; //33%中奖率
@@ -199,46 +204,46 @@ class Activity extends Controller
             $three_start = 67;
             $three_finish = 100;
 
-            switch($v) {
-                case $v>=$one_start && $v<=$one_finish:
+            switch ($v) {
+                case $v >= $one_start && $v <= $one_finish:
                     // TODO::上线前清空Redis计数器
-                    Redis::incr('one_offline',1);
+                    Redis::incr('one_offline', 1);
                     $count1 = Redis::get('one_offline');
                     if ($count1 > 1019) {
-                        Redis::incr('three_offline',1);
+                        Redis::incr('three_offline', 1);
                         $prize_type = 3;
                     } else {
                         $prize_type = 1;
                     }
                     break;
-                case $v>=$two_start && $v<=$two_finish:
+                case $v >= $two_start && $v <= $two_finish:
                     // TODO::上线前清空Redis计数器
-                    Redis::incr('two_offline',1);
+                    Redis::incr('two_offline', 1);
                     $count2 = Redis::get('two_offline');
                     if ($count2 > 3000) {
-                        Redis::incr('three_offline',1);
+                        Redis::incr('three_offline', 1);
                         $prize_type = 3;
                     } else {
                         $prize_type = 2;
                     }
                     break;
-                case $v>=$three_start && $v<=$three_finish:
+                case $v >= $three_start && $v <= $three_finish:
                     // TODO::上线前清空Redis计数器
-                    Redis::incr('three_offline',1);
+                    Redis::incr('three_offline', 1);
                     $prize_type = 3;
                     break;
             }
 
-            self::makePrizeNum($uid,$prize_type);  // 根据中奖类型，取用兑奖码
+            self::makePrizeNum($uid, $prize_type);  // 根据中奖类型，取用兑奖码
             // 更新用户是否已抽奖标识
-            DB::table('jiayus')->where('id',$uid)->update(['is_draw'=>2]);
-            return view('lucky-draw2')->with('prize_type',$prize_type);
+            DB::table('jiayus')->where('id', $uid)->update(['is_draw' => 2]);
+            return view('lucky-draw2')->with('prize_type', $prize_type);
         } elseif ($is_draw == 2) {
             $prize_type = DB::table('prize_num')->where('u_id', $uid)->get(['gift_id']); // 非首次进入抽奖页面，沿用首次进入时的抽奖结果
-            foreach($prize_type as $v) {
+            foreach ($prize_type as $v) {
                 $prize_type = $v->gift_id;
             }
-            return view('lucky-draw2')->with('prize_type',$prize_type);
+            return view('lucky-draw2')->with('prize_type', $prize_type);
         }
 
     }
@@ -257,9 +262,9 @@ class Activity extends Controller
         }
 
         // 将兑奖码与uid连接后AES对等加密
-        $code = $num.'+'.$uid;
+        $code = $num . '+' . $uid;
         $encode = $this->encrypt($code);
-        return view('win-prize')->with(['prize_code'=>$prize_code, 'code'=>$encode]);
+        return view('win-prize')->with(['prize_code' => $prize_code, 'code' => $encode]);
     }
 
     // 线下中奖信息展示页面（到店前）
@@ -276,9 +281,9 @@ class Activity extends Controller
         }
 
         // 将兑奖码与uid连接后AES对等加密
-        $code = $num.'+'.$uid;
+        $code = $num . '+' . $uid;
         $encode = $this->encrypt($code);
-        return view('win-prize2')->with(['prize_code'=>$prize_code, 'code'=>$encode]);
+        return view('win-prize2')->with(['prize_code' => $prize_code, 'code' => $encode]);
     }
 
     // 线下中奖信息展示页面（到店后）
@@ -295,20 +300,20 @@ class Activity extends Controller
         }
 
         // 将兑奖码与uid连接后AES对等加密
-        $code = $num.'+'.$uid;
+        $code = $num . '+' . $uid;
         $encode = $this->encrypt($code);
-        return view('win-prize3')->with(['prize_code'=>$prize_code, 'code'=>$encode]);
+        return view('win-prize3')->with(['prize_code' => $prize_code, 'code' => $encode]);
     }
 
     public function poster()
     {
         $user = Auth::guard('api')->user();
         $uid = $user->id;
-        $flag_ids = DB::table('user_to_flag')->where('uid',$uid)->get(['flag_id']);
+        $flag_ids = DB::table('user_to_flag')->where('uid', $uid)->get(['flag_id']);
         if (!$flag_ids->isEmpty()) {
             $flag = '';
-            foreach ($flag_ids as $k=>$v) {
-                $flag .= self::getFlagModel($v->flag_id).PHP_EOL;
+            foreach ($flag_ids as $k => $v) {
+                $flag .= self::getFlagModel($v->flag_id) . PHP_EOL;
             }
         }
         $pic_re = Jiayu::where('id', $uid)->first();
@@ -319,7 +324,7 @@ class Activity extends Controller
         $newpath = 'images/' . date('Ymd') . '/' . $newimageName;
         $face_img = $image::make($path)->resize(530, 800);
         $face_img->text($flag, 370, 41, function ($font) use ($path) {
-            $font->file(public_path('vista.ttf',777,true));
+            $font->file(public_path('vista.ttf', 777, true));
             $font->size(12);
             $font->color('#FF0000');
             $font->valign('right');
@@ -339,11 +344,11 @@ class Activity extends Controller
     {
         $user = Auth::guard('api')->user();
         $uid = $user->id;
-        $flag_ids = DB::table('user_to_flag')->where('uid',$uid)->get(['flag_id']);
+        $flag_ids = DB::table('user_to_flag')->where('uid', $uid)->get(['flag_id']);
         if (!$flag_ids->isEmpty()) {
             $flag = '';
-            foreach ($flag_ids as $k=>$v) {
-                $flag .= self::getFlagModel($v->flag_id).PHP_EOL;
+            foreach ($flag_ids as $k => $v) {
+                $flag .= self::getFlagModel($v->flag_id) . PHP_EOL;
             }
         }
         $pic_re = Jiayu::where('id', $uid)->first();
@@ -354,7 +359,7 @@ class Activity extends Controller
         $newpath = 'images/' . date('Ymd') . '/' . $newimageName;
         $face_img = $image::make($path)->resize(530, 800);
         $face_img->text($flag, 370, 41, function ($font) use ($path) {
-            $font->file(public_path('vista.ttf',777,true));
+            $font->file(public_path('vista.ttf', 777, true));
             $font->size(12);
             $font->color('#FF0000');
             $font->valign('right');
@@ -403,9 +408,9 @@ class Activity extends Controller
         $bad_word = $ms::getBadWord($content);
 //        $bad_word = "";
         if (!empty($bad_word)) {
-            return response()->json(['status' => 'fail','code' => 500,'error' => '包含敏感词',]);
+            return response()->json(['status' => 'fail', 'code' => 500, 'error' => '包含敏感词',]);
         } else {
-            return response()->json(['status' => 'success','code' => 200,'message' => '合规']);
+            return response()->json(['status' => 'success', 'code' => 200, 'message' => '合规']);
         }
     }
 
@@ -419,18 +424,18 @@ class Activity extends Controller
         $model_ids = $request->input('model_ids', '');
 
         if (!empty($customize_flag)) {
-            DB::table('customize_flag')->insert(['uid'=>$uid, 'customize_flag'=>$customize_flag]);
+            DB::table('customize_flag')->insert(['uid' => $uid, 'customize_flag' => $customize_flag]);
         }
 
         if (!empty($model_ids)) {
-            $model_ids = rtrim($model_ids,',');
+            $model_ids = rtrim($model_ids, ',');
             $id_arr = explode(',', $model_ids);
             foreach ($id_arr as $k => $v) {
-                DB::table('user_to_flag')->insert(['uid'=>$uid, 'flag_id'=>$v]);
+                DB::table('user_to_flag')->insert(['uid' => $uid, 'flag_id' => $v]);
             }
         }
 
-        Redis::set('page_status_'.$uid,'12');
+        Redis::set('page_status_' . $uid, '12');
         return response()->json(['code' => 200]);
 
     }
@@ -457,8 +462,8 @@ class Activity extends Controller
 
     public function makePrizeNum($uid = '0', $gid = '0')
     {
-        $is = PrizeNum::whereIn('status', [1,2])->where('u_id',$uid)->first();
-        if($is){
+        $is = PrizeNum::whereIn('status', [1, 2])->where('u_id', $uid)->first();
+        if ($is) {
             return -1;
         }
         try {
@@ -483,30 +488,32 @@ class Activity extends Controller
     {
         $num = $request->input('num');
         $u_id = $request->input('u_id');
-        if($num<0){
+        if ($num < 0) {
             return -1;
         }
-        $is = PrizeNum::where('status', 1)->where('num',$num)->where('u_id',$u_id)->first();
-        if(!$is){
+        $is = PrizeNum::where('status', 1)->where('num', $num)->where('u_id', $u_id)->first();
+        if (!$is) {
             return -1;
         }
         $is->status = 2;
         $is->un_at = date('Y-m-d H:i:s');
         $re = $is->save();
-        if($re){
+        if ($re) {
             return 1;
         }
         return 0;
     }
 
-    public function tt(){
+    public function tt()
+    {
         $data["a"] = 1;
         $data["b"] = 1;
         tt::dispatch($data);
     }
 
     // page_status 对照
-    public function page_status_list($page_status) {
+    public function page_status_list($page_status)
+    {
         switch ($page_status) {
             case 1:
                 // 首页
@@ -551,7 +558,8 @@ class Activity extends Controller
     }
 
     // flag 模板
-    public function getFlagModel($id) {
+    public function getFlagModel($id)
+    {
         $flag = "";
         if (!empty($id)) {
             switch ($id) {
@@ -577,7 +585,9 @@ class Activity extends Controller
         }
         return $flag;
     }
-    public function ss(){
+
+    public function ss()
+    {
         $user = Auth::guard('api')->user();
         $uid = $user->id;
         dd($uid);
@@ -602,14 +612,16 @@ class Activity extends Controller
     }
 
     //线上客服登录页面
-    public function shopLogin() {
+    public function shopLogin()
+    {
 //        $a = md5(time());
 //        dd($a);
         return view('shop-login');
     }
 
     // 线上客服登录验证
-    public function checkOnline(Request $request) { //这里做的登录
+    public function checkOnline(Request $request)
+    { //这里做的登录
         $name = $request->input("name");
         $pwd = $request->input("pwd");
 
@@ -617,7 +629,7 @@ class Activity extends Controller
             return response()->json(['code' => 500, 'result' => '用户名或密码错误！']);
         }
 
-        $userInfo = DB::table("kf_user")->where(['user'=>$name, 'pwd'=>$pwd])->get();
+        $userInfo = DB::table("kf_user")->where(['user' => $name, 'pwd' => $pwd])->get();
         if ($userInfo->isEmpty()) {
             return response()->json(['code' => 500, 'result' => '用户名或密码错误！']);
         }
@@ -628,13 +640,15 @@ class Activity extends Controller
     }
 
     //线上客服兑奖页面
-    public function exchangeCode() {
+    public function exchangeCode()
+    {
 
         return view('exchange-code');
     }
 
     // 兑奖码查询
-    public function checkCode(Request $request) {
+    public function checkCode(Request $request)
+    {
 
         $user = Auth::guard('kf')->user();
         $kf_id = $user->id;
@@ -653,7 +667,7 @@ class Activity extends Controller
         $uid = $code_arr[1];
 
         // 查询兑奖码
-        $codeInfo = DB::table("prize_num")->where(['u_id'=>$uid, 'num'=>$num])->get();
+        $codeInfo = DB::table("prize_num")->where(['u_id' => $uid, 'num' => $num])->get();
         if ($codeInfo->isEmpty()) {
             return response()->json(['code' => 500, 'result' => 'fail3']);
         }
@@ -667,15 +681,15 @@ class Activity extends Controller
         }
 
         // 如果兑奖码已经被消费，提示已使用
-        if($codeInfo[0]->status == 2) {
+        if ($codeInfo[0]->status == 2) {
             $kf_name = DB::table('kf_user')->where('id', $codeInfo[0]->kf_id)->get('user');
-            return response()->json(['code' => 300, 'result' => $giftInfo.' 兑奖客服：'.$kf_name[0]->user]);
+            return response()->json(['code' => 300, 'result' => $giftInfo . ' 兑奖客服：' . $kf_name[0]->user]);
         }
 
         // 如果兑奖码存在且未被消费，兑奖吧亲
         if ($codeInfo[0]->status == 1) {
 
-            $result = DB::table('prize_num')->where(['u_id'=>$uid, 'num'=>$num])->update(['status'=>2, 'kf_id'=>$kf_id]);
+            $result = DB::table('prize_num')->where(['u_id' => $uid, 'num' => $num])->update(['status' => 2, 'kf_id' => $kf_id]);
             if (!$result) {
                 return response()->json(['code' => 500, 'result' => 'fail5']);
             }
@@ -686,18 +700,20 @@ class Activity extends Controller
 
 
     // 中奖统计后台
-    public function prizeAdmin() {
+    public function prizeAdmin()
+    {
         $online1 = Redis::get('one_online');
         $online2 = Redis::get('two_online');
         $online3 = Redis::get('three_online');
         $offline1 = Redis::get('one_offline');
         $offline2 = Redis::get('two_offline');
         $offline3 = Redis::get('three_offline');
-        return view('prize-admin')->with(['online1'=>$online1, 'online2'=>$online2, 'online3'=>$online3, 'offline1'=>$offline1, 'offline2'=>$offline2, 'offline3'=>$offline3]);
+        return view('prize-admin')->with(['online1' => $online1, 'online2' => $online2, 'online3' => $online3, 'offline1' => $offline1, 'offline2' => $offline2, 'offline3' => $offline3]);
     }
 
     // 用户协议
-    public function agreement() {
+    public function agreement()
+    {
         return view('agreement');
     }
 
