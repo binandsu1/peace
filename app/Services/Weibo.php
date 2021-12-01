@@ -84,7 +84,7 @@ class Weibo
         if(!$is){
             $data['u_id'] = $re['id'];
             $data['u_token'] = $token;
-            $data['type'] = $re['wb'];
+            $data['type'] = 'wb';
             $data['u_name'] = $re['name'];
             $data['u_image'] = $re['profile_image_url'];
             $data['api_token'] = md5($re['id']);
