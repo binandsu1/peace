@@ -48,7 +48,7 @@ class Weibo
         if($type == 'wx'){
 
             $skey = $this->getComponentAccessToken();
-            $url = "https://api.weixin.qq.com/sns/oauth2/component/access_token?appid=".self::$WxAppkey."&code=".$code."&grant_type=authorization_code&component_appid=".self::$WxComponentAppkey."&component_access_token=51_wzcRV4IflV-K_cscV56Dma0iI9ILYTvVClXsh5FD74q5qnLpo2by_ACt_0QfOVhVk8fSSKmKLB3O2YMm0yezMs273PHz0VIS8T4WJzdrR6Y8EgQPTGrWAaScqKHTv_vH04autgByYA4zmUNLKGFcACAQML";
+            $url = "https://api.weixin.qq.com/sns/oauth2/component/access_token?appid=".self::$WxAppkey."&code=".$code."&grant_type=authorization_code&component_appid=".self::$WxComponentAppkey."&component_access_token=".$skey;
             $response = self::$client->request('GET', $url);
             $body = $response->getBody()->getContents();
             $result = json_decode($body, TRUE);
