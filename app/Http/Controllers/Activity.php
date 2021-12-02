@@ -409,6 +409,9 @@ class Activity extends Controller
     public function phone(Request $request)
     {
 
+        $user = Auth::guard('api')->user();
+        $uid = $user->id;
+        $userinfo = Jiayu::find($uid);
         if ($request->method() == 'POST') {
 
             $image = $request->file('image');
@@ -416,14 +419,15 @@ class Activity extends Controller
             $imageName = time() . rand(10000, 99999) . '.' . $type;
             $path = 'images/' . date('Ymd');
             $image->move(public_path($path), $imageName);
-            $data['pic_name_old'] = $image->getClientOriginalName();
-            $data['pic_name'] = $imageName;
-            $data['type'] = $type;
-            $data['path'] = $path . "/" . $imageName;
-            UpPicJob::dispatchNow($data);
+            $userinfo->pic_name_old = $image->getClientOriginalName();
+            $userinfo->pic_name = $imageName;
+            $userinfo->type = $type;
+            $userinfo->path = $path . "/" . $imageName;
+            $userinfo->save();
+//            UpPicJob::dispatchNow($data);
         }
-        $image = Jiayu::orderBy('id', 'DESC')->first();
-        return view('phone', compact('image'));
+
+        return view('phone', compact('userinfo'));
     }
 
 

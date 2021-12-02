@@ -32,7 +32,7 @@
         <button type="submit" class="btn btn-success">开始上传</button>
     </form>
     {{$image->path}}
-   <img width="300px" height="300px" src="http://121.196.217.164/{{$image->path}}" class="img-rounded">
+   <img width="300px" height="300px" src="https://mssocial.una-ad.com/{{$userinfo->path}}" class="img-rounded">
 {{--  <img width="300px" height="300px" src="http://peace.local/{{$image->path}}" class="img-rounded">--}}
 </div>
 
