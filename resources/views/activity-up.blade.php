@@ -6,7 +6,7 @@
     {{--<meta name="viewport" content="width=device-width, initial-scale=1">--}}
     <meta name="viewport" content="width=device-width; initial-scale=1; maximum-scale=1; minimum-scale=1; user-scalable=no;">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>login</title>
+    <title>现在就耀，与现同框</title>
     <link rel="stylesheet" type="text/css" href="<?= asset('/jy/normalize.css') ?>">
     <link rel="stylesheet" type="text/css" href="<?= asset('/jy/demo.css') ?>">
     <!--必要样式-->
@@ -61,7 +61,7 @@
                         {{--@foreach($flagModels as $k=>$v)--}}
                            <div class="flag-unchecked"><li style="list-style: none"><input type="radio" name="flags" value="1"> 人生很贵，请别浪费，再见了拖延君，我的愿望是365天不加班</li></div>
                            <div class="flag-unchecked"><li style="list-style: none"><input type="radio" name="flags" value="2"> 工作是为了好好生活，生活是为了努力工作</li></div>
-                        <div class="flag-unchecked"><li style="list-style: none"><input type="radio" name="flags" value="3"> 去<s>美国微软总部</s>微软门店看一看</li></div>
+                           <div class="flag-unchecked"><li style="list-style: none"><input type="radio" name="flags" value="3"> 去<s>美国微软总部</s>微软门店看一看</li></div>
                            <div class="flag-unchecked"><li style="list-style: none"><input type="radio" name="flags" value="4"> 锻炼身体<s>像李现一样</s>量力而行</li></div>
                            <div class="flag-unchecked"><li style="list-style: none"><input type="radio" name="flags" value="5"> <s>找一个像李现一样的男朋友</s>一个人也要好好的</li></div>
                            <div class="flag-unchecked"><li style="list-style: none"><input type="radio" name="flags" value="6"> 做个有效率的人，拒绝熬夜！</li></div>
@@ -73,7 +73,7 @@
                         </div>
                     </div>
                     <br>
-                    <div class="mb2" onclick="set_flag()"><a type="button" class="act-but submit" style="color: #744323">立下Flag 参与抽奖</a></div>
+                    <div class="mb2" onclick="set_flag()"><a type="button" class="act-but submit" style="color: #744323">点 我 上 海 报</a></div>
                 </form>
             </div>
         </div>

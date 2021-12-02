@@ -109,17 +109,16 @@ class Activity extends Controller
         $way = $user->way;
         $api_token = $user->api_token;
 //        $flagModels = DB::table('flag_list')->where('status', 1)->get(['id', 'flag_model']);
-        $flagModels = self::getAllFlag();
         if (empty($way)) {
             DB::table('jiayus')->where('id', $uid)->update(['way' => 1]);
         } else {
             if ($way == 2) {
                 // 检测到选择了线下点亮的用户又点击线上点亮后，强制跳转回线下路线
-                return redirect()->route('activity-down', ['api_token' => $api_token])->with('flagModels', $flagModels);
+                return redirect()->route('activity-down', ['api_token' => $api_token]);
             }
         }
 
-        return view('activity-up')->with('flagModels', $flagModels);
+        return view('activity-up');
     }
 
     // 线下立下flag
