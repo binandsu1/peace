@@ -10,6 +10,53 @@
 <!--必要样式-->
 <link rel="stylesheet" type="text/css" href="<?= asset('/jy/component.css') ?>">
 	<style>
+		/*-webkit-min-device-pixel-ratio: 2*/
+
+		{{--@media only screen and (-webkit-min-device-pixel-ratio: 2) {--}}
+			{{--.demo-1 .large-header {--}}
+				{{--background-image: url("<?= asset('/jy/home-bg1.jpg')?>");--}}
+				{{--background-size: 20rem ;--}}
+				{{--width: 20rem;--}}
+				{{--height: 40rem;--}}
+				{{--background-repeat: no-repeat;--}}
+				{{--position: fixed;--}}
+			{{--}--}}
+
+			{{--.logo_box_home{--}}
+				{{--width: 20rem;--}}
+				{{--height: 30rem;--}}
+				{{--padding: 1rem;--}}
+				{{--position: absolute;--}}
+				{{--left: 50%;--}}
+				{{--top:50%;--}}
+				{{--margin-left: -10rem;--}}
+				{{--margin-top: 2rem;--}}
+				{{--font-size: 0.9rem;--}}
+			{{--}--}}
+		{{--}--}}
+
+		{{--@media only screen and (-webkit-min-device-pixel-ratio: 3) {--}}
+			{{--.demo-1 .large-header {--}}
+				{{--background-image: url("<?= asset('/jy/home-bg1.jpg')?>");--}}
+				{{--background-size: 20rem ;--}}
+				{{--width: 20rem;--}}
+				{{--height: 40rem;--}}
+				{{--background-repeat: no-repeat;--}}
+				{{--position: fixed;--}}
+			{{--}--}}
+
+			{{--.logo_box_home{--}}
+				{{--width: 20rem;--}}
+				{{--height: 30rem;--}}
+				{{--padding: 1rem;--}}
+				{{--position: absolute;--}}
+				{{--left: 50%;--}}
+				{{--top:50%;--}}
+				{{--margin-left: -10rem;--}}
+				{{--margin-top: 2rem;--}}
+				{{--font-size: 0.9rem;--}}
+			{{--}--}}
+		{{--}--}}
 
 		@media only screen and (min-width: 320px) {
 			.demo-1 .large-header {
