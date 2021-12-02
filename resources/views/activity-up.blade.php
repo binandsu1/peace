@@ -27,22 +27,90 @@
             background-color:transparent; /* 背景色透明 */
         }
 
+        .demo-1 .large-header {
+            background-image: url("<?= asset('/jy/flag-bg1.jpg')?>");
+            background-size: 100vw 100vh;
+            width: 100vw;
+            height: 100vh;
+            background-repeat: no-repeat;
+            position: fixed;
+        }
 
+        .flag-unchecked {
+            margin:2.4vw 1vh;
+            font-size: 1vw;
+            padding: 1vw;
+            border-radius: 50px;
+            color: #6e4531;
+        }
+        .logo_box_flag {
+            width: 90vw;
+            height: 100vh;
+            padding: 4vh;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            margin-left: -44vw;
+            margin-top: -20vh;
+        }
+
+        @media only screen and (max-height: 568px) {
             .demo-1 .large-header {
                 background-image: url("<?= asset('/jy/flag-bg1.jpg')?>");
-                background-size: 375px 812px;
-                width: 375px;
-                height: 812px;
+                background-size: 100vw 100vh;
+                width: 100vw;
+                height: 100vh;
                 background-repeat: no-repeat;
                 position: fixed;
             }
+
             .flag-unchecked {
-                margin:0.8rem 0;
-                font-size: 1rem;
+                margin:2vw 1vh;
+                font-size: 1vw;
                 padding: 0;
                 border-radius: 50px;
                 color: #6e4531;
             }
+            .logo_box_flag {
+                width: 90vw;
+                height: 100vh;
+                padding: 4vh;
+                position: fixed;
+                left: 50%;
+                top: 50%;
+                margin-left: -44vw;
+                margin-top: -20vh;
+            }
+        }
+
+        @media only screen and (min-width: 375px) and (min-height: 812px) {
+            .demo-1 .large-header {
+                background-image: url("<?= asset('/jy/flag-bg1.jpg')?>");
+                background-size: 100vw 100vh;
+                width: 100vw;
+                height: 100vh;
+                background-repeat: no-repeat;
+                position: fixed;
+            }
+
+            .flag-unchecked {
+                margin:2vw 1vh;
+                font-size: 4vw;
+                padding: 1vw;
+                border-radius: 50px;
+                color: #6e4531;
+            }
+            .logo_box_flag {
+                width: 90vw;
+                height: 100vh;
+                padding: 4vh;
+                position: fixed;
+                left: 50%;
+                top: 50%;
+                margin-left: -44vw;
+                margin-top: -20vh;
+            }
+        }
 
     </style>
 
@@ -55,7 +123,7 @@
     <div class="content">
         <div id="large-header" class="large-header">
             <canvas id="demo-canvas"></canvas>
-            <div class="logo_box">
+            <div class="logo_box_flag">
 
                 {{--<form class="form-horizontal" method="post" action="#">--}}
                     <div class="dropdown">
@@ -71,7 +139,7 @@
                            <div class="flag-unchecked"><li id="customize_li" style="list-style: none; display: none;"><input type="radio" name="flags" value="8"><span id="self_flag"></span></li></div>
                         {{--@endforeach--}}
 
-                        <div id="cus_div" class="input-group">
+                        <div id="cus_div" class="input-group flag-unchecked">
                             <input id="customize_flag" type="text" name="flag" class="form-control" placeholder="其他（限15字以内）" aria-describedby="basic-addon1">
                         </div>
                     </div>
