@@ -147,7 +147,7 @@
                         },
                         success: function (data) {
                             if(data.code == '200'){
-                                window.location="{{route('activity-index',['api_token'=>request('api_token'), 'type'=>request('type')])}}";
+                                window.location="{{route('activity-index-new',['api_token'=>request('api_token'), 'type'=>request('type')])}}";
                             }
                         },
 
