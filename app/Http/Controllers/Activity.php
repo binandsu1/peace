@@ -52,6 +52,7 @@ class Activity extends Controller
         $is_draw = $user->is_draw;
         $way = $user->way;
         $authorization = $user->authorization;
+        $type = $user->type;
 
         if ($authorization == 1) {
             return redirect()->route('authorization', ['api_token' => $api_token]);
@@ -79,7 +80,7 @@ class Activity extends Controller
             return redirect()->route('win-prize', ['api_token' => $api_token]);
         }
 
-        return view('activity-index');
+        return view('activity-index', ['type' => $type]);
     }
 
     // 授权页面
