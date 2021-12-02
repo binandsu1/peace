@@ -100,7 +100,7 @@
             }
             $.ajax({
                 type: "POST",
-                url: "{{ url('/api/mgc?api_token='.request('api_token')) }}",
+                url: "{{route('mgc',['api_token'=>request('api_token')])}}",
                 dataType: 'json',
                 header: {'X-CRSF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                 data: {
