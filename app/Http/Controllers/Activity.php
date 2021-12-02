@@ -80,7 +80,7 @@ class Activity extends Controller
             return redirect()->route('win-prize', ['api_token' => $api_token]);
         }
 
-        return view('activity-index', ['type' => $type]);
+        return view('activity-index');
     }
 
     // 授权页面

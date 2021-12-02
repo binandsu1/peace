@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>login</title>
+<title>现在就耀活动用户授权</title>
 <link rel="stylesheet" type="text/css" href="<?= asset('/jy/normalize.css') ?>">
 <link rel="stylesheet" type="text/css" href="<?= asset('/jy/demo.css') ?>">
 <!--必要样式-->
@@ -147,7 +147,7 @@
                         },
                         success: function (data) {
                             if(data.code == '200'){
-                                window.location="{{route('activity-index',['api_token'=>request('api_token')])}}";
+                                window.location="{{route('activity-index',['api_token'=>request('api_token'), 'type'=>request('type')])}}";
                             }
                         },
 
