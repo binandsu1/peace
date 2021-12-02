@@ -24,7 +24,6 @@ class Activity extends Controller
         $type = $request->input('type');
 
         $weiboSer = app('weibo');
-        $type = 'wb';
         if ($type == 'wx') {
             if (empty($code)) {
                 return $weiboSer->getCode('wx');
