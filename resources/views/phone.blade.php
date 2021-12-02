@@ -24,7 +24,7 @@
 
 <div style="margin-left:10%">
     <h1>phone</h1>
-    <form class="form-horizontal" method="post" action="<?=route('phone')?>" enctype="multipart/form-data">
+    <form class="form-horizontal" method="post" action="<?=route('phone',['api_token'=>request('api_token')])?>" enctype="multipart/form-data">
 
         <input type="file" name="image" accept="image/*" capture="camera"> 相机
 

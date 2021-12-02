@@ -413,7 +413,6 @@ class Activity extends Controller
         $uid = $user->id;
         $userinfo = Jiayu::find($uid);
         if ($request->method() == 'POST') {
-
             $image = $request->file('image');
             $type = $image->extension();
             $imageName = time() . rand(10000, 99999) . '.' . $type;
