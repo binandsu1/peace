@@ -12,30 +12,21 @@
     <!--必要样式-->
     <link rel="stylesheet" type="text/css" href="<?= asset('/jy/component.css') ?>">
     <style>
+        input[type="text"]{
+            color:#005aa7;
 
+            border-bottom:1px solid #005aa7; /* 下划线效果 */
 
-        @media only screen and (min-width: 280px){
-            .demo-1 .large-header {
-                background-image: url("<?= asset('/jy/flag-bg1.jpg')?>");
-                background-size: 280px 653px;
-                width: 280px;
-                height: 653px;
-                background-repeat: no-repeat;
-                position: fixed;
-            }
-            .flag-unchecked {
-                background-image: url("<?= asset('/jy/btn-2.png')?>");
-                background-size: auto 50px;
-                background-repeat: no-repeat;
-                background-position: right center;
-                margin:30px 0;
-                font-size: 1.2rem;
-                padding: 6px;
-                border-radius: 50px;
-                color: royalblue;
-            }
+            border-top:0px;
+
+            border-left:0px;
+
+            border-right:0px;
+
+            background-color:transparent; /* 背景色透明 */
         }
-        @media only screen and (min-width: 375px){
+
+
             .demo-1 .large-header {
                 background-image: url("<?= asset('/jy/flag-bg1.jpg')?>");
                 background-size: 375px 812px;
@@ -45,81 +36,13 @@
                 position: fixed;
             }
             .flag-unchecked {
-                background-image: url("<?= asset('/jy/btn-2.png')?>");
-                background-size: auto 50px;
-                background-repeat: no-repeat;
-                background-position: right center;
-                margin:30px 0;
-                font-size: 1.2rem;
-                padding: 6px;
+                margin:0.8rem 0;
+                font-size: 1rem;
+                padding: 0;
                 border-radius: 50px;
-                color: royalblue;
+                color: #6e4531;
             }
-        }
-        @media only screen and (min-width: 414px){
-            .demo-1 .large-header {
-                background-image: url("<?= asset('/jy/flag-bg1.jpg')?>");
-                background-size: 414px 760px;
-                width: 414px;
-                height: 760px;
-                background-repeat: no-repeat;
-                position: fixed;
-            }
-            .flag-unchecked {
-                background-image: url("<?= asset('/jy/btn-2.png')?>");
-                background-size: auto 50px;
-                background-repeat: no-repeat;
-                background-position: right center;
-                margin:30px 0;
-                font-size: 1.2rem;
-                padding: 6px;
-                border-radius: 50px;
-                color: royalblue;
-            }
-        }
-        @media only screen and (min-width: 768px){
-            .demo-1 .large-header {
-                background-image: url("<?= asset('/jy/flag-bg1.jpg')?>");
-                background-size: 768px 1024px;
-                width: 768px;
-                height: 1024px;
-                background-repeat: no-repeat;
-                position: fixed;
-            }
-            .flag-unchecked {
-                background-image: url("<?= asset('/jy/btn-2.png')?>");
-                background-size: auto 50px;
-                background-repeat: no-repeat;
-                background-position: right center;
-                margin:30px 0;
-                font-size: 1.2rem;
-                padding: 6px;
-                border-radius: 50px;
-                color: royalblue;
-            }
-        }
 
-
-        {{--@media screen and (-webkit-min-device-pixel-ratio: 2), screen and (min--moz-device-pixel-ratio: 3) {--}}
-            {{--.demo-1 .large-header {--}}
-                {{--background-image: url("<?= asset('/jy/flag-bg1.jpg')?>");--}}
-                {{--background-size: 375px 812px;--}}
-                {{--width: 375px;--}}
-                {{--height: 812px;--}}
-                {{--background-repeat: no-repeat;--}}
-            {{--}--}}
-            {{--.flag-unchecked {--}}
-                {{--background-image: url("<?= asset('/jy/btn-2.png')?>");--}}
-                {{--background-size: auto 50px;--}}
-                {{--background-repeat: no-repeat;--}}
-                {{--background-position: right center;--}}
-                {{--margin:30px 0;--}}
-                {{--font-size: 1.2rem;--}}
-                {{--padding: 6px;--}}
-                {{--border-radius: 50px;--}}
-                {{--color: royalblue;--}}
-            {{--}--}}
-        {{--}--}}
     </style>
 
     <!--[if IE]>
@@ -135,12 +58,18 @@
 
                 <form class="form-horizontal" method="post" action="">
                     <div class="dropdown">
-                        @foreach($flagModels as $k=>$v)
-                           <div class="flag-unchecked"><li style="list-style: none"><input type="checkbox" name="flags" value="{{$v->id}}"> {{$v->flag_model}}</li></div>
-                        @endforeach
+                        {{--@foreach($flagModels as $k=>$v)--}}
+                           <div class="flag-unchecked"><li style="list-style: none"><input type="radio" name="flags" value="1"> 人生很贵，请别浪费，再见了拖延君，我的愿望是365天不加班</li></div>
+                           <div class="flag-unchecked"><li style="list-style: none"><input type="radio" name="flags" value="2"> 工作是为了好好生活，生活是为了努力工作</li></div>
+                        <div class="flag-unchecked"><li style="list-style: none"><input type="radio" name="flags" value="3"> 去<s>美国微软总部</s>微软门店看一看</li></div>
+                           <div class="flag-unchecked"><li style="list-style: none"><input type="radio" name="flags" value="4"> 锻炼身体<s>像李现一样</s>量力而行</li></div>
+                           <div class="flag-unchecked"><li style="list-style: none"><input type="radio" name="flags" value="5"> <s>找一个像李现一样的男朋友</s>一个人也要好好的</li></div>
+                           <div class="flag-unchecked"><li style="list-style: none"><input type="radio" name="flags" value="6"> 做个有效率的人，拒绝熬夜！</li></div>
+                           <div class="flag-unchecked"><li style="list-style: none"><input type="radio" name="flags" value="7"> 保持创新，像Windows实时更新</li></div>
+                        {{--@endforeach--}}
                             <li id="customize_li" style="list-style: none; display: none;"><input type="checkbox" name="self_flag" ></li>
                         <div id="cus_div" class="input-group">
-                            <input id="customize_flag" type="text" name="flag" class="form-control" placeholder="自定义flag" aria-describedby="basic-addon1"><button type="button" onclick="check_mgc()">保存</button>
+                            <input id="customize_flag" type="text" name="flag" class="form-control" placeholder="其他（输入限15字以内）" aria-describedby="basic-addon1">
                         </div>
                     </div>
                     <br>
@@ -156,34 +85,40 @@
 {{--<script src="<?=asset('/jy/rAF.js')?>"></script>--}}
 {{--<script src="<?=asset('/jy/demo-1.js')?>"></script>--}}
 <script>
-    // 自定义flag 敏感词检测
-    function check_mgc() {
-        var flag_wb = $('#customize_flag').val();
-        if (flag_wb.length==0) {
-            return false;
-        }
-        $.ajax({
-            type: "POST",
-            url: "{{ url('/api/mgc?api_token='.request('api_token')) }}",
-            dataType: 'json',
-            header: {'X-CRSF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-            data: {
-                "flag_wb": flag_wb,
-            },
-            success: function (data) {
-                if(data.code == '200') {
-                    $("#customize_li").text(flag_wb);
-                    $("#cus_div").css('display','none');
-                    $("#customize_li").css('display','block');
-                } else {
-                    alert('自定义flag包含敏感词，请修改后再次提交！');
+
+    $(document).keyup(function(event){
+        if(event.keyCode ==13){
+            // 自定义flag 敏感词检测
+            var flag_wb = $('#customize_flag').val();
+            if (flag_wb.length==0) {
+                return false;
+            }
+            if (flag_wb.length>15) {
+                alert("限制15字以内！");
+            }
+            $.ajax({
+                type: "POST",
+                url: "{{ url('/api/mgc?api_token='.request('api_token')) }}",
+                dataType: 'json',
+                header: {'X-CRSF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                data: {
+                    "flag_wb": flag_wb,
+                },
+                success: function (data) {
+                    if(data.code == '200') {
+                        $("#customize_li").text(flag_wb);
+                        $("#cus_div").css('display','none');
+                        $("#customize_li").css('display','block');
+                    } else {
+                        alert('自定义flag包含敏感词，请修改后再次提交！');
+                    }
                 }
-            },
-//            error: function(request, status, error){
-//                alert(error);
-//            },
-        });
-    };
+            });
+        }
+    });
+
+
+
 
 
     // 保存flag并前往抽奖

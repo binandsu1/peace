@@ -39,6 +39,8 @@ class Activity extends Controller
             $api_token = $weiboSer->getUserInfo($tokenArr['access_token'], $tokenArr['uid']);
         }
 
+        //todo 测试用，正式环境删除
+//        $api_token = "89da839bfa90025570f9a3a23a0d91d8";
         return redirect()->route('activity-index-new', ['api_token' => $api_token]);
     }
 
@@ -49,6 +51,12 @@ class Activity extends Controller
         $api_token = $user->api_token;
         $is_draw = $user->is_draw;
         $way = $user->way;
+        $authorization = $user->authorization;
+
+        if ($authorization == 1) {
+            return redirect()->route('authorization', ['api_token' => $api_token]);
+        }
+
         if ($is_draw == 2 && $way == 2) {
 
             $uid = $user->id;
@@ -74,6 +82,24 @@ class Activity extends Controller
         return view('activity-index');
     }
 
+    // 授权页面
+    public function authorization(Request $request) {
+        $user = Auth::guard('api')->user();
+        $uid = $user->id;
+//        $api_token = $user->api_token;
+
+        $code = $request->input("code");
+        if (empty($code)) {
+            return view('authorization');
+        }
+
+        $result = DB::table('jiayus')->where('id', $uid)->update(['authorization' => 2]);
+        if($result) {
+            return response()->json(['code' => 200]);
+        }
+
+    }
+
     // 线上立下flag
     public function activityUp()
     {
@@ -81,7 +107,8 @@ class Activity extends Controller
         $uid = $user->id;
         $way = $user->way;
         $api_token = $user->api_token;
-        $flagModels = DB::table('flag_list')->where('status', 1)->get(['id', 'flag_model']);
+//        $flagModels = DB::table('flag_list')->where('status', 1)->get(['id', 'flag_model']);
+        $flagModels = self::getAllFlag();
         if (empty($way)) {
             DB::table('jiayus')->where('id', $uid)->update(['way' => 1]);
         } else {
@@ -510,53 +537,8 @@ class Activity extends Controller
         tt::dispatch($data);
     }
 
-    // page_status 对照
-    public function page_status_list($page_status)
-    {
-        switch ($page_status) {
-            case 1:
-                // 首页
-//                return "";
-                break;
-            case 11: //10+ 均为线上点亮后的状态,可根据具体开发需要增加状态节点
-                // 线上点亮 立flag页面
-                return "activity-up";
-                break;
-            case 12:
-                // 首次进入大转盘页面
-                return "lucky-draw";
-                break;
-            case 13:
-                // 多次进入大转盘页面
-                return "lucky-draw";
-                break;
-            case 14:
-                // 奖品展示页面
-                return "win-prize";
-                break;
-            case 15:
-                // 点亮个人海报页面
-                return "";
-                break;
-            case 21: // 20+ 均为线下点亮后的状态,可根据具体开发需要增加状态节点
-                //线下点亮立flag
-                break;
-            case 22:
-                // 首次进入大转盘
-                break;
-            case 23:
-                // 多次进入大转盘
-                break;
-            case 24:
-                // 线下门店地图展示
-                break;
-            default:
-                // 无效状态
-                break;
-        }
-    }
 
-    // flag 模板
+    // todo::修改完poster方法后废弃
     public function getFlagModel($id)
     {
         $flag = "";
@@ -584,6 +566,7 @@ class Activity extends Controller
         }
         return $flag;
     }
+
 
     public function ss()
     {

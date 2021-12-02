@@ -27,15 +27,15 @@
                         switch($v->gift_id) {
                             case 1:
                                 echo "<h3>获得 上海报机会！</h3>";
-                                echo "<div class=\"mb2\"><a class=\"act-but submit\" onclick=\"winner1()\" style=\"color: #FFFFFF\">拍照上传</a></div><br>";
+                                echo "<div class=\"mb2\"><a class=\"act-but submit\" onclick=\"winner1()\" >拍 照 上 传</a></div><br>";
                                 break;
                             case 2:
                                 echo "<h3>获得 ING联名袜子</h3>";
-                                echo "<div class=\"mb2\"><a class=\"act-but submit\" onclick=\"winner2()\" style=\"color: #FFFFFF\">点亮个人海报</a></div><br>";
+                                echo "<div class=\"mb2\"><a class=\"act-but submit\" onclick=\"winner2()\" >立 即 领 取</a></div><br>";
                                 break;
                             case 3:
                                 echo "<h3>获得 ING联名马克杯</h3>";
-                                echo "<div class=\"mb2\"><a class=\"act-but submit\" onclick=\"winner2()\" style=\"color: #FFFFFF\">点亮个人海报</a></div><br>";
+                                echo "<div class=\"mb2\"><a class=\"act-but submit\" onclick=\"winner2()\" >立 即 领 取</a></div><br>";
                                 break;
                         }
 
@@ -66,7 +66,26 @@
 
     function winner2() {
         // TODO::演示结束之后，改为ajax请求
-        window.location="{{route('poster2',['api_token'=>request('api_token')])}}";
+
+        $.ajax({
+            type: "POST",
+            url: "{{route('set-flag',['api_token'=>request('api_token')])}}",
+            dataType: 'json',
+            header: {'X-CRSF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            data: {
+                "customize_flag": flag_wb,
+                "model_ids": chk_value,
+            },
+            success: function (data) {
+                if(data.code == '200'){
+                    window.location="{{route('poster2',['api_token'=>request('api_token')])}}";
+                } else {
+
+                }
+            }
+        });
+
+
     }
 </script>
 </body>

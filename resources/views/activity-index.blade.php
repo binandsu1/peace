@@ -14,10 +14,10 @@
 
 		{{--@media only screen and (-webkit-min-device-pixel-ratio: 2) {--}}
 			{{--.demo-1 .large-header {--}}
-				{{--background-image: url("<?= asset('/jy/home-bg1.jpg')?>");--}}
-				{{--background-size: 20rem ;--}}
-				{{--width: 20rem;--}}
-				{{--height: 40rem;--}}
+				{{--background-image: url("<?= asset('/jy/home-1280.jpg')?>");--}}
+				{{--/*background-size: 20rem ;*/--}}
+				{{--/*width: 20rem;*/--}}
+				{{--/*height: 40rem;*/--}}
 				{{--background-repeat: no-repeat;--}}
 				{{--position: fixed;--}}
 			{{--}--}}
@@ -37,6 +37,30 @@
 
 		{{--@media only screen and (-webkit-min-device-pixel-ratio: 3) {--}}
 			{{--.demo-1 .large-header {--}}
+				{{--background-image: url("<?= asset('/jy/home-1280.jpg')?>");--}}
+				{{--/*background-size: 20rem ;*/--}}
+				{{--width: 25rem;--}}
+				{{--height: 60rem;--}}
+				{{--background-repeat: no-repeat;--}}
+				{{--position: fixed;--}}
+			{{--}--}}
+
+			{{--.logo_box_home{--}}
+				{{--width: 20rem;--}}
+				{{--height: 30rem;--}}
+				{{--padding: 1rem;--}}
+				{{--position: absolute;--}}
+				{{--left: 50%;--}}
+				{{--top:50%;--}}
+				{{--margin-left: -10rem;--}}
+				{{--margin-top: 2rem;--}}
+				{{--font-size: 0.9rem;--}}
+			{{--}--}}
+		{{--}--}}
+
+		{{--@media only screen and (min-width: 320px) {--}}
+			{{--.demo-1 .large-header {--}}
+				{{--background-image: url("<?= asset('/jy/home-1280.jpg')?>");--}}
 				{{--background-image: url("<?= asset('/jy/home-bg1.jpg')?>");--}}
 				{{--background-size: 20rem ;--}}
 				{{--width: 20rem;--}}
@@ -58,54 +82,33 @@
 			{{--}--}}
 		{{--}--}}
 
-		@media only screen and (min-width: 320px) {
-			.demo-1 .large-header {
-				background-image: url("<?= asset('/jy/home-bg1.jpg')?>");
-				background-size: 20rem ;
-				width: 20rem;
-				height: 40rem;
-				background-repeat: no-repeat;
-				position: fixed;
-			}
+		{{--@media only screen and (min-width: 360px) {--}}
+			{{--.demo-1 .large-header {--}}
+				{{--background-image: url("<?= asset('/jy/home-bg1.jpg')?>");--}}
+				{{--background-image: url("<?= asset('/jy/home-1280.jpg')?>");--}}
+				{{--background-size: 22.5rem ;--}}
+				{{--width: 22.5rem;--}}
+				{{--/*height: 48rem;*/--}}
+				{{--background-repeat: no-repeat;--}}
+				{{--position: fixed;--}}
+			{{--}--}}
 
-			.logo_box_home{
-				width: 20rem;
-				height: 30rem;
-				padding: 1rem;
-				position: absolute;
-				left: 50%;
-				top:50%;
-				margin-left: -10rem;
-				margin-top: 2rem;
-				font-size: 0.9rem;
-			}
-		}
-
-		@media only screen and (min-width: 360px) {
-			.demo-1 .large-header {
-				background-image: url("<?= asset('/jy/home-bg1.jpg')?>");
-				background-size: 22.5rem ;
-				width: 22.5rem;
-				height: 48rem;
-				background-repeat: no-repeat;
-				position: fixed;
-			}
-
-			.logo_box_home{
-				width: 20rem;
-				height: 30rem;
-				padding: 1rem;
-				position: absolute;
-				left: 50%;
-				top:50%;
-				margin-left: -10rem;
-				margin-top: 2rem;
-				font-size: 0.9rem;
-			}
-		}
+			{{--.logo_box_home{--}}
+				{{--width: 20rem;--}}
+				{{--height: 30rem;--}}
+				{{--padding: 1rem;--}}
+				{{--position: absolute;--}}
+				{{--left: 50%;--}}
+				{{--top:50%;--}}
+				{{--margin-left: -10rem;--}}
+				{{--margin-top: 2rem;--}}
+				{{--font-size: 0.9rem;--}}
+			{{--}--}}
+		{{--}--}}
 
 		@media only screen and (min-width: 375px) and (min-height: 667px){
 			.demo-1 .large-header {
+				{{--background-image: url("<?= asset('/jy/home-1280.jpg')?>");--}}
 				background-image: url("<?= asset('/jy/home-bg1.jpg')?>");
 				background-size: 375px ;
 				width: 375px;
@@ -129,6 +132,7 @@
 		@media only screen and (min-width: 375px) and (min-height: 812px){
 			.demo-1 .large-header {
 				background-image: url("<?= asset('/jy/home-bg1.jpg')?>");
+				{{--background-image: url("<?= asset('/jy/home-1280.jpg')?>");--}}
 				background-size: 24rem ;
 				width: 24rem;
 				height: 51rem;
@@ -148,37 +152,38 @@
 			}
 
 		}
-		@media only screen and (min-width: 414px){
-			.demo-1 .large-header {
-				background-image: url("<?= asset('/jy/home-bg1.jpg')?>");
-				background-size: 414px ;
-				width: 414px;
-				height: 820px;
-				background-repeat: no-repeat;
-				position: fixed;
-			}
+		{{--@media only screen and (min-width: 414px){--}}
+			{{--.demo-1 .large-header {--}}
+				{{--background-image: url("<?= asset('/jy/home-bg1.jpg')?>");--}}
+				{{--background-image: url("<?= asset('/jy/home-1280.jpg')?>");--}}
+				{{--background-size: 414px ;--}}
+				{{--width: 414px;--}}
+				{{--height: 820px;--}}
+				{{--background-repeat: no-repeat;--}}
+				{{--position: fixed;--}}
+			{{--}--}}
 
-			.logo_box_home{
-				width: 380px;
-				height: 800px;
-				padding: 35px;
-				position: absolute;
-				left: 50%;
-				top:50%;
-				margin-left: -190px;
-				margin-top: 100px;
-			}
-		}
-		@media only screen and (min-width: 768px){
-			.demo-1 .large-header {
-				background-image: url("<?= asset('/jy/home-bg1.jpg')?>");
-				background-size: 768px 1024px;
-				width: 768px;
-				height: 1024px;
-				background-repeat: no-repeat;
-				position: fixed;
-			}
-		}
+			{{--.logo_box_home{--}}
+				{{--width: 380px;--}}
+				{{--height: 800px;--}}
+				{{--padding: 35px;--}}
+				{{--position: absolute;--}}
+				{{--left: 50%;--}}
+				{{--top:50%;--}}
+				{{--margin-left: -190px;--}}
+				{{--margin-top: 100px;--}}
+			{{--}--}}
+		{{--}--}}
+		{{--@media only screen and (min-width: 768px){--}}
+			{{--.demo-1 .large-header {--}}
+				{{--background-image: url("<?= asset('/jy/home-bg1.jpg')?>");--}}
+				{{--background-size: 768px 1024px;--}}
+				{{--width: 768px;--}}
+				{{--height: 1024px;--}}
+				{{--background-repeat: no-repeat;--}}
+				{{--position: fixed;--}}
+			{{--}--}}
+		{{--}--}}
 	</style>
 
 
@@ -195,7 +200,6 @@
 						<form action="#" name="f" method="post">
 							<div class="mb2"><a class="act-but submit" onclick="up()" style="color: #744323">线 上 点 亮</a></div>
 							<div class="mb2"><a class="act-but2 submit" onclick="down()" style="color: #744323">线 下 点 亮</a></div>
-							<input id="sqbtn" type="checkbox" style="font-size: 0.8rem"> 我已阅读并同意<a style="color:red;" href="{{route('agreement',['api_token'=>request('api_token')])}}">《用户协议与隐私条款》</a>
 						</form>
 					</div>
 				</div>
@@ -214,21 +218,11 @@
 
             function up() {
 
-                if (!$("#sqbtn").prop('checked')) {
-                    alert("请先阅读并同意《用户协议与隐私条款》");
-                    return false;
-                }
-
 				window.location="{{route('activity-up',['api_token'=>request('api_token')])}}";
 
 			}
 
 			function down() {
-
-                if (!$("#sqbtn").prop('checked')) {
-                    alert("请先阅读并同意《用户协议与隐私条款》");
-                    return false;
-                }
 
                 window.location="{{route('activity-down',['api_token'=>request('api_token')])}}";
 
