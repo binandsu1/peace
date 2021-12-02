@@ -13,7 +13,8 @@
     <link rel="stylesheet" type="text/css" href="<?= asset('/jy/component.css') ?>">
     <style>
         input[type="text"]{
-            color:#005aa7;
+            color:#6e4531;
+            border-radius: 0;
 
             border-bottom:1px solid #005aa7; /* 下划线效果 */
 
@@ -66,10 +67,11 @@
                            <div class="flag-unchecked"><li style="list-style: none"><input type="radio" name="flags" value="5"> <s>找一个像李现一样的男朋友</s>一个人也要好好的</li></div>
                            <div class="flag-unchecked"><li style="list-style: none"><input type="radio" name="flags" value="6"> 做个有效率的人，拒绝熬夜！</li></div>
                            <div class="flag-unchecked"><li style="list-style: none"><input type="radio" name="flags" value="7"> 保持创新，像Windows实时更新</li></div>
+                           <div class="flag-unchecked"><li id="customize_li" style="list-style: none; display: none;"><input id="self_flag" type="radio" name="flags" value="8"></li></div>
                         {{--@endforeach--}}
-                            <li id="customize_li" style="list-style: none; display: none;"><input type="checkbox" name="self_flag" ></li>
+
                         <div id="cus_div" class="input-group">
-                            <input id="customize_flag" type="text" name="flag" class="form-control" placeholder="其他（输入限15字以内）" aria-describedby="basic-addon1">
+                            <input id="customize_flag" type="text" name="flag" class="form-control" placeholder="其他（限15字以内）" aria-describedby="basic-addon1">
                         </div>
                     </div>
                     <br>
@@ -94,7 +96,7 @@
                 return false;
             }
             if (flag_wb.length>15) {
-                alert("限制15字以内！");
+                alert("字数超限！");
             }
             $.ajax({
                 type: "POST",
@@ -106,7 +108,7 @@
                 },
                 success: function (data) {
                     if(data.code == '200') {
-                        $("#customize_li").text(flag_wb);
+                        $("#self_flag").text(flag_wb);
                         $("#cus_div").css('display','none');
                         $("#customize_li").css('display','block');
                     } else {
