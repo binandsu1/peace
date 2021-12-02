@@ -60,6 +60,7 @@
                 {{--<form class="form-horizontal" method="post" action="#">--}}
                     <div class="dropdown">
                         {{--@foreach($flagModels as $k=>$v)--}}
+
                            <div class="flag-unchecked"><li style="list-style: none"><input type="radio" name="flags" value="1"> 人生很贵，请别浪费，再见了拖延君，我的愿望是365天不加班</li></div>
                            <div class="flag-unchecked"><li style="list-style: none"><input type="radio" name="flags" value="2"> 工作是为了好好生活，生活是为了努力工作</li></div>
                            <div class="flag-unchecked"><li style="list-style: none"><input type="radio" name="flags" value="3"> 去<s>美国微软总部</s>微软门店看一看</li></div>
@@ -125,8 +126,12 @@
 
     // 保存flag并前往抽奖
     function set_flag() {
+        var flag_id = $("input[name='flags']:checked").val();
 
-        var flag_id = $("[name='flags']").val();
+        if (flag_id == undefined) {
+            alert("许下一个属于你的新年新愿吧！");
+            return false;
+        }
 
         $.ajax({
             type: "POST",
@@ -140,7 +145,7 @@
                 if(data.code == '200'){
                     window.location="{{route('lucky-draw',['api_token'=>request('api_token')])}}";
                 } else {
-                    alert("许愿次数太多就不灵了！")
+                    alert("许愿次数太多就不灵了！");
                 }
             }
         });

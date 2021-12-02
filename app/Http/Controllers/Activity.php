@@ -462,7 +462,7 @@ class Activity extends Controller
         $model_id = $request->input('flag_id');
         if (empty($flag_id)) {
             if (!empty($model_id) && is_numeric($model_id)) {
-                DB::table("jiayus")->where('uid', $uid)->update(['flag_id'=>$model_id]);
+                DB::table("jiayus")->where('id', $uid)->update(['flag_id'=>$model_id]);
                 return response()->json(['code' => 200]);
             } else {
                 return response()->json(['code' => 300]); // 参数格式错误
