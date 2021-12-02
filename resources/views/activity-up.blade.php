@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     {{--<meta name="viewport" content="width=device-width, initial-scale=1">--}}
-    <meta name="viewport" content="width=device-width; initial-scale=1; maximum-scale=1; minimum-scale=1; user-scalable=no;">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>现在就耀，与现同框</title>
     <link rel="stylesheet" type="text/css" href="<?= asset('/jy/normalize.css') ?>">
@@ -57,7 +57,7 @@
             <canvas id="demo-canvas"></canvas>
             <div class="logo_box">
 
-                <form class="form-horizontal" method="post" action="">
+                {{--<form class="form-horizontal" method="post" action="#">--}}
                     <div class="dropdown">
                         {{--@foreach($flagModels as $k=>$v)--}}
                            <div class="flag-unchecked"><li style="list-style: none"><input type="radio" name="flags" value="1"> 人生很贵，请别浪费，再见了拖延君，我的愿望是365天不加班</li></div>
@@ -67,7 +67,7 @@
                            <div class="flag-unchecked"><li style="list-style: none"><input type="radio" name="flags" value="5"> <s>找一个像李现一样的男朋友</s>一个人也要好好的</li></div>
                            <div class="flag-unchecked"><li style="list-style: none"><input type="radio" name="flags" value="6"> 做个有效率的人，拒绝熬夜！</li></div>
                            <div class="flag-unchecked"><li style="list-style: none"><input type="radio" name="flags" value="7"> 保持创新，像Windows实时更新</li></div>
-                           <div class="flag-unchecked"><li id="customize_li" style="list-style: none; display: none;"><input id="self_flag" type="radio" name="flags" value="8"></li></div>
+                           <div class="flag-unchecked"><li id="customize_li" style="list-style: none; display: none;"><input type="radio" name="flags" value="8"><span id="self_flag"></span></li></div>
                         {{--@endforeach--}}
 
                         <div id="cus_div" class="input-group">
@@ -76,7 +76,7 @@
                     </div>
                     <br>
                     <div class="mb2" onclick="set_flag()"><a type="button" class="act-but submit" style="color: #744323">点 我 上 海 报</a></div>
-                </form>
+                {{--</form>--}}
             </div>
         </div>
     </div>
@@ -87,8 +87,8 @@
 {{--<script src="<?=asset('/jy/rAF.js')?>"></script>--}}
 {{--<script src="<?=asset('/jy/demo-1.js')?>"></script>--}}
 <script>
-
     $(document).keyup(function(event){
+
         if(event.keyCode ==13){
             // 自定义flag 敏感词检测
             var flag_wb = $('#customize_flag').val();
@@ -112,7 +112,7 @@
                         $("#cus_div").css('display','none');
                         $("#customize_li").css('display','block');
                     } else {
-                        alert('自定义flag包含敏感词，请修改后再次提交！');
+                        alert('请勿输入敏感词，请修改后再次提交！');
                     }
                 }
             });
@@ -126,38 +126,23 @@
     // 保存flag并前往抽奖
     function set_flag() {
 
-        var flag_wb = $('#customize_li').text();
-        var chk_value ='';
-        $('input[name="flags"]:checked').each(function(){
-            chk_value += $(this).val()+',';
-        });
+        var flag_id = $("[name='flags']").val();
 
-        if (flag_wb.length==0) {
-            if (chk_value.length==0) {
-                alert( '您还没有选择任何内容！');
-                return false;
-            }
-        }
-//console.log(chk_value);return false;
         $.ajax({
             type: "POST",
             url: "{{route('set-flag',['api_token'=>request('api_token')])}}",
             dataType: 'json',
             header: {'X-CRSF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             data: {
-                "customize_flag": flag_wb,
-                "model_ids": chk_value,
+                "flag_id": flag_id
             },
             success: function (data) {
                 if(data.code == '200'){
                     window.location="{{route('lucky-draw',['api_token'=>request('api_token')])}}";
                 } else {
-
+                    alert("许愿次数太多就不灵了！")
                 }
-            },
-//            error: function(request, status, error){
-//                alert(error);
-//            },
+            }
         });
     };
 

@@ -429,15 +429,24 @@ class Activity extends Controller
 
     public function mgc(Request $request)
     {
+        $user = Auth::guard('api')->user();
+        $uid = $user->id;
         $ms = app('mgc');
         $content = $request->input('flag_wb');
         $bad_word = $ms::getBadWord($content);
-//        $bad_word = "";
         if (!empty($bad_word)) {
             return response()->json(['status' => 'fail', 'code' => 500, 'error' => '包含敏感词',]);
         } else {
+            $result = DB::table('customize_flag')->where("uid", $uid)->get();
+            if ($result->isEmpty()) {
+                DB::table('customize_flag')->insert(['uid' => $uid, 'customize_flag' => $content]);
+            } else {
+                DB::table("customize_flag")->where('uid', $uid)->update(['customize_flag'=>$content]);
+            }
+
             return response()->json(['status' => 'success', 'code' => 200, 'message' => '合规']);
         }
+
     }
 
     // 保存flag
@@ -445,24 +454,19 @@ class Activity extends Controller
     {
         $user = Auth::guard('api')->user();
         $uid = $user->id;
+        $flag_id = $user->flag_id;
 
-        $customize_flag = $request->input('customize_flag', '');
-        $model_ids = $request->input('model_ids', '');
-
-        if (!empty($customize_flag)) {
-            DB::table('customize_flag')->insert(['uid' => $uid, 'customize_flag' => $customize_flag]);
-        }
-
-        if (!empty($model_ids)) {
-            $model_ids = rtrim($model_ids, ',');
-            $id_arr = explode(',', $model_ids);
-            foreach ($id_arr as $k => $v) {
-                DB::table('user_to_flag')->insert(['uid' => $uid, 'flag_id' => $v]);
+        $model_id = $request->input('flag_id');
+        if (empty($flag_id)) {
+            if (!empty($model_id) && is_numeric($model_id)) {
+                DB::table("jiayus")->where('uid', $uid)->update(['flag_id'=>$model_id]);
+                return response()->json(['code' => 200]);
+            } else {
+                return response()->json(['code' => 300]); // 参数格式错误
             }
+        } else {
+            return response()->json(['code' => 500]); // 已经传过一次了，不允许二次上传
         }
-
-        Redis::set('page_status_' . $uid, '12');
-        return response()->json(['code' => 200]);
 
     }
 
