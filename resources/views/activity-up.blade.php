@@ -66,94 +66,6 @@
             margin-left: -44vw;
             margin-top: -22vh;
         }
-
-        {{--@media only screen and (max-height: 568px) {--}}
-            {{--.demo-1 .large-header {--}}
-                {{--background-image: url("<?= asset('/jy/flag-bg1.jpg')?>");--}}
-                {{--background-size: 100vw 100vh;--}}
-                {{--width: 100vw;--}}
-                {{--height: 100vh;--}}
-                {{--background-repeat: no-repeat;--}}
-                {{--position: fixed;--}}
-            {{--}--}}
-
-            {{--.flag-unchecked {--}}
-                {{--margin:0.5rem 1rem;--}}
-                {{--font-size: 0.5rem;--}}
-                {{--padding: 0;--}}
-                {{--border-radius: 50px;--}}
-                {{--color: #6e4531;--}}
-            {{--}--}}
-            {{--.logo_box_flag {--}}
-                {{--width: 90vw;--}}
-                {{--height: 50vh;--}}
-                {{--padding: 4vh;--}}
-                {{--position: fixed;--}}
-                {{--left: 50%;--}}
-                {{--top: 50%;--}}
-                {{--margin-left: -46vw;--}}
-                {{--margin-top: -22vh;--}}
-            {{--}--}}
-        {{--}--}}
-
-        {{--@media only screen and (min-width: 375px) and (min-height: 812px) {--}}
-            {{--.demo-1 .large-header {--}}
-                {{--background-image: url("<?= asset('/jy/flag-bg1.jpg')?>");--}}
-                {{--background-size: 100vw 100vh;--}}
-                {{--width: 100vw;--}}
-                {{--height: 100vh;--}}
-                {{--background-repeat: no-repeat;--}}
-                {{--position: fixed;--}}
-            {{--}--}}
-
-            {{--.flag-unchecked {--}}
-                {{--margin:1rem 1rem;--}}
-                {{--font-size: 0.9rem;--}}
-                {{--padding: 0;--}}
-                {{--border-radius: 50px;--}}
-                {{--color: #6e4531;--}}
-            {{--}--}}
-            {{--.logo_box_flag {--}}
-                {{--width: 90vw;--}}
-                {{--height: 100vh;--}}
-                {{--padding: 4vh;--}}
-                {{--position: fixed;--}}
-                {{--left: 50%;--}}
-                {{--top: 50%;--}}
-                {{--margin-left: -44vw;--}}
-                {{--margin-top: -20vh;--}}
-            {{--}--}}
-        {{--}--}}
-
-        {{--@media only screen and (min-width: 414px) and (min-height: 812px) {--}}
-            {{--.demo-1 .large-header {--}}
-                {{--background-image: url("<?= asset('/jy/flag-bg1.jpg')?>");--}}
-                {{--background-size: 100vw 100vh;--}}
-                {{--width: 100vw;--}}
-                {{--height: 100vh;--}}
-                {{--background-repeat: no-repeat;--}}
-                {{--position: fixed;--}}
-            {{--}--}}
-
-            {{--.flag-unchecked {--}}
-                {{--margin:1rem 1rem;--}}
-                {{--font-size: 0.9rem;--}}
-                {{--padding: 0;--}}
-                {{--border-radius: 50px;--}}
-                {{--color: #6e4531;--}}
-            {{--}--}}
-            {{--.logo_box_flag {--}}
-                {{--width: 90vw;--}}
-                {{--height: 50vh;--}}
-                {{--padding: 4vh;--}}
-                {{--position: fixed;--}}
-                {{--left: 50%;--}}
-                {{--top: 50%;--}}
-                {{--margin-left: -44vw;--}}
-                {{--margin-top: -20vh;--}}
-            {{--}--}}
-        {{--}--}}
-
     </style>
 
     <!--[if IE]>
@@ -166,37 +78,26 @@
         <div id="large-header" class="large-header">
             <div class="logo_box_flag">
 
-                {{--<form class="form-horizontal" method="post" action="#">--}}
+                   <div class="flag-unchecked"><li style="list-style: none"><input type="radio" name="flags" value="1"> 人生很贵，请别浪费，再见了拖延君，我的愿望是365天不加班</li></div>
+                   <div class="flag-unchecked"><li style="list-style: none"><input type="radio" name="flags" value="2"> 工作是为了好好生活，生活是为了努力工作</li></div>
+                   <div class="flag-unchecked"><li style="list-style: none"><input type="radio" name="flags" value="3"> 去<s>美国微软总部</s>微软门店看一看</li></div>
+                   <div class="flag-unchecked"><li style="list-style: none"><input type="radio" name="flags" value="4"> 锻炼身体<s>像李现一样</s>量力而行</li></div>
+                   <div class="flag-unchecked"><li style="list-style: none"><input type="radio" name="flags" value="5"> <s>找一个像李现一样的男朋友</s>一个人也要好好的</li></div>
+                   <div class="flag-unchecked"><li style="list-style: none"><input type="radio" name="flags" value="6"> 做个有效率的人，拒绝熬夜！</li></div>
+                   <div class="flag-unchecked"><li style="list-style: none"><input type="radio" name="flags" value="7"> 保持创新，像Windows实时更新</li></div>
+                   <div class="flag-unchecked"><li id="customize_li" style="list-style: none; display: none;"><input type="radio" name="flags" value="8"><span id="self_flag"></span></li></div>
 
-                        {{--@foreach($flagModels as $k=>$v)--}}
+                    <div id="cus_div" class="input-group flag-unchecked">
+                        <input id="customize_flag" type="text" name="flag" class="form-control" placeholder="其他（限15字以内）" aria-describedby="basic-addon1">
+                    </div>
 
-                           <div class="flag-unchecked"><li style="list-style: none"><input type="radio" name="flags" value="1"> 人生很贵，请别浪费，再见了拖延君，我的愿望是365天不加班</li></div>
-                           <div class="flag-unchecked"><li style="list-style: none"><input type="radio" name="flags" value="2"> 工作是为了好好生活，生活是为了努力工作</li></div>
-                           <div class="flag-unchecked"><li style="list-style: none"><input type="radio" name="flags" value="3"> 去<s>美国微软总部</s>微软门店看一看</li></div>
-                           <div class="flag-unchecked"><li style="list-style: none"><input type="radio" name="flags" value="4"> 锻炼身体<s>像李现一样</s>量力而行</li></div>
-                           <div class="flag-unchecked"><li style="list-style: none"><input type="radio" name="flags" value="5"> <s>找一个像李现一样的男朋友</s>一个人也要好好的</li></div>
-                           <div class="flag-unchecked"><li style="list-style: none"><input type="radio" name="flags" value="6"> 做个有效率的人，拒绝熬夜！</li></div>
-                           <div class="flag-unchecked"><li style="list-style: none"><input type="radio" name="flags" value="7"> 保持创新，像Windows实时更新</li></div>
-                           <div class="flag-unchecked"><li id="customize_li" style="list-style: none; display: none;"><input type="radio" name="flags" value="8"><span id="self_flag"></span></li></div>
-                        {{--@endforeach--}}
-
-                        <div id="cus_div" class="input-group flag-unchecked">
-                            <input id="customize_flag" type="text" name="flag" class="form-control" placeholder="其他（限15字以内）" aria-describedby="basic-addon1">
-                        </div>
-
-
-
-                {{--</form>--}}
             </div>
             <div class="mb2 btn-1" onclick="set_flag()"><a type="button" class="act-but submit" style="color: #744323">点 我 上 海 报</a></div>
         </div>
     </div>
 </div><!-- /container -->
 <script src="<?=asset('/jy/jquery-1.7.2.min.js')?>"></script>
-{{--<script src="<?=asset('/jy/TweenLite.min.js')?>"></script>--}}
-{{--<script src="<?=asset('/jy/EasePack.min.js')?>"></script>--}}
-{{--<script src="<?=asset('/jy/rAF.js')?>"></script>--}}
-{{--<script src="<?=asset('/jy/demo-1.js')?>"></script>--}}
+
 <script>
     $(document).keyup(function(event){
 
@@ -229,9 +130,6 @@
             });
         }
     });
-
-
-
 
 
     // 保存flag并前往抽奖
