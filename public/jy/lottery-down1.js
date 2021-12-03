@@ -9,19 +9,39 @@ var color = ["#fde284", "#fe9103", "rgba(0,0,0,0.5)", "#ffffff", "#b10105", "#fb
 var winnerList=[
     {
         id:'1',
-        name:'ING联名袜子',
-	    logo:"http://121.196.217.164/jy/袜子.png",
+        name:'上海报资格',
+        logo:"https://mssocial.una-ad.com/jy/袜子.png",
         probability:probability1,
     },{
         id:'2',
-        name:'ING联名马克杯',
-	logo:'http://121.196.217.164/jy/水杯.png',
+        name:'李现海报',
+        logo:'https://mssocial.una-ad.com/jy/水杯.png',
         probability:probability2,
     },{
         id:'3',
-        name:'红包',
-        logo:'http://121.196.217.164/jy/123.png',
+        name:'ING渔夫帽或棒球帽',
+        logo:'https://mssocial.una-ad.com/jy/prize-online1.png',
         probability:probability3,
+    },{
+        id:'4',
+        name:'ING背包',
+        logo:'https://mssocial.una-ad.com/jy/prize-online1.png',
+        probability:probability4,
+    },{
+        id:'5',
+        name:'ING袜子',
+        logo:'https://mssocial.una-ad.com/jy/prize-online1.png',
+        probability:probability5,
+    },{
+        id:'6',
+        name:'ING贴纸',
+        logo:'https://mssocial.una-ad.com/jy/prize-online1.png',
+        probability:probability6,
+    },{
+        id:'7',
+        name:'优惠券30元',
+        logo:'https://mssocial.una-ad.com/jy/prize-online1.png',
+        probability:probability7,
     }
 ];
 
@@ -67,11 +87,19 @@ var number = winnerList.length;
             ctx.arc(radius*ratio, radius*ratio, radius*ratio, startAngle, endAngle, false);
             ctx.lineWidth = 220*ratio;
             if (i == 0) {
-                ctx.strokeStyle = "#f8c950";
+                ctx.strokeStyle = "#eddab7"; //B
             } else if (i == 1) {
-                ctx.strokeStyle = "#fbfbe0";
+                ctx.strokeStyle = "#eaac6f"; //c
+            } else if (i == 2) {
+                ctx.strokeStyle = "#eddab7"; //d
+            } else if (i == 3) {
+                ctx.strokeStyle = "#eaac6f"; //e
+            } else if (i == 4) {
+                ctx.strokeStyle = "#eddab7"; //f
+            } else if (i == 5) {
+                ctx.strokeStyle = "#ea9476"; //上海报e8d2a7
             } else {
-                ctx.strokeStyle = "#7FFFD4";
+                ctx.strokeStyle = "#eaac6f"; //Aeaac6f
             }
             ctx.stroke();
             ctx.restore();

@@ -14,14 +14,34 @@ var winnerList=[
         probability:probability1,
     },{
         id:'2',
-        name:'M365个人版+爱奇艺季卡',
+        name:'奖品套餐A',
 	logo:'https://mssocial.una-ad.com/jy/水杯.png',
         probability:probability2,
     },{
         id:'3',
-        name:'319 限量多彩 “新”意套装（M365+精巧鼠标）',
+        name:'奖品套餐B',
         logo:'https://mssocial.una-ad.com/jy/prize-online1.png',
         probability:probability3,
+    },{
+        id:'4',
+        name:'奖品套餐C',
+        logo:'https://mssocial.una-ad.com/jy/prize-online1.png',
+        probability:probability4,
+    },{
+        id:'5',
+        name:'奖品套餐D',
+        logo:'https://mssocial.una-ad.com/jy/prize-online1.png',
+        probability:probability5,
+    },{
+        id:'6',
+        name:'奖品套餐E',
+        logo:'https://mssocial.una-ad.com/jy/prize-online1.png',
+        probability:probability6,
+    },{
+        id:'7',
+        name:'奖品套餐F',
+        logo:'https://mssocial.una-ad.com/jy/prize-online1.png',
+        probability:probability7,
     }
 ];
 
@@ -67,11 +87,19 @@ var number = winnerList.length;
             ctx.arc(radius*ratio, radius*ratio, radius*ratio, startAngle, endAngle, false);
             ctx.lineWidth = 220*ratio;
             if (i == 0) {
-                ctx.strokeStyle = "#f8c950";
+                ctx.strokeStyle = "#eddab7"; //B
             } else if (i == 1) {
-                ctx.strokeStyle = "#fbfbe0";
+                ctx.strokeStyle = "#eaac6f"; //c
+            } else if (i == 2) {
+                ctx.strokeStyle = "#eddab7"; //d
+            } else if (i == 3) {
+                ctx.strokeStyle = "#eaac6f"; //e
+            } else if (i == 4) {
+                ctx.strokeStyle = "#eddab7"; //f
+            } else if (i == 5) {
+                ctx.strokeStyle = "#ea9476"; //上海报e8d2a7
             } else {
-                ctx.strokeStyle = "#7FFFD4";
+                ctx.strokeStyle = "#eaac6f"; //Aeaac6f
             }
             ctx.stroke();
             ctx.restore();

@@ -11,7 +11,6 @@
     <link rel="stylesheet" type="text/css" href="<?= asset('/jy/component.css') ?>">
 
     <!--大转盘-->
-    <!--<link rel="stylesheet" href="<?= asset("/jy/sp.css") ?>">-->
     <link rel="stylesheet" href="<?= asset("/jy/lottery.css") ?>">
     <style>
         @media screen and (-webkit-min-device-pixel-ratio: 2), screen and (min--moz-device-pixel-ratio: 3) {
@@ -35,7 +34,6 @@
         <div id="large-header" class="large-header">
             <canvas id="demo-canvas"></canvas>
             <div class="logo_box">
-                <h3>幸运大转盘-线下点亮</h3>
                 <div class='winnerBox'>
                     <div class="turnplate_box">
                         <canvas id="myCanvas" width="260px" height="260px">抱歉！浏览器不支持。</canvas>
@@ -45,9 +43,6 @@
                         </button>
                     </div>
                 </div>
-                {{--@foreach($prize_type as $k=>$v)--}}
-                    {{--<button type="button"  class="btn btn-default"><a href="{{route('win-prize',['prize'=>"$k",'flag'=>request('flag')])}}">中奖{{$k}}：{{$v}}</a></button>--}}
-                {{--@endforeach--}}
             </div>
         </div>
    </div>
@@ -55,21 +50,21 @@
 
 </div><!-- /container -->
 <script src="<?=asset('/jy/jquery-1.7.2.min.js')?>"></script>
-<script src="<?=asset('/jy/TweenLite.min.js')?>"></script>
-<script src="<?=asset('/jy/EasePack.min.js')?>"></script>
-<script src="<?=asset('/jy/rAF.js')?>"></script>
-<script src="<?=asset('/jy/demo-1.js')?>"></script>
 
 <script>
-    var probability1 = "<?php if($prize_type == 1) {echo '100%';} else{ echo '0%';} ?>";
-    var probability2 = "<?php if($prize_type == 2) {echo '100%';} else{ echo '0%';} ?>";
-    var probability3 = "<?php if($prize_type == 3) {echo '100%';} else{ echo '0%';} ?>";
+    var probability1 = "<?php if($prize_type == 11) {echo '100%';} else{ echo '0%';} ?>";
+    var probability2 = "<?php if($prize_type == 12) {echo '100%';} else{ echo '0%';} ?>";
+    var probability3 = "<?php if($prize_type == 13) {echo '100%';} else{ echo '0%';} ?>";
+    var probability4 = "<?php if($prize_type == 14) {echo '100%';} else{ echo '0%';} ?>";
+    var probability5 = "<?php if($prize_type == 15) {echo '100%';} else{ echo '0%';} ?>";
+    var probability6 = "<?php if($prize_type == 16) {echo '100%';} else{ echo '0%';} ?>";
+    var probability7 = "<?php if($prize_type == 17) {echo '100%';} else{ echo '0%';} ?>";
     var token = "<?php echo request('api_token'); ?>";
 </script>
 
 <!--大转盘-->
 <script src="<?=asset('/jy/awardRotate.js')?>"></script>
-<script src="<?=asset('/jy/lottery-down.js')?>"></script>
+<script src="<?=asset('/jy/lottery-down1.js')?>"></script>
 
 </body>
 </html>

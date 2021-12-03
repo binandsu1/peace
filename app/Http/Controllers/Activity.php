@@ -39,8 +39,6 @@ class Activity extends Controller
             $api_token = $weiboSer->getUserInfo($tokenArr['access_token'], $tokenArr['uid']);
         }
 
-        //todo 测试用，正式环境删除
-//        $api_token = "89da839bfa90025570f9a3a23a0d91d8";
         return redirect()->route('activity-index-new', ['api_token' => $api_token]);
     }
 
@@ -128,17 +126,17 @@ class Activity extends Controller
         $uid = $user->id;
         $way = $user->way;
         $api_token = $user->api_token;
-        $flagModels = DB::table('flag_list')->where('status', 1)->get(['id', 'flag_model']);
+//        $flagModels = DB::table('flag_list')->where('status', 1)->get(['id', 'flag_model']);
         if (empty($way)) {
             DB::table('jiayus')->where('id', $uid)->update(['way' => 2]);
         } else {
             if ($way == 1) {
                 // 检测到选择了线上点亮的用户又点击线下点亮后，强制跳转回线上路线
-                return redirect()->route('activity-up', ['api_token' => $api_token])->with('flagModels', $flagModels);
+                return redirect()->route('activity-up', ['api_token' => $api_token]);
             }
         }
 
-        return view('activity-down')->with('flagModels', $flagModels);
+        return view('activity-down');
     }
 
 //    public function activityDown()
@@ -147,6 +145,7 @@ class Activity extends Controller
 //        return view('map');
 //    }
 
+//线上抽奖
     public function luckyDraw()
     {
         $user = Auth::guard('api')->user();
@@ -157,41 +156,69 @@ class Activity extends Controller
             // 抽奖方法
             $v = rand(1, 100);
 
-            $one = 1; //1%中奖率
+            $a_start = 1; //10%中奖率 上海报资格1019名
+            $a_end = 10;
 
-            $two_start = 2; // 3%中奖率
-            $two_finish = 4;
+            $b_start = 11; // 10%中奖率 天猫A、Microsoft 365 家庭版+腾讯视频季卡促销套餐：20000份；
+            $b_end = 20;
 
-            $three_start = 5;
-            $three_finish = 100;
+            $c_start = 21; // 10%中奖率 天猫B、Microsoft 365 家庭版+ING帆布袋+ING袜子促销套餐：30000份；10%
+            $c_end = 30;
+
+            $d_start = 31; // 5%中奖率 天猫C、Surface GO3+闪迪卡128G+ING杯子促销套餐：12000份。5%
+            $d_end = 35;
+
+            $e_start = 36; // 25%中奖率 京东：A、Microsoft 365 个人盒装+电影兑换券促销套餐：60000份；25%
+            $e_end = 60;
+
+            $f_start = 61; // 25%中奖率 B、Microsoft 365 个人盒装+精巧鼠标+ING 帆布袋促销套餐：60000份；25%
+            $f_end = 85;
+
+            $g_start = 86; // C、Surface GO3 + 闪迪卡 128G TF卡+ ING 袜子促销套餐：40000份。15%
+            $g_end = 100;
+
 
             switch ($v) {
-                case $v == $one:
+                case $v >= $a_start && $v <= $a_end:
                     // TODO::上线前清空Redis计数器
-                    Redis::incr('one_online', 1);
-                    $count1 = Redis::get('one_online');
+                    Redis::incr('a_online', 1);
+                    $count1 = Redis::get('a_online');
                     if ($count1 > 1019) {
-                        Redis::incr('three_online', 1);
-                        $prize_type = 3;
+                        Redis::incr('f_online', 1);
+                        $prize_type = 6;
                     } else {
                         $prize_type = 1;
                     }
                     break;
-                case $v >= $two_start && $v <= $two_finish:
+                case $v >= $b_start && $v <= $b_end:
                     // TODO::上线前清空Redis计数器
-                    Redis::incr('two_online', 1);
-                    $count2 = Redis::get('two_online');
-                    if ($count2 > 3000) {
-                        Redis::incr('three_online', 1);
-                        $prize_type = 3;
-                    } else {
-                        $prize_type = 2;
-                    }
+                    Redis::incr('b_online', 1);
+                    $prize_type = 2;
                     break;
-                case $v >= $three_start && $v <= $three_finish:
+                case $v >= $c_start && $v <= $c_end:
                     // TODO::上线前清空Redis计数器
-                    Redis::incr('three_online', 1);
+                    Redis::incr('c_online', 1);
                     $prize_type = 3;
+                    break;
+                case $v >= $d_start && $v <= $d_end:
+                    // TODO::上线前清空Redis计数器
+                    Redis::incr('d_online', 1);
+                    $prize_type = 4;
+                    break;
+                case $v >= $e_start && $v <= $e_end:
+                    // TODO::上线前清空Redis计数器
+                    Redis::incr('e_online', 1);
+                    $prize_type = 5;
+                    break;
+                case $v >= $f_start && $v <= $f_end:
+                    // TODO::上线前清空Redis计数器
+                    Redis::incr('f_online', 1);
+                    $prize_type = 6;
+                    break;
+                case $v >= $g_start && $v <= $g_end:
+                    // TODO::上线前清空Redis计数器
+                    Redis::incr('g_online', 1);
+                    $prize_type = 7;
                     break;
             }
 
@@ -201,9 +228,9 @@ class Activity extends Controller
             return view('lucky-draw')->with('prize_type', $prize_type);
         } elseif ($is_draw == 2) {
             $prize_type = DB::table('prize_num')->where('u_id', $uid)->get(['gift_id']); // 非首次进入抽奖页面，沿用首次进入时的抽奖结果
-            foreach ($prize_type as $v) {
-                $prize_type = $v->gift_id;
-            }
+//            foreach ($prize_type as $v) {
+            $prize_type = $prize_type[0]->gift_id;
+//            }
             return view('lucky-draw')->with('prize_type', $prize_type);
         }
 
@@ -221,42 +248,68 @@ class Activity extends Controller
             // 抽奖方法
             $v = rand(1, 100);
 
-            $one_start = 1; //33%中奖率
-            $one_finish = 33; //33%中奖率
+            $a_start = 1; //10%中奖率 上海报 520
+            $a_end = 10;
 
-            $two_start = 34; // 33%中奖率
-            $two_finish = 66;
+            $b_start = 11; // 20% 海报 2500
+            $b_end = 30;
 
-            $three_start = 67;
-            $three_finish = 100;
+            $c_start = 31; // 5% 帽子 400
+            $c_end = 35;
+
+            $d_start = 36; // 20% 背包 2000
+            $d_end = 55;
+
+            $e_start = 56; // 15%中奖率 袜子 1800
+            $e_end = 70;
+
+            $f_start = 71; // 20%中奖率 贴纸 2500
+            $f_end = 90;
+
+            $g_start = 91; // 优惠券（10000）。10%
+            $g_end = 100;
 
             switch ($v) {
-                case $v >= $one_start && $v <= $one_finish:
+                case $v >= $a_start && $v <= $a_end:
                     // TODO::上线前清空Redis计数器
-                    Redis::incr('one_offline', 1);
-                    $count1 = Redis::get('one_offline');
-                    if ($count1 > 1019) {
-                        Redis::incr('three_offline', 1);
-                        $prize_type = 3;
+                    Redis::incr('a_offline', 1);
+                    $count1 = Redis::get('a_online');
+                    if ($count1 > 520) {
+                        Redis::incr('g_offline', 1);
+                        $prize_type = 17;
                     } else {
-                        $prize_type = 1;
+                        $prize_type = 11;
                     }
                     break;
-                case $v >= $two_start && $v <= $two_finish:
+                case $v >= $b_start && $v <= $b_end:
                     // TODO::上线前清空Redis计数器
-                    Redis::incr('two_offline', 1);
-                    $count2 = Redis::get('two_offline');
-                    if ($count2 > 3000) {
-                        Redis::incr('three_offline', 1);
-                        $prize_type = 3;
-                    } else {
-                        $prize_type = 2;
-                    }
+                    Redis::incr('b_offline', 1);
+                    $prize_type = 12;
                     break;
-                case $v >= $three_start && $v <= $three_finish:
+                case $v >= $c_start && $v <= $c_end:
                     // TODO::上线前清空Redis计数器
-                    Redis::incr('three_offline', 1);
-                    $prize_type = 3;
+                    Redis::incr('c_offline', 1);
+                    $prize_type = 13;
+                    break;
+                case $v >= $d_start && $v <= $d_end:
+                    // TODO::上线前清空Redis计数器
+                    Redis::incr('d_offline', 1);
+                    $prize_type = 14;
+                    break;
+                case $v >= $e_start && $v <= $e_end:
+                    // TODO::上线前清空Redis计数器
+                    Redis::incr('e_offline', 1);
+                    $prize_type = 15;
+                    break;
+                case $v >= $f_start && $v <= $f_end:
+                    // TODO::上线前清空Redis计数器
+                    Redis::incr('f_offline', 1);
+                    $prize_type = 16;
+                    break;
+                case $v >= $g_start && $v <= $g_end:
+                    // TODO::上线前清空Redis计数器
+                    Redis::incr('g_offline', 1);
+                    $prize_type = 17;
                     break;
             }
 
@@ -266,9 +319,7 @@ class Activity extends Controller
             return view('lucky-draw2')->with('prize_type', $prize_type);
         } elseif ($is_draw == 2) {
             $prize_type = DB::table('prize_num')->where('u_id', $uid)->get(['gift_id']); // 非首次进入抽奖页面，沿用首次进入时的抽奖结果
-            foreach ($prize_type as $v) {
-                $prize_type = $v->gift_id;
-            }
+            $prize_type = $prize_type[0]->gift_id;
             return view('lucky-draw2')->with('prize_type', $prize_type);
         }
 
@@ -283,14 +334,15 @@ class Activity extends Controller
         $prize_code = DB::table("prize_num")->where('u_id', $uid)->get(['gift_id', 'num']);
 //        $user_info = DB::table("jiayus")->where('id',29)->get(['id', 'u_name']);
 
-        foreach ($prize_code as $v) {
-            $num = $v->num;
-        }
+//        foreach ($prize_code as $v) {
+            $num = $prize_code[0]->num;
+            $prize_num = $prize_code[0]->gift_id;
+//        }
 
         // 将兑奖码与uid连接后AES对等加密
         $code = $num . '+' . $uid;
         $encode = $this->encrypt($code);
-        return view('win-prize')->with(['prize_code' => $prize_code, 'code' => $encode]);
+        return view('win-prize')->with(['prize_code' => $prize_num, 'code' => $encode]);
     }
 
     // 线下中奖信息展示页面（到店前）
@@ -691,13 +743,21 @@ class Activity extends Controller
     // 中奖统计后台
     public function prizeAdmin()
     {
-        $online1 = Redis::get('one_online');
-        $online2 = Redis::get('two_online');
-        $online3 = Redis::get('three_online');
-        $offline1 = Redis::get('one_offline');
-        $offline2 = Redis::get('two_offline');
-        $offline3 = Redis::get('three_offline');
-        return view('prize-admin')->with(['online1' => $online1, 'online2' => $online2, 'online3' => $online3, 'offline1' => $offline1, 'offline2' => $offline2, 'offline3' => $offline3]);
+        $online1 = Redis::get('a_online');
+        $online2 = Redis::get('b_online');
+        $online3 = Redis::get('c_online');
+        $online4 = Redis::get('d_online');
+        $online5 = Redis::get('e_online');
+        $online6 = Redis::get('f_online');
+        $online7 = Redis::get('g_online');
+        $offline1 = Redis::get('a_offline');
+        $offline2 = Redis::get('b_offline');
+        $offline3 = Redis::get('c_offline');
+        $offline4 = Redis::get('d_offline');
+        $offline5 = Redis::get('e_offline');
+        $offline6 = Redis::get('f_offline');
+        $offline7 = Redis::get('g_offline');
+        return view('prize-admin')->with(['online1' => $online1, 'online2' => $online2, 'online3' => $online3,'online4' => $online4,'online5' => $online5,'online6' => $online6,'online7' => $online7, 'offline1' => $offline1, 'offline2' => $offline2, 'offline3' => $offline3, 'offline4' => $offline4, 'offline5' => $offline5, 'offline6' => $offline6, 'offline7' => $offline7]);
     }
 
     // 用户协议

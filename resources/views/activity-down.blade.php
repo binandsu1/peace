@@ -5,30 +5,138 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>login</title>
+    <title>现在就耀，与现同框</title>
     <link rel="stylesheet" type="text/css" href="<?= asset('/jy/normalize.css') ?>">
     <link rel="stylesheet" type="text/css" href="<?= asset('/jy/demo.css') ?>">
     <!--必要样式-->
     <link rel="stylesheet" type="text/css" href="<?= asset('/jy/component.css') ?>">
     <style>
-        @media screen and (-webkit-min-device-pixel-ratio: 2), screen and (min--moz-device-pixel-ratio: 3) {
+        input[type="text"]{
+            color:#6e4531;
+            border-radius: 0;
+
+            border-bottom:1px solid #005aa7; /* 下划线效果 */
+
+            border-top:0px;
+
+            border-left:0px;
+
+            border-right:0px;
+
+            background-color:transparent; /* 背景色透明 */
+        }
+
+        .demo-1 .large-header {
+            background-image: url("<?= asset('/jy/flag-bg1.jpg')?>");
+            background-size: 100vw 100vh;
+            width: 100vw;
+            height: 100vh;
+            background-repeat: no-repeat;
+            position: fixed;
+        }
+
+        .flag-unchecked {
+            margin:0.9rem 1rem;
+            font-size: 0.9rem;
+            padding: 0;
+            border-radius: 50px;
+            color: #6e4531;
+        }
+        .logo_box_flag {
+            width: 90vw;
+            height: 100vh;
+            padding: 4vh;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            margin-left: -44vw;
+            margin-top: -22vh;
+        }
+
+        @media only screen and (max-height: 568px) {
             .demo-1 .large-header {
                 background-image: url("<?= asset('/jy/flag-bg1.jpg')?>");
-                background-size: 375px 812px;
-                width: 375px;
-                height: 812px;
+                background-size: 100vw 100vh;
+                width: 100vw;
+                height: 100vh;
                 background-repeat: no-repeat;
+                position: fixed;
             }
+
             .flag-unchecked {
-                background-image: url("<?= asset('/jy/btn-2.png')?>");
-                background-size: auto 50px;
-                background-repeat: no-repeat;
-                background-position: right center;
-                margin:30px 0;
-                font-size: 1.2rem;
-                padding: 6px;
+                margin:0.5rem 1rem;
+                font-size: 0.5rem;
+                padding: 0;
                 border-radius: 50px;
-                color: royalblue;
+                color: #6e4531;
+            }
+            .logo_box_flag {
+                width: 90vw;
+                height: 100vh;
+                padding: 4vh;
+                position: fixed;
+                left: 50%;
+                top: 50%;
+                margin-left: -44vw;
+                margin-top: -22vh;
+            }
+        }
+
+        @media only screen and (min-width: 375px) and (min-height: 812px) {
+            .demo-1 .large-header {
+                background-image: url("<?= asset('/jy/flag-bg1.jpg')?>");
+                background-size: 100vw 100vh;
+                width: 100vw;
+                height: 100vh;
+                background-repeat: no-repeat;
+                position: fixed;
+            }
+
+            .flag-unchecked {
+                margin:1rem 1rem;
+                font-size: 0.9rem;
+                padding: 0;
+                border-radius: 50px;
+                color: #6e4531;
+            }
+            .logo_box_flag {
+                width: 90vw;
+                height: 100vh;
+                padding: 4vh;
+                position: fixed;
+                left: 50%;
+                top: 50%;
+                margin-left: -44vw;
+                margin-top: -20vh;
+            }
+        }
+
+        @media only screen and (min-width: 414px) and (min-height: 812px) {
+            .demo-1 .large-header {
+                background-image: url("<?= asset('/jy/flag-bg1.jpg')?>");
+                background-size: 100vw 100vh;
+                width: 100vw;
+                height: 100vh;
+                background-repeat: no-repeat;
+                position: fixed;
+            }
+
+            .flag-unchecked {
+                margin:1rem 1rem;
+                font-size: 0.9rem;
+                padding: 0;
+                border-radius: 50px;
+                color: #6e4531;
+            }
+            .logo_box_flag {
+                width: 90vw;
+                height: 100vh;
+                padding: 4vh;
+                position: fixed;
+                left: 50%;
+                top: 50%;
+                margin-left: -44vw;
+                margin-top: -20vh;
             }
         }
     </style>
@@ -41,22 +149,29 @@
     <div class="content">
         <div id="large-header" class="large-header">
             <canvas id="demo-canvas"></canvas>
-            <div class="logo_box">
-                <h1>立下属于你的新年flag</h1>
+            <div class="logo_box_flag">
 
-                <form class="form-horizontal" method="post" action="">
-                    <div class="dropdown">
-                        @foreach($flagModels as $k=>$v)
-                            <div class="flag-unchecked"><li style="list-style: none"><input type="checkbox" name="flags" value="{{$v->id}}"> {{$v->flag_model}}</li></div>
-                        @endforeach
-                            <li id="customize_li" style="list-style: none; display: none;"><input type="checkbox" name="self_flag" ></li>
-                        <div id="cus_div" class="input-group">
-                            <input id="customize_flag" type="text" name="flag" class="form-control" placeholder="自定义flag" aria-describedby="basic-addon1"><button type="button" onclick="check_mgc()">保存</button>
-                        </div>
+                {{--<form class="form-horizontal" method="post" action="#">--}}
+                <div class="dropdown">
+                    {{--@foreach($flagModels as $k=>$v)--}}
+
+                    <div class="flag-unchecked"><li style="list-style: none"><input type="radio" name="flags" value="1"> 人生很贵，请别浪费，再见了拖延君，我的愿望是365天不加班</li></div>
+                    <div class="flag-unchecked"><li style="list-style: none"><input type="radio" name="flags" value="2"> 工作是为了好好生活，生活是为了努力工作</li></div>
+                    <div class="flag-unchecked"><li style="list-style: none"><input type="radio" name="flags" value="3"> 去<s>美国微软总部</s>微软门店看一看</li></div>
+                    <div class="flag-unchecked"><li style="list-style: none"><input type="radio" name="flags" value="4"> 锻炼身体<s>像李现一样</s>量力而行</li></div>
+                    <div class="flag-unchecked"><li style="list-style: none"><input type="radio" name="flags" value="5"> <s>找一个像李现一样的男朋友</s>一个人也要好好的</li></div>
+                    <div class="flag-unchecked"><li style="list-style: none"><input type="radio" name="flags" value="6"> 做个有效率的人，拒绝熬夜！</li></div>
+                    <div class="flag-unchecked"><li style="list-style: none"><input type="radio" name="flags" value="7"> 保持创新，像Windows实时更新</li></div>
+                    <div class="flag-unchecked"><li id="customize_li" style="list-style: none; display: none;"><input type="radio" name="flags" value="8"><span id="self_flag"></span></li></div>
+                    {{--@endforeach--}}
+
+                    <div id="cus_div" class="input-group flag-unchecked">
+                        <input id="customize_flag" type="text" name="flag" class="form-control" placeholder="其他（限15字以内）" aria-describedby="basic-addon1">
                     </div>
-                    <br>
-                    <div class="mb2" onclick="set_flag()"><a type="button" class="act-but submit" style="color: #FFFFFF">立下Flag 参与抽奖</a></div>
-                </form>
+                </div>
+                <br>
+                <div class="mb2" onclick="set_flag()"><a type="button" class="act-but submit" style="color: #744323">点 我 上 海 报</a></div>
+                {{--</form>--}}
             </div>
         </div>
     </div>
@@ -67,50 +182,46 @@
 {{--<script src="<?=asset('/jy/rAF.js')?>"></script>--}}
 {{--<script src="<?=asset('/jy/demo-1.js')?>"></script>--}}
 <script>
-    // 自定义flag 敏感词检测
-    function check_mgc() {
-        var flag_wb = $('#customize_flag').val();
-        if (flag_wb.length==0) {
-            return false;
-        }
-        $.ajax({
-            type: "POST",
-            url: "{{ url('/api/mgc?api_token='.request('api_token')) }}",
-            dataType: 'json',
-            header: {'X-CRSF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-            data: {
-                "flag_wb": flag_wb,
-            },
-            success: function (data) {
-                if(data.code == '200') {
-                    $("#customize_li").text(flag_wb);
-                    $("#cus_div").css('display','none');
-                    $("#customize_li").css('display','block');
-                } else {
-                    alert('自定义flag包含敏感词，请修改后再次提交！');
+    $(document).keyup(function(event){
+
+        if(event.keyCode ==13){
+            // 自定义flag 敏感词检测
+            var flag_wb = $('#customize_flag').val();
+            if (flag_wb.length==0) {
+                return false;
+            }
+            if (flag_wb.length>15) {
+                alert("字数超限！");
+            }
+            $.ajax({
+                type: "POST",
+                url: "{{route('mgc',['api_token'=>request('api_token')])}}",
+                dataType: 'json',
+                header: {'X-CRSF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                data: {
+                    "flag_wb": flag_wb,
+                },
+                success: function (data) {
+                    if(data.code == '200') {
+                        $("#self_flag").text(flag_wb);
+                        $("#cus_div").css('display','none');
+                        $("#customize_li").css('display','block');
+                    } else {
+                        alert('请勿输入敏感词，请修改后再次提交！');
+                    }
                 }
-            },
-//            error: function(request, status, error){
-//                alert(error);
-//            },
-        });
-    };
+            });
+        }
+    });
 
 
     // 保存flag并前往抽奖
     function set_flag() {
+        var flag_id = $("input[name='flags']:checked").val();
 
-        var flag_wb = $('#customize_li').text();
-        var chk_value ='';
-        $('input[name="flags"]:checked').each(function(){
-            chk_value += $(this).val()+',';
-        });
-
-        if (flag_wb.length==0) {
-            if (chk_value.length==0) {
-                alert( '您还没有选择任何内容！');
-                return false;
-            }
+        if (flag_id == undefined) {
+            alert("许下一个属于你的新年新愿吧！");
+            return false;
         }
 
         $.ajax({
@@ -119,14 +230,13 @@
             dataType: 'json',
             header: {'X-CRSF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             data: {
-                "customize_flag": flag_wb,
-                "model_ids": chk_value,
+                "flag_id": flag_id
             },
             success: function (data) {
                 if(data.code == '200'){
                     window.location="{{route('lucky-draw2',['api_token'=>request('api_token')])}}";
                 } else {
-
+                    alert("许愿次数太多就不灵了！");
                 }
             }
         });

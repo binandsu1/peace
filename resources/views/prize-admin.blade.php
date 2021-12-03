@@ -20,15 +20,24 @@
         <div id="large-header" class="large-header">
             <canvas id="demo-canvas"></canvas>
             <div class="logo_box">
-                <h3>中奖信息：（一等奖，二等奖大于额定数值后改为发放3等奖，但统计数据继续增加的同时增加三等奖）</h3>
+                <h3>中奖信息：</h3>
 
                 <br>
-                <h3>线上上海报：{{$online1}}</h3>
-                <h3>线上2等奖：{{$online2}}</h3>
-                <h3>线上3等奖：{{$online3}}</h3>
-                <h3>线下1等奖：{{$offline1}}</h3>
-                <h3>线下2等奖：{{$offline2}}</h3>
-                <h3>线下3等奖：{{$offline3}}</h3>
+                <h3>线上上海报 1019：{{$online1}}</h3>
+                <h3>天猫A 365+腾讯季卡（20000）：{{$online2}}</h3>
+                <h3>天猫B 365+帆布袋+袜子（30000）：{{$online3}}</h3>
+                <h3>天猫C Surface GO3+闪迪卡128G+ING杯子（12000）：{{$online4}}</h3>
+                <h3>京东A 365+电影兑换券（60000）：{{$online5}}</h3>
+                <h3>京东B 365+鼠标+布袋（60000）：{{$online6}}</h3>
+                <h3>京东C Surface GO3+闪迪卡128G+ING杯子（40000）：{{$online7}}</h3>
+
+                <h3>线下上海报 520：{{$offline1}}</h3>
+                <h3>李现海报（2500）：{{$offline2}}</h3>
+                <h3>帽子（400）：{{$offline3}}</h3>
+                <h3>背包（2000）：{{$offline4}}</h3>
+                <h3>袜子（1800）：{{$offline5}}</h3>
+                <h3>贴纸（2500）：{{$offline6}}</h3>
+                <h3>优惠券（10000）：{{$offline7}}</h3>
                 {{--<div class="mb2"><a class="act-but submit" href="{{route('counter',['api_token'=>request('api_token')])}}" style="color: #FFFFFF">归零计数器</a></div><br>--}}
 
             </div>
