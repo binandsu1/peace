@@ -1,48 +1,90 @@
-<!doctype html>
-<html lang="zh-CN">
+<!DOCTYPE html>
+<html lang="en" class="no-js">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <title>Bootstrap 101 Template</title>
+    <title>现在就耀，与现同框</title>
+    <link rel="stylesheet" type="text/css" href="<?= asset('/jy/normalize.css') ?>">
+    <link rel="stylesheet" type="text/css" href="<?= asset('/jy/demo.css') ?>">
+    <!--必要样式-->
+    <link rel="stylesheet" type="text/css" href="<?= asset('/jy/component.css') ?>">
+    <style>
 
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
-          integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+        .demo-1 .large-header {
+            background-image: url("<?= asset('/jy/home-1280.jpg')?>");
+            background-size: 100vw 100vh;
+            width: 100vw;
+            height: 100vh;
+            background-repeat: no-repeat;
+            position: fixed;
+        }
 
-    <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
-    <!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
-    <!--[if lt IE 9]>
-    <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+        .logo_box_home {
+            width: 90vw;
+            height: 100vh;
+            padding: 4vh;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            margin-left: -44vw;
+            margin-top: 10vh;
+        }
+
+        @media only screen and (min-width: 375px) and (min-height: 812px) {
+            .demo-1 .large-header {
+                background-image: url("<?= asset('/jy/home-bg1.jpg')?>");
+                background-size: 100vw 100vh;
+                width: 100vw;
+                height: 100vh;
+                background-repeat: no-repeat;
+                position: fixed;
+            }
+
+            .logo_box_home {
+                width: 90vw;
+                height: 100vh;
+                padding: 4vh;
+                position: fixed;
+                left: 50%;
+                top: 50%;
+                margin-left: -44vw;
+                margin-top: 16vh;
+            }
+        }
+    </style>
 
 
+    <!--[if IE]>
+    <script src="<?=asset('/jy/html5.js')?>"></script>
     <![endif]-->
 </head>
 <body>
+<div class="container demo-1">
+    <div class="content">
+        <div id="large-header" class="large-header">
+            <canvas id="demo-canvas"></canvas>
+            <div class="logo_box_home">
+                <form action="#" name="f" method="post">
+                    <div class="mb2"><a class="act-but submit" onclick="up()" style="color: #744323">一 键 分 享</a></div>
+                </form>
+            </div>
+        </div>
+    </div>
 
-<div style="margin-left:30%">
-{{--    <h1>我是海报 {{$newimageName}}</h1>--}}
-{{--    <form class="form-horizontal" method="post" action="<?=route('poster')?>">--}}
-{{--        <div class="input-group">--}}
-{{--            <input type="text" name="flag" class="form-control" placeholder="请输入flag" aria-describedby="basic-addon1">--}}
-{{--        </div>--}}
-{{--        <button type="submit" class="btn btn-success">生成</button>--}}
-{{--    </form>--}}
-{{--    <br>--}}
-    <img src="http://121.196.217.164/{{$pic_re->path}}" class="img-rounded">
-{{--    <br>--}}
 
-</div>
+</div><!-- /container -->
+<script src="<?=asset('/jy/jquery-1.7.2.min.js')?>"></script>
+<script>
+    //			var $sq = $("#sqbtn").val();
 
-<!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
-<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"
-        integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
-        crossorigin="anonymous"></script>
-<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
-        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
-        crossorigin="anonymous"></script>
+
+    function up() {
+
+        {{--window.location="{{route('activity-up',['api_token'=>request('api_token')])}}";--}}
+
+    }
+
+</script>
 </body>
 </html>

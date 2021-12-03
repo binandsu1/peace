@@ -9,7 +9,16 @@
     <link rel="stylesheet" type="text/css" href="<?= asset('/jy/demo.css') ?>">
     <!--必要样式-->
     <link rel="stylesheet" type="text/css" href="<?= asset('/jy/component.css') ?>">
-
+    <style>
+        .demo-1 .large-header {
+            background-image: url("<?= asset('/jy/win-prize1.jpg')?>");
+            background-size: 100vw 100vh;
+            width: 100vw;
+            height: 100vh;
+            background-repeat: no-repeat;
+            position: fixed;
+        }
+    </style>
     <!--[if IE]>
     <script src="<?=asset('/jy/html5.js')?>"></script>
     <![endif]-->
@@ -20,9 +29,8 @@
         <div id="large-header" class="large-header">
             <canvas id="demo-canvas"></canvas>
             <div class="logo_box">
-                <h3>恭喜您！</h3>
 
-                    <h3>兑奖码：<span id="prize_code">{{$code}}</span> <button class="copy_btn" type="button" data-clipboard-target="#prize_code">复制</button></h3>
+                    {{--<h3>兑奖码：<span id="prize_code">{{$code}}</span> <button class="copy_btn" type="button" data-clipboard-target="#prize_code">复制</button></h3>--}}
 
 
                 <br>
@@ -46,13 +54,13 @@
 
 
 </div><!-- /container -->
-<script src="<?=asset('/jy/TweenLite.min.js')?>"></script>
-<script src="<?=asset('/jy/EasePack.min.js')?>"></script>
-<script src="<?=asset('/jy/rAF.js')?>"></script>
-<script src="<?=asset('/jy/demo-1.js')?>"></script>
-<script src="<?=asset('/jy/clipboard.min.js')?>"></script>
+{{--<script src="<?=asset('/jy/TweenLite.min.js')?>"></script>--}}
+{{--<script src="<?=asset('/jy/EasePack.min.js')?>"></script>--}}
+{{--<script src="<?=asset('/jy/rAF.js')?>"></script>--}}
+{{--<script src="<?=asset('/jy/demo-1.js')?>"></script>--}}
+{{--<script src="<?=asset('/jy/clipboard.min.js')?>"></script>--}}
 <script>
-    new Clipboard('.copy_btn');
+//    new Clipboard('.copy_btn');
 </script>
 </body>
 </html>

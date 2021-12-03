@@ -387,37 +387,40 @@ class Activity extends Controller
     {
         $user = Auth::guard('api')->user();
         $uid = $user->id;
-        $flag_ids = DB::table('user_to_flag')->where('uid', $uid)->get(['flag_id']);
-        if (!$flag_ids->isEmpty()) {
-            $flag = '';
-            foreach ($flag_ids as $k => $v) {
-                $flag .= self::getFlagModel($v->flag_id) . PHP_EOL;
+        $flag_id = $user->flag_id;
+        if($flag_id == 8) {
+            $flag = DB::table('customize_flag')->where('uid', $uid)->get(['customize_flag']);
+            if (!$flag->isEmpty()) {
+                $flag_info = $flag[0]->customize_flag;
+                $pic_re = Jiayu::where('id', $uid)->first();
+                $image = new Image();
+                //原始图路径
+                $path = "images/20211125/bg.png";
+                $newimageName = 'new' . time() . rand(10000, 99999) . '.jpg';
+                $newpath = 'images/' . date('Ymd') . '/' . $newimageName;
+                $face_img = $image::make($path)->resize(530, 800);
+                $face_img->text($flag_info, 370, 41, function ($font) use ($path) {
+                    $font->file(public_path('vista.ttf', 777, true));
+                    $font->size(12);
+                    $font->color('#FF0000');
+                    $font->valign('right');
+                });
+
+                $pic_re->path = $newpath;
+                $pic_re->save();
+
+                $save_path = public_path($newpath);
+
+                $face_img->save($save_path);
+                return view('poster', compact('pic_re'))->with(['flag_id'=>$flag_id]);
             }
+        } else {
+            return view('poster')->with(['flag_id'=>$flag_id]);
         }
-        $pic_re = Jiayu::where('id', $uid)->first();
-        $image = new Image();
-        //原始图路径
-        $path = "images/20211125/bg.png";
-        $newimageName = 'new' . time() . rand(10000, 99999) . '.jpg';
-        $newpath = 'images/' . date('Ymd') . '/' . $newimageName;
-        $face_img = $image::make($path)->resize(530, 800);
-        $face_img->text($flag, 370, 41, function ($font) use ($path) {
-            $font->file(public_path('vista.ttf', 777, true));
-            $font->size(12);
-            $font->color('#FF0000');
-            $font->valign('right');
-        });
 
-        $pic_re->path = $newpath;
-        $pic_re->save();
-
-        $save_path = public_path($newpath);
-
-        $face_img->save($save_path);
-        return view('poster', compact('pic_re'));
     }
 
-    // 线下个人海报
+    // 线下个人海报 待修改
     public function poster2()
     {
         $user = Auth::guard('api')->user();

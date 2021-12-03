@@ -19,7 +19,7 @@ var winnerList=[
         probability:probability2,
     },{
         id:'3',
-        name:'ING渔夫帽或棒球帽',
+        name:'ING帽子',
         logo:'https://mssocial.una-ad.com/jy/prize-online1.png',
         probability:probability3,
     },{
