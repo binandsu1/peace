@@ -37,109 +37,122 @@
         }
 
         .flag-unchecked {
-            margin:0.9rem 1rem;
-            font-size: 0.9rem;
+            margin:2vh 2vw;
+            font-size: 0.9em;
             padding: 0;
             border-radius: 50px;
             color: #6e4531;
         }
         .logo_box_flag {
             width: 90vw;
-            height: 100vh;
+            height: 50vh;
             padding: 4vh;
             position: fixed;
+            overflow: hidden;
             left: 50%;
             top: 50%;
             margin-left: -44vw;
             margin-top: -22vh;
         }
 
-        @media only screen and (max-height: 568px) {
-            .demo-1 .large-header {
-                background-image: url("<?= asset('/jy/flag-bg1.jpg')?>");
-                background-size: 100vw 100vh;
-                width: 100vw;
-                height: 100vh;
-                background-repeat: no-repeat;
-                position: fixed;
-            }
-
-            .flag-unchecked {
-                margin:0.5rem 1rem;
-                font-size: 0.5rem;
-                padding: 0;
-                border-radius: 50px;
-                color: #6e4531;
-            }
-            .logo_box_flag {
-                width: 90vw;
-                height: 100vh;
-                padding: 4vh;
-                position: fixed;
-                left: 50%;
-                top: 50%;
-                margin-left: -44vw;
-                margin-top: -22vh;
-            }
+        .btn-1 {
+            width: 90vw;
+            height: 20vh;
+            padding: 4vh;
+            position: fixed;
+            overflow: hidden;
+            left: 50%;
+            top: 100%;
+            margin-left: -44vw;
+            margin-top: -22vh;
         }
 
-        @media only screen and (min-width: 375px) and (min-height: 812px) {
-            .demo-1 .large-header {
-                background-image: url("<?= asset('/jy/flag-bg1.jpg')?>");
-                background-size: 100vw 100vh;
-                width: 100vw;
-                height: 100vh;
-                background-repeat: no-repeat;
-                position: fixed;
-            }
+        {{--@media only screen and (max-height: 568px) {--}}
+            {{--.demo-1 .large-header {--}}
+                {{--background-image: url("<?= asset('/jy/flag-bg1.jpg')?>");--}}
+                {{--background-size: 100vw 100vh;--}}
+                {{--width: 100vw;--}}
+                {{--height: 100vh;--}}
+                {{--background-repeat: no-repeat;--}}
+                {{--position: fixed;--}}
+            {{--}--}}
 
-            .flag-unchecked {
-                margin:1rem 1rem;
-                font-size: 0.9rem;
-                padding: 0;
-                border-radius: 50px;
-                color: #6e4531;
-            }
-            .logo_box_flag {
-                width: 90vw;
-                height: 100vh;
-                padding: 4vh;
-                position: fixed;
-                left: 50%;
-                top: 50%;
-                margin-left: -44vw;
-                margin-top: -20vh;
-            }
-        }
+            {{--.flag-unchecked {--}}
+                {{--margin:0.5rem 1rem;--}}
+                {{--font-size: 0.5rem;--}}
+                {{--padding: 0;--}}
+                {{--border-radius: 50px;--}}
+                {{--color: #6e4531;--}}
+            {{--}--}}
+            {{--.logo_box_flag {--}}
+                {{--width: 90vw;--}}
+                {{--height: 50vh;--}}
+                {{--padding: 4vh;--}}
+                {{--position: fixed;--}}
+                {{--left: 50%;--}}
+                {{--top: 50%;--}}
+                {{--margin-left: -46vw;--}}
+                {{--margin-top: -22vh;--}}
+            {{--}--}}
+        {{--}--}}
 
-        @media only screen and (min-width: 414px) and (min-height: 812px) {
-            .demo-1 .large-header {
-                background-image: url("<?= asset('/jy/flag-bg1.jpg')?>");
-                background-size: 100vw 100vh;
-                width: 100vw;
-                height: 100vh;
-                background-repeat: no-repeat;
-                position: fixed;
-            }
+        {{--@media only screen and (min-width: 375px) and (min-height: 812px) {--}}
+            {{--.demo-1 .large-header {--}}
+                {{--background-image: url("<?= asset('/jy/flag-bg1.jpg')?>");--}}
+                {{--background-size: 100vw 100vh;--}}
+                {{--width: 100vw;--}}
+                {{--height: 100vh;--}}
+                {{--background-repeat: no-repeat;--}}
+                {{--position: fixed;--}}
+            {{--}--}}
 
-            .flag-unchecked {
-                margin:1rem 1rem;
-                font-size: 0.9rem;
-                padding: 0;
-                border-radius: 50px;
-                color: #6e4531;
-            }
-            .logo_box_flag {
-                width: 90vw;
-                height: 100vh;
-                padding: 4vh;
-                position: fixed;
-                left: 50%;
-                top: 50%;
-                margin-left: -44vw;
-                margin-top: -20vh;
-            }
-        }
+            {{--.flag-unchecked {--}}
+                {{--margin:1rem 1rem;--}}
+                {{--font-size: 0.9rem;--}}
+                {{--padding: 0;--}}
+                {{--border-radius: 50px;--}}
+                {{--color: #6e4531;--}}
+            {{--}--}}
+            {{--.logo_box_flag {--}}
+                {{--width: 90vw;--}}
+                {{--height: 100vh;--}}
+                {{--padding: 4vh;--}}
+                {{--position: fixed;--}}
+                {{--left: 50%;--}}
+                {{--top: 50%;--}}
+                {{--margin-left: -44vw;--}}
+                {{--margin-top: -20vh;--}}
+            {{--}--}}
+        {{--}--}}
+
+        {{--@media only screen and (min-width: 414px) and (min-height: 812px) {--}}
+            {{--.demo-1 .large-header {--}}
+                {{--background-image: url("<?= asset('/jy/flag-bg1.jpg')?>");--}}
+                {{--background-size: 100vw 100vh;--}}
+                {{--width: 100vw;--}}
+                {{--height: 100vh;--}}
+                {{--background-repeat: no-repeat;--}}
+                {{--position: fixed;--}}
+            {{--}--}}
+
+            {{--.flag-unchecked {--}}
+                {{--margin:1rem 1rem;--}}
+                {{--font-size: 0.9rem;--}}
+                {{--padding: 0;--}}
+                {{--border-radius: 50px;--}}
+                {{--color: #6e4531;--}}
+            {{--}--}}
+            {{--.logo_box_flag {--}}
+                {{--width: 90vw;--}}
+                {{--height: 50vh;--}}
+                {{--padding: 4vh;--}}
+                {{--position: fixed;--}}
+                {{--left: 50%;--}}
+                {{--top: 50%;--}}
+                {{--margin-left: -44vw;--}}
+                {{--margin-top: -20vh;--}}
+            {{--}--}}
+        {{--}--}}
 
     </style>
 
@@ -151,11 +164,10 @@
 <div class="container demo-1">
     <div class="content">
         <div id="large-header" class="large-header">
-            <canvas id="demo-canvas"></canvas>
             <div class="logo_box_flag">
 
                 {{--<form class="form-horizontal" method="post" action="#">--}}
-                    <div class="dropdown">
+
                         {{--@foreach($flagModels as $k=>$v)--}}
 
                            <div class="flag-unchecked"><li style="list-style: none"><input type="radio" name="flags" value="1"> 人生很贵，请别浪费，再见了拖延君，我的愿望是365天不加班</li></div>
@@ -171,11 +183,12 @@
                         <div id="cus_div" class="input-group flag-unchecked">
                             <input id="customize_flag" type="text" name="flag" class="form-control" placeholder="其他（限15字以内）" aria-describedby="basic-addon1">
                         </div>
-                    </div>
-                    <br>
-                    <div class="mb2" onclick="set_flag()"><a type="button" class="act-but submit" style="color: #744323">点 我 上 海 报</a></div>
+
+
+
                 {{--</form>--}}
             </div>
+            <div class="mb2 btn-1" onclick="set_flag()"><a type="button" class="act-but submit" style="color: #744323">点 我 上 海 报</a></div>
         </div>
     </div>
 </div><!-- /container -->
