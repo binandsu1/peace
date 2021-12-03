@@ -37,8 +37,8 @@
         }
 
         .flag-unchecked {
-            margin:1rem 1rem;
-            font-size: 0.9rem;
+            margin:0.9rem 1rem;
+            font-size: 0.8rem;
             padding: 0;
             border-radius: 50px;
             color: #6e4531;
@@ -94,7 +94,7 @@
             }
 
             .flag-unchecked {
-                margin:1.1rem 1rem;
+                margin:1rem 1rem;
                 font-size: 0.9rem;
                 padding: 0;
                 border-radius: 50px;
