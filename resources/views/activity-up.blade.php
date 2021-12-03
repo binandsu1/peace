@@ -124,7 +124,7 @@
 
             .flag-unchecked {
                 margin:1rem 1rem;
-                font-size: 1rem;
+                font-size: 0.9rem;
                 padding: 0;
                 border-radius: 50px;
                 color: #6e4531;
