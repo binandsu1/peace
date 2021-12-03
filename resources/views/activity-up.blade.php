@@ -37,7 +37,7 @@
         }
 
         .flag-unchecked {
-            margin:2vh 2vw;
+            margin:1.9vh 2vw;
             font-size: 0.9em;
             padding: 0;
             border-radius: 50px;
