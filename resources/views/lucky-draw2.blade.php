@@ -32,19 +32,20 @@
     <div class="content">
         <div id="large-header" class="large-header">
             <canvas id="demo-canvas"></canvas>
-            <div class="logo_box">
-                <div class='winnerBox'>
-                    <div class="turnplate_box">
-                        <canvas id="myCanvas" width="260px" height="260px">抱歉！浏览器不支持。</canvas>
-                        <button id="tupBtn" class="turnplatw_btn">
-                            <img src="<?= asset('/jy/guding@2x.png')?>" class="turnplatw_img">
-                            <div class="goIcon"></div>
-                        </button>
-                    </div>
+            {{--<div class="logo_box">--}}
+            {{--<h3 style="text-align: center;">抽奖页面</h3>--}}
+            {{--</div>--}}
+            <div class='winnerBox'>
+                <div class="turnplate_box">
+                    <canvas id="myCanvas" width="260px" height="260px">抱歉！浏览器不支持。</canvas>
+                    <button id="tupBtn" class="turnplatw_btn">
+                        <img src="<?= asset('/jy/guding@2x.png')?>" class="turnplatw_img">
+                        <div class="goIcon"></div>
+                    </button>
                 </div>
             </div>
         </div>
-   </div>
+    </div>
 
 
 </div><!-- /container -->
