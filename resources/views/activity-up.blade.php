@@ -37,9 +37,9 @@
         }
 
         .flag-unchecked {
-            margin:2.4vw 1vh;
-            font-size: 1vw;
-            padding: 1vw;
+            margin:1rem 1rem;
+            font-size: 0.9rem;
+            padding: 0;
             border-radius: 50px;
             color: #6e4531;
         }
@@ -51,7 +51,7 @@
             left: 50%;
             top: 50%;
             margin-left: -44vw;
-            margin-top: -20vh;
+            margin-top: -22vh;
         }
 
         @media only screen and (max-height: 568px) {
@@ -65,8 +65,37 @@
             }
 
             .flag-unchecked {
-                margin:2vw 1vh;
-                font-size: 1vw;
+                margin:0.5rem 1rem;
+                font-size: 0.5rem;
+                padding: 0;
+                border-radius: 50px;
+                color: #6e4531;
+            }
+            .logo_box_flag {
+                width: 90vw;
+                height: 100vh;
+                padding: 4vh;
+                position: fixed;
+                left: 50%;
+                top: 50%;
+                margin-left: -44vw;
+                margin-top: -22vh;
+            }
+        }
+
+        @media only screen and (min-width: 375px) and (min-height: 812px) {
+            .demo-1 .large-header {
+                background-image: url("<?= asset('/jy/flag-bg1.jpg')?>");
+                background-size: 100vw 100vh;
+                width: 100vw;
+                height: 100vh;
+                background-repeat: no-repeat;
+                position: fixed;
+            }
+
+            .flag-unchecked {
+                margin:1.1rem 1rem;
+                font-size: 0.9rem;
                 padding: 0;
                 border-radius: 50px;
                 color: #6e4531;
@@ -83,7 +112,7 @@
             }
         }
 
-        @media only screen and (min-width: 375px) and (min-height: 812px) {
+        @media only screen and (min-width: 414px) and (min-height: 812px) {
             .demo-1 .large-header {
                 background-image: url("<?= asset('/jy/flag-bg1.jpg')?>");
                 background-size: 100vw 100vh;
@@ -94,9 +123,9 @@
             }
 
             .flag-unchecked {
-                margin:2vw 1vh;
-                font-size: 4vw;
-                padding: 1vw;
+                margin:1rem 1rem;
+                font-size: 1rem;
+                padding: 0;
                 border-radius: 50px;
                 color: #6e4531;
             }
