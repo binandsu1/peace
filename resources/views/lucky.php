@@ -48,6 +48,6 @@
         integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
 	crossorigin="anonymous"></script>
 <script src="<?=asset('/jy/awardRotate.js')?>"></script>
-<script src="<?=asset('/jy/lottery1.js')?>"></script>
+<script src="<?=asset('/jy/lottery2.js')?>"></script>
 </body>
 </html>

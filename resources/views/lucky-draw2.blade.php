@@ -64,7 +64,7 @@
 
 <!--大转盘-->
 <script src="<?=asset('/jy/awardRotate.js')?>"></script>
-<script src="<?=asset('/jy/lottery-down1.js')?>"></script>
+<script src="<?=asset('/jy/lottery-down2.js')?>"></script>
 
 </body>
 </html>

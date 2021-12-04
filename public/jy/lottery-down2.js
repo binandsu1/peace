@@ -10,37 +10,37 @@ var winnerList=[
     {
         id:'1',
         name:'上海报资格',
-	    logo:"https://mssocial.una-ad.com/jy/袜子.png",
+        logo:"https://mssocial.una-ad.com/jy/线下上海报.png",
         probability:probability1,
     },{
         id:'2',
-        name:'奖品套餐A',
-	logo:'https://mssocial.una-ad.com/jy/水杯.png',
+        name:'李现海报',
+        logo:'https://mssocial.una-ad.com/jy/线下李现海报.png',
         probability:probability2,
     },{
         id:'3',
-        name:'奖品套餐B',
-        logo:'https://mssocial.una-ad.com/jy/prize-online1.png',
+        name:'ING帽子',
+        logo:'https://mssocial.una-ad.com/jy/线下帽子.png',
         probability:probability3,
     },{
         id:'4',
-        name:'奖品套餐C',
-        logo:'https://mssocial.una-ad.com/jy/prize-online1.png',
+        name:'ING背包',
+        logo:'https://mssocial.una-ad.com/jy/线下背包.png',
         probability:probability4,
     },{
         id:'5',
-        name:'奖品套餐D',
-        logo:'https://mssocial.una-ad.com/jy/prize-online1.png',
+        name:'ING袜子',
+        logo:'https://mssocial.una-ad.com/jy/线下袜子.png',
         probability:probability5,
     },{
         id:'6',
-        name:'奖品套餐E',
-        logo:'https://mssocial.una-ad.com/jy/prize-online1.png',
+        name:'ING贴纸',
+        logo:'https://mssocial.una-ad.com/jy/线下贴纸.png',
         probability:probability6,
     },{
         id:'7',
-        name:'奖品套餐F',
-        logo:'https://mssocial.una-ad.com/jy/prize-online1.png',
+        name:'优惠券30元',
+        logo:'https://mssocial.una-ad.com/jy/线下优惠券.png',
         probability:probability7,
     }
 ];
@@ -173,7 +173,7 @@ var number = winnerList.length;
             animateTo:2880 - angles,
             duration:8000,
             callback:function (){
-                window.location="/api/winPrize?api_token="+token;
+                window.location="/api/winPrize2?api_token="+token;
                 $('#tupBtn').removeAttr("disabled", true);
             }
         });
