@@ -45,7 +45,7 @@
         }
         .logo_box_flag {
             width: 70%;
-            height: 60%;
+            height: 70%;
             padding: 0;
             position: fixed;
             overflow: hidden;
@@ -56,15 +56,15 @@
         }
 
         .btn-1 {
-            width: 90vw;
-            height: 20vh;
-            padding: 4vh;
+            width: 70vw;
+            height: 14vh;
+            padding: 1vh;
             position: fixed;
             overflow: hidden;
             left: 50%;
             top: 100%;
-            margin-left: -44vw;
-            margin-top: -22vh;
+            margin-left: -34vw;
+            margin-top: -20vh;
         }
     </style>
 
@@ -92,7 +92,9 @@
                     </div>
 
             </div>
-            <div class="mb2 btn-1"><a type="button" class="act-but submit" style="color: #744323"  onclick="set_flag()">点 我 上 海 报</a></div>
+            <div class="mb2 btn-1">
+                <a type="button" class="act-but submit" style="color: #744323"  onclick="set_flag()">点 我 上 海 报</a>
+            </div>
         </div>
     </div>
 </div><!-- /container -->
