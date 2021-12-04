@@ -92,7 +92,7 @@
                     </div>
 
             </div>
-            <div class="mb2 btn-1" onclick="set_flag()"><a type="button" class="act-but submit" style="color: #744323">点 我 上 海 报</a></div>
+            <div class="mb2 btn-1"><a type="button" class="act-but submit" style="color: #744323"  onclick="set_flag()">点 我 上 海 报</a></div>
         </div>
     </div>
 </div><!-- /container -->

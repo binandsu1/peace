@@ -36,22 +36,22 @@
         }
 
         .flag-unchecked {
-            margin:1.9vh 2vw;
-            font-size: 0.9em;
+            margin:2vh 2vw;
+            font-size: 2vh;
             padding: 0;
             border-radius: 50px;
             color: #6e4531;
         }
         .logo_box_flag {
-            width: 90vw;
-            height: 50vh;
-            padding: 4vh;
+            width: 70%;
+            height: 60%;
+            padding: 0;
             position: fixed;
             overflow: hidden;
-            left: 50%;
+            left: 60%;
             top: 50%;
             margin-left: -44vw;
-            margin-top: -22vh;
+            margin-top: -34%;
         }
 
         .btn-1 {
@@ -91,7 +91,7 @@
                     <input id="customize_flag" type="text" name="flag" class="form-control" placeholder="其他（限15字以内）" aria-describedby="basic-addon1">
                 </div>
             </div>
-            <div class="mb2 btn-1" onclick="set_flag()"><a type="button" class="act-but submit" style="color: #744323">点 我 上 海 报</a></div>
+            <div class="mb2 btn-1" ><a type="button" class="act-but submit" style="color: #744323" onclick="set_flag()">点 我 上 海 报</a></div>
         </div>
     </div>
 </div><!-- /container -->
