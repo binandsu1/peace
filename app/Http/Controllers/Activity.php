@@ -118,8 +118,7 @@ class Activity extends Controller
 
             switch ($prize_num) {
                 case 11:
-                    // todo::缺少上海报的背景图后期要改
-                    $bg = "李现海报";
+                    $bg = "线下上海报";
                     break;
                 case 12:
                     $bg = "李现海报";
