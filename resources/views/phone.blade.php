@@ -115,9 +115,9 @@
 
             {{--<div style="margin-left:10%">--}}
                 <form class="form-horizontal" method="post" action="<?=route('phone',['api_token'=>request('api_token')])?>" enctype="multipart/form-data">
-                    <div class="mb2 btn-2">
+{{--                    <div class="mb2 btn-2">--}}
                         <input type="file" name="image" accept="image/*" capture="camera" style="color: #744323">
-                    </div>
+{{--                    </div>--}}
                     <div class="mb2 btn-3">
 
                         {{--<?php--}}
