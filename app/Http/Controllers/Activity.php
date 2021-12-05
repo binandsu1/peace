@@ -70,7 +70,7 @@ class Activity extends Controller
                         $flag_info = $flag[0]->customize_flag;
                         $pic_re = Jiayu::where('id', $uid)->first();
                         $range = 'new' . date("YmdHis").time() . rand(10000, 99999);
-                        if(!empty($pic_re->path)){
+                        if(empty($pic_re->path)){
                             $pic_re->path = $this->flagP($flag_info,$range);
                             $pic_re->path = $this->flagX($flag_info,$range);
                             $pic_re->save();
@@ -528,7 +528,7 @@ class Activity extends Controller
                 $flag_info = $flag[0]->customize_flag;
                 $pic_re = Jiayu::where('id', $uid)->first();
                 $range = 'new' . date("YmdHis").time() . rand(10000, 99999);
-                if(!empty($pic_re->path)){
+                if(empty($pic_re->path)){
                     $pic_re->path = $this->flagP($flag_info,$range);
                     $pic_re->path = $this->flagX($flag_info,$range);
                     $pic_re->save();
@@ -585,7 +585,7 @@ class Activity extends Controller
                 $flag_info = $flag[0]->customize_flag;
                 $pic_re = Jiayu::where('id', $uid)->first();
                 $range = 'new' . date("YmdHis").time() . rand(10000, 99999);
-                if(!empty($pic_re->path)){
+                if(empty($pic_re->path)){
                     $pic_re->path = $this->flagP($flag_info,$range);
                     $pic_re->path = $this->flagX($flag_info,$range);
                     $pic_re->save();
