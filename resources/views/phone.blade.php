@@ -122,7 +122,7 @@
 
                     <button type="submit" class="btn btn-success">开始上传</button>
                 </form>
-                <img width="300px" height="300px" src="<?= asset('/images/'.$user_info->pic_name)?>" class="img-rounded">
+                <img width="300px" height="300px" src="<?= asset('/images/'.$userinfo->pic_name)?>" class="img-rounded">
                 {{--  <img width="300px" height="300px" src="http://peace.local/{{$image->path}}" class="img-rounded">--}}
             </div>
 
