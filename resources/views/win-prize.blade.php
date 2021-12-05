@@ -11,7 +11,64 @@
     <link rel="stylesheet" type="text/css" href="<?= asset('/jy/component.css') ?>">
     <style>
         .demo-1 .large-header {
-            background-image: url("<?= asset('/jy/'.$bg.'P.jpg')?>");
+
+            <?php
+
+        switch ($prize_num) {
+            case 1:
+                // todo::缺少上海报的背景图
+                ?>
+                  background-image: url("<?= asset('/jy/TMAP.jpg')?>");
+                <?php
+                $bg = "TMA";
+                $url = "";
+                break;
+            case 2:
+                ?>
+                 background-image: url("<?= asset('/jy/TMAP.jpg')?>");
+                <?php
+                $bg = "TMA";
+                $url = "https://m.tb.cn/h.f6eDzQa";
+                break;
+            case 3:
+                ?>
+                background-image: url("<?= asset('/jy/TMBP.jpg')?>");
+                <?php
+                $bg = "TMB";
+                $url = "https://m.tb.cn/h.fhnjkXn";
+                break;
+            case 4:
+                ?>
+                background-image: url("<?= asset('/jy/TMCP.jpg')?>");
+                <?php
+                $bg = "TMC";
+                $url = "https://s.tb.cn/c.0uj2Le";
+                break;
+            case 5:
+                ?>
+                 background-image: url("<?= asset('/jy/JDAP.jpg')?>");
+                <?php
+                $bg = "JDA";
+                $url = "";
+                break;
+            case 6:
+                ?>
+                background-image: url("<?= asset('/jy/JDBP.jpg')?>");
+                <?php
+                $bg = "JDB";
+                $url = "";
+                break;
+            case 7:
+                ?>
+                background-image: url("<?= asset('/jy/JDCP.jpg')?>");
+                <?php
+                $bg = "JDC";
+                $url = "";
+                break;
+        }
+
+            ?>
+
             background-size: 100vw 100vh;
             width: 100vw;
             height: 100vh;
@@ -58,7 +115,70 @@
 
         @media only screen and (min-width: 375px) and (min-height: 812px) {
             .demo-1 .large-header {
-                background-image: url("<?= asset('/jy/'.$bg.'X.jpg')?>");
+
+
+
+                <?php
+
+       switch ($prize_num) {
+           case 1:
+               // todo::缺少上海报的背景图
+               ?>
+background-image: url("<?= asset('/jy/TMAX.jpg')?>");
+                <?php
+                $bg = "TMA";
+                $url = "";
+                break;
+            case 2:
+                ?>
+                 background-image: url("<?= asset('/jy/TMAX.jpg')?>");
+                <?php
+                $bg = "TMA";
+                $url = "https://m.tb.cn/h.f6eDzQa";
+                break;
+            case 3:
+                ?>
+                background-image: url("<?= asset('/jy/TMBX.jpg')?>");
+                <?php
+                $bg = "TMB";
+                $url = "https://m.tb.cn/h.fhnjkXn";
+                break;
+            case 4:
+                ?>
+                background-image: url("<?= asset('/jy/TMCX.jpg')?>");
+                <?php
+                $bg = "TMC";
+                $url = "https://s.tb.cn/c.0uj2Le";
+                break;
+            case 5:
+                ?>
+                 background-image: url("<?= asset('/jy/JDAX.jpg')?>");
+                <?php
+                $bg = "JDA";
+                $url = "";
+                break;
+            case 6:
+                ?>
+                background-image: url("<?= asset('/jy/JDBX.jpg')?>");
+                <?php
+                $bg = "JDB";
+                $url = "";
+                break;
+            case 7:
+                ?>
+                background-image: url("<?= asset('/jy/JDCX.jpg')?>");
+                <?php
+                $bg = "JDC";
+                $url = "";
+                break;
+        }
+
+            ?>
+
+
+
+
+
                 background-size: 100vw 100vh;
                 width: 100vw;
                 height: 100vh;
