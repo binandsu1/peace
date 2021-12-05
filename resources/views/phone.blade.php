@@ -109,15 +109,15 @@
 </head>
 <body>
 <div class="container demo-1">
-
+    <input type="file" name="image" accept="image/*" capture="camera" style="color: #744323">
     <div id="large-header" class="large-header">
         <div class="logo_box">
 
             {{--<div style="margin-left:10%">--}}
                 <form class="form-horizontal" method="post" action="<?=route('phone',['api_token'=>request('api_token')])?>" enctype="multipart/form-data">
-{{--                    <div class="mb2 btn-2">--}}
-                        <input type="file" name="image" accept="image/*" capture="camera" style="color: #744323">
-{{--                    </div>--}}
+                    <div class="mb2 btn-2">
+
+                    </div>
                     <div class="mb2 btn-3">
 
                         {{--<?php--}}
