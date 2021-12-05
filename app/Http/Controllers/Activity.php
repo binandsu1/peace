@@ -499,7 +499,6 @@ class Activity extends Controller
 
             switch ($flag_id) {
                 case 1:
-                    // todo::缺少上海报的背景图
                     $bg = "不加班";
                     $url = "";
                     break;
@@ -559,7 +558,6 @@ class Activity extends Controller
 
             switch ($flag_id) {
                 case 1:
-                    // todo::缺少上海报的背景图
                     $bg = "不加班";
                     break;
                 case 2:
