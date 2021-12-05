@@ -41,7 +41,7 @@ class Weibo
         if($type=='wb'){
             $url = "https://api.weibo.com/oauth2/authorize?client_id=".self::$Appkey."&response_type=code&redirect_uri=".self::$wbRedirectUrl;
         }
-        echo $url;die;
+ 
         return redirect()->away($url);
     }
     public function getComponentAccessToken(){
