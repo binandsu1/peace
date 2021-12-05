@@ -57,6 +57,7 @@ Route::any('/prize-admin', [\App\Http\Controllers\Activity::class,'prizeAdmin'])
 Route::any('/authorization', [\App\Http\Controllers\Activity::class,'authorization'])->name('authorization');
 Route::any('/agreement', [\App\Http\Controllers\Activity::class,'agreement'])->name('agreement');
 Route::any('/share', [\App\Http\Controllers\Activity::class,'share'])->name('share');
+Route::any('/tp', [\App\Http\Controllers\Activity::class,'tp'])->name('tp');
 
 
 

@@ -128,7 +128,8 @@ class Weibo
         $response =self::$client->request('POST', 'https://api.weibo.com/2/statuses/share.json', [
             'form_params' => [
                 'access_token' => $token,
-                'status' => $con."https://mssocial.una-ad.com",
+                'status' => $con."https://mssocial.una-ad.com/images/hb/no-flagp.png",
+                'pic' => "https://mssocial.una-ad.com/images/hb/no-flagp.png",
             ]
         ]);
         $body = $response->getBody()->getContents();

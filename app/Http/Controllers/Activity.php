@@ -839,7 +839,11 @@ class Activity extends Controller
 //        $code = $weiboSer->getCode('wb');
         $token = "2.00pWqBsGWWH9VE365525c970j1e34B";
         $code = $weiboSer->share($token,$ms);
-      
+        dd($code);
+    }
+
+    public function tp(){
+        return view('tp');
     }
 
 
