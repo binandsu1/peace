@@ -32,30 +32,6 @@
             margin-top: -17vh;
         }
 
-        .btn-2 {
-            width: 70vw;
-            height: 12vh;
-            padding: 1vh;
-            position: fixed;
-            overflow: hidden;
-            left: 50%;
-            top: 100%;
-            margin-left: -10vw;
-            margin-top: -6vh;
-        }
-        .btn-3 {
-            width: 100vw;
-            height: 14vh;
-            padding: 1vh;
-            position: fixed;
-            overflow: hidden;
-            left: 0;
-            top: 100%;
-            margin-left: 0;
-            margin-top: -5.5vh;
-            font-size: 0.3rem;
-            text-align: center;
-        }
 
         @media only screen and (min-width: 375px) and (min-height: 812px) {
             .demo-1 .large-header {
@@ -78,30 +54,6 @@
                 margin-left: -34vw;
                 margin-top: -20vh;
             }
-            .btn-2 {
-                width: 70vw;
-                height: 14vh;
-                padding: 1vh;
-                position: fixed;
-                overflow: hidden;
-                left: 50%;
-                top: 100%;
-                margin-left: -10vw;
-                margin-top: -10vh;
-            }
-            .btn-3 {
-                width: 100vw;
-                height: 14vh;
-                padding: 1vh;
-                position: fixed;
-                overflow: hidden;
-                left: 0;
-                top: 100%;
-                margin-left: 0;
-                margin-top: -10vh;
-                font-size: 0.3rem;
-                text-align: center;
-            }
         }
     </style>
 
@@ -117,7 +69,7 @@
             <canvas id="demo-canvas"></canvas>
             <div class="logo_box_home">
                 <form action="#" name="f" method="post">
-                    <div class="mb2"><a class="act-but submit" onclick="up()" style="color: #744323">一 键 分 享</a></div>
+                    <div class="mb2 btn-1"><a class="act-but submit" onclick="up()" style="color: #744323">一 键 分 享</a></div>
                 </form>
             </div>
         </div>

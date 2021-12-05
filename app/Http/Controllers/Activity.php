@@ -436,7 +436,40 @@ class Activity extends Controller
                 return view('poster', compact('pic_re'))->with(['flag_id'=>$flag_id]);
             }
         } else {
-            return view('poster')->with(['flag_id'=>$flag_id]);
+
+            switch ($flag_id) {
+                case 1:
+                    // todo::缺少上海报的背景图
+                    $bg = "不加班";
+                    $url = "";
+                    break;
+                case 2:
+                    $bg = "工作生活";
+                    $url = "https://m.tb.cn/h.f6eDzQa";
+                    break;
+                case 3:
+                    $bg = "门店看看";
+                    $url = "https://m.tb.cn/h.fhnjkXn";
+                    break;
+                case 4:
+                    $bg = "锻炼身体";
+                    $url = "https://s.tb.cn/c.0uj2Le";
+                    break;
+                case 5:
+                    $bg = "找男朋友";
+                    $url = "";
+                    break;
+                case 6:
+                    $bg = "拒绝熬夜";
+                    $url = "";
+                    break;
+                case 7:
+                    $bg = "保持创新";
+                    $url = "";
+                    break;
+            }
+
+            return view('poster')->with(['flag_id'=>$flag_id, 'bg' => $bg]);
         }
 
     }
