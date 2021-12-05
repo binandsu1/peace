@@ -11,10 +11,9 @@
     <link rel="stylesheet" type="text/css" href="<?= asset('/jy/component.css') ?>">
     <style>
 
-        #fileBtn{width: 84vw;height: 50vh; position: absolute;display: block;top: 0;left: 0;}
-        /*#fileBtn{width: 100px;height: 100px; position: absolute;display: block;top: 0;left: 0;opacity: 0;}*/
+        #fileBtn{width: 84vw;height: 50vh; position: absolute;display: block;top: 0;left: 0;opacity: 0;}
         .fileBtn{width: 84vw;height: 50vh;border: 2px dashed lightskyblue;text-align: center;position: relative;left: 50px;top: 50px;}
-        .fileBtn p{line-height: 60px;}
+        .fileBtn p{line-height: 46vh;}
         #img{width: 84vw;height: 50vh;position: absolute;top: 0;left: 0;z-index: 10;display: none;}
         .img{width: 100px;height: 100px;}
         .img-box{margin-top: 80px;}
@@ -38,7 +37,7 @@
             left: 50%;
             top: 100%;
             margin-left: -34vw;
-            margin-top: -17vh;
+            margin-top: -24vh;
         }
 
         .btn-2 {
@@ -53,15 +52,15 @@
             margin-top: -80vh;
         }
         .btn-3 {
-            width: 84vw;
+            width: 76vw;
             height: 50vh;
             padding: 1vh;
             position: fixed;
             overflow: hidden;
             left: 0;
             top: 100%;
-            margin-left: 8vw;
-            margin-top: -70vh;
+            margin-left: 12vw;
+            margin-top: -80vh;
             font-size: 1rem;
             text-align: center;
         }
@@ -85,7 +84,7 @@
                 left: 50%;
                 top: 100%;
                 margin-left: -34vw;
-                margin-top: -20vh;
+                margin-top: -26vh;
             }
             .btn-2 {
                 width: 90vw;
@@ -99,15 +98,15 @@
                 margin-top: -80vh;
             }
             .btn-3 {
-                width: 84vw;
+                width: 76vw;
                 height: 50vh;
                 padding: 1vh;
                 position: fixed;
                 overflow: hidden;
                 left: 0;
                 top: 100%;
-                margin-left: 8vw;
-                margin-top: -74vh;
+                margin-left: 12vw;
+                margin-top: -80vh;
                 font-size: 1rem;
                 text-align: center;
             }
@@ -124,30 +123,17 @@
         <div class="logo_box">
 
             {{--<div style="margin-left:10%">--}}
-                <form class="form-horizontal" method="post" action="<?=route('phone',['api_token'=>request('api_token')])?>" enctype="multipart/form-data">
+                <form id="myform" class="form-horizontal" method="post" action="<?=route('phone',['api_token'=>request('api_token')])?>" enctype="multipart/form-data">
 
-                        {{--<input type="file" name="image" accept="image/*" capture="camera" style="color: #744323">--}}
-                    {{--</div>--}}
-                    {{--<div class="mb2 btn-3">--}}
-
-                        {{--<?php--}}
-                            {{--if (empty($userinfo->path)) {--}}
-                        {{--?>--}}
-                            {{--<img class="img-rounded" src="https://mssocial.una-ad.com/jy/微软logo.png">--}}
-                        {{--<?php--}}
-                            {{--} else {--}}
-                        {{--?>--}}
-                            {{--<img class="img-rounded" src="<?= asset('/offline/'.$userinfo->pic_name)?>">--}}
                         <div class="fileBtn btn-3">
-                            <p style="color:#744323;">点击添加图片</p>
+                            <p style="color:#744323;">点 击 拍 照</p>
                             <input id="fileBtn" type="file" onchange="upload();" accept="image/*" capture="camera" />
                             <!--单张图片容器-->
                             <img src="" id="img"/>
                         </div>
 
-                    {{--<button type="submit" class="btn btn-success">开始上传</button>--}}
                     <div class="mb2 btn-1">
-                        <button type="submit" class="act-but submit btn btn-success" style="color: #744323;">照片上传/授权</button>
+                        <a type="submit" class="act-but submit btn btn-success" style="color: #744323;" href="#" onclick="document.getElementById('myform').submit();return false;" >照片上传/授权</a>
                     </div>
                 </form>
 
