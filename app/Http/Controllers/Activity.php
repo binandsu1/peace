@@ -60,6 +60,52 @@ class Activity extends Controller
         if ($is_draw == 2 && $way == 2) {
 
             if ($use_code == 2) {
+
+
+
+                $flag_id = $user->flag_id;
+                if($flag_id == 8) {
+                    $flag = DB::table('customize_flag')->where('uid', $uid)->get(['customize_flag']);
+                    if (!$flag->isEmpty()) {
+                        $flag_info = $flag[0]->customize_flag;
+                        $pic_re = Jiayu::where('id', $uid)->first();
+                        $range = 'new' . date("YmdHis").time() . rand(10000, 99999);
+                        $pic_re->path = $this->flagP($flag_info,$range);
+                        $pic_re->path = $this->flagX($flag_info,$range);
+                        $pic_re->save();
+
+                        return view('poster2', compact('pic_re'))->with(['flag_id'=>$flag_id]);
+                    }
+                } else {
+
+                    switch ($flag_id) {
+                        case 1:
+                            $bg = "不加班";
+                            break;
+                        case 2:
+                            $bg = "工作生活";
+                            break;
+                        case 3:
+                            $bg = "门店看看";
+                            break;
+                        case 4:
+                            $bg = "锻炼身体";
+                            break;
+                        case 5:
+                            $bg = "找男朋友";
+                            break;
+                        case 6:
+                            $bg = "拒绝熬夜";
+                            break;
+                        case 7:
+                            $bg = "保持创新";
+                            break;
+                    }
+
+                    return view('poster2')->with(['flag_id'=>$flag_id, 'bg' => $bg]);
+                }
+
+
                 // todo 判断用户已经领完奖了，直接让他来到个人海报页面，待完善完poster2后复制代码过来
 //                return redirect()->route('poster2', ['api_token' => $api_token])->with([]);
             }
@@ -368,8 +414,7 @@ class Activity extends Controller
 
         switch ($prize_num) {
             case 1:
-                // todo::缺少上海报的背景图
-                $bg = "TMA";
+                $bg = "线上上海报";
                 $url = "";
                 break;
             case 2:
@@ -413,8 +458,7 @@ class Activity extends Controller
 
         switch ($prize_num) {
             case 11:
-                // todo::缺少上海报的背景图
-                $bg = "李现海报";
+                $bg = "线下上海报";
                 break;
             case 12:
                 $bg = "李现海报";
@@ -450,8 +494,7 @@ class Activity extends Controller
 
         switch ($prize_num) {
             case 11:
-                // todo::缺少上海报的背景图，需要改
-                $bg = "李现海报";
+                $bg = "线下上海报";
                 break;
             case 12:
                 $bg = "李现海报";
@@ -482,18 +525,15 @@ class Activity extends Controller
         $flag_id = $user->flag_id;
         if($flag_id == 8) {
             $flag = DB::table('customize_flag')->where('uid', $uid)->get(['customize_flag']);
-            $flag_info = "做个低效率的人经常熬夜!";
-            //TODO:回头改过来 !$flag->isEmpty()
-            if ($flag->isEmpty()) {
-//                $flag_info = $flag[0]->customize_flag;
-                $flag_info = "做个低效率的人经常熬夜!";
+            if (!$flag->isEmpty()) {
+                $flag_info = $flag[0]->customize_flag;
                 $pic_re = Jiayu::where('id', $uid)->first();
                 $range = 'new' . date("YmdHis").time() . rand(10000, 99999);
                 $pic_re->path = $this->flagP($flag_info,$range);
                 $pic_re->path = $this->flagX($flag_info,$range);
                 $pic_re->save();
 
-                return view('poster', compact('pic_re'))->with(['flag_id'=>$flag_id]);
+                return view('poster', compact('pic_re'))->with(['flag_id'=>$flag_id, 'bg' => $pic_re->path]);
             }
         } else {
 
@@ -541,18 +581,15 @@ class Activity extends Controller
         $flag_id = $user->flag_id;
         if($flag_id == 8) {
             $flag = DB::table('customize_flag')->where('uid', $uid)->get(['customize_flag']);
-            $flag_info = "做个低效率的人经常熬夜!";
-            //TODO:回头改过来 !$flag->isEmpty()
-            if ($flag->isEmpty()) {
-//                $flag_info = $flag[0]->customize_flag;
-                $flag_info = "做个低效率的人经常熬夜!";
+            if (!$flag->isEmpty()) {
+                $flag_info = $flag[0]->customize_flag;
                 $pic_re = Jiayu::where('id', $uid)->first();
                 $range = 'new' . date("YmdHis").time() . rand(10000, 99999);
                 $pic_re->path = $this->flagP($flag_info,$range);
                 $pic_re->path = $this->flagX($flag_info,$range);
                 $pic_re->save();
 
-                return view('poster', compact('pic_re'))->with(['flag_id'=>$flag_id]);
+                return view('poster2', compact('pic_re'))->with(['flag_id'=>$flag_id, 'bg' => $pic_re->path]);
             }
         } else {
 
