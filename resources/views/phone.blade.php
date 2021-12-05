@@ -10,6 +10,16 @@
     <!--必要样式-->
     <link rel="stylesheet" type="text/css" href="<?= asset('/jy/component.css') ?>">
     <style>
+
+        #fileBtn{width: 84vw;height: 50vh; position: absolute;display: block;top: 0;left: 0;}
+        /*#fileBtn{width: 100px;height: 100px; position: absolute;display: block;top: 0;left: 0;opacity: 0;}*/
+        .fileBtn{width: 84vw;height: 50vh;border: 2px dashed lightskyblue;text-align: center;position: relative;left: 50px;top: 50px;}
+        .fileBtn p{line-height: 60px;}
+        #img{width: 84vw;height: 50vh;position: absolute;top: 0;left: 0;z-index: 10;display: none;}
+        .img{width: 100px;height: 100px;}
+        .img-box{margin-top: 80px;}
+
+
         .demo-1 .large-header {
             background-image: url("<?= asset('/jy/主背景.jpg')?>");
             background-size: 100vw 100vh;
@@ -115,10 +125,10 @@
 
             {{--<div style="margin-left:10%">--}}
                 <form class="form-horizontal" method="post" action="<?=route('phone',['api_token'=>request('api_token')])?>" enctype="multipart/form-data">
-                    <div class="mb2 btn-2">
-                        <input type="file" name="image" accept="image/*" capture="camera" style="color: #744323">
-                    </div>
-                    <div class="mb2 btn-3">
+
+                        {{--<input type="file" name="image" accept="image/*" capture="camera" style="color: #744323">--}}
+                    {{--</div>--}}
+                    {{--<div class="mb2 btn-3">--}}
 
                         {{--<?php--}}
                             {{--if (empty($userinfo->path)) {--}}
@@ -127,15 +137,17 @@
                         {{--<?php--}}
                             {{--} else {--}}
                         {{--?>--}}
-                            <img class="img-rounded" src="<?= asset('/offline/'.$userinfo->pic_name)?>">
-<!--                        --><?php
-//                        }
-//                        ?>
+                            {{--<img class="img-rounded" src="<?= asset('/offline/'.$userinfo->pic_name)?>">--}}
+                        <div class="fileBtn btn-3">
+                            <p style="color:#744323;">点击添加图片</p>
+                            <input id="fileBtn" type="file" onchange="upload();" accept="image/*" capture="camera" />
+                            <!--单张图片容器-->
+                            <img src="" id="img"/>
+                        </div>
 
-                    </div>
                     {{--<button type="submit" class="btn btn-success">开始上传</button>--}}
                     <div class="mb2 btn-1">
-                        <a type="submit" class="act-but submit btn btn-success" style="color: #744323">照片上传/授权</a>
+                        <button type="submit" class="act-but submit btn btn-success" style="color: #744323;">照片上传/授权</button>
                     </div>
                 </form>
 
@@ -144,5 +156,21 @@
     </div>
 
 </div><!-- /container -->
+<script src="<?=asset('/jy/jquery-1.7.2.min.js')?>"></script>
+<script>
+    //单张图片上传
+    function upload(){
+        var $c = document.querySelector("#fileBtn");//上传出发按钮
+        var $d = document.querySelector("#img");//图片容器
+        var file = $c.files[0];//获取file对象单张
+        var reader = new FileReader();//创建filereader对象
+        reader.readAsDataURL(file);//转换数据
+        reader.onload = function(e){//加载ok时触发的事件
+            console.log(file);
+            $d.setAttribute("src", e.target.result);//给图片地址,显示缩略图
+            $d.style.display="block";//样式显示
+        };
+    };
+</script>
 </body>
 </html>
