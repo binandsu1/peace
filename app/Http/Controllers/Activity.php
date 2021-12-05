@@ -326,23 +326,56 @@ class Activity extends Controller
     }
 
     // 中奖信息展示页面
+//Tmall优惠券链接如下
+//
+//M365家庭版+腾讯视频季卡：https://m.tb.cn/h.f6eDzQa
+//
+//M365家庭版+ING帆布袋+ING袜子：https://m.tb.cn/h.fhnjkXn
+//
+//GO3+闪迪128G卡+ING杯子：https://s.tb.cn/c.0uj2Le
     public function winPrize()
     {
         $user = Auth::guard('api')->user();
         $uid = $user->id;
 
-        $prize_code = DB::table("prize_num")->where('u_id', $uid)->get(['gift_id', 'num']);
-//        $user_info = DB::table("jiayus")->where('id',29)->get(['id', 'u_name']);
+        $prize_code = DB::table("prize_num")->where('u_id', $uid)->get(['gift_id']);
 
-//        foreach ($prize_code as $v) {
-            $num = $prize_code[0]->num;
-            $prize_num = $prize_code[0]->gift_id;
-//        }
+        $prize_num = $prize_code[0]->gift_id;
 
-        // 将兑奖码与uid连接后AES对等加密
-        $code = $num . '+' . $uid;
-        $encode = $this->encrypt($code);
-        return view('win-prize')->with(['prize_code' => $prize_num, 'code' => $encode]);
+        switch ($prize_num) {
+            case 1:
+                // todo::缺少上海报的背景图
+                $bg = "";
+                $url = "";
+                break;
+            case 2:
+                $bg = "TMA";
+                $url = "https://m.tb.cn/h.f6eDzQa";
+                break;
+            case 3:
+                $bg = "TMB";
+                $url = "https://m.tb.cn/h.fhnjkXn";
+                break;
+            case 4:
+                $bg = "TMC";
+                $url = "https://s.tb.cn/c.0uj2Le";
+                break;
+            case 5:
+                $bg = "JDA";
+                $url = "";
+                break;
+            case 6:
+                $bg = "JDB";
+                $url = "";
+                break;
+            case 7:
+                $bg = "JDC";
+                $url = "";
+                break;
+        }
+
+
+        return view('win-prize')->with(['url' => $url, 'bg' => $bg, 'prize_num' => $prize_num]);
     }
 
     // 线下中奖信息展示页面（到店前）

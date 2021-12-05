@@ -12,7 +12,7 @@
     <style>
 
         .demo-1 .large-header {
-            background-image: url("<?= asset('/jy/home-1280.jpg')?>");
+            background-image: url("<?= asset('/jy/'.$bg.'p.jpg')?>");
             background-size: 100vw 100vh;
             width: 100vw;
             height: 100vh;
@@ -20,20 +20,46 @@
             position: fixed;
         }
 
-        .logo_box_home {
-            width: 90vw;
-            height: 100vh;
-            padding: 4vh;
+        .btn-1 {
+            width: 70vw;
+            height: 12vh;
+            padding: 1vh;
             position: fixed;
+            overflow: hidden;
             left: 50%;
-            top: 50%;
-            margin-left: -44vw;
-            margin-top: 10vh;
+            top: 100%;
+            margin-left: -34vw;
+            margin-top: -17vh;
+        }
+
+        .btn-2 {
+            width: 70vw;
+            height: 12vh;
+            padding: 1vh;
+            position: fixed;
+            overflow: hidden;
+            left: 50%;
+            top: 100%;
+            margin-left: -10vw;
+            margin-top: -6vh;
+        }
+        .btn-3 {
+            width: 100vw;
+            height: 14vh;
+            padding: 1vh;
+            position: fixed;
+            overflow: hidden;
+            left: 0;
+            top: 100%;
+            margin-left: 0;
+            margin-top: -5.5vh;
+            font-size: 0.3rem;
+            text-align: center;
         }
 
         @media only screen and (min-width: 375px) and (min-height: 812px) {
             .demo-1 .large-header {
-                background-image: url("<?= asset('/jy/home-bg1.jpg')?>");
+                background-image: url("<?= asset('/jy/'.$bg.'x.jpg')?>");
                 background-size: 100vw 100vh;
                 width: 100vw;
                 height: 100vh;
@@ -41,15 +67,40 @@
                 position: fixed;
             }
 
-            .logo_box_home {
-                width: 90vw;
-                height: 100vh;
-                padding: 4vh;
+            .btn-1 {
+                width: 70vw;
+                height: 14vh;
+                padding: 1vh;
                 position: fixed;
+                overflow: hidden;
                 left: 50%;
-                top: 50%;
-                margin-left: -44vw;
-                margin-top: 16vh;
+                top: 100%;
+                margin-left: -34vw;
+                margin-top: -20vh;
+            }
+            .btn-2 {
+                width: 70vw;
+                height: 14vh;
+                padding: 1vh;
+                position: fixed;
+                overflow: hidden;
+                left: 50%;
+                top: 100%;
+                margin-left: -10vw;
+                margin-top: -10vh;
+            }
+            .btn-3 {
+                width: 100vw;
+                height: 14vh;
+                padding: 1vh;
+                position: fixed;
+                overflow: hidden;
+                left: 0;
+                top: 100%;
+                margin-left: 0;
+                margin-top: -10vh;
+                font-size: 0.3rem;
+                text-align: center;
             }
         }
     </style>

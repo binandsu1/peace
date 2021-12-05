@@ -12,7 +12,8 @@
 	<style>
 
 			.demo-1 .large-header {
-				background-image: url("<?= asset('/jy/home-1280.jpg')?>");
+				{{--background-image: url("<?= asset('/jy/home-1280.jpg')?>");--}}
+				background-image: url("<?= asset('/jy/启动页.jpg')?>");
 				background-size: 100vw 100vh;
 				width: 100vw;
 				height: 100vh;
@@ -33,7 +34,8 @@
 
 		@media only screen and (min-width: 375px) and (min-height: 812px) {
 			.demo-1 .large-header {
-				background-image: url("<?= asset('/jy/home-bg1.jpg')?>");
+				{{--background-image: url("<?= asset('/jy/home-bg1.jpg')?>");--}}
+				background-image: url("<?= asset('/jy/启动页.jpg')?>");
 				background-size: 100vw 100vh;
 				width: 100vw;
 				height: 100vh;
