@@ -21,7 +21,7 @@
 
         .btn-1 {
             width: 70vw;
-            height: 50vh;
+            height: 12vh;
             padding: 1vh;
             position: fixed;
             overflow: hidden;
@@ -32,26 +32,26 @@
         }
 
         .btn-2 {
-            width: 90vw;
-            height: 14vh;
+            width: 70vw;
+            height: 12vh;
             padding: 1vh;
             position: fixed;
             overflow: hidden;
             left: 50%;
             top: 100%;
-            margin-left: -30vw;
-            margin-top: -80vh;
+            margin-left: -10vw;
+            margin-top: -6vh;
         }
         .btn-3 {
-            width: 84vw;
-            height: 50vh;
+            width: 100vw;
+            height: 14vh;
             padding: 1vh;
             position: fixed;
             overflow: hidden;
             left: 0;
             top: 100%;
-            margin-left: 8vw;
-            margin-top: -70vh;
+            margin-left: 0;
+            margin-top: -5.5vh;
             font-size: 1rem;
             text-align: center;
         }
@@ -78,69 +78,53 @@
                 margin-top: -20vh;
             }
             .btn-2 {
-                width: 90vw;
+                width: 70vw;
                 height: 14vh;
                 padding: 1vh;
                 position: fixed;
                 overflow: hidden;
                 left: 50%;
                 top: 100%;
-                margin-left: -30vw;
-                margin-top: -80vh;
+                margin-left: -10vw;
+                margin-top: -10vh;
             }
             .btn-3 {
-                width: 84vw;
-                height: 50vh;
+                width: 100vw;
+                height: 14vh;
                 padding: 1vh;
                 position: fixed;
                 overflow: hidden;
                 left: 0;
                 top: 100%;
-                margin-left: 8vw;
-                margin-top: -74vh;
+                margin-left: 0;
+                margin-top: -10vh;
                 font-size: 1rem;
                 text-align: center;
             }
         }
     </style>
-    <!--[if IE]>
+<!--[if IE]>
     <script src="<?=asset('/jy/html5.js')?>"></script>
     <![endif]-->
 </head>
 <body>
-<input type="file" name="image" accept="image/*" capture="camera" style="color: #744323">
-
-
 <div class="container demo-1">
 
     <div id="large-header" class="large-header">
         <div class="logo_box">
 
-            {{--<div style="margin-left:10%">--}}
+            <div style="margin-left:10%">
+                <h1>phone</h1>
                 <form class="form-horizontal" method="post" action="<?=route('phone',['api_token'=>request('api_token')])?>" enctype="multipart/form-data">
-                    <div class="mb2 btn-2">
 
-                    </div>
-                    <div class="mb2 btn-3">
+                    <input type="file" name="image" accept="image/*" capture="camera">
 
-                        {{--<?php--}}
-                            {{--if (empty($userinfo->path)) {--}}
-                        {{--?>--}}
-                            {{--<img class="img-rounded" src="https://mssocial.una-ad.com/jy/微软logo.png">--}}
-                        {{--<?php--}}
-                            {{--} else {--}}
-                        {{--?>--}}
-                            <img class="img-rounded" width="60%" height="60%" src="<?= asset('/offline/'.$userinfo->pic_name)?>">
-<!--                        --><?php
-//                        }
-//                        ?>
 
-                    </div>
-                    {{--<button type="submit" class="btn btn-success">开始上传</button>--}}
-                    <div class="mb2 btn-1">
-                        <button type="submit" class="act-but submit btn btn-success" style="color: #744323">照片上传/授权</button>
-                    </div>
+                    <button type="submit" class="btn btn-success">开始上传</button>
                 </form>
+                <img width="300px" height="300px" src="<?= asset('/offline/'.$userinfo->pic_name)?>" class="img-rounded">
+                {{--  <img width="300px" height="300px" src="http://peace.local/{{$image->path}}" class="img-rounded">--}}
+            </div>
 
 
         </div>
