@@ -91,7 +91,9 @@
             <canvas id="demo-canvas"></canvas>
             <div class="logo_box_home">
                 <form action="#" name="f" method="post">
-                    <div class="mb2 btn-1"><a class="act-but submit" onclick="up()" style="color: #744323">一 键 分 享</a></div>
+                    <div class="mb2 btn-1"><a class="act-but submit" onclick="up()" style="color: #744323">一 键 分 享</a>
+                        <a class="act-but submit" href="url("<?= asset('/images/'.$bg.'Z.jpg')?>")" style="color: #744323">保 存 图 片</a>
+                    </div>
                 </form>
             </div>
         </div>

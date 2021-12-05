@@ -73,6 +73,7 @@ class Activity extends Controller
                         if(empty($pic_re->path)){
                             $pic_re->path = $this->flagP($flag_info,$range);
                             $pic_re->path = $this->flagX($flag_info,$range);
+                            $this->flagZ($flag_info,$range);
                             $pic_re->save();
                         }
 
@@ -531,6 +532,7 @@ class Activity extends Controller
                 if(empty($pic_re->path)){
                     $pic_re->path = $this->flagP($flag_info,$range);
                     $pic_re->path = $this->flagX($flag_info,$range);
+                    $this->flagZ($flag_info,$range);
                     $pic_re->save();
                 }
                 return view('poster', compact('pic_re'))->with(['flag_id'=>$flag_id, 'bg' => $pic_re->path]);
@@ -588,6 +590,7 @@ class Activity extends Controller
                 if(empty($pic_re->path)){
                     $pic_re->path = $this->flagP($flag_info,$range);
                     $pic_re->path = $this->flagX($flag_info,$range);
+                    $this->flagZ($flag_info,$range);
                     $pic_re->save();
                 }
 
@@ -971,7 +974,6 @@ class Activity extends Controller
 
     public function flagX($flag_info='',$range=''){
 
-        $flag_info = "做个低效率的人经常熬夜!";
         $str_len = strlen($flag_info);
         if($str_len > 21 && $str_len < 45){
             $flag_info = $this->str_insert($flag_info,21,"\n");
@@ -997,6 +999,35 @@ class Activity extends Controller
         $timg =  $range;
         return $timg;
     }
+
+    public function flagZ($flag_info='',$range=''){
+
+        $str_len = strlen($flag_info);
+        if($str_len > 21 && $str_len < 45){
+            $flag_info = $this->str_insert($flag_info,21,"\n");
+        }
+
+
+        $image = new Image();
+        //原始图路径
+        $path = "images/hb/no-flagz.jpg";
+//        $range = 'new' . time() . rand(10000, 99999);
+        $newimageName = $range. 'Z.jpg';
+        $newpath = 'images/' . $newimageName;
+        $face_img = $image::make($path)->resize(2160, 3772);
+        $face_img->text($flag_info, 420, 3025, function ($font) use ($path) {
+            $font->file(public_path('SIMLI.TTF', 777, true));
+            $font->size(189);
+            $font->color('#CCCC33');
+            $font->valign('right');
+        });
+        $save_path = public_path($newpath);
+        $face_img->save($save_path);
+
+        $timg =  $range;
+        return $timg;
+    }
+
 
     public function str_insert($str, $i, $substr)
     {
