@@ -70,9 +70,11 @@ class Activity extends Controller
                         $flag_info = $flag[0]->customize_flag;
                         $pic_re = Jiayu::where('id', $uid)->first();
                         $range = 'new' . date("YmdHis").time() . rand(10000, 99999);
-                        $pic_re->path = $this->flagP($flag_info,$range);
-                        $pic_re->path = $this->flagX($flag_info,$range);
-                        $pic_re->save();
+                        if(!empty($pic_re->path)){
+                            $pic_re->path = $this->flagP($flag_info,$range);
+                            $pic_re->path = $this->flagX($flag_info,$range);
+                            $pic_re->save();
+                        }
 
                         return redirect()->route('poster2', ['api_token' => $api_token])->with(['flag_id'=>$flag_id, 'bg' => $pic_re->path]);
                     }
@@ -526,10 +528,11 @@ class Activity extends Controller
                 $flag_info = $flag[0]->customize_flag;
                 $pic_re = Jiayu::where('id', $uid)->first();
                 $range = 'new' . date("YmdHis").time() . rand(10000, 99999);
-                $pic_re->path = $this->flagP($flag_info,$range);
-                $pic_re->path = $this->flagX($flag_info,$range);
-                $pic_re->save();
-
+                if(!empty($pic_re->path)){
+                    $pic_re->path = $this->flagP($flag_info,$range);
+                    $pic_re->path = $this->flagX($flag_info,$range);
+                    $pic_re->save();
+                }
                 return view('poster', compact('pic_re'))->with(['flag_id'=>$flag_id, 'bg' => $pic_re->path]);
             }
         } else {
@@ -582,9 +585,11 @@ class Activity extends Controller
                 $flag_info = $flag[0]->customize_flag;
                 $pic_re = Jiayu::where('id', $uid)->first();
                 $range = 'new' . date("YmdHis").time() . rand(10000, 99999);
-                $pic_re->path = $this->flagP($flag_info,$range);
-                $pic_re->path = $this->flagX($flag_info,$range);
-                $pic_re->save();
+                if(!empty($pic_re->path)){
+                    $pic_re->path = $this->flagP($flag_info,$range);
+                    $pic_re->path = $this->flagX($flag_info,$range);
+                    $pic_re->save();
+                }
 
                 return view('poster2', compact('pic_re'))->with(['flag_id'=>$flag_id, 'bg' => $pic_re->path]);
             }
