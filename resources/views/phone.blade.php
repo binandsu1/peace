@@ -127,7 +127,7 @@
                         <?php
                             } else {
                         ?>
-                            <img class="img-rounded" src="https://mssocial.una-ad.com/{{$userinfo->path}}">
+                            <img class="img-rounded" src="<?= asset('/offline/'.$userinfo->pic_name)?>">
                         <?php
                         }
                         ?>
@@ -138,9 +138,6 @@
                         <a type="submit" class="act-but submit btn btn-success" style="color: #744323"  onclick="set_flag()">照片上传/授权</a>
                     </div>
                 </form>
-
-                {{--  <img width="300px" height="300px" src="http://peace.local/{{$image->path}}" class="img-rounded">--}}
-            {{--</div>--}}
 
 
         </div>
