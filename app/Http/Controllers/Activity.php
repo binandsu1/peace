@@ -644,53 +644,55 @@ class Activity extends Controller
             $image->move(public_path($path), $imageName);
             $userinfo->pic_name = $imageName;
             $userinfo->save();
-        }
 
-//        return view('phone', compact('userinfo'));
-        $flag_id = $user->flag_id;
-        if($flag_id == 8) {
-            $flag = DB::table('customize_flag')->where('uid', $uid)->get(['customize_flag']);
-            if (!$flag->isEmpty()) {
-                $flag_info = $flag[0]->customize_flag;
-                $pic_re = Jiayu::where('id', $uid)->first();
-                $range = 'new' . date("YmdHis").time() . rand(10000, 99999);
-                if(empty($pic_re->path)){
-                    $pic_re->path = $this->flagP($flag_info,$range);
-                    $pic_re->path = $this->flagX($flag_info,$range);
-                    $this->flagZ($flag_info,$range);
-                    $pic_re->save();
+            $flag_id = $user->flag_id;
+            if($flag_id == 8) {
+                $flag = DB::table('customize_flag')->where('uid', $uid)->get(['customize_flag']);
+                if (!$flag->isEmpty()) {
+                    $flag_info = $flag[0]->customize_flag;
+                    $pic_re = Jiayu::where('id', $uid)->first();
+                    $range = 'new' . date("YmdHis").time() . rand(10000, 99999);
+                    if(empty($pic_re->path)){
+                        $pic_re->path = $this->flagP($flag_info,$range);
+                        $pic_re->path = $this->flagX($flag_info,$range);
+                        $this->flagZ($flag_info,$range);
+                        $pic_re->save();
+                    }
+
+                    return view('poster2', compact('pic_re'))->with(['flag_id'=>$flag_id, 'bg' => $pic_re->path]);
+                }
+            } else {
+
+                switch ($flag_id) {
+                    case 1:
+                        $bg = "不加班";
+                        break;
+                    case 2:
+                        $bg = "工作生活";
+                        break;
+                    case 3:
+                        $bg = "门店看看";
+                        break;
+                    case 4:
+                        $bg = "锻炼身体";
+                        break;
+                    case 5:
+                        $bg = "找男朋友";
+                        break;
+                    case 6:
+                        $bg = "拒绝熬夜";
+                        break;
+                    case 7:
+                        $bg = "保持创新";
+                        break;
                 }
 
-                return view('poster2', compact('pic_re'))->with(['flag_id'=>$flag_id, 'bg' => $pic_re->path]);
+                return view('poster2')->with(['flag_id'=>$flag_id, 'bg' => $bg]);
             }
-        } else {
-
-            switch ($flag_id) {
-                case 1:
-                    $bg = "不加班";
-                    break;
-                case 2:
-                    $bg = "工作生活";
-                    break;
-                case 3:
-                    $bg = "门店看看";
-                    break;
-                case 4:
-                    $bg = "锻炼身体";
-                    break;
-                case 5:
-                    $bg = "找男朋友";
-                    break;
-                case 6:
-                    $bg = "拒绝熬夜";
-                    break;
-                case 7:
-                    $bg = "保持创新";
-                    break;
-            }
-
-            return view('poster2')->with(['flag_id'=>$flag_id, 'bg' => $bg]);
         }
+
+        return view('phone', compact('userinfo'));
+
 
     }
 
