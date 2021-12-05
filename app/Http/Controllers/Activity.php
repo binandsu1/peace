@@ -396,8 +396,9 @@ class Activity extends Controller
 //                $flag_info = $flag[0]->customize_flag;
                 $flag_info = "做个低效率的人经常熬夜!";
                 $pic_re = Jiayu::where('id', $uid)->first();
-                $pic_re->path_x = $this->flagP($flag_info);
-                $pic_re->path_p = $this->flagX($flag_info);
+                $range = 'new' . time() . rand(10000, 99999);
+                $pic_re->path = $this->flagP($flag_info,$range);
+                $pic_re->path = $this->flagX($flag_info,$range);
                 $pic_re->save();
 
                 return view('poster', compact('pic_re'))->with(['flag_id'=>$flag_id]);
@@ -759,18 +760,24 @@ class Activity extends Controller
 
 
 
-    public function flagP($flag_info=''){
+    public function flagP($flag_info='',$range=''){
 
         $str_len = strlen($flag_info);
         if($str_len > 21 && $str_len < 45){
             $flag_info = $this->str_insert($flag_info,21,"\n");
         }
 
+        $np = 'images/' . date('Ymd') ;
+
+        if (!file_exists(public_path($np))) {
+            mkdir(public_path($np), 777, true);
+        }
+
         $image = new Image();
         //原始图路径
         $path = "images/hb/no-flagp.jpg";
-        $range = 'new' . time() . rand(10000, 99999);
-        $newimageName = $range. 'no-flagp.jpg';
+//        $range = 'new' . time() . rand(10000, 99999);
+        $newimageName = $range. 'P.jpg';
         $newpath = 'images/' . date('Ymd') . '/' . $newimageName;
         $face_img = $image::make($path)->resize(1280, 2264);
         $face_img->text($flag_info, 370, 1541, function ($font) use ($path) {
@@ -780,12 +787,15 @@ class Activity extends Controller
             $font->valign('right');
         });
         $save_path = public_path($newpath);
+
         $face_img->save($save_path);
-        return $newpath;
+
+        $timg = 'images/' . date('Ymd') . '/' . $range. '.jpg';
+        return $timg;
     }
 
 
-    public function flagX($flag_info=''){
+    public function flagX($flag_info='',$range=''){
 
         $flag_info = "做个低效率的人经常熬夜!";
         $str_len = strlen($flag_info);
@@ -793,11 +803,17 @@ class Activity extends Controller
             $flag_info = $this->str_insert($flag_info,21,"\n");
         }
 
+        $np = 'images/' . date('Ymd') ;
+
+        if (!file_exists(public_path($np))) {
+            mkdir(public_path($np), 777, true);
+        }
+
         $image = new Image();
         //原始图路径
         $path = "images/hb/no-flagx.jpg";
-        $range = 'new' . time() . rand(10000, 99999);
-        $newimageName = $range. 'no-flagx.jpg';
+//        $range = 'new' . time() . rand(10000, 99999);
+        $newimageName = $range. 'X.jpg';
         $newpath = 'images/' . date('Ymd') . '/' . $newimageName;
         $face_img = $image::make($path)->resize(1125, 2436);
         $face_img->text($flag_info, 300, 1585, function ($font) use ($path) {
@@ -808,7 +824,9 @@ class Activity extends Controller
         });
         $save_path = public_path($newpath);
         $face_img->save($save_path);
-        return $newpath;
+
+        $timg = 'images/' . date('Ymd') . '/' . $range. '.jpg';
+        return $timg;
     }
 
     public function str_insert($str, $i, $substr)
