@@ -81,10 +81,18 @@
 <script>
     //			var $sq = $("#sqbtn").val();
 
-
     function up() {
 
-        {{--window.location="{{route('activity-up',['api_token'=>request('api_token')])}}";--}}
+        $.ajax({
+            type: "POST",
+            url: "{{route('share',['api_token'=>request('api_token')])}}",
+            dataType: 'json',
+            header: {'X-CRSF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+
+            success: function (data) {
+                    alert('分享成功！');
+            }
+        });
 
     }
 
