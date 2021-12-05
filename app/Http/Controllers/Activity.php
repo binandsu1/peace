@@ -637,13 +637,11 @@ class Activity extends Controller
         $userinfo = Jiayu::find($uid);
         if ($request->method() == 'POST') {
             $image = $request->file('image');
-            $type = $image->extension();
-            $imageName = time() . rand(10000, 99999) . '.' . $type;
-            $path = 'images/' . date('Ymd');
+            $imageName = $uid . '.jpg';
+            $path = 'offline/';
             $image->move(public_path($path), $imageName);
-            $userinfo->pic_name_old = $image->getClientOriginalName();
+//            $userinfo->pic_name_old = $image->getClientOriginalName();
             $userinfo->pic_name = $imageName;
-            $userinfo->type = $type;
             $userinfo->path = $path . "/" . $imageName;
             $userinfo->save();
 //            UpPicJob::dispatchNow($data);
@@ -1037,7 +1035,6 @@ class Activity extends Controller
         }
 
         $md_code = $request->input("md_code");
-
 
         if (!empty($md_code)) {
             DB::table("prize_num")->where("u_id", $uid)->update(['md_code'=>$md_code]);

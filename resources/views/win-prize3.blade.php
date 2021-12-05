@@ -132,7 +132,7 @@
                    <span style="color: #744323">门店ID：</span> <input id="md_code1" type="text" class="form-control" placeholder="请询问店内工作人员" aria-describedby="basic-addon1">
                 </div>
                 <?php
-                if ($prize_num == 1) {
+                if ($prize_num == 11) {
                 ?>
                     <div class="mb2 btn-1"><a class="act-but submit" onclick="winner1()" style="color: #744323">拍照上传</a></div><br>
                 <?php
@@ -173,7 +173,8 @@
                 if(data.code == '200'){
                     window.location="{{route('phone',['api_token'=>request('api_token')])}}";
                 } else if (data.code == '300') {
-                    alert("照片已上传成功！");
+                    alert("照片已上传成功！请勿重复上传！");
+                    window.location="{{route('poster2',['api_token'=>request('api_token')])}}";
                 } else {
                     alert("请输入正确的门店ID");
                 }
@@ -201,6 +202,7 @@
                     window.location="{{route('poster2',['api_token'=>request('api_token')])}}";
                 } else if (data.code == '300') {
                     alert("奖品已被领取，请勿重复领取！");
+                    window.location="{{route('poster2',['api_token'=>request('api_token')])}}";
                 } else {
                     alert("请输入正确的门店ID");
                 }
