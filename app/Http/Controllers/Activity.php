@@ -1039,7 +1039,7 @@ class Activity extends Controller
     }
 
     public function share(Request $request){
-        $ms = "现在就耀 与现同框".rand(100,999);
+        $ms = "快来参与微软全品牌零售大使李现特殊海报点亮活动，你的ID或照片有机会作为特殊海报组成元素登上海报呦";
         $weiboSer = app('weibo');
 
         $user = Auth::guard('api')->user();
