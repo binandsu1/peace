@@ -52,7 +52,7 @@
             top: 100%;
             margin-left: 0;
             margin-top: -5.5vh;
-            font-size: 0.3rem;
+            font-size: 1rem;
             text-align: center;
         }
 
@@ -98,7 +98,7 @@
                 top: 100%;
                 margin-left: 0;
                 margin-top: -10vh;
-                font-size: 0.3rem;
+                font-size: 1rem;
                 text-align: center;
             }
         }
@@ -120,7 +120,7 @@
                     if ($prize_num == 1) {
                  ?>
                 <div class="mb2 btn-3">
-                    <a type="button" class="" style="color: #744323"  target="_blank">您授权使用的ID将被作为您参与的点亮海报中的设计元素</a>
+                    <a type="button" class="" style="color: #744323" >*您授权使用的ID将被作为海报的设计元素</a>
                 </div>
                 <?php
                     } else {
