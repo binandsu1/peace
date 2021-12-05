@@ -110,8 +110,8 @@
 <body>
 <div class="container demo-1">
     <div style="height: 200px; height: 200px">
-        <input type="file" name="image" accept="image/*" capture="camera" style="color: #744323">
-
+        <input type="file" name="image" accept="image/*" capture="camera">
+        <input type="file" name="image" accept="image/*" capture="camera"> 相机
     </div>
     <div id="large-header" class="large-header">
         <div class="logo_box">
