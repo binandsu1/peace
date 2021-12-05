@@ -113,7 +113,7 @@
             }
         }
     </style>
-    <!--[if IE]>
+<!--[if IE]>
     <script src="<?=asset('/jy/html5.js')?>"></script>
     <![endif]-->
 </head>
