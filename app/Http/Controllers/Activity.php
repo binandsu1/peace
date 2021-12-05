@@ -396,7 +396,7 @@ class Activity extends Controller
 //                $flag_info = $flag[0]->customize_flag;
                 $flag_info = "做个低效率的人经常熬夜!";
                 $pic_re = Jiayu::where('id', $uid)->first();
-                $range = 'new' . time() . rand(10000, 99999);
+                $range = 'new' . date("YmdHis").time() . rand(10000, 99999);
                 $pic_re->path = $this->flagP($flag_info,$range);
                 $pic_re->path = $this->flagX($flag_info,$range);
                 $pic_re->save();
@@ -767,18 +767,13 @@ class Activity extends Controller
             $flag_info = $this->str_insert($flag_info,21,"\n");
         }
 
-        $np = 'images/' . date('Ymd') ;
-
-        if (!file_exists(public_path($np))) {
-            mkdir(public_path($np), 777, true);
-        }
 
         $image = new Image();
         //原始图路径
         $path = "images/hb/no-flagp.jpg";
 //        $range = 'new' . time() . rand(10000, 99999);
         $newimageName = $range. 'P.jpg';
-        $newpath = 'images/' . date('Ymd') . '/' . $newimageName;
+        $newpath = 'images/' . $newimageName;
         $face_img = $image::make($path)->resize(1280, 2264);
         $face_img->text($flag_info, 370, 1541, function ($font) use ($path) {
             $font->file(public_path('SIMLI.TTF', 777, true));
@@ -790,7 +785,7 @@ class Activity extends Controller
 
         $face_img->save($save_path);
 
-        $timg = 'images/' . date('Ymd') . '/' . $range. '.jpg';
+        $timg =  $range. '.jpg';
         return $timg;
     }
 
@@ -803,18 +798,13 @@ class Activity extends Controller
             $flag_info = $this->str_insert($flag_info,21,"\n");
         }
 
-        $np = 'images/' . date('Ymd') ;
-
-        if (!file_exists(public_path($np))) {
-            mkdir(public_path($np), 777, true);
-        }
 
         $image = new Image();
         //原始图路径
         $path = "images/hb/no-flagx.jpg";
 //        $range = 'new' . time() . rand(10000, 99999);
         $newimageName = $range. 'X.jpg';
-        $newpath = 'images/' . date('Ymd') . '/' . $newimageName;
+        $newpath = 'images/' . $newimageName;
         $face_img = $image::make($path)->resize(1125, 2436);
         $face_img->text($flag_info, 300, 1585, function ($font) use ($path) {
             $font->file(public_path('SIMLI.TTF', 777, true));
@@ -825,7 +815,7 @@ class Activity extends Controller
         $save_path = public_path($newpath);
         $face_img->save($save_path);
 
-        $timg = 'images/' . date('Ymd') . '/' . $range. '.jpg';
+        $timg =  $range. '.jpg';
         return $timg;
     }
 
@@ -842,6 +832,7 @@ class Activity extends Controller
         $str = ($startstr . $substr . $laststr);
         return $str;
     }
+
 
 
 }
