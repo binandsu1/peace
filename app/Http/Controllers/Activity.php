@@ -51,6 +51,7 @@ class Activity extends Controller
         $way = $user->way;
         $authorization = $user->authorization;
         $type = $user->type;
+        $use_code = $user->use_code;
 
         if ($authorization == 1) {
             return redirect()->route('authorization', ['api_token' => $api_token]);
@@ -58,20 +59,43 @@ class Activity extends Controller
 
         if ($is_draw == 2 && $way == 2) {
 
-            $uid = $user->id;
-
-            $prize_code = DB::table("prize_num")->where('u_id', $uid)->get(['gift_id', 'num']);
-
-            foreach ($prize_code as $v) {
-                $num = $v->num;
+            if ($use_code == 2) {
+                // todo 判断用户已经领完奖了，直接让他来到个人海报页面，待完善完poster2后复制代码过来
+//                return redirect()->route('poster2', ['api_token' => $api_token])->with([]);
             }
 
-            // 将兑奖码与uid连接后AES对等加密
-            $code = $num . '+' . $uid;
-            $encode = $this->encrypt($code);
-//            return view('win-prize3')->with(['prize_code'=>$prize_code, 'code'=>$encode]);
+            $user = Auth::guard('api')->user();
+            $uid = $user->id;
+            $prize_code = DB::table("prize_num")->where('u_id', $uid)->get(['gift_id']);
 
-            return redirect()->route('win-prize3', ['api_token' => $api_token])->with(['prize_code' => $prize_code, 'code' => $encode]);
+            $prize_num = $prize_code[0]->gift_id;
+
+            switch ($prize_num) {
+                case 11:
+                    // todo::缺少上海报的背景图后期要改
+                    $bg = "李现海报";
+                    break;
+                case 12:
+                    $bg = "李现海报";
+                    break;
+                case 13:
+                    $bg = "帽子";
+                    break;
+                case 14:
+                    $bg = "背包";
+                    break;
+                case 15:
+                    $bg = "袜子";
+                    break;
+                case 16:
+                    $bg = "贴纸";
+                    break;
+                case 17:
+                    $bg = "优惠券";
+                    break;
+            }
+
+            return redirect()->route('win-prize3', ['api_token' => $api_token])->with(['bg' => $bg, 'prize_num' => $prize_num]);
         }
 
         if ($is_draw == 2 && $way == 1) {
@@ -345,7 +369,7 @@ class Activity extends Controller
         switch ($prize_num) {
             case 1:
                 // todo::缺少上海报的背景图
-                $bg = "";
+                $bg = "TMA";
                 $url = "";
                 break;
             case 2:
@@ -383,18 +407,36 @@ class Activity extends Controller
     {
         $user = Auth::guard('api')->user();
         $uid = $user->id;
+        $prize_code = DB::table("prize_num")->where('u_id', $uid)->get(['gift_id']);
 
-        $prize_code = DB::table("prize_num")->where('u_id', $uid)->get(['gift_id', 'num']);
-//        $user_info = DB::table("jiayus")->where('id',29)->get(['id', 'u_name']);
+        $prize_num = $prize_code[0]->gift_id;
 
-        foreach ($prize_code as $v) {
-            $num = $v->num;
+        switch ($prize_num) {
+            case 11:
+                // todo::缺少上海报的背景图
+                $bg = "李现海报";
+                break;
+            case 12:
+                $bg = "李现海报";
+                break;
+            case 13:
+                $bg = "帽子";
+                break;
+            case 14:
+                $bg = "背包";
+                break;
+            case 15:
+                $bg = "袜子";
+                break;
+            case 16:
+                $bg = "贴纸";
+                break;
+            case 17:
+                $bg = "优惠券";
+                break;
         }
 
-        // 将兑奖码与uid连接后AES对等加密
-        $code = $num . '+' . $uid;
-        $encode = $this->encrypt($code);
-        return view('win-prize2')->with(['prize_code' => $prize_code, 'code' => $encode]);
+        return view('win-prize2')->with(['bg' => $bg, 'prize_num' => $prize_num]);
     }
 
     // 线下中奖信息展示页面（到店后）
@@ -402,18 +444,35 @@ class Activity extends Controller
     {
         $user = Auth::guard('api')->user();
         $uid = $user->id;
+        $prize_code = DB::table("prize_num")->where('u_id', $uid)->get(['gift_id']);
 
-        $prize_code = DB::table("prize_num")->where('u_id', $uid)->get(['gift_id', 'num']);
-//        $user_info = DB::table("jiayus")->where('id',29)->get(['id', 'u_name']);
+        $prize_num = $prize_code[0]->gift_id;
 
-        foreach ($prize_code as $v) {
-            $num = $v->num;
+        switch ($prize_num) {
+            case 11:
+                // todo::缺少上海报的背景图，需要改
+                $bg = "李现海报";
+                break;
+            case 12:
+                $bg = "李现海报";
+                break;
+            case 13:
+                $bg = "帽子";
+                break;
+            case 14:
+                $bg = "背包";
+                break;
+            case 15:
+                $bg = "袜子";
+                break;
+            case 16:
+                $bg = "贴纸";
+                break;
+            case 17:
+                $bg = "优惠券";
+                break;
         }
-
-        // 将兑奖码与uid连接后AES对等加密
-        $code = $num . '+' . $uid;
-        $encode = $this->encrypt($code);
-        return view('win-prize3')->with(['prize_code' => $prize_code, 'code' => $encode]);
+        return view('win-prize3')->with(['bg' => $bg, 'prize_num' => $prize_num]);
     }
 
     public function poster()
@@ -480,34 +539,51 @@ class Activity extends Controller
     {
         $user = Auth::guard('api')->user();
         $uid = $user->id;
-        $flag_ids = DB::table('user_to_flag')->where('uid', $uid)->get(['flag_id']);
-        if (!$flag_ids->isEmpty()) {
-            $flag = '';
-            foreach ($flag_ids as $k => $v) {
-                $flag .= self::getFlagModel($v->flag_id) . PHP_EOL;
+        $flag_id = $user->flag_id;
+        if($flag_id == 8) {
+            $flag = DB::table('customize_flag')->where('uid', $uid)->get(['customize_flag']);
+            $flag_info = "做个低效率的人经常熬夜!";
+            //TODO:回头改过来 !$flag->isEmpty()
+            if ($flag->isEmpty()) {
+//                $flag_info = $flag[0]->customize_flag;
+                $flag_info = "做个低效率的人经常熬夜!";
+                $pic_re = Jiayu::where('id', $uid)->first();
+                $range = 'new' . date("YmdHis").time() . rand(10000, 99999);
+                $pic_re->path = $this->flagP($flag_info,$range);
+                $pic_re->path = $this->flagX($flag_info,$range);
+                $pic_re->save();
+
+                return view('poster', compact('pic_re'))->with(['flag_id'=>$flag_id]);
             }
+        } else {
+
+            switch ($flag_id) {
+                case 1:
+                    // todo::缺少上海报的背景图
+                    $bg = "不加班";
+                    break;
+                case 2:
+                    $bg = "工作生活";
+                    break;
+                case 3:
+                    $bg = "门店看看";
+                    break;
+                case 4:
+                    $bg = "锻炼身体";
+                    break;
+                case 5:
+                    $bg = "找男朋友";
+                    break;
+                case 6:
+                    $bg = "拒绝熬夜";
+                    break;
+                case 7:
+                    $bg = "保持创新";
+                    break;
+            }
+
+            return view('poster2')->with(['flag_id'=>$flag_id, 'bg' => $bg]);
         }
-        $pic_re = Jiayu::where('id', $uid)->first();
-        $image = new Image();
-        //原始图路径
-        $path = "images/20211125/bg.png";
-        $newimageName = 'new' . time() . rand(10000, 99999) . '.jpg';
-        $newpath = 'images/' . date('Ymd') . '/' . $newimageName;
-        $face_img = $image::make($path)->resize(530, 800);
-        $face_img->text($flag, 370, 41, function ($font) use ($path) {
-            $font->file(public_path('vista.ttf', 777, true));
-            $font->size(12);
-            $font->color('#FF0000');
-            $font->valign('right');
-        });
-
-        $pic_re->path = $newpath;
-        $pic_re->save();
-
-        $save_path = public_path($newpath);
-
-        $face_img->save($save_path);
-        return view('poster', compact('pic_re'));
     }
 
 
@@ -897,6 +973,29 @@ class Activity extends Controller
         }
         $str = ($startstr . $substr . $laststr);
         return $str;
+    }
+
+
+    public function mdCode(Request $request) {
+
+        $user = Auth::guard('api')->user();
+        $uid = $user->id;
+        $use_code = $user->use_code;
+        if ($use_code == 2) {
+            return response()->json(['code' => 300]);
+        }
+
+        $md_code = $request->input("md_code");
+
+
+        if (!empty($md_code)) {
+            DB::table("prize_num")->where("u_id", $uid)->update(['md_code'=>$md_code]);
+            DB::table("jiayus")->where("id", $uid)->update(['use_code'=>2]);
+            return response()->json(['code' => 200]);
+        } else {
+            return response()->json(['code' => 500]);
+        }
+
     }
 
 
