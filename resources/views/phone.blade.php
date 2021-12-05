@@ -127,7 +127,7 @@
                         {{--<?php--}}
                             {{--} else {--}}
                         {{--?>--}}
-                            <img class="img-rounded" src="<?= asset('/offline/'.$userinfo->pic_name)?>">
+                            <img class="img-rounded" width="60%" height="60%" src="<?= asset('/offline/'.$userinfo->pic_name)?>">
 <!--                        --><?php
 //                        }
 //                        ?>
