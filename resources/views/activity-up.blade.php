@@ -104,7 +104,7 @@
     document.body.onkeyup = function (e) {
         e = e || window.event
 //        console.log('key: ', e.key) // 当前键名
-        alert('keyCode: ', e.keyCode) // 键值
+//         alert('keyCode: ', e.keyCode) // 键值
 //        console.log('isAlt: ', e.altKey) // 是否同时Alt
 //        console.log('isCtrl: ', e.ctrlKey) // 是否同时按Ctrl
     }
