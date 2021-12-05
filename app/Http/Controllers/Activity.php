@@ -390,28 +390,16 @@ class Activity extends Controller
         $flag_id = $user->flag_id;
         if($flag_id == 8) {
             $flag = DB::table('customize_flag')->where('uid', $uid)->get(['customize_flag']);
-            if (!$flag->isEmpty()) {
-                $flag_info = $flag[0]->customize_flag;
+            $flag_info = "做个低效率的人经常熬夜!";
+            //TODO:回头改过来 !$flag->isEmpty()
+            if ($flag->isEmpty()) {
+//                $flag_info = $flag[0]->customize_flag;
+                $flag_info = "做个低效率的人经常熬夜!";
                 $pic_re = Jiayu::where('id', $uid)->first();
-                $image = new Image();
-                //原始图路径
-                $path = "images/20211125/bg.png";
-                $newimageName = 'new' . time() . rand(10000, 99999) . '.jpg';
-                $newpath = 'images/' . date('Ymd') . '/' . $newimageName;
-                $face_img = $image::make($path)->resize(530, 800);
-                $face_img->text($flag_info, 370, 41, function ($font) use ($path) {
-                    $font->file(public_path('vista.ttf', 777, true));
-                    $font->size(12);
-                    $font->color('#FF0000');
-                    $font->valign('right');
-                });
-
-                $pic_re->path = $newpath;
+                $pic_re->path_x = $this->flagP($flag_info);
+                $pic_re->path_p = $this->flagX($flag_info);
                 $pic_re->save();
 
-                $save_path = public_path($newpath);
-
-                $face_img->save($save_path);
                 return view('poster', compact('pic_re'))->with(['flag_id'=>$flag_id]);
             }
         } else {
@@ -767,6 +755,74 @@ class Activity extends Controller
     public function agreement()
     {
         return view('agreement');
+    }
+
+
+
+    public function flagP($flag_info=''){
+
+        $str_len = strlen($flag_info);
+        if($str_len > 21 && $str_len < 45){
+            $flag_info = $this->str_insert($flag_info,21,"\n");
+        }
+
+        $image = new Image();
+        //原始图路径
+        $path = "images/hb/no-flagp.jpg";
+        $range = 'new' . time() . rand(10000, 99999);
+        $newimageName = $range. 'no-flagp.jpg';
+        $newpath = 'images/' . date('Ymd') . '/' . $newimageName;
+        $face_img = $image::make($path)->resize(1280, 2264);
+        $face_img->text($flag_info, 370, 1541, function ($font) use ($path) {
+            $font->file(public_path('SIMLI.TTF', 777, true));
+            $font->size(69);
+            $font->color('#CCCC33');
+            $font->valign('right');
+        });
+        $save_path = public_path($newpath);
+        $face_img->save($save_path);
+        return $newpath;
+    }
+
+
+    public function flagX($flag_info=''){
+
+        $flag_info = "做个低效率的人经常熬夜!";
+        $str_len = strlen($flag_info);
+        if($str_len > 21 && $str_len < 45){
+            $flag_info = $this->str_insert($flag_info,21,"\n");
+        }
+
+        $image = new Image();
+        //原始图路径
+        $path = "images/hb/no-flagx.jpg";
+        $range = 'new' . time() . rand(10000, 99999);
+        $newimageName = $range. 'no-flagx.jpg';
+        $newpath = 'images/' . date('Ymd') . '/' . $newimageName;
+        $face_img = $image::make($path)->resize(1125, 2436);
+        $face_img->text($flag_info, 300, 1585, function ($font) use ($path) {
+            $font->file(public_path('SIMLI.TTF', 777, true));
+            $font->size(69);
+            $font->color('#CCCC33');
+            $font->valign('right');
+        });
+        $save_path = public_path($newpath);
+        $face_img->save($save_path);
+        return $newpath;
+    }
+
+    public function str_insert($str, $i, $substr)
+    {
+        $startstr = '';
+        $laststr = '';
+        for($j=0; $j<$i; $j++){
+            $startstr .= $str[$j];
+        }
+        for ($j=$i; $j<strlen($str); $j++){
+            $laststr .= $str[$j];
+        }
+        $str = ($startstr . $substr . $laststr);
+        return $str;
     }
 
 
