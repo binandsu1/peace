@@ -135,7 +135,7 @@
                     </div>
                     {{--<button type="submit" class="btn btn-success">开始上传</button>--}}
                     <div class="mb2 btn-1">
-                        <a type="submit" class="act-but submit btn btn-success" style="color: #744323">照片上传/授权</a>
+                        <button type="submit" class="act-but submit btn btn-success" style="color: #744323">照片上传/授权</button>
                     </div>
                 </form>
 
