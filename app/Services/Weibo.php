@@ -120,7 +120,7 @@ class Weibo
     }
 
     public function share($token='',$con=''){
-        
+
         $response =self::$client->request('POST', 'https://api.weibo.com/2/statuses/share.json', [
             'form_params' => [
                 'access_token' => $token,

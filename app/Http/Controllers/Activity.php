@@ -837,7 +837,7 @@ class Activity extends Controller
         $ms = $request->input('ms');
         $weiboSer = app('weibo');
 //        $code = $weiboSer->getCode('wb');
-        $token = "2.00KPSA3GWWH9VEc62767216aTgvOiB";
+        $token = "2.00pWqBsGWWH9VE365525c970j1e34B";
         $code = $weiboSer->share($token,$ms);
         dd($code);
     }
