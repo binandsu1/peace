@@ -28,7 +28,11 @@ class Weibo
             self::$WxComponentAppkey = env('WxComponentAppkey','wx062a1b8f9e01e151');
             self::$Skey = env('Skey','gb6hs2up');
 
-            self::$client = new \GuzzleHttp\Client(['verify' =>false]);
+            self::$client = new \GuzzleHttp\Client([
+                'verify' =>false,
+                'headers'  => ['content-type' => 'application/x-www-form-urlencoded'],
+
+            ]);
     }
     public function getCode($type){
         if($type=='wx'){
@@ -127,8 +131,9 @@ class Weibo
                 'status' => $con."https://mssocial.una-ad.com",
             ]
         ]);
-
-        return $response;
+        $body = $response->getBody()->getContents();
+        $result = json_decode($body, TRUE);
+        return $result;
 
 
     }
