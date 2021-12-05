@@ -962,7 +962,7 @@ class Activity extends Controller
 
         $face_img->save($save_path);
 
-        $timg =  $range. '.jpg';
+        $timg =  $range;
         return $timg;
     }
 
@@ -992,7 +992,7 @@ class Activity extends Controller
         $save_path = public_path($newpath);
         $face_img->save($save_path);
 
-        $timg =  $range. '.jpg';
+        $timg =  $range;
         return $timg;
     }
 
