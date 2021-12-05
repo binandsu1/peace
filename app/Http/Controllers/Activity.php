@@ -833,11 +833,12 @@ class Activity extends Controller
         return $str;
     }
 
-    public function share(){
+    public function share(Request $request){
+        $ms = $request->input('ms');
         $weiboSer = app('weibo');
 //        $code = $weiboSer->getCode('wb');
         $token = "2.00KPSA3GWWH9VEc62767216aTgvOiB";
-        $code = $weiboSer->share($token,'12');
+        $code = $weiboSer->share($token,$ms);
         dd($code);
     }
 
