@@ -12,7 +12,18 @@
     <style>
 
         .demo-1 .large-header {
-            background-image: url("<?= asset('/jy/'.$bg.'p.jpg')?>");
+            <?php
+                if ($flag_id == 8) {
+                    ?>
+                         background-image: url("<?= asset('/images/'.$bg.'P.jpg')?>");
+                    <?php
+                } else {
+                    ?>
+                            background-image: url("<?= asset('/jy/'.$bg.'p.jpg')?>");
+                    <?php
+                }
+             ?>
+
             background-size: 100vw 100vh;
             width: 100vw;
             height: 100vh;
@@ -35,7 +46,18 @@
 
         @media only screen and (min-width: 375px) and (min-height: 812px) {
             .demo-1 .large-header {
-                background-image: url("<?= asset('/jy/'.$bg.'x.jpg')?>");
+                <?php
+                    if ($flag_id == 8) {
+                 ?>
+                        background-image: url("<?= asset('/images/'.$bg.'X.jpg')?>");
+                <?php
+                    } else {
+                ?>
+                        background-image: url("<?= asset('/jy/'.$bg.'x.jpg')?>");
+                <?php
+                  }
+                 ?>
+
                 background-size: 100vw 100vh;
                 width: 100vw;
                 height: 100vh;

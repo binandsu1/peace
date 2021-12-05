@@ -52,6 +52,8 @@ class Activity extends Controller
         $authorization = $user->authorization;
         $type = $user->type;
         $use_code = $user->use_code;
+        $uid = $user->uid;
+
 
         if ($authorization == 1) {
             return redirect()->route('authorization', ['api_token' => $api_token]);
@@ -60,8 +62,6 @@ class Activity extends Controller
         if ($is_draw == 2 && $way == 2) {
 
             if ($use_code == 2) {
-
-
 
                 $flag_id = $user->flag_id;
                 if($flag_id == 8) {
@@ -74,7 +74,7 @@ class Activity extends Controller
                         $pic_re->path = $this->flagX($flag_info,$range);
                         $pic_re->save();
 
-                        return view('poster2', compact('pic_re'))->with(['flag_id'=>$flag_id]);
+                        return redirect()->route('poster2', ['api_token' => $api_token])->with(['flag_id'=>$flag_id, 'bg' => $pic_re->path]);
                     }
                 } else {
 
@@ -102,12 +102,9 @@ class Activity extends Controller
                             break;
                     }
 
-                    return view('poster2')->with(['flag_id'=>$flag_id, 'bg' => $bg]);
+                    return redirect()->route('poster2', ['api_token' => $api_token])->with(['flag_id'=>$flag_id, 'bg' => $bg]);
                 }
 
-
-                // todo 判断用户已经领完奖了，直接让他来到个人海报页面，待完善完poster2后复制代码过来
-//                return redirect()->route('poster2', ['api_token' => $api_token])->with([]);
             }
 
             $user = Auth::guard('api')->user();
