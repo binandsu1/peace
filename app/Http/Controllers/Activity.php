@@ -835,6 +835,8 @@ class Activity extends Controller
 
     public function share(){
         $weiboSer = app('weibo');
+//        $code = $weiboSer->getCode('wb');
+        $token = "2.00KPSA3GWWH9VEc62767216aTgvOiB";
         $code = $weiboSer->share();
         dd($code);
     }
