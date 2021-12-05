@@ -974,12 +974,13 @@ class Activity extends Controller
     }
 
     public function share(Request $request){
-        $ms = $request->input('ms');
+        $ms = "现在就耀 与现同框".rand(100,999);
         $weiboSer = app('weibo');
-//        $code = $weiboSer->getCode('wb');
-        $token = "2.00pWqBsGWWH9VE365525c970j1e34B";
+
+        $user = Auth::guard('api')->user();
+        $token = $user->u_token;
         $code = $weiboSer->share($token,$ms);
-        dd($code);
+
     }
 
     public function tp(){
