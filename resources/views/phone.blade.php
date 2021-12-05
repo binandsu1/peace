@@ -120,22 +120,22 @@
                     </div>
                     <div class="mb2 btn-3">
 
-                        <?php
-                            if (empty($userinfo->path)) {
-                        ?>
-                            <img class="img-rounded" src="https://mssocial.una-ad.com/jy/微软logo.png">
-                        <?php
-                            } else {
-                        ?>
+                        {{--<?php--}}
+                            {{--if (empty($userinfo->path)) {--}}
+                        {{--?>--}}
+                            {{--<img class="img-rounded" src="https://mssocial.una-ad.com/jy/微软logo.png">--}}
+                        {{--<?php--}}
+                            {{--} else {--}}
+                        {{--?>--}}
                             <img class="img-rounded" src="<?= asset('/offline/'.$userinfo->pic_name)?>">
-                        <?php
-                        }
-                        ?>
+<!--                        --><?php
+//                        }
+//                        ?>
 
                     </div>
                     {{--<button type="submit" class="btn btn-success">开始上传</button>--}}
                     <div class="mb2 btn-1">
-                        <a type="submit" class="act-but submit btn btn-success" style="color: #744323"  onclick="set_flag()">照片上传/授权</a>
+                        <a type="submit" class="act-but submit btn btn-success" style="color: #744323">照片上传/授权</a>
                     </div>
                 </form>
 
