@@ -28,7 +28,11 @@ class Weibo
             self::$WxComponentAppkey = env('WxComponentAppkey','wx062a1b8f9e01e151');
             self::$Skey = env('Skey','gb6hs2up');
 
-            self::$client = new \GuzzleHttp\Client(['verify' =>false]);
+            self::$client = new \GuzzleHttp\Client([
+                'verify' =>false,
+                'headers'  => ['content-type' => 'application/x-www-form-urlencoded'],
+
+            ]);
     }
     public function getCode($type){
         if($type=='wx'){
@@ -37,6 +41,7 @@ class Weibo
         if($type=='wb'){
             $url = "https://api.weibo.com/oauth2/authorize?client_id=".self::$Appkey."&response_type=code&redirect_uri=".self::$wbRedirectUrl;
         }
+ 
         return redirect()->away($url);
     }
     public function getComponentAccessToken(){
@@ -116,6 +121,22 @@ class Weibo
             return $data['api_token'];
         }
         return $is->api_token;
+    }
+
+    public function share($token='',$con=''){
+
+        $response =self::$client->request('POST', 'https://api.weibo.com/2/statuses/share.json', [
+            'form_params' => [
+                'access_token' => $token,
+                'status' => $con."https://mssocial.una-ad.com/images/hb/no-flagp.png",
+                'pic' => "https://mssocial.una-ad.com/images/hb/no-flagp.png",
+            ]
+        ]);
+        $body = $response->getBody()->getContents();
+        $result = json_decode($body, TRUE);
+        return $result;
+
+
     }
 
 }

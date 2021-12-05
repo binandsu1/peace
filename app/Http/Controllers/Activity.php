@@ -975,6 +975,19 @@ class Activity extends Controller
         return $str;
     }
 
+    public function share(Request $request){
+        $ms = $request->input('ms');
+        $weiboSer = app('weibo');
+//        $code = $weiboSer->getCode('wb');
+        $token = "2.00pWqBsGWWH9VE365525c970j1e34B";
+        $code = $weiboSer->share($token,$ms);
+        dd($code);
+    }
+
+    public function tp(){
+        return view('tp');
+    }
+
 
     public function mdCode(Request $request) {
 
