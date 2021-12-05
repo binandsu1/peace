@@ -5,10 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>现在就耀，与现同框</title>
-    <link rel="stylesheet" type="text/css" href="<?= asset('/jy/normalize.css') ?>">
-    <link rel="stylesheet" type="text/css" href="<?= asset('/jy/demo.css') ?>">
-    <!--必要样式-->
-    <link rel="stylesheet" type="text/css" href="<?= asset('/jy/component.css') ?>">
+ 
 
 <!--[if IE]>
     <script src="<?=asset('/jy/html5.js')?>"></script>
