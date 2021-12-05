@@ -119,12 +119,12 @@ class Weibo
         return $is->api_token;
     }
 
-    public function share($token){
+    public function share($token='',$con=''){
         $a = urlencode("https://mssocial.una-ad.com");
         $response =self::$client->request('POST', 'https://api.weibo.com/2/statuses/share.json', [
             'form_params' => [
                 'access_token' => $token,
-                'status' => '哈哈哈'."https://mssocial.una-ad.com",
+                'status' => $con."https://mssocial.una-ad.com",
             ]
         ]);
 
