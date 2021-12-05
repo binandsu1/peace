@@ -37,6 +37,7 @@ class Weibo
         if($type=='wb'){
             $url = "https://api.weibo.com/oauth2/authorize?client_id=".self::$Appkey."&response_type=code&redirect_uri=".self::$wbRedirectUrl;
         }
+        echo $url;die;
         return redirect()->away($url);
     }
     public function getComponentAccessToken(){
@@ -116,6 +117,18 @@ class Weibo
             return $data['api_token'];
         }
         return $is->api_token;
+    }
+
+    public function share(){
+        $a = urlencode("https://mssocial.una-ad.com哈哈哈哈哈哈");
+        $response =self::$client->request('POST', 'https://api.weibo.com/2/statuses/share.json', [
+            'form_params' => [
+                'access_token' => "2.00KPSA3GWWH9VEc62767216aTgvOiB",
+                'status' => $a,
+            ]
+        ]);
+
+        dd($response);
     }
 
 }

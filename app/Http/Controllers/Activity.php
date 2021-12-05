@@ -833,6 +833,12 @@ class Activity extends Controller
         return $str;
     }
 
+    public function share(){
+        $weiboSer = app('weibo');
+        $code = $weiboSer->share();
+        dd($code);
+    }
+
 
 
 }
