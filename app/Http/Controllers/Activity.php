@@ -641,7 +641,9 @@ class Activity extends Controller
             $image = $request->file('image');
             $imageName = $uid.'.jpg';
             $path = 'offline/';
-            $image->move(public_path($path), $imageName);
+            if (!empty($userinfo->path)) {
+                $image->move(public_path($path), $imageName);
+            }
             $userinfo->pic_name = $imageName;
             $userinfo->save();
 
@@ -691,7 +693,7 @@ class Activity extends Controller
             }
         }
 
-        return view('phone', compact('userinfo'));
+        return view('phone');
 
 
     }
