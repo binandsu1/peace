@@ -23,14 +23,16 @@ class Activity extends Controller
         $code = $request->input('code');
         $type = $request->input('type');
         $storeCode = $request->input('storeCode');
+        $state = $request->input('state');
 
         $weiboSer = app('weibo');
         if ($type == 'wx') {
             if (empty($code)) {
                 return $weiboSer->getCode('wx',$storeCode);
             }
+
             $tokenArr = $weiboSer->getToken($code, 'wx');
-            $api_token = $weiboSer->getwxUserInfo($tokenArr['access_token'],$tokenArr['openid'],$storeCode);
+            $api_token = $weiboSer->getwxUserInfo($tokenArr['access_token'],$tokenArr['openid'],$state);
         }
         if ($type == 'wb') {
             if (empty($code)) {
