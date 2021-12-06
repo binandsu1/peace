@@ -66,6 +66,7 @@
             margin-left: -34vw;
             margin-top: -20vh;
         }
+
     </style>
 
     <!--[if IE]>
@@ -88,7 +89,8 @@
                    <div class="flag-unchecked"><li id="customize_li" style="list-style: none; display: none;"><input type="radio" name="flags" value="8"><span id="self_flag"></span></li></div>
 
                     <div id="cus_div" class="input-group flag-unchecked">
-                        <input id="customize_flag" type="text" name="flag" class="form-control" placeholder="其他（限15字以内）" aria-describedby="basic-addon1">
+                        <input id="customize_flag" type="text" name="flag" class="form-control" placeholder="其他（限15字以内）" aria-describedby="basic-addon1"><span onclick="click_set()"><b> 点击保存</b></span>
+
                     </div>
 
             </div>
@@ -102,9 +104,8 @@
 
 <script>
 
-    $(document).keyup(function(event){
 
-        if(event.keyCode ==13){
+        function click_set (){
             // 自定义flag 敏感词检测
             var flag_wb = $('#customize_flag').val();
             if (flag_wb.length==0) {
@@ -132,7 +133,7 @@
                 }
             });
         }
-    });
+
 
 
     // 保存flag并前往抽奖

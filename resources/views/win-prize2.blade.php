@@ -41,6 +41,7 @@
             top: 100%;
             margin-left: -10vw;
             margin-top: -6vh;
+            text-align: center;
         }
         .btn-3 {
             width: 100vw;
@@ -85,8 +86,9 @@
                 overflow: hidden;
                 left: 50%;
                 top: 100%;
-                margin-left: -10vw;
-                margin-top: -10vh;
+                margin-left: -34vw;
+                margin-top: -16vh;
+                text-align: center;
             }
             .btn-3 {
                 width: 100vw;
@@ -113,6 +115,7 @@
         <div id="large-header" class="large-header">
             <div class="logo_box">
 
+                <div class="mb2 btn-2"><a class="act-but submit" href="{{route('win-prize3',['api_token'=>request('api_token')])}}" style="color: #744323">我 在 店 内</a></div><br>
                 <div class="mb2 btn-1"><a class="act-but submit" href="{{route('store-map',['api_token'=>request('api_token')])}}" style="color: #744323">查询线下门店</a></div><br>
 
             </div>
