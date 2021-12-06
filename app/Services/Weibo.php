@@ -114,7 +114,7 @@ class Weibo
         $is = Jiayu::where('u_id',$re['unionid'])->first();
 
         if(!$is){
-            if(!empty($storeCode)){
+            if(!empty($storeCode) && $storeCode!='State'){
                 $data['store_code'] = $storeCode;
             }
             $data['u_id'] = $re['unionid'];
