@@ -626,6 +626,15 @@ class Activity extends Controller
         $uid = $user->id;
         $type = $user->type;
         $userinfo = Jiayu::find($uid);
+
+        $result = DB::table("prize_num")->where("u_id", $uid)->get();
+        if($result->isEmpty()) {
+            return false;
+        }
+        if ($result[0]->gift_id != 11) {
+            return false;
+        }
+
         if ($request->method() == 'POST') {
             $image = $request->file('image');
             $imageName = $uid.'.jpg';

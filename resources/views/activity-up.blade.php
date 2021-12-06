@@ -38,8 +38,8 @@
         }
 
         .flag-unchecked {
-            margin: 1.6vh 1vw;
-            font-size: 1vh;
+            margin: 1.6vh 2vw;
+            font-size: 1.8vh;
             padding: 0;
             border-radius: 50px;
             color: #6e4531;
