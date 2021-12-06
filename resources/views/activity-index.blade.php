@@ -51,7 +51,7 @@
 				margin-top: -16vh;
 				font-size: 0.5em;
 				/*text-align: center;*/
-				transform: scale(.88);
+				transform: scale(.70);
 				transform-origin: left;
 			}
 
@@ -88,7 +88,7 @@
 				margin-left: -32vw;
 				margin-top: -16vh;
 				font-size: 0.5em;
-				transform: scale(.88);
+				transform: scale(.70);
 				transform-origin: left;
 				/*text-align: center;*/
 			}
