@@ -61,7 +61,7 @@
         }
 
         function list(x,y){
-            map.centerAndZoom(new BMapGL.Point(x, y), 12);
+            map.centerAndZoom(new BMapGL.Point(x, y), 11);
             var local = new BMapGL.LocalSearch(map, {
                 renderOptions: {map: map, panel: "r-result"}
             });
