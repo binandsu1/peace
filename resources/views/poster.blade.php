@@ -44,8 +44,8 @@
         }
 
         .btn-3 {
-            background-image: url("<?= asset('/jy/365天.jpg')?>");
-            background-size: 100vw 60vh;
+            {{--background-image: url("<?= asset('/jy/365天.jpg')?>");--}}
+            {{--background-size: 100vw 60vh;--}}
             width: 76vw;
             height: 56vh;
             padding: 1vh;
@@ -95,8 +95,8 @@
             }
 
             .btn-3 {
-                background-image: url("<?= asset('/jy/365天.jpg')?>");
-                background-size: 100vw 60vh;
+                {{--background-image: url("<?= asset('/jy/365天.jpg')?>");--}}
+                {{--background-size: 100vw 60vh;--}}
                 width: 76vw;
                 height: 50vh;
                 padding: 1vh;
@@ -124,7 +124,7 @@
         <div id="large-header" class="large-header">
 
             <div class="logo_box_home">
-                <div  class="mb2 btn-3"></div>
+                <div  class="mb2 btn-3"><img style="width: 76vw; height: 50vh" src="<?= asset('/jy/365天.jpg')?>" alt=""></div>
                 {{--<a class="act-but1 submit" href="<?= asset('/images/'.$bg.'Z.jpg')?>" style="color: #744323">保 存 图 片</a>--}}
                 <form action="#" name="f" method="post">
                     <div class="mb2 btn-1"><a class="act-but submit" onclick="up()" style="color: #744323">一 键 分 享</a></div>
@@ -152,6 +152,30 @@
             }
         });
 
+    }
+
+    $(function(){
+        $("#touchArea").on({
+            touchstart: function(e){
+                timeOutEvent = setTimeout("longPress()",500);
+                e.preventDefault();
+            },
+            touchmove: function(){
+                clearTimeout(timeOutEvent);
+                timeOutEvent = 0;
+            },
+            touchend: function(){
+                clearTimeout(timeOutEvent);
+                if(timeOutEvent!=0){
+                    alert("你这是点击，不是长按");
+                }
+                return false;
+            }
+        })
+    });
+    function longPress(){
+        timeOutEvent = 0;
+        alert("长按事件触发发");
     }
 
 </script>
