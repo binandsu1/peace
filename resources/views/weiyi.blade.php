@@ -28,11 +28,7 @@
     function gs(g){
         //list
         var map = new BMapGL.Map("l-map");            // 创建Map实例
-        map.centerAndZoom(new BMapGL.Point(116.404, 39.915), 11);
-        var local = new BMapGL.LocalSearch(map, {
-            renderOptions: {map: map, panel: "r-result"}
-        });
-        local.search(g);
+
         //经纬
         var geolocation = new BMap.Geolocation();
         geolocation.getCurrentPosition(function(r){
@@ -43,6 +39,7 @@
                 map.panTo(r.point);
                 // alert('您的位置：'+r.point.lng+','+r.point.lat);
                 theLocation(r.point.lng,r.point.lat);
+                list(r.point.lng,r.point.lat);
             }
             else {
                 alert('failed'+this.getStatus());
@@ -61,6 +58,14 @@
                 map.addOverlay(marker);              // 将标注添加到地图中
                 map.panTo(new_point);
             }
+        }
+
+        function list(x,y){
+            map.centerAndZoom(new BMapGL.Point(116.404, 39.915), 11);
+            var local = new BMapGL.LocalSearch(map, {
+                renderOptions: {map: map, panel: "r-result"}
+            });
+            local.search(g);
         }
 
 
