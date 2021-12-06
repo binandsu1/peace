@@ -40,7 +40,7 @@
 			}
 
 			.btn-2 {
-				width: 70vw;
+				width: 90vw;
 				height: 12vh;
 				padding: 1vh;
 				position: fixed;
@@ -49,7 +49,7 @@
 				top: 100%;
 				margin-left: -32vw;
 				margin-top: -15vh;
-				font-size: 0.4em;
+				font-size: 0.6em;
 				/*text-align: center;*/
 				transform: scale(.88);
 				transform-origin: left;
@@ -78,7 +78,7 @@
 			}
 
 			.btn-2 {
-				width: 70vw;
+				width: 90vw;
 				height: 14vh;
 				padding: 1vh;
 				position: fixed;
@@ -87,7 +87,7 @@
 				top: 100%;
 				margin-left: -32vw;
 				margin-top: -14vh;
-				font-size: 0.4em;
+				font-size: 0.6em;
 				transform: scale(.88);
 				transform-origin: left;
 				/*text-align: center;*/
