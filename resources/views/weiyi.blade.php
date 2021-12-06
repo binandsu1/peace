@@ -28,31 +28,27 @@
     function gs(g){
         //list
         var map = new BMapGL.Map("l-map");            // 创建Map实例
-        map.centerAndZoom(new BMapGL.Point(116.5233837, 39.91092455), 11);
+        map.centerAndZoom(new BMapGL.Point(116.404, 39.915), 11);
         var local = new BMapGL.LocalSearch(map, {
             renderOptions: {map: map, panel: "r-result"}
         });
         local.search(g);
         //经纬
-        var map = new BMap.Map("allmap");
-        var point = new BMap.Point(116.331398,36.897445);
-        map.centerAndZoom(point,12);
-
         var geolocation = new BMap.Geolocation();
-// 开启SDK辅助定位
-        geolocation.enableSDKLocation();
         geolocation.getCurrentPosition(function(r){
+
             if(this.getStatus() == BMAP_STATUS_SUCCESS){
                 var mk = new BMap.Marker(r.point);
                 map.addOverlay(mk);
                 map.panTo(r.point);
-                alert('您的位置：'+r.point.lng+','+r.point.lat);
-                 theLocation(r.point.lng,r.point.lat);
+                // alert('您的位置：'+r.point.lng+','+r.point.lat);
+                theLocation(r.point.lng,r.point.lat);
             }
             else {
                 alert('failed'+this.getStatus());
             }
         });
+        map.enableScrollWheelZoom(true);
 
         // 用经纬度设置地图中心点
         function theLocation(x,y) {
