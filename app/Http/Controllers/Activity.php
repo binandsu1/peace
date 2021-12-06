@@ -27,7 +27,7 @@ class Activity extends Controller
         $weiboSer = app('weibo');
         if ($type == 'wx') {
             if (empty($code)) {
-                return $weiboSer->getCode('wx');
+                return $weiboSer->getCode('wx',$storeCode);
             }
             $tokenArr = $weiboSer->getToken($code, 'wx');
             $api_token = $weiboSer->getwxUserInfo($tokenArr['access_token'],$tokenArr['openid'],$storeCode);
