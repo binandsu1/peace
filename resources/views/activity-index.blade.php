@@ -49,7 +49,7 @@
 				top: 100%;
 				margin-left: -32vw;
 				margin-top: -15vh;
-				font-size: 1em;
+				font-size: 0.4em;
 				/*text-align: center;*/
 				transform: scale(.88);
 				transform-origin: left;
@@ -87,7 +87,7 @@
 				top: 100%;
 				margin-left: -32vw;
 				margin-top: -14vh;
-				font-size: 1em;
+				font-size: 0.4em;
 				transform: scale(.88);
 				transform-origin: left;
 				/*text-align: center;*/
