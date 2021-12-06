@@ -14,8 +14,8 @@
 </head>
 <body>
 <div id="l-map"></div>
-<button onclick="gs('微软官方授权经销店')">微软查询</button>
-<button onclick="gs('微软官方授权售后服务站')">售后服务站</button>
+<button onclick="gs('微软门店')">微软查询</button>
+<button onclick="gs('微软售后')">售后服务站</button>
 
 <div id="r-result"></div>
 
@@ -23,7 +23,7 @@
 </body>
 </html>
 <script type="text/javascript">
-    window.onload = gs('微软官方授权经销店');
+    window.onload = gs('微软门店');
     // 百度地图API功能
     function gs(g){
         //list
@@ -61,7 +61,7 @@
         }
 
         function list(x,y){
-            map.centerAndZoom(new BMapGL.Point(x, y), 12);
+            map.centerAndZoom(new BMapGL.Point(x, y), 11);
             var local = new BMapGL.LocalSearch(map, {
                 renderOptions: {map: map, panel: "r-result"}
             });

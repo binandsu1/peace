@@ -34,9 +34,12 @@ class Weibo
 
             ]);
     }
-    public function getCode($type){
+    public function getCode($type,$getCode='State'){
         if($type=='wx'){
-            $url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=".self::$WxAppkey."&redirect_uri=".self::$RedirectUrl."?type=wx&response_type=code&scope=snsapi_userinfo&state=STATE&component_appid=".self::$WxComponentAppkey."#wechat_redirect";
+            if(empty($getCode)){
+                $getCode = 'State';
+            }
+            $url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=".self::$WxAppkey."&redirect_uri=".self::$RedirectUrl."?type=wx&response_type=code&scope=snsapi_userinfo&state=".$getCode."&component_appid=".self::$WxComponentAppkey."&storeCode=111#wechat_redirect";
         }
         if($type=='wb'){
             $url = "https://api.weibo.com/oauth2/authorize?client_id=".self::$Appkey."&response_type=code&redirect_uri=".self::$wbRedirectUrl;
@@ -100,7 +103,7 @@ class Weibo
     }
 
 
-    public function getwxUserInfo($token='',$openid=''){
+    public function getwxUserInfo($token='',$openid='',$storeCode=''){
 
 
 
@@ -111,6 +114,9 @@ class Weibo
         $is = Jiayu::where('u_id',$re['unionid'])->first();
 
         if(!$is){
+            if(!empty($storeCode) && $storeCode!='State'){
+                $data['store_code'] = $storeCode;
+            }
             $data['u_id'] = $re['unionid'];
             $data['u_token'] = $openid;
             $data['type'] = 'wx';
