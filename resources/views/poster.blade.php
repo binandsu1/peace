@@ -43,6 +43,23 @@
             margin-top: -17vh;
         }
 
+        .btn-3 {
+            background-image: url("<?= asset('/jy/365天.jpg')?>");
+            background-size: 100vw 60vh;
+            width: 76vw;
+            height: 56vh;
+            padding: 1vh;
+            position: fixed;
+            overflow: hidden;
+            left: 0;
+            top: 100%;
+            margin-left: 12vw;
+            margin-top: -74vh;
+            font-size: 1rem;
+            text-align: center;
+            opacity: 0;
+        }
+
 
         @media only screen and (min-width: 375px) and (min-height: 812px) {
             .demo-1 .large-header {
@@ -76,6 +93,23 @@
                 margin-left: -34vw;
                 margin-top: -20vh;
             }
+
+            .btn-3 {
+                background-image: url("<?= asset('/jy/365天.jpg')?>");
+                background-size: 100vw 60vh;
+                width: 76vw;
+                height: 50vh;
+                padding: 1vh;
+                position: fixed;
+                overflow: hidden;
+                left: 0;
+                top: 100%;
+                margin-left: 12vw;
+                margin-top: -76vh;
+                font-size: 1rem;
+                text-align: center;
+                opacity: 0;
+            }
         }
     </style>
 
@@ -88,9 +122,10 @@
 <div class="container demo-1">
     <div class="content">
         <div id="large-header" class="large-header">
-            <canvas id="demo-canvas"></canvas>
+
             <div class="logo_box_home">
-                <a class="act-but1 submit" href="<?= asset('/images/'.$bg.'Z.jpg')?>" style="color: #744323">保 存 图 片</a>
+                <div  class="mb2 btn-3"></div>
+                {{--<a class="act-but1 submit" href="<?= asset('/images/'.$bg.'Z.jpg')?>" style="color: #744323">保 存 图 片</a>--}}
                 <form action="#" name="f" method="post">
                     <div class="mb2 btn-1"><a class="act-but submit" onclick="up()" style="color: #744323">一 键 分 享</a></div>
                 </form>

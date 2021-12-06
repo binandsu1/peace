@@ -78,7 +78,7 @@
         <div id="large-header" class="large-header">
             <div class="logo_box_flag">
 
-                   <div class="flag-unchecked"><li style="list-style: none"><input type="radio" name="flags" value="1"> 人生很贵，请别浪费，再见了拖延君，我的愿望是365天不加班</li></div>
+                   <div class="flag-unchecked"><li style="list-style: none"><input type="radio" name="flags" value="1"> 告别拖延君，365天天天不加班</li></div>
                    <div class="flag-unchecked"><li style="list-style: none"><input type="radio" name="flags" value="2"> 工作是为了好好生活，生活是为了努力工作</li></div>
                    <div class="flag-unchecked"><li style="list-style: none"><input type="radio" name="flags" value="3"> 去<s>美国微软总部</s>微软门店看一看</li></div>
                    <div class="flag-unchecked"><li style="list-style: none"><input type="radio" name="flags" value="4"> 锻炼身体<s>像李现一样</s>量力而行</li></div>
