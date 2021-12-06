@@ -38,16 +38,18 @@
         }
 
         .flag-unchecked {
-            margin: 2vh 2vw;
-            font-size: 2vh;
+            margin: 1.6vh 1vw;
+            font-size: 1vh;
             padding: 0;
             border-radius: 50px;
             color: #6e4531;
+            /*transform: scale(.88);*/
+            /*transform-origin: left;*/
         }
 
         .logo_box_flag {
             width: 60vw;
-            height: 70vh;
+            height: 50vh;
             padding: 0;
             position: fixed;
             overflow: hidden;
@@ -83,7 +85,7 @@
 
             .flag-unchecked {
                 margin: 2vh 2vw;
-                font-size: 2vh;
+                font-size: 1.8vh;
                 padding: 0;
                 border-radius: 50px;
                 color: #6e4531;
