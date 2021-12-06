@@ -39,8 +39,8 @@
             overflow: hidden;
             left: 50%;
             top: 100%;
-            margin-left: -10vw;
-            margin-top: -6vh;
+            margin-left: -34vw;
+            margin-top: -13vh;
             text-align: center;
         }
         .btn-3 {
