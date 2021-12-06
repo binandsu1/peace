@@ -14,21 +14,21 @@
             background-image: url("<?= asset('/jy/'.$bg.'P.jpg')?>");
             background-size: 100vw 100vh;
             width: 100vw;
-            height: 100vh;
+            height: 99vh;
             background-repeat: no-repeat;
             position: fixed;
         }
 
         .btn-1 {
             width: 70vw;
-            height: 12vh;
+            height: 14vh;
             padding: 1vh;
             position: fixed;
             overflow: hidden;
             left: 50%;
             top: 100%;
             margin-left: -34vw;
-            margin-top: -17vh;
+            margin-top: -25vh;
         }
 
         .btn-2 {
@@ -39,8 +39,8 @@
             overflow: hidden;
             left: 50%;
             top: 100%;
-            margin-left: -10vw;
-            margin-top: -6vh;
+            margin-left: -9vw;
+            margin-top: -12vh;
         }
         .btn-3 {
             width: 100vw;

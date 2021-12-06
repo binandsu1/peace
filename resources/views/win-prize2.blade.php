@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="<?= asset('/jy/component.css') ?>">
     <style>
         .demo-1 .large-header {
-            background-image: url("<?= asset('/jy/'.$bg.'p.jpg')?>");
+            background-image: url("<?= asset('/jy/'.$bg.'P.jpg')?>");
             background-size: 100vw 100vh;
             width: 100vw;
             height: 100vh;
@@ -28,7 +28,7 @@
             left: 50%;
             top: 100%;
             margin-left: -34vw;
-            margin-top: -22vh;
+            margin-top: -32vh;
         }
 
         .btn-2 {
@@ -40,7 +40,7 @@
             left: 50%;
             top: 100%;
             margin-left: -34vw;
-            margin-top: -13vh;
+            margin-top: -22vh;
             text-align: center;
         }
         .btn-3 {

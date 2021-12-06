@@ -27,7 +27,7 @@
         }
 
         .demo-1 .large-header {
-            background-image: url("<?= asset('/jy/'.$bg.'p.jpg')?>");
+            background-image: url("<?= asset('/jy/'.$bg.'P.jpg')?>");
             background-size: 100vw 100vh;
             width: 100vw;
             height: 100vh;
@@ -44,7 +44,7 @@
             left: 50%;
             top: 100%;
             margin-left: -34vw;
-            margin-top: -18vh;
+            margin-top: -26vh;
         }
 
         .btn-2 {
@@ -67,7 +67,7 @@
             left: 0;
             top: 100%;
             margin-left: 0;
-            margin-top: -22vh;
+            margin-top: -30vh;
             font-size: 1rem;
             text-align: center;
         }

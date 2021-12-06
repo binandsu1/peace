@@ -20,7 +20,7 @@ background-image: url("<?= asset('/images/'.$bg.'P.jpg')?>");
             <?php
         } else {
             ?>
-background-image: url("<?= asset('/jy/'.$bg.'p.jpg')?>");
+background-image: url("<?= asset('/jy/'.$bg.'P.jpg')?>");
             <?php
         }
      ?>
@@ -71,7 +71,7 @@ background-image: url("<?= asset('/images/'.$bg.'X.jpg')?>");
                 <?php
                     } else {
                 ?>
-                        background-image: url("<?= asset('/jy/'.$bg.'x.jpg')?>");
+                        background-image: url("<?= asset('/jy/'.$bg.'X.jpg')?>");
                 <?php
                   }
                  ?>

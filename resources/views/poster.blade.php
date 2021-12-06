@@ -19,7 +19,7 @@
                     <?php
                 } else {
                     ?>
-                            background-image: url("<?= asset('/jy/'.$bg.'p.jpg')?>");
+                            background-image: url("<?= asset('/jy/'.$bg.'P.jpg')?>");
                     <?php
                 }
              ?>
@@ -70,7 +70,7 @@
                 <?php
                     } else {
                 ?>
-                        background-image: url("<?= asset('/jy/'.$bg.'x.jpg')?>");
+                        background-image: url("<?= asset('/jy/'.$bg.'X.jpg')?>");
                 <?php
                   }
                  ?>
