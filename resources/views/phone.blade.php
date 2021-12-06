@@ -20,7 +20,7 @@
 
 
         .demo-1 .large-header {
-            background-image: url("<?= asset('/jy/主背景.jpg')?>");
+            background-image: url("<?= asset('/jy/背景P.jpg')?>");
             background-size: 100vw 100vh;
             width: 100vw;
             height: 100vh;
@@ -65,9 +65,9 @@
             text-align: center;
         }
 
-        @media only screen and (min-width: 375px) and (min-height: 812px) {
+        @media only screen and (max-width: 375px) and (min-height: 812px) {
             .demo-1 .large-header {
-                background-image: url("<?= asset('/jy/主背景.jpg')?>");
+                background-image: url("<?= asset('/jy/背景X.jpg')?>");
                 background-size: 100vw 100vh;
                 width: 100vw;
                 height: 100vh;

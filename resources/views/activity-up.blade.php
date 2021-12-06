@@ -27,8 +27,9 @@
             background-color:transparent; /* 背景色透明 */
         }
 
+
         .demo-1 .large-header {
-            background-image: url("<?= asset('/jy/flag-bg1.jpg')?>");
+            background-image: url("<?= asset('/jy/新年新愿P.jpg')?>");
             background-size: 100vw 100vh;
             width: 100vw;
             height: 100vh;
@@ -37,22 +38,23 @@
         }
 
         .flag-unchecked {
-            margin:2vh 2vw;
+            margin: 2vh 2vw;
             font-size: 2vh;
             padding: 0;
             border-radius: 50px;
             color: #6e4531;
         }
+
         .logo_box_flag {
-            width: 70%;
-            height: 70%;
+            width: 60vw;
+            height: 70vh;
             padding: 0;
             position: fixed;
             overflow: hidden;
             left: 60%;
             top: 50%;
-            margin-left: -44vw;
-            margin-top: -34%;
+            margin-left: -39vw;
+            margin-top: -24vh;
         }
 
         .btn-1 {
@@ -64,9 +66,53 @@
             left: 50%;
             top: 100%;
             margin-left: -34vw;
-            margin-top: -20vh;
+            margin-top: -24vh;
         }
 
+
+
+        @media only screen and (max-width: 375px) and (min-height: 812px) {
+            .demo-1 .large-header {
+                background-image: url("<?= asset('/jy/新年新愿X.jpg')?>");
+                background-size: 100vw 100vh;
+                width: 100vw;
+                height: 100vh;
+                background-repeat: no-repeat;
+                position: fixed;
+            }
+
+            .flag-unchecked {
+                margin: 2vh 2vw;
+                font-size: 2vh;
+                padding: 0;
+                border-radius: 50px;
+                color: #6e4531;
+            }
+
+            .logo_box_flag {
+                width: 70%;
+                height: 70%;
+                padding: 0;
+                position: fixed;
+                overflow: hidden;
+                left: 60%;
+                top: 50%;
+                margin-left: -44vw;
+                margin-top: -54vw;
+            }
+
+            .btn-1 {
+                width: 70vw;
+                height: 14vh;
+                padding: 1vh;
+                position: fixed;
+                overflow: hidden;
+                left: 50%;
+                top: 100%;
+                margin-left: -34vw;
+                margin-top: -30vh;
+            }
+        }
     </style>
 
     <!--[if IE]>
