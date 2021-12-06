@@ -2,7 +2,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-    <script type="text/javascript" src="//api.map.baidu.com/api?type=webgl&v=1.0&ak=6ho8muDORIA2j1TNIvyG5F8Now40OPLg"></script>
+    <script type="text/javascript" src="https://api.map.baidu.com/api?type=webgl&v=1.0&ak=6ho8muDORIA2j1TNIvyG5F8Now40OPLg"></script>
     <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=6ho8muDORIA2j1TNIvyG5F8Now40OPLg"></script>
     <script type="text/javascript" src="https://libs.baidu.com/jquery/1.7.2/jquery.min.js"></script>
     <title>地图</title>
@@ -42,7 +42,7 @@
                 map.addOverlay(mk);
                 map.panTo(r.point);
                 // alert('您的位置：'+r.point.lng+','+r.point.lat);
-                theLocation(r.point.lng,r.point.lat);
+                //theLocation(r.point.lng,r.point.lat);
             }
             else {
                 alert('failed'+this.getStatus());
