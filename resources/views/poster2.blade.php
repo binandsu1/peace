@@ -125,7 +125,7 @@ background-image: url("<?= asset('/images/'.$bg.'X.jpg')?>");
             <canvas id="demo-canvas"></canvas>
             <?php
                 if ($flag_id == 8) {
-                    $src = asset('/images/'.$bg.'.jpg');
+                    $src = asset('/images/'.$bg.'Z.jpg');
                 } else {
                     $src = asset('/jy/'.$bg.'.jpg');
                 }

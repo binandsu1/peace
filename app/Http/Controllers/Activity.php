@@ -433,15 +433,15 @@ class Activity extends Controller
                 break;
             case 5:
                 $bg = "JDA";
-                $url = "";
+                $url = "https://item.jd.com/100027348974.html";
                 break;
             case 6:
                 $bg = "JDB";
-                $url = "";
+                $url = "https://item.jd.com/100028456980.html";
                 break;
             case 7:
                 $bg = "JDC";
-                $url = "";
+                $url = "https://item.jd.com/100027416804.html";
                 break;
         }
 
