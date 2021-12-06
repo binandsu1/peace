@@ -1064,6 +1064,7 @@ class Activity extends Controller
 
         $user = Auth::guard('api')->user();
         $uid = $user->id;
+        $storeCode = $user->storeCode;
         $use_code = $user->use_code;
         if ($use_code == 2) {
             return response()->json(['code' => 300]);
@@ -1072,9 +1073,20 @@ class Activity extends Controller
         $md_code = $request->input("md_code");
 
         if (!empty($md_code)) {
-            DB::table("prize_num")->where("u_id", $uid)->update(['md_code'=>$md_code]);
-            DB::table("jiayus")->where("id", $uid)->update(['use_code'=>2]);
-            return response()->json(['code' => 200]);
+            if (!empty($storeCode)) {
+                if ($storeCode == $md_code) {
+                    DB::table("prize_num")->where("u_id", $uid)->update(['md_code'=>$md_code]);
+                    DB::table("jiayus")->where("id", $uid)->update(['use_code'=>2]);
+                    return response()->json(['code' => 200]);
+                } else {
+                    return response()->json(['code' => 500]);
+                }
+            } else {
+                DB::table("prize_num")->where("u_id", $uid)->update(['md_code'=>$md_code]);
+                DB::table("jiayus")->where("id", $uid)->update(['use_code'=>2]);
+                return response()->json(['code' => 200]);
+            }
+
         } else {
             return response()->json(['code' => 500]);
         }
