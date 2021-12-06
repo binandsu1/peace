@@ -122,9 +122,15 @@
 <div class="container demo-1">
     <div class="content">
         <div id="large-header" class="large-header">
-
+            <?php
+            if ($flag_id == 8) {
+                $src = asset('/images/'.$bg.'.jpg');
+            } else {
+                $src = asset('/jy/'.$bg.'.jpg');
+            }
+            ?>
             <div class="logo_box_home">
-                <div  class="mb2 btn-3"><img style="width: 76vw; height: 50vh" src="<?= asset('/jy/'.$bg.'.jpg')?>" alt=""></div>
+                <div  class="mb2 btn-3"><img style="width: 76vw; height: 50vh" src="{{$src}}" alt=""></div>
                 {{--<a class="act-but1 submit" href="<?= asset('/images/'.$bg.'Z.jpg')?>" style="color: #744323">保 存 图 片</a>--}}
                 <form action="#" name="f" method="post">
                     <div class="mb2 btn-1"><a class="act-but submit" onclick="up()" style="color: #744323">一 键 分 享</a></div>
