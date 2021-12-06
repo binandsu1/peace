@@ -48,8 +48,8 @@
 				left: 50%;
 				top: 100%;
 				margin-left: -32vw;
-				margin-top: -15vh;
-				font-size: 0.6em;
+				margin-top: -16vh;
+				font-size: 0.5em;
 				/*text-align: center;*/
 				transform: scale(.88);
 				transform-origin: left;
@@ -86,8 +86,8 @@
 				left: 50%;
 				top: 100%;
 				margin-left: -32vw;
-				margin-top: -14vh;
-				font-size: 0.6em;
+				margin-top: -16vh;
+				font-size: 0.5em;
 				transform: scale(.88);
 				transform-origin: left;
 				/*text-align: center;*/
