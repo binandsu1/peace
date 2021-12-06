@@ -10,6 +10,13 @@
 <!--必要样式-->
 <link rel="stylesheet" type="text/css" href="<?= asset('/jy/component.css') ?>">
 	<style>
+		/*@media screen and (min-width:320px){font-size: 12px;}*/
+		/*@media screen and (min-width:360px){font-size: 14px;}*/
+		/*@media screen and (min-width:420px){font-size: 16px;}*/
+		/*@media screen and (min-width:480px){font-size: 20px;}*/
+		/*@media screen and (min-width:520px){font-size: 24px;}*/
+		/*@media screen and (min-width:640px){font-size: 28px;}*/
+		/*@media screen and (min-width:750px){font-size: 32px;}*/
 
 			.demo-1 .large-header {
 				{{--background-image: url("<?= asset('/jy/home-1280.jpg')?>");--}}
@@ -30,6 +37,22 @@
 				top: 50%;
 				margin-left: -44vw;
 				margin-top: 10vh;
+			}
+
+			.btn-2 {
+				width: 70vw;
+				height: 12vh;
+				padding: 1vh;
+				position: fixed;
+				overflow: hidden;
+				left: 50%;
+				top: 100%;
+				margin-left: -32vw;
+				margin-top: -15vh;
+				font-size: 0.1em;
+				/*text-align: center;*/
+				transform: scale(.88);
+				transform-origin: left;
 			}
 
 		@media only screen and (min-width: 375px) and (min-height: 812px) {
@@ -53,6 +76,22 @@
 				margin-left: -44vw;
 				margin-top: 16vh;
 			}
+
+			.btn-2 {
+				width: 70vw;
+				height: 14vh;
+				padding: 1vh;
+				position: fixed;
+				overflow: hidden;
+				left: 50%;
+				top: 100%;
+				margin-left: -32vw;
+				margin-top: -14vh;
+				font-size: 0.1em;
+				transform: scale(.88);
+				transform-origin: left;
+				/*text-align: center;*/
+			}
 		}
 	</style>
 
@@ -71,6 +110,20 @@
 							<div class="mb2"><a class="act-but submit" onclick="up()" style="color: #744323">线 上 点 亮</a></div>
 							<div class="mb2"><a class="act-but2 submit" onclick="down()" style="color: #744323">线 下 点 亮</a></div>
 						</form>
+						<div class="mb2 btn-2">
+							<p>
+								活动说明：
+							</p>
+							<p>
+								1、参与“线上点亮”活动用户可直接通过活动页面抽奖，获得上海报与李现同框的机会，或其他对应奖项，“线下点亮”活动用户通过活动页面抽奖后，到微软授权经销商门店参与参与活动，并领取奖品。
+							</p>
+							<p>
+								2、“线上点亮”海报用参与者授权的微博或微信ID名作为海报组成元素，“线下点亮”特殊海报使用用户在线下参与活动后授权的拍照照片作为海报组成元素。
+							</p>
+							<p>
+								<br/>
+							</p>
+						</div>
 					</div>
 				</div>
 			</div>

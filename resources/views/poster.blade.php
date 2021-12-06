@@ -44,7 +44,7 @@
         }
 
         .btn-3 {
-            {{--background-image: url("<?= asset('/jy/365天.jpg')?>");--}}
+            {{--background-image: url("<?= asset('/jy/不加班.jpg')?>");--}}
             {{--background-size: 100vw 60vh;--}}
             width: 76vw;
             height: 56vh;
@@ -95,7 +95,7 @@
             }
 
             .btn-3 {
-                {{--background-image: url("<?= asset('/jy/365天.jpg')?>");--}}
+                {{--background-image: url("<?= asset('/jy/不加班.jpg')?>");--}}
                 {{--background-size: 100vw 60vh;--}}
                 width: 76vw;
                 height: 50vh;
@@ -124,7 +124,7 @@
         <div id="large-header" class="large-header">
 
             <div class="logo_box_home">
-                <div  class="mb2 btn-3"><img style="width: 76vw; height: 50vh" src="<?= asset('/jy/365天.jpg')?>" alt=""></div>
+                <div  class="mb2 btn-3"><img style="width: 76vw; height: 50vh" src="<?= asset('/jy/'.$bg.'.jpg')?>" alt=""></div>
                 {{--<a class="act-but1 submit" href="<?= asset('/images/'.$bg.'Z.jpg')?>" style="color: #744323">保 存 图 片</a>--}}
                 <form action="#" name="f" method="post">
                     <div class="mb2 btn-1"><a class="act-but submit" onclick="up()" style="color: #744323">一 键 分 享</a></div>
