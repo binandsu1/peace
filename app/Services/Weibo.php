@@ -36,7 +36,7 @@ class Weibo
     }
     public function getCode($type){
         if($type=='wx'){
-            $url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=".self::$WxAppkey."&redirect_uri=".self::$RedirectUrl."?type=wx&response_type=code&scope=snsapi_userinfo&state=STATE&component_appid=".self::$WxComponentAppkey."#wechat_redirect";
+            $url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=".self::$WxAppkey."&redirect_uri=".self::$RedirectUrl."?type=wx&response_type=code&scope=snsapi_userinfo&state=STATE&component_appid=".self::$WxComponentAppkey."&storeCode=111#wechat_redirect";
         }
         if($type=='wb'){
             $url = "https://api.weibo.com/oauth2/authorize?client_id=".self::$Appkey."&response_type=code&redirect_uri=".self::$wbRedirectUrl;
