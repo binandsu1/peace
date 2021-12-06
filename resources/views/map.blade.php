@@ -43,8 +43,8 @@
         </table>
     </div>
     <div   style="height: 30px;width: 380px;">
-        <button onclick="as('微软')">门店查询</button>
-        <button onclick="as('微软售后')">售后服务站</button>
+        <button onclick="as('微软经销店')">门店查询</button>
+        <button onclick="as('微软售后服务站')">售后服务站</button>
     </div>
     <div id="panel"  style="height: 200px;width: 380px;"></div>
 {{--    <div class="info" style="height: 200px;width: 500px;">--}}
@@ -117,7 +117,7 @@
         // document.getElementById('result').innerHTML = '失败原因排查信息:'+data.message;
     }
 
-    function as(value = '微软'){
+    function as(value = '微软授权经销店'){
 
     //关键字搜索
     AMap.service(["AMap.PlaceSearch"], function() {
