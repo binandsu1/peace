@@ -88,7 +88,7 @@
                 <div class="flag-unchecked"><li id="customize_li" style="list-style: none; display: none;"><input type="radio" name="flags" value="8"><span id="self_flag"></span></li></div>
 
                 <div id="cus_div" class="input-group flag-unchecked">
-                    <input id="customize_flag" type="text" name="flag" class="form-control" placeholder="其他（限15字以内）" aria-describedby="basic-addon1">
+                    <input id="customize_flag" type="text" name="flag" class="form-control" placeholder="其他（限15字以内）" aria-describedby="basic-addon1"><span onclick="click_set()"><b> 点击保存</b></span>
                 </div>
             </div>
             <div class="mb2 btn-1" ><a type="button" class="act-but submit" style="color: #744323" onclick="set_flag()">点 我 上 海 报</a></div>
@@ -97,9 +97,8 @@
 </div><!-- /container -->
 <script src="<?=asset('/jy/jquery-1.7.2.min.js')?>"></script>
 <script>
-    $(document).keyup(function(event){
 
-        if(event.keyCode ==13){
+        function click_set(){
             // 自定义flag 敏感词检测
             var flag_wb = $('#customize_flag').val();
             if (flag_wb.length==0) {
@@ -127,7 +126,7 @@
                 }
             });
         }
-    });
+
 
 
     // 保存flag并前往抽奖
