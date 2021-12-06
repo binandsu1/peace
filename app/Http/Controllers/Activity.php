@@ -22,6 +22,7 @@ class Activity extends Controller
     {
         $code = $request->input('code');
         $type = $request->input('type');
+        $storeCode = $request->input('storeCode');
 
         $weiboSer = app('weibo');
         if ($type == 'wx') {
@@ -29,7 +30,7 @@ class Activity extends Controller
                 return $weiboSer->getCode('wx');
             }
             $tokenArr = $weiboSer->getToken($code, 'wx');
-            $api_token = $weiboSer->getwxUserInfo($tokenArr['access_token'],$tokenArr['openid']);
+            $api_token = $weiboSer->getwxUserInfo($tokenArr['access_token'],$tokenArr['openid'],$storeCode);
         }
         if ($type == 'wb') {
             if (empty($code)) {
