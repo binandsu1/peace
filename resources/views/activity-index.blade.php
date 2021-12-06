@@ -20,7 +20,7 @@
 
 			.demo-1 .large-header {
 				{{--background-image: url("<?= asset('/jy/home-1280.jpg')?>");--}}
-				background-image: url("<?= asset('/jy/启动页.jpg')?>");
+				background-image: url("<?= asset('/jy/new-bgP.jpg')?>");
 				background-size: 100vw 100vh;
 				width: 100vw;
 				height: 100vh;
@@ -40,25 +40,25 @@
 			}
 
 			.btn-2 {
-				width: 90vw;
-				height: 12vh;
+				width: 100vw;
+				height: 22vh;
 				padding: 1vh;
 				position: fixed;
 				overflow: hidden;
 				left: 50%;
 				top: 100%;
-				margin-left: -32vw;
-				margin-top: -16vh;
+				margin-left: -36vw;
+				margin-top: -19vh;
 				font-size: 0.5em;
 				/*text-align: center;*/
-				transform: scale(.76);
+				transform: scale(.75);
 				transform-origin: left;
 			}
 
-		@media only screen and (min-width: 375px) and (min-height: 812px) {
+		@media only screen and (max-width: 375px) and (min-height: 812px) {
 			.demo-1 .large-header {
 				{{--background-image: url("<?= asset('/jy/home-bg1.jpg')?>");--}}
-				background-image: url("<?= asset('/jy/启动页.jpg')?>");
+				background-image: url("<?= asset('/jy/new-bgX.jpg')?>");
 				background-size: 100vw 100vh;
 				width: 100vw;
 				height: 100vh;
@@ -74,19 +74,19 @@
 				left: 50%;
 				top: 50%;
 				margin-left: -44vw;
-				margin-top: 16vh;
+				margin-top: 8vh;
 			}
 
 			.btn-2 {
 				width: 90vw;
-				height: 14vh;
+				height: 24vh;
 				padding: 1vh;
 				position: fixed;
 				overflow: hidden;
 				left: 50%;
 				top: 100%;
 				margin-left: -32vw;
-				margin-top: -16vh;
+				margin-top: -22vh;
 				font-size: 0.5em;
 				transform: scale(.76);
 				transform-origin: left;
