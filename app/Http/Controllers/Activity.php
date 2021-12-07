@@ -173,6 +173,24 @@ class Activity extends Controller
 
     }
 
+    // 授权页面
+    public function authorization2(Request $request) {
+        $user = Auth::guard('api')->user();
+        $uid = $user->id;
+//        $api_token = $user->api_token;
+
+        $code = $request->input("code");
+        if (empty($code)) {
+            return view('authorization');
+        }
+
+        $result = DB::table('jiayus')->where('id', $uid)->update(['authorization' => 2]);
+        if($result) {
+            return response()->json(['code' => 200]);
+        }
+
+    }
+
     // 线上立下flag
     public function activityUp()
     {

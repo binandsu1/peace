@@ -139,7 +139,7 @@
 
                     $.ajax({
                         type: "POST",
-                        url: "{{route('authorization',['api_token'=>request('api_token')])}}",
+                        url: "{{route('authorization2',['api_token'=>request('api_token')])}}",
                         dataType: 'json',
                         header: {'X-CRSF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                         data: {
