@@ -160,12 +160,13 @@
     $(document).ready(function(){
 
         var w_t =  window.location.href.split('#');
+        alert(w_t);
         if (w_t[1] == '0533') {
             $("#cy_btn").css("display","block");
             $("#fx_btn").css("display","none");
         }
 
-        window.location.href = "#"+"0533";
+        window.location.href = "#0533";
 
         var w = $(document).width(); //浏览器当前窗口文档的高度
         var h = $(document).height(); //浏览器当前窗口文档的高度
