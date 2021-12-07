@@ -245,6 +245,7 @@
                     window.location="{{route('lucky-draw2',['api_token'=>request('api_token')])}}";
                 } else {
                     alert("许愿次数太多就不灵了！");
+                    window.location="{{route('lucky-draw2',['api_token'=>request('api_token')])}}";
                 }
             }
         });
