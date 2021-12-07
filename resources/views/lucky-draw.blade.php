@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="<?= asset('/jy/component.css') ?>">
 
     <!--大转盘-->
-    <link rel="stylesheet" href="<?= asset("/jy/lottery.css") ?>">
+    <link rel="stylesheet" href="<?= asset("/jy/lottery1.css") ?>">
 
     <style>
         .demo-1 .large-header {
