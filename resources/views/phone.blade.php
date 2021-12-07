@@ -52,14 +52,14 @@
             margin-top: -80vh;
         }
         .btn-3 {
-            width: 76vw;
-            height: 50vh;
+            width: 70vw;
+            height: 54vh;
             padding: 1vh;
             position: fixed;
             overflow: hidden;
             left: 0;
             top: 100%;
-            margin-left: 12vw;
+            margin-left: 15vw;
             margin-top: -80vh;
             font-size: 1rem;
             text-align: center;
@@ -98,14 +98,14 @@
                 margin-top: -80vh;
             }
             .btn-3 {
-                width: 76vw;
+                width: 70vw;
                 height: 50vh;
                 padding: 1vh;
                 position: fixed;
                 overflow: hidden;
                 left: 0;
                 top: 100%;
-                margin-left: 12vw;
+                margin-left: 15vw;
                 margin-top: -80vh;
                 font-size: 1rem;
                 text-align: center;
