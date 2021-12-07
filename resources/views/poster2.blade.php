@@ -158,6 +158,15 @@
 
 
     $(document).ready(function(){
+
+        var w_t =  window.location.href.split('#');
+        if (w_t[1] == '0533') {
+            $("#cy_btn").css("display","block");
+            $("#fx_btn").css("display","none");
+        }
+
+        window.location.href = "#"+"0533";
+
         var w = $(document).width(); //浏览器当前窗口文档的高度
         var h = $(document).height(); //浏览器当前窗口文档的高度
         var b = h/w;
@@ -176,17 +185,9 @@
         var url = "<?= asset('/'.$dir.'/'.$bg)?>";
 
         var bg_image = url+type+".jpg";
-        alert(bg_image);
+//        alert(bg_image);
 
         $('#large-header').css('background-image',('url("'+bg_image+'")'));
-
-        var w_t =  window.location.href.split('#');
-        if (w_t[1] == '0533') {
-            $("#cy_btn").css("display","block");
-            $("#fx_btn").css("display","none");
-        }
-
-        window.location.href = "#"+"0533";
 
     });
 
