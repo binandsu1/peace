@@ -173,6 +173,7 @@
         var url = "<?= asset('/'.$dir.'/'.$bg)?>";
 
         var bg_image = url+type+".jpg";
+        alert(bg_image);
 
         $('#large-header').css('background-image',('url("'+bg_image+'")'));
 
