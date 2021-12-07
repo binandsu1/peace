@@ -653,21 +653,21 @@ class Activity extends Controller
         $type = $user->type;
         $userinfo = Jiayu::find($uid);
 
-        $result = DB::table("prize_num")->where("u_id", $uid)->get();
-        if($result->isEmpty()) {
-            return false;
-        }
-        if ($result[0]->gift_id != 11) {
-            return false;
-        }
+//        $result = DB::table("prize_num")->where("u_id", $uid)->get();
+//        if($result->isEmpty()) {
+//            return false;
+//        }
+//        if ($result[0]->gift_id != 11) {
+//            return false;
+//        }
 
         if ($request->method() == 'POST') {
             $image = $request->file('image');
             $imageName = $uid.'.jpg';
             $path = 'offline/';
-//            if (!empty($userinfo->path)) {
+            if (!empty($userinfo->path)) {
                 $image->move(public_path($path), $imageName);
-//            }
+            }
             $userinfo->pic_name = $imageName;
             $userinfo->save();
 
