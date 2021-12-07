@@ -160,12 +160,12 @@
     $(document).ready(function(){
 
         var w_t =  window.location.href.split('#');
-        location.href = "#0533";
-        alert(location.href);
-        if (w_t[1] == '0533') {
-            $("#cy_btn").css("display","block");
-            $("#fx_btn").css("display","none");
-        }
+        window.location.href = "#0533";
+
+//        if (w_t[1] == '0533') {
+//            $("#cy_btn").css("display","block");
+//            $("#fx_btn").css("display","none");
+//        }
 
 
 
