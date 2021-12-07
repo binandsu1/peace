@@ -27,189 +27,97 @@
         }
 
 
-        {{--@media only screen and (min-height: 900px) and (min-height: 1000px) {--}}
-            {{--.demo-1 .large-header {--}}
-                {{--background-image: url("<?= asset('/jy/新年新愿P.jpg')?>");--}}
-                {{--background-size: 100vw 100vh;--}}
-                {{--width: 100vw;--}}
-                {{--height: 100vh;--}}
-                {{--background-repeat: no-repeat;--}}
-                {{--position: fixed;--}}
-            {{--}--}}
+        @media only screen and (min-height: 900px) and (max-height: 1000px) {
+            .demo-1 .large-header {
+                background-image: url("<?= asset('/jy/新年新愿P.jpg')?>");
+                background-size: 100vw 100vh;
+                width: 100vw;
+                height: 100vh;
+                background-repeat: no-repeat;
+                position: fixed;
+            }
 
-            {{--.flag-unchecked {--}}
-                {{--margin: 1vw 2vw;--}}
-                {{--font-size: 1vw;--}}
-                {{--padding: 0;--}}
-                {{--border-radius: 50px;--}}
-                {{--color: #6e4531;--}}
-                {{--/*transform: scale(.88);*/--}}
-                {{--/*transform-origin: left;*/--}}
-            {{--}--}}
+            .flag-unchecked {
+                margin: 2vh 2vw;
+                font-size: 1.6vh;
+                padding: 0;
+                border-radius: 50px;
+                color: #6e4531;
+                /*transform: scale(.88);*/
+                /*transform-origin: left;*/
+            }
 
-            {{--.logo_box_flag {--}}
-                {{--width: 60vw;--}}
-                {{--height: 50vh;--}}
-                {{--padding: 0;--}}
-                {{--position: fixed;--}}
-                {{--overflow: hidden;--}}
-                {{--left: 60%;--}}
-                {{--top: 50%;--}}
-                {{--margin-left: -39vw;--}}
-                {{--margin-top: -24vh;--}}
-            {{--}--}}
+            .logo_box_flag {
+                width: 60vw;
+                height: 50vh;
+                padding: 0;
+                position: fixed;
+                overflow: hidden;
+                left: 60%;
+                top: 50%;
+                margin-left: -39vw;
+                margin-top: -24vh;
+            }
 
-            {{--.btn-1 {--}}
-                {{--width: 70vw;--}}
-                {{--height: 14vh;--}}
-                {{--padding: 1vh;--}}
-                {{--position: fixed;--}}
-                {{--overflow: hidden;--}}
-                {{--left: 50%;--}}
-                {{--top: 100%;--}}
-                {{--margin-left: -34vw;--}}
-                {{--margin-top: -24vh;--}}
-            {{--}--}}
-        {{--}--}}
+            .btn-1 {
+                width: 70vw;
+                height: 14vh;
+                padding: 1vh;
+                position: fixed;
+                overflow: hidden;
+                left: 50%;
+                top: 100%;
+                margin-left: -34vw;
+                margin-top: -24vh;
+            }
+        }
 
-        {{--@media only screen and (min-height: 812px) and (min-height: 900px) {--}}
-            {{--.demo-1 .large-header {--}}
-                {{--background-image: url("<?= asset('/jy/新年新愿P.jpg')?>");--}}
-                {{--background-size: 100vw 100vh;--}}
-                {{--width: 100vw;--}}
-                {{--height: 100vh;--}}
-                {{--background-repeat: no-repeat;--}}
-                {{--position: fixed;--}}
-            {{--}--}}
+        @media only screen and (min-height: 813px) and (max-height: 900px) {
+            .demo-1 .large-header {
+                background-image: url("<?= asset('/jy/新年新愿P.jpg')?>");
+                background-size: 100vw 100vh;
+                width: 100vw;
+                height: 100vh;
+                background-repeat: no-repeat;
+                position: fixed;
+            }
 
-            {{--.flag-unchecked {--}}
-                {{--margin: 1.6vh 2vw;--}}
-                {{--font-size: 1.8vh;--}}
-                {{--padding: 0;--}}
-                {{--border-radius: 50px;--}}
-                {{--color: #6e4531;--}}
-                {{--/*transform: scale(.88);*/--}}
-                {{--/*transform-origin: left;*/--}}
-            {{--}--}}
+            .flag-unchecked {
+                margin: 1.6vh 2vw;
+                font-size: 1.8vh;
+                padding: 0;
+                border-radius: 50px;
+                color: #6e4531;
+                /*transform: scale(.88);*/
+                /*transform-origin: left;*/
+            }
 
-            {{--.logo_box_flag {--}}
-                {{--width: 60vw;--}}
-                {{--height: 50vh;--}}
-                {{--padding: 0;--}}
-                {{--position: fixed;--}}
-                {{--overflow: hidden;--}}
-                {{--left: 60%;--}}
-                {{--top: 50%;--}}
-                {{--margin-left: -39vw;--}}
-                {{--margin-top: -24vh;--}}
-            {{--}--}}
+            .logo_box_flag {
+                width: 60vw;
+                height: 50vh;
+                padding: 0;
+                position: fixed;
+                overflow: hidden;
+                left: 60%;
+                top: 50%;
+                margin-left: -39vw;
+                margin-top: -24vh;
+            }
 
-            {{--.btn-1 {--}}
-                {{--width: 70vw;--}}
-                {{--height: 14vh;--}}
-                {{--padding: 1vh;--}}
-                {{--position: fixed;--}}
-                {{--overflow: hidden;--}}
-                {{--left: 50%;--}}
-                {{--top: 100%;--}}
-                {{--margin-left: -34vw;--}}
-                {{--margin-top: -24vh;--}}
-            {{--}--}}
-        {{--}--}}
+            .btn-1 {
+                width: 70vw;
+                height: 14vh;
+                padding: 1vh;
+                position: fixed;
+                overflow: hidden;
+                left: 50%;
+                top: 100%;
+                margin-left: -34vw;
+                margin-top: -24vh;
+            }
+        }
 
-        {{--@media only screen and (min-height: 812px) {--}}
-            {{--.demo-1 .large-header {--}}
-                {{--background-image: url("<?= asset('/jy/新年新愿X.jpg')?>");--}}
-                {{--background-size: 100vw 100vh;--}}
-                {{--width: 100vw;--}}
-                {{--height: 100vh;--}}
-                {{--background-repeat: no-repeat;--}}
-                {{--position: fixed;--}}
-            {{--}--}}
-
-            {{--.flag-unchecked {--}}
-                {{--margin: 2vh 2vw;--}}
-                {{--font-size: 1.8vh;--}}
-                {{--padding: 0;--}}
-                {{--border-radius: 50px;--}}
-                {{--color: #6e4531;--}}
-            {{--}--}}
-
-            {{--.logo_box_flag {--}}
-                {{--width: 70%;--}}
-                {{--height: 70%;--}}
-                {{--padding: 0;--}}
-                {{--position: fixed;--}}
-                {{--overflow: hidden;--}}
-                {{--left: 60%;--}}
-                {{--top: 50%;--}}
-                {{--margin-left: -44vw;--}}
-                {{--margin-top: -54vw;--}}
-            {{--}--}}
-
-            {{--.btn-1 {--}}
-                {{--width: 70vw;--}}
-                {{--height: 14vh;--}}
-                {{--padding: 1vh;--}}
-                {{--position: fixed;--}}
-                {{--overflow: hidden;--}}
-                {{--left: 50%;--}}
-                {{--top: 100%;--}}
-                {{--margin-left: -34vw;--}}
-                {{--margin-top: -30vh;--}}
-            {{--}--}}
-        {{--}--}}
-
-        {{--@media only screen and (min-height: 568px) and (min-height: 812px) {--}}
-            {{--.demo-1 .large-header {--}}
-                {{--background-image: url("<?= asset('/jy/新年新愿P.jpg')?>");--}}
-                {{--background-size: 100vw 100vh;--}}
-                {{--width: 100vw;--}}
-                {{--height: 100vh;--}}
-                {{--background-repeat: no-repeat;--}}
-                {{--position: fixed;--}}
-            {{--}--}}
-
-            {{--.flag-unchecked {--}}
-                {{--margin: 1.6vh 2vw;--}}
-                {{--font-size: 1.8vh;--}}
-                {{--padding: 0;--}}
-                {{--border-radius: 50px;--}}
-                {{--color: #6e4531;--}}
-                {{--/*transform: scale(.88);*/--}}
-                {{--/*transform-origin: left;*/--}}
-            {{--}--}}
-
-            {{--.logo_box_flag {--}}
-                {{--width: 60vw;--}}
-                {{--height: 50vh;--}}
-                {{--padding: 0;--}}
-                {{--position: fixed;--}}
-                {{--overflow: hidden;--}}
-                {{--left: 60%;--}}
-                {{--top: 50%;--}}
-                {{--margin-left: -39vw;--}}
-                {{--margin-top: -24vh;--}}
-            {{--}--}}
-
-            {{--.btn-1 {--}}
-                {{--width: 70vw;--}}
-                {{--height: 14vh;--}}
-                {{--padding: 1vh;--}}
-                {{--position: fixed;--}}
-                {{--overflow: hidden;--}}
-                {{--left: 50%;--}}
-                {{--top: 100%;--}}
-                {{--margin-left: -34vw;--}}
-                {{--margin-top: -24vh;--}}
-            {{--}--}}
-        {{--}--}}
-
-
-
-
-
-        @media only screen and (min-width: 375px) and (min-height: 812px) {
+        @media only screen and (min-height: 810px) and (max-height: 812px) {
             .demo-1 .large-header {
                 background-image: url("<?= asset('/jy/新年新愿X.jpg')?>");
                 background-size: 100vw 100vh;
@@ -252,48 +160,140 @@
             }
         }
 
-        .demo-1 .large-header {
-            background-image: url("<?= asset('/jy/新年新愿P.jpg')?>");
-            background-size: 100vw 100vh;
-            width: 100vw;
-            height: 100vh;
-            background-repeat: no-repeat;
-            position: fixed;
+        @media only screen and (min-height: 568px) and (max-height: 810px) {
+            .demo-1 .large-header {
+                background-image: url("<?= asset('/jy/新年新愿P.jpg')?>");
+                background-size: 100vw 100vh;
+                width: 100vw;
+                height: 100vh;
+                background-repeat: no-repeat;
+                position: fixed;
+            }
+
+            .flag-unchecked {
+                margin: 1.6vh 2vw;
+                font-size: 1.8vh;
+                padding: 0;
+                border-radius: 50px;
+                color: #6e4531;
+                /*transform: scale(.88);*/
+                /*transform-origin: left;*/
+            }
+
+            .logo_box_flag {
+                width: 60vw;
+                height: 50vh;
+                padding: 0;
+                position: fixed;
+                overflow: hidden;
+                left: 60%;
+                top: 50%;
+                margin-left: -39vw;
+                margin-top: -24vh;
+            }
+
+            .btn-1 {
+                width: 70vw;
+                height: 14vh;
+                padding: 1vh;
+                position: fixed;
+                overflow: hidden;
+                left: 50%;
+                top: 100%;
+                margin-left: -34vw;
+                margin-top: -24vh;
+            }
         }
 
-        .flag-unchecked {
-            margin: 1.6vh 2vw;
-            font-size: 1.8vh;
-            padding: 0;
-            border-radius: 50px;
-            color: #6e4531;
-            /*transform: scale(.88);*/
-            /*transform-origin: left;*/
-        }
 
-        .logo_box_flag {
-            width: 60vw;
-            height: 50vh;
-            padding: 0;
-            position: fixed;
-            overflow: hidden;
-            left: 60%;
-            top: 50%;
-            margin-left: -39vw;
-            margin-top: -24vh;
-        }
 
-        .btn-1 {
-            width: 70vw;
-            height: 14vh;
-            padding: 1vh;
-            position: fixed;
-            overflow: hidden;
-            left: 50%;
-            top: 100%;
-            margin-left: -34vw;
-            margin-top: -24vh;
-        }
+
+
+        {{--@media only screen and (min-width: 375px) and (min-height: 812px) {--}}
+            {{--.demo-1 .large-header {--}}
+                {{--background-image: url("<?= asset('/jy/新年新愿X.jpg')?>");--}}
+                {{--background-size: 100vw 100vh;--}}
+                {{--width: 100vw;--}}
+                {{--height: 100vh;--}}
+                {{--background-repeat: no-repeat;--}}
+                {{--position: fixed;--}}
+            {{--}--}}
+
+            {{--.flag-unchecked {--}}
+                {{--margin: 2vh 2vw;--}}
+                {{--font-size: 1.8vh;--}}
+                {{--padding: 0;--}}
+                {{--border-radius: 50px;--}}
+                {{--color: #6e4531;--}}
+            {{--}--}}
+
+            {{--.logo_box_flag {--}}
+                {{--width: 70%;--}}
+                {{--height: 70%;--}}
+                {{--padding: 0;--}}
+                {{--position: fixed;--}}
+                {{--overflow: hidden;--}}
+                {{--left: 60%;--}}
+                {{--top: 50%;--}}
+                {{--margin-left: -44vw;--}}
+                {{--margin-top: -54vw;--}}
+            {{--}--}}
+
+            {{--.btn-1 {--}}
+                {{--width: 70vw;--}}
+                {{--height: 14vh;--}}
+                {{--padding: 1vh;--}}
+                {{--position: fixed;--}}
+                {{--overflow: hidden;--}}
+                {{--left: 50%;--}}
+                {{--top: 100%;--}}
+                {{--margin-left: -34vw;--}}
+                {{--margin-top: -30vh;--}}
+            {{--}--}}
+        {{--}--}}
+
+        {{--.demo-1 .large-header {--}}
+            {{--background-image: url("<?= asset('/jy/新年新愿P.jpg')?>");--}}
+            {{--background-size: 100vw 100vh;--}}
+            {{--width: 100vw;--}}
+            {{--height: 100vh;--}}
+            {{--background-repeat: no-repeat;--}}
+            {{--position: fixed;--}}
+        {{--}--}}
+
+        {{--.flag-unchecked {--}}
+            {{--margin: 1.6vh 2vw;--}}
+            {{--font-size: 1.8vh;--}}
+            {{--padding: 0;--}}
+            {{--border-radius: 50px;--}}
+            {{--color: #6e4531;--}}
+            {{--/*transform: scale(.88);*/--}}
+            {{--/*transform-origin: left;*/--}}
+        {{--}--}}
+
+        {{--.logo_box_flag {--}}
+            {{--width: 60vw;--}}
+            {{--height: 50vh;--}}
+            {{--padding: 0;--}}
+            {{--position: fixed;--}}
+            {{--overflow: hidden;--}}
+            {{--left: 60%;--}}
+            {{--top: 50%;--}}
+            {{--margin-left: -39vw;--}}
+            {{--margin-top: -24vh;--}}
+        {{--}--}}
+
+        {{--.btn-1 {--}}
+            {{--width: 70vw;--}}
+            {{--height: 14vh;--}}
+            {{--padding: 1vh;--}}
+            {{--position: fixed;--}}
+            {{--overflow: hidden;--}}
+            {{--left: 50%;--}}
+            {{--top: 100%;--}}
+            {{--margin-left: -34vw;--}}
+            {{--margin-top: -24vh;--}}
+        {{--}--}}
 
     </style>
     <!--[if IE]>
