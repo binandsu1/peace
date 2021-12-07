@@ -14,7 +14,7 @@
         #fileBtn{width: 84vw;height: 50vh; position: absolute;display: block;top: 0;left: 0;opacity: 0;}
         .fileBtn{width: 84vw;height: 50vh;border: 2px dashed lightskyblue;text-align: center;position: relative;left: 50px;top: 50px;}
         .fileBtn p{line-height: 46vh;}
-        #img{width: 84vw;height: 50vh;position: absolute;top: 0;left: 0;z-index: 10;display: none;}
+        #img{width: 70vw;height: 54vh;position: absolute;top: 0;left: 0;z-index: 10;display: none;}
         .img{width: 100px;height: 100px;}
         .img-box{margin-top: 80px;}
 
@@ -66,6 +66,14 @@
         }
 
         @media only screen and (max-width: 375px) and (min-height: 812px) {
+
+            #fileBtn{width: 84vw;height: 50vh; position: absolute;display: block;top: 0;left: 0;opacity: 0;}
+            .fileBtn{width: 84vw;height: 50vh;border: 2px dashed lightskyblue;text-align: center;position: relative;left: 50px;top: 50px;}
+            .fileBtn p{line-height: 46vh;}
+            #img{width: 70vw;height: 50vh;position: absolute;top: 0;left: 0;z-index: 10;display: none;}
+            .img{width: 100px;height: 100px;}
+            .img-box{margin-top: 80px;}
+
             .demo-1 .large-header {
                 background-image: url("<?= asset('/jy/背景X.jpg')?>");
                 background-size: 100vw 100vh;
