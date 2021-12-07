@@ -26,53 +26,152 @@
             background-color:transparent; /* 背景色透明 */
         }
 
-        .demo-1 .large-header {
-            background-image: url("<?= asset('/jy/'.$bg.'P.jpg')?>");
-            background-size: 100vw 100vh;
-            width: 100vw;
-            height: 100vh;
-            background-repeat: no-repeat;
-            position: fixed;
+        {{--.demo-1 .large-header {--}}
+            {{--background-image: url("<?= asset('/jy/'.$bg.'P.jpg')?>");--}}
+            {{--background-size: 100vw 100vh;--}}
+            {{--width: 100vw;--}}
+            {{--height: 100vh;--}}
+            {{--background-repeat: no-repeat;--}}
+            {{--position: fixed;--}}
+        {{--}--}}
+
+        {{--.btn-1 {--}}
+            {{--width: 70vw;--}}
+            {{--height: 12vh;--}}
+            {{--padding: 1vh;--}}
+            {{--position: fixed;--}}
+            {{--overflow: hidden;--}}
+            {{--left: 50%;--}}
+            {{--top: 100%;--}}
+            {{--margin-left: -34vw;--}}
+            {{--margin-top: -26vh;--}}
+        {{--}--}}
+
+        {{--.btn-2 {--}}
+            {{--width: 70vw;--}}
+            {{--height: 12vh;--}}
+            {{--padding: 1vh;--}}
+            {{--position: fixed;--}}
+            {{--overflow: hidden;--}}
+            {{--left: 50%;--}}
+            {{--top: 100%;--}}
+            {{--margin-left: -10vw;--}}
+            {{--margin-top: -6vh;--}}
+        {{--}--}}
+        {{--.btn-3 {--}}
+            {{--width: 100vw;--}}
+            {{--height: 14vh;--}}
+            {{--padding: 1vh;--}}
+            {{--position: fixed;--}}
+            {{--overflow: hidden;--}}
+            {{--left: 0;--}}
+            {{--top: 100%;--}}
+            {{--margin-left: 0;--}}
+            {{--margin-top: -30vh;--}}
+            {{--font-size: 1rem;--}}
+            {{--text-align: center;--}}
+        {{--}--}}
+
+        {{--@media only screen and (min-width: 375px) and (min-height: 812px) {--}}
+            {{--.demo-1 .large-header {--}}
+                {{--background-image: url("<?= asset('/jy/'.$bg.'X.jpg')?>");--}}
+                {{--background-size: 100vw 100vh;--}}
+                {{--width: 100vw;--}}
+                {{--height: 100vh;--}}
+                {{--background-repeat: no-repeat;--}}
+                {{--position: fixed;--}}
+            {{--}--}}
+
+            {{--.btn-1 {--}}
+                {{--width: 70vw;--}}
+                {{--height: 14vh;--}}
+                {{--padding: 1vh;--}}
+                {{--position: fixed;--}}
+                {{--overflow: hidden;--}}
+                {{--left: 50%;--}}
+                {{--top: 100%;--}}
+                {{--margin-left: -34vw;--}}
+                {{--margin-top: -20vh;--}}
+            {{--}--}}
+            {{--.btn-2 {--}}
+                {{--width: 70vw;--}}
+                {{--height: 14vh;--}}
+                {{--padding: 1vh;--}}
+                {{--position: fixed;--}}
+                {{--overflow: hidden;--}}
+                {{--left: 50%;--}}
+                {{--top: 100%;--}}
+                {{--margin-left: -10vw;--}}
+                {{--margin-top: -10vh;--}}
+            {{--}--}}
+            {{--.btn-3 {--}}
+                {{--width: 100vw;--}}
+                {{--height: 14vh;--}}
+                {{--padding: 1vh;--}}
+                {{--position: fixed;--}}
+                {{--overflow: hidden;--}}
+                {{--left: 0;--}}
+                {{--top: 100%;--}}
+                {{--margin-left: 0;--}}
+                {{--margin-top: -24vh;--}}
+                {{--font-size: 1rem;--}}
+                {{--text-align: center;--}}
+            {{--}--}}
+        {{--}--}}
+
+
+        .line{}
+
+
+        @media only screen and (min-height: 900px) and (max-height: 1000px){
+            .demo-1 .large-header {
+                background-image: url("<?= asset('/jy/'.$bg.'P.jpg')?>");
+                background-size: 100vw 100vh;
+                width: 100vw;
+                height: 100vh;
+                background-repeat: no-repeat;
+                position: fixed;
+            }
+
+            .btn-1 {
+                width: 70vw;
+                height: 12vh;
+                padding: 1vh;
+                position: fixed;
+                overflow: hidden;
+                left: 50%;
+                top: 100%;
+                margin-left: -34vw;
+                margin-top: -26vh;
+            }
+
+            .btn-2 {
+                width: 70vw;
+                height: 12vh;
+                padding: 1vh;
+                position: fixed;
+                overflow: hidden;
+                left: 50%;
+                top: 100%;
+                margin-left: -10vw;
+                margin-top: -6vh;
+            }
+            .btn-3 {
+                width: 100vw;
+                height: 14vh;
+                padding: 1vh;
+                position: fixed;
+                overflow: hidden;
+                left: 0;
+                top: 100%;
+                margin-left: 0;
+                margin-top: -30vh;
+                font-size: 1rem;
+                text-align: center;
+            }
         }
 
-        .btn-1 {
-            width: 70vw;
-            height: 12vh;
-            padding: 1vh;
-            position: fixed;
-            overflow: hidden;
-            left: 50%;
-            top: 100%;
-            margin-left: -34vw;
-            margin-top: -26vh;
-        }
-
-        .btn-2 {
-            width: 70vw;
-            height: 12vh;
-            padding: 1vh;
-            position: fixed;
-            overflow: hidden;
-            left: 50%;
-            top: 100%;
-            margin-left: -10vw;
-            margin-top: -6vh;
-        }
-        .btn-3 {
-            width: 100vw;
-            height: 14vh;
-            padding: 1vh;
-            position: fixed;
-            overflow: hidden;
-            left: 0;
-            top: 100%;
-            margin-left: 0;
-            margin-top: -30vh;
-            font-size: 1rem;
-            text-align: center;
-        }
-
-        @media only screen and (min-width: 375px) and (min-height: 812px) {
+        @media only screen and (min-height: 800px) and (max-height: 900px){
             .demo-1 .large-header {
                 background-image: url("<?= asset('/jy/'.$bg.'X.jpg')?>");
                 background-size: 100vw 100vh;
@@ -118,6 +217,57 @@
                 text-align: center;
             }
         }
+
+        @media only screen and (min-height: 560px) and (max-height: 800px){
+            .demo-1 .large-header {
+                background-image: url("<?= asset('/jy/'.$bg.'P.jpg')?>");
+                background-size: 100vw 100vh;
+                width: 100vw;
+                height: 100vh;
+                background-repeat: no-repeat;
+                position: fixed;
+            }
+
+            .btn-1 {
+                width: 70vw;
+                height: 12vh;
+                padding: 1vh;
+                position: fixed;
+                overflow: hidden;
+                left: 50%;
+                top: 100%;
+                margin-left: -34vw;
+                margin-top: -26vh;
+            }
+
+            .btn-2 {
+                width: 70vw;
+                height: 12vh;
+                padding: 1vh;
+                position: fixed;
+                overflow: hidden;
+                left: 50%;
+                top: 100%;
+                margin-left: -10vw;
+                margin-top: -6vh;
+            }
+            .btn-3 {
+                width: 100vw;
+                height: 14vh;
+                padding: 1vh;
+                position: fixed;
+                overflow: hidden;
+                left: 0;
+                top: 100%;
+                margin-left: 0;
+                margin-top: -30vh;
+                font-size: 1rem;
+                text-align: center;
+            }
+        }
+
+
+
     </style>
     <!--[if IE]>
     <script src="<?=asset('/jy/html5.js')?>"></script>
