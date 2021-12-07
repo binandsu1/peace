@@ -998,12 +998,12 @@ class Activity extends Controller
 
         $image = new Image();
         //原始图路径
-        $path = "images/hb/no-flagp.jpg";
+        $path = "hb/no-flagp.jpg";
 //        $range = 'new' . time() . rand(10000, 99999);
         $newimageName = $range. 'P.jpg';
         $newpath = 'images/' . $newimageName;
         $face_img = $image::make($path)->resize(1280, 2264);
-        $face_img->text($flag_info, 370, 1541, function ($font) use ($path) {
+        $face_img->text($flag_info, 383, 1434, function ($font) use ($path) {
             $font->file(public_path('SIMLI.TTF', 777, true));
             $font->size(69);
             $font->color('#CCCC33');
@@ -1028,12 +1028,12 @@ class Activity extends Controller
 
         $image = new Image();
         //原始图路径
-        $path = "images/hb/no-flagx.jpg";
+        $path = "hb/no-flagx.jpg";
 //        $range = 'new' . time() . rand(10000, 99999);
         $newimageName = $range. 'X.jpg';
         $newpath = 'images/' . $newimageName;
         $face_img = $image::make($path)->resize(1125, 2436);
-        $face_img->text($flag_info, 300, 1585, function ($font) use ($path) {
+        $face_img->text($flag_info, 315, 1435, function ($font) use ($path) {
             $font->file(public_path('SIMLI.TTF', 777, true));
             $font->size(69);
             $font->color('#CCCC33');
@@ -1056,7 +1056,7 @@ class Activity extends Controller
 
         $image = new Image();
         //原始图路径
-        $path = "images/hb/no-flagz.jpg";
+        $path = "hb/no-flagz.jpg";
 //        $range = 'new' . time() . rand(10000, 99999);
         $newimageName = $range. 'Z.jpg';
         $newpath = 'images/' . $newimageName;
