@@ -70,6 +70,52 @@
         }
 
 
+        @media only screen and (max-width: 450px) and (min-height: 844px) {
+            .demo-1 .large-header {
+                background-image: url("<?= asset('/jy/新年新愿P.jpg')?>");
+                background-size: 100vw 100vh;
+                width: 100vw;
+                height: 100vh;
+                background-repeat: no-repeat;
+                position: fixed;
+            }
+
+            .flag-unchecked {
+                margin: 1.4vh 2vw;
+                font-size: 1.6vh;
+                padding: 0;
+                border-radius: 50px;
+                color: #6e4531;
+                /*transform: scale(.88);*/
+                /*transform-origin: left;*/
+            }
+
+            .logo_box_flag {
+                width: 60vw;
+                height: 50vh;
+                padding: 0;
+                position: fixed;
+                overflow: hidden;
+                left: 60%;
+                top: 50%;
+                margin-left: -39vw;
+                margin-top: -24vh;
+            }
+
+            .btn-1 {
+                width: 70vw;
+                height: 14vh;
+                padding: 1vh;
+                position: fixed;
+                overflow: hidden;
+                left: 50%;
+                top: 100%;
+                margin-left: -34vw;
+                margin-top: -24vh;
+            }
+        }
+
+
 
         @media only screen and (max-width: 375px) and (min-height: 812px) {
             .demo-1 .large-header {
