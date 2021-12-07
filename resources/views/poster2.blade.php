@@ -12,19 +12,8 @@
     <style>
 
         .demo-1 .large-header {
-            <?php
-                if ($flag_id == 8) {
-                    ?>
-                         background-image: url("<?= asset('/images/'.$bg.'P.jpg')?>");
-            <?php
-        } else {
-            ?>
-background-image: url("<?= asset('/jy/'.$bg.'P.jpg')?>");
-            <?php
-        }
-     ?>
 
-background-size: 100vw 100vh;
+            background-size: 100vw 100vh;
             width: 100vw;
             height: 100vh;
             background-repeat: no-repeat;
@@ -73,18 +62,6 @@ background-size: 100vw 100vh;
 
         @media only screen and (max-width: 375px) and (min-height: 812px) {
             .demo-1 .large-header {
-                <?php
-                    if ($flag_id == 8) {
-                 ?>
-                        background-image: url("<?= asset('/images/'.$bg.'X.jpg')?>");
-                <?php
-                    } else {
-                ?>
-                        background-image: url("<?= asset('/jy/'.$bg.'X.jpg')?>");
-                <?php
-                  }
-                 ?>
-
                 background-size: 100vw 100vh;
                 width: 100vw;
                 height: 100vh;
@@ -160,10 +137,11 @@ background-size: 100vw 100vh;
                     <?php
                     } else {
                     ?>
-                    <div class="mb2 btn-1">
+                    <div id="fx_btn" class="mb2 btn-1">
                         <p class="flag-unchecked">长按图片保存专属海报</p>
                         <p class="flag-unchecked">点击右上角“…”分享到微信中</p>
                     </div>
+                        <div id="cy_btn" class="mb2 btn-1" style="display: none;"><a class="act-but submit" onclick="go_home()" style="color: #744323">立 即 参 与</a></div>
                     <?php
                     }
                     ?>
@@ -182,14 +160,35 @@ background-size: 100vw 100vh;
     $(document).ready(function(){
         var h = $(document).height(); //浏览器当前窗口文档的高度
 
+        var type = "";
+
+        if (h < 780) {
+            type = "P";
+        } else {
+            type = "X";
+        }
+
+            <?php if($flag_id == 8) { $dir = "image";} else { $dir = "jy";} ?>
+
+        var url = "<?= asset('/'.$dir.'/'.$bg)?>";
+
+        var bg_image = url+type+".jpg";
+
+        $('#large-header').css('background-image',('url("'+bg_image+'")'));
+
         var w_t =  window.location.href.split('#');
         if (w_t[1] == '0533') {
-            window.location.replace("/api/activityIndex?type=wx");
+            $("#cy_btn").css("display","block");
+            $("#fx_btn").css("display","none");
         }
 
         window.location.href = "#"+"0533";
 
     });
+
+    function go_home() {
+        window.location.replace("/api/activityIndex?type=wx");
+    }
 
     function up() {
 
