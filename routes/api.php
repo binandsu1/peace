@@ -55,6 +55,7 @@ Route::any('/check-online', [\App\Http\Controllers\Activity::class,'checkOnline'
 Route::any('/check-code', [\App\Http\Controllers\Activity::class,'checkCode'])->name('check-code');
 Route::any('/prize-admin', [\App\Http\Controllers\Activity::class,'prizeAdmin'])->name('prize-admin');
 Route::any('/authorization', [\App\Http\Controllers\Activity::class,'authorization'])->name('authorization');
+Route::any('/authorization2', [\App\Http\Controllers\Activity::class,'authorization2'])->name('authorization2');
 Route::any('/agreement', [\App\Http\Controllers\Activity::class,'agreement'])->name('agreement');
 
 Route::any('/poserdemo', [\App\Http\Controllers\Activity::class,'poserdemo'])->name('poserdemo');

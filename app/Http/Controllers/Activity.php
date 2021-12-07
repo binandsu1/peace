@@ -57,10 +57,10 @@ class Activity extends Controller
         $use_code = $user->use_code;
         $uid = $user->uid;
 
-
-        if ($authorization == 1) {
-            return redirect()->route('authorization', ['api_token' => $api_token]);
-        }
+// 原授权逻辑
+//        if ($authorization == 1) {
+//            return redirect()->route('authorization', ['api_token' => $api_token]);
+//        }
 
         if ($is_draw == 2 && $way == 2) {
 
@@ -180,6 +180,10 @@ class Activity extends Controller
         $uid = $user->id;
         $way = $user->way;
         $api_token = $user->api_token;
+        $authorization = $user->authorization;
+        if ($authorization == 1) {
+            return redirect()->route('authorization', ['api_token' => $api_token]);
+        }
 //        $flagModels = DB::table('flag_list')->where('status', 1)->get(['id', 'flag_model']);
         if (empty($way)) {
             DB::table('jiayus')->where('id', $uid)->update(['way' => 1]);
@@ -200,6 +204,10 @@ class Activity extends Controller
         $uid = $user->id;
         $way = $user->way;
         $api_token = $user->api_token;
+        $authorization = $user->authorization;
+        if ($authorization == 1) {
+            return redirect()->route('authorization2', ['api_token' => $api_token]);
+        }
 //        $flagModels = DB::table('flag_list')->where('status', 1)->get(['id', 'flag_model']);
         if (empty($way)) {
             DB::table('jiayus')->where('id', $uid)->update(['way' => 2]);
