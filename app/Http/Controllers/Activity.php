@@ -664,10 +664,10 @@ class Activity extends Controller
         if ($request->method() == 'POST') {
             $image = $request->file('image');
             $imageName = $uid.'.jpg';
-            $path = 'offline';
-            if (!empty($userinfo->path)) {
+            $path = 'offline/';
+//            if (!empty($userinfo->path)) {
                 $image->move(public_path($path), $imageName);
-            }
+//            }
             $userinfo->pic_name = $imageName;
             $userinfo->save();
 
