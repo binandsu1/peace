@@ -161,11 +161,11 @@
         var w = $(document).width(); //浏览器当前窗口文档的高度
         var h = $(document).height(); //浏览器当前窗口文档的高度
         var b = h/w;
-        alert(b.toFixed(2));
+        var size = b.toFixed(2);
 
         var type = "";
 
-        if (h < 780) {
+        if (size < 1.8) {
             type = "P";
         } else {
             type = "X";
@@ -176,7 +176,7 @@
         var url = "<?= asset('/'.$dir.'/'.$bg)?>";
 
         var bg_image = url+type+".jpg";
-//        alert(bg_image);
+        alert(bg_image);
 
         $('#large-header').css('background-image',('url("'+bg_image+'")'));
 
