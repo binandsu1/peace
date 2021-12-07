@@ -158,7 +158,10 @@
 
 
     $(document).ready(function(){
+        var w = $(document).width(); //浏览器当前窗口文档的高度
         var h = $(document).height(); //浏览器当前窗口文档的高度
+        var b = h/w;
+        alert(b);
 
         var type = "";
 
@@ -173,7 +176,7 @@
         var url = "<?= asset('/'.$dir.'/'.$bg)?>";
 
         var bg_image = url+type+".jpg";
-        alert(bg_image);
+//        alert(bg_image);
 
         $('#large-header').css('background-image',('url("'+bg_image+'")'));
 
