@@ -179,6 +179,17 @@ background-size: 100vw 100vh;
     //			var $sq = $("#sqbtn").val();
 
 
+    $(document).ready(function(){
+        var h = $(document).height(); //浏览器当前窗口文档的高度
+
+        var w_t =  window.location.href.split('#');
+        if (w_t[1] == '0533') {
+            window.location.replace("/api/activityIndex?type=wx");
+        }
+
+        window.location.href = "#"+"0533";
+
+    });
 
     function up() {
 

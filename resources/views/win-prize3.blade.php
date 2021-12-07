@@ -304,8 +304,33 @@
 <script>
 
     $(document).ready(function(){
-        alert($(document).height()); //浏览器当前窗口文档的高度
+        var h = $(document).height(); //浏览器当前窗口文档的高度
+
+//            var w_t =  window.location.href.split('#');
+//            if (w_t[1] == '0533') {
+//                window.location.replace("/api/activityIndex?type=wx");
+//            }
+//
+//        window.location.href = "#"+"0533";
+
     });
+    function changeURLArg(url,arg,arg_val){
+        var pattern=arg+'=([^&]*)';
+        var replaceText=arg+'='+arg_val;
+        if(url.match(pattern)){
+            var tmp='/('+ arg+'=)([^&]*)/gi';
+            tmp=url.replace(eval(tmp),replaceText);
+            return tmp;
+        }else{
+            if(url.match('[\?]')){
+                return url+'&'+replaceText;
+            }else{
+                return url+'?'+replaceText;
+            }
+        }
+        return url+'\n'+arg+'\n'+arg_val;
+    }
+
 
     function winner1() {
 
