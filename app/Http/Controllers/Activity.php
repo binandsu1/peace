@@ -181,7 +181,7 @@ class Activity extends Controller
 
         $code = $request->input("code");
         if (empty($code)) {
-            return view('authorization');
+            return view('authorization2');
         }
 
         $result = DB::table('jiayus')->where('id', $uid)->update(['authorization' => 2]);
