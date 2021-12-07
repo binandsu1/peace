@@ -14,12 +14,29 @@
     <link rel="stylesheet" href="<?= asset("/jy/lottery.css") ?>">
     <style>
         .demo-1 .large-header {
-            background-image: url("<?= asset('/jy/bg-1.jpg')?>");
+            background-image: url("<?= asset('/jy/背景P.jpg')?>");
             background-size: 100vw 100vh;
             width: 100vw;
             height: 100vh;
             background-repeat: no-repeat;
             position: fixed;
+        }
+        .box-draw {
+            margin-top: -5vh;
+        }
+
+        @media only screen and (max-width: 375px) and (min-height: 812px) {
+            .demo-1 .large-header {
+                background-image: url("<?= asset('/jy/背景X.jpg')?>");
+                background-size: 100vw 100vh;
+                width: 100vw;
+                height: 100vh;
+                background-repeat: no-repeat;
+                position: fixed;
+            }
+            .box-draw {
+                margin-top: 4vh;
+            }
         }
     </style>
 
@@ -35,7 +52,7 @@
             {{--<div class="logo_box">--}}
             {{--<h3 style="text-align: center;">抽奖页面</h3>--}}
             {{--</div>--}}
-            <div class='winnerBox'>
+            <div class='winnerBox box-draw'>
                 <div class="turnplate_box">
                     <canvas id="myCanvas" width="260px" height="260px">抱歉！浏览器不支持。</canvas>
                     <button id="tupBtn" class="turnplatw_btn">

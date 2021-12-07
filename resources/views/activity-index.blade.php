@@ -20,7 +20,7 @@
 
 			.demo-1 .large-header {
 				{{--background-image: url("<?= asset('/jy/home-1280.jpg')?>");--}}
-				background-image: url("<?= asset('/jy/启动页.jpg')?>");
+				background-image: url("<?= asset('/jy/new-bgP.jpg')?>");
 				background-size: 100vw 100vh;
 				width: 100vw;
 				height: 100vh;
@@ -40,25 +40,25 @@
 			}
 
 			.btn-2 {
-				width: 90vw;
-				height: 12vh;
+				width: 100vw;
+				height: 22vh;
 				padding: 1vh;
 				position: fixed;
 				overflow: hidden;
 				left: 50%;
 				top: 100%;
-				margin-left: -32vw;
-				margin-top: -16vh;
+				margin-left: -36vw;
+				margin-top: -19vh;
 				font-size: 0.5em;
 				/*text-align: center;*/
-				transform: scale(.76);
+				transform: scale(.75);
 				transform-origin: left;
 			}
 
-		@media only screen and (min-width: 375px) and (min-height: 812px) {
+		@media only screen and (max-width: 375px) and (min-height: 812px) {
 			.demo-1 .large-header {
 				{{--background-image: url("<?= asset('/jy/home-bg1.jpg')?>");--}}
-				background-image: url("<?= asset('/jy/启动页.jpg')?>");
+				background-image: url("<?= asset('/jy/new-bgX.jpg')?>");
 				background-size: 100vw 100vh;
 				width: 100vw;
 				height: 100vh;
@@ -74,19 +74,19 @@
 				left: 50%;
 				top: 50%;
 				margin-left: -44vw;
-				margin-top: 16vh;
+				margin-top: 8vh;
 			}
 
 			.btn-2 {
 				width: 90vw;
-				height: 14vh;
+				height: 24vh;
 				padding: 1vh;
 				position: fixed;
 				overflow: hidden;
 				left: 50%;
 				top: 100%;
 				margin-left: -32vw;
-				margin-top: -16vh;
+				margin-top: -22vh;
 				font-size: 0.5em;
 				transform: scale(.76);
 				transform-origin: left;
@@ -115,10 +115,10 @@
 								活动说明：
 							</p>
 							<p>
-								1、参与“线上点亮”活动用户可直接通过活动页面抽奖，获得上海报与李现同框的机会，或其他对应奖项，“线下点亮”活动用户通过活动页面抽奖后，到微软授权经销商门店参与参与活动，并领取奖品。
+								1、参与“线上点亮”活动用户可直接通过活动页面抽奖，获得上海报与李现同框的机会，或其他对应奖项；“线下点亮”活动用户通过活动页面抽奖后，到微软线下授权经销商门店参与活动，并领取奖品。
 							</p>
 							<p>
-								2、“线上点亮”海报用参与者授权的微博或微信ID名作为海报组成元素，“线下点亮”特殊海报使用用户在线下参与活动后授权的拍照照片作为海报组成元素。
+								2、“线上点亮”海报用参与者授权的微博或微信ID名作为海报组成元素；“线下点亮”特殊海报使用用户在线下参与活动后授权的拍照照片作为海报组成元素。
 							</p>
 							<p>
 								<br/>

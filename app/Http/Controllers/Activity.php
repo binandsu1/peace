@@ -67,6 +67,8 @@ class Activity extends Controller
             if ($use_code == 2) {
 
                 $flag_id = $user->flag_id;
+                $type = $user->type;
+
                 if($flag_id == 8) {
                     $flag = DB::table('customize_flag')->where('uid', $uid)->get(['customize_flag']);
                     if (!$flag->isEmpty()) {
@@ -80,7 +82,7 @@ class Activity extends Controller
                             $pic_re->save();
                         }
 
-                        return redirect()->route('poster2', ['api_token' => $api_token])->with(['flag_id'=>$flag_id, 'bg' => $pic_re->path]);
+                        return redirect()->route('poster2', ['api_token' => $api_token])->with(['flag_id'=>$flag_id, 'bg' => $pic_re->path, 'type'=>$type]);
                     }
                 } else {
 
@@ -108,7 +110,7 @@ class Activity extends Controller
                             break;
                     }
 
-                    return redirect()->route('poster2', ['api_token' => $api_token])->with(['flag_id'=>$flag_id, 'bg' => $bg]);
+                    return redirect()->route('poster2', ['api_token' => $api_token])->with(['flag_id'=>$flag_id, 'bg' => $bg, 'type'=>$type]);
                 }
 
             }
@@ -211,11 +213,6 @@ class Activity extends Controller
         return view('activity-down');
     }
 
-//    public function activityDown()
-//    {
-//        return redirect()->away("https://wisepeople.xbaofun.com/wisepeople/oobe/users/storeList");
-//        return view('map');
-//    }
 
 //线上抽奖
     public function luckyDraw()
@@ -398,13 +395,6 @@ class Activity extends Controller
     }
 
     // 中奖信息展示页面
-//Tmall优惠券链接如下
-//
-//M365家庭版+腾讯视频季卡：https://m.tb.cn/h.f6eDzQa
-//
-//M365家庭版+ING帆布袋+ING袜子：https://m.tb.cn/h.fhnjkXn
-//
-//GO3+闪迪128G卡+ING杯子：https://s.tb.cn/c.0uj2Le
     public function winPrize()
     {
         $user = Auth::guard('api')->user();
@@ -525,6 +515,7 @@ class Activity extends Controller
         $user = Auth::guard('api')->user();
         $uid = $user->id;
         $flag_id = $user->flag_id;
+        $type = $user->type;
         if($flag_id == 8) {
             $flag = DB::table('customize_flag')->where('uid', $uid)->get(['customize_flag']);
             if (!$flag->isEmpty()) {
@@ -537,42 +528,35 @@ class Activity extends Controller
                     $this->flagZ($flag_info,$range);
                     $pic_re->save();
                 }
-                return view('poster', compact('pic_re'))->with(['flag_id'=>$flag_id, 'bg' => $pic_re->path]);
+                return view('poster', compact('pic_re'))->with(['flag_id'=>$flag_id, 'bg' => $pic_re->path, 'type'=>$type]);
             }
         } else {
 
             switch ($flag_id) {
                 case 1:
                     $bg = "不加班";
-                    $url = "";
                     break;
                 case 2:
                     $bg = "工作生活";
-                    $url = "https://m.tb.cn/h.f6eDzQa";
                     break;
                 case 3:
                     $bg = "门店看看";
-                    $url = "https://m.tb.cn/h.fhnjkXn";
                     break;
                 case 4:
                     $bg = "锻炼身体";
-                    $url = "https://s.tb.cn/c.0uj2Le";
                     break;
                 case 5:
                     $bg = "找男朋友";
-                    $url = "";
                     break;
                 case 6:
                     $bg = "拒绝熬夜";
-                    $url = "";
                     break;
                 case 7:
                     $bg = "保持创新";
-                    $url = "";
                     break;
             }
 
-            return view('poster')->with(['flag_id'=>$flag_id, 'bg' => $bg]);
+            return view('poster')->with(['flag_id'=>$flag_id, 'bg' => $bg, 'type'=>$type]);
         }
 
     }
@@ -583,6 +567,7 @@ class Activity extends Controller
         $user = Auth::guard('api')->user();
         $uid = $user->id;
         $flag_id = $user->flag_id;
+        $type = $user->type;
         if($flag_id == 8) {
             $flag = DB::table('customize_flag')->where('uid', $uid)->get(['customize_flag']);
             if (!$flag->isEmpty()) {
@@ -596,7 +581,7 @@ class Activity extends Controller
                     $pic_re->save();
                 }
 
-                return view('poster2', compact('pic_re'))->with(['flag_id'=>$flag_id, 'bg' => $pic_re->path]);
+                return view('poster2', compact('pic_re'))->with(['flag_id'=>$flag_id, 'bg' => $pic_re->path, 'type'=>$type]);
             }
         } else {
 
@@ -624,7 +609,7 @@ class Activity extends Controller
                     break;
             }
 
-            return view('poster2')->with(['flag_id'=>$flag_id, 'bg' => $bg]);
+            return view('poster2')->with(['flag_id'=>$flag_id, 'bg' => $bg, 'type'=>$type]);
         }
     }
 
@@ -639,7 +624,17 @@ class Activity extends Controller
 
         $user = Auth::guard('api')->user();
         $uid = $user->id;
+        $type = $user->type;
         $userinfo = Jiayu::find($uid);
+
+        $result = DB::table("prize_num")->where("u_id", $uid)->get();
+        if($result->isEmpty()) {
+            return false;
+        }
+        if ($result[0]->gift_id != 11) {
+            return false;
+        }
+
         if ($request->method() == 'POST') {
             $image = $request->file('image');
             $imageName = $uid.'.jpg';
@@ -664,7 +659,7 @@ class Activity extends Controller
                         $pic_re->save();
                     }
 
-                    return view('poster2', compact('pic_re'))->with(['flag_id'=>$flag_id, 'bg' => $pic_re->path]);
+                    return view('poster2', compact('pic_re'))->with(['flag_id'=>$flag_id, 'bg' => $pic_re->path, 'type'=>$type]);
                 }
             } else {
 
@@ -692,7 +687,7 @@ class Activity extends Controller
                         break;
                 }
 
-                return view('poster2')->with(['flag_id'=>$flag_id, 'bg' => $bg]);
+                return view('poster2')->with(['flag_id'=>$flag_id, 'bg' => $bg, 'type'=>$type]);
             }
         }
 
@@ -814,36 +809,6 @@ class Activity extends Controller
         $data["a"] = 1;
         $data["b"] = 1;
         tt::dispatch($data);
-    }
-
-
-    // todo::修改完poster方法后废弃
-    public function getFlagModel($id)
-    {
-        $flag = "";
-        if (!empty($id)) {
-            switch ($id) {
-                case 1:
-                    $flag = "新年365天不加班";
-                    break;
-                case 2:
-                    $flag = "我的工作就是好好生活";
-                    break;
-                case 3:
-                    $flag = "工作创新潮";
-                    break;
-                case 4:
-                    $flag = "生活创新潮";
-                    break;
-                case 5:
-                    $flag = "与我所爱，更近一步";
-                    break;
-                default:
-                    $flag = "";
-                    break;
-            }
-        }
-        return $flag;
     }
 
 
@@ -1096,7 +1061,7 @@ class Activity extends Controller
         $user = Auth::guard('api')->user();
         $token = $user->u_token;
         $code = $weiboSer->share($token,$ms);
-
+        return response()->json(['code' => 200]);
     }
 
     public function tp(){
@@ -1108,6 +1073,7 @@ class Activity extends Controller
 
         $user = Auth::guard('api')->user();
         $uid = $user->id;
+        $storeCode = $user->storeCode;
         $use_code = $user->use_code;
         if ($use_code == 2) {
             return response()->json(['code' => 300]);
@@ -1116,9 +1082,20 @@ class Activity extends Controller
         $md_code = $request->input("md_code");
 
         if (!empty($md_code)) {
-            DB::table("prize_num")->where("u_id", $uid)->update(['md_code'=>$md_code]);
-            DB::table("jiayus")->where("id", $uid)->update(['use_code'=>2]);
-            return response()->json(['code' => 200]);
+            if (!empty($storeCode)) {
+                if ($storeCode == $md_code) {
+                    DB::table("prize_num")->where("u_id", $uid)->update(['md_code'=>$md_code]);
+                    DB::table("jiayus")->where("id", $uid)->update(['use_code'=>2]);
+                    return response()->json(['code' => 200]);
+                } else {
+                    return response()->json(['code' => 500]);
+                }
+            } else {
+                DB::table("prize_num")->where("u_id", $uid)->update(['md_code'=>$md_code]);
+                DB::table("jiayus")->where("id", $uid)->update(['use_code'=>2]);
+                return response()->json(['code' => 200]);
+            }
+
         } else {
             return response()->json(['code' => 500]);
         }
