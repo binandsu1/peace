@@ -70,7 +70,7 @@
         }
 
 
-        @media only screen and (max-width: 450px) and (min-height: 844px) {
+        @media only screen and (min-width: 428px) and (min-height: 844px) {
             .demo-1 .large-header {
                 background-image: url("<?= asset('/jy/新年新愿P.jpg')?>");
                 background-size: 100vw 100vh;
@@ -81,8 +81,8 @@
             }
 
             .flag-unchecked {
-                margin: 1.4vh 2vw;
-                font-size: 1.6vh;
+                margin: 1vh 2vw;
+                font-size: 1vh;
                 padding: 0;
                 border-radius: 50px;
                 color: #6e4531;
