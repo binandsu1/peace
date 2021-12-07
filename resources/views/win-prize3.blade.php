@@ -303,6 +303,10 @@
 <script src="<?=asset('/jy/jquery-1.7.2.min.js')?>"></script>
 <script>
 
+    $(document).ready(function(){
+        alert($(document).height()); //浏览器当前窗口文档的高度
+    });
+
     function winner1() {
 
         var md_code = $("#md_code1").val();

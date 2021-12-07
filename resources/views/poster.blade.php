@@ -39,7 +39,7 @@
             overflow: hidden;
             left: 50%;
             top: 100%;
-            margin-left: -33vw;
+            margin-left: -35vw;
             margin-top: -25vh;
             text-align: center;
         }
@@ -100,7 +100,7 @@
                 overflow: hidden;
                 left: 50%;
                 top: 100%;
-                margin-left: -34vw;
+                margin-left: -35vw;
                 margin-top: -20vh;
                 text-align: center;
             }
