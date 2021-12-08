@@ -135,7 +135,7 @@
 
                         <div class="fileBtn btn-3">
                             <p style="color:#744323;">点 击 拍 照</p>
-                            <input id="fileBtn" type="file" onchange="upload();" accept="image/*" capture="camera" />
+                            <input id="fileBtn" type="file" name="image" onchange="upload();" accept="image/*" capture="camera" />
                             <!--单张图片容器-->
                             <img src="" id="img"/>
                         </div>
