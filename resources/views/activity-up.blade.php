@@ -253,7 +253,7 @@
         } else {
             type = "X";
         }
-
+        alert(h);
 
         var url = "<?= asset('/jy/新年新愿')?>";
 
