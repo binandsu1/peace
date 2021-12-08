@@ -12,17 +12,6 @@
     <style>
 
         .demo-1 .large-header {
-            {{--<?php--}}
-                {{--if ($flag_id == 8) {--}}
-                    {{--?>--}}
-                         {{--background-image: url("<?= asset('/images/'.$bg.'P.jpg')?>");--}}
-                    {{--<?php--}}
-                {{--} else {--}}
-                    {{--?>--}}
-                            {{--background-image: url("<?= asset('/jy/'.$bg.'P.jpg')?>");--}}
-                    {{--<?php--}}
-                {{--}--}}
-             {{--?>--}}
 
             background-size: 100vw 100vh;
             width: 100vw;
@@ -40,12 +29,12 @@
             left: 50%;
             top: 100%;
             margin-left: -35vw;
-            margin-top: -25vh;
+            margin-top: -23vh;
             text-align: center;
         }
 
         .btn-3 {
-            background-image: url("<?= asset('/jy/不加班.jpg')?>");
+            background-image: url("<?= asset('/jy/'.$bg.'.jpg')?>");
             background-size: 100vw 60vh;
             width: 62vw;
             height: 50vh;
@@ -71,20 +60,8 @@
         }
 
 
-        @media only screen and (max-width: 375px) and (min-height: 812px) {
+        @media only screen and (min-height: 812px) {
             .demo-1 .large-header {
-                {{--<?php--}}
-                    {{--if ($flag_id == 8) {--}}
-                 {{--?>--}}
-                        {{--background-image: url("<?= asset('/images/'.$bg.'X.jpg')?>");--}}
-                {{--<?php--}}
-                    {{--} else {--}}
-                {{--?>--}}
-                        {{--background-image: url("<?= asset('/jy/'.$bg.'X.jpg')?>");--}}
-                {{--<?php--}}
-                  {{--}--}}
-                 {{--?>--}}
-
                 background-size: 100vw 100vh;
                 width: 100vw;
                 height: 100vh;
@@ -100,13 +77,13 @@
                 overflow: hidden;
                 left: 50%;
                 top: 100%;
-                margin-left: -35vw;
+                margin-left: -34vw;
                 margin-top: -20vh;
                 text-align: center;
             }
 
             .btn-3 {
-                background-image: url("<?= asset('/jy/不加班.jpg')?>");
+                background-image: url("<?= asset('/jy/'.$bg.'.jpg')?>");
                 background-size: 100vw 60vh;
                 width: 76vw;
                 height: 50vh;
@@ -116,10 +93,10 @@
                 left: 0;
                 top: 100%;
                 margin-left: 12vw;
-                margin-top: -74vh;
+                margin-top: -80vh;
                 font-size: 1rem;
                 text-align: center;
-                /*opacity: 0;*/
+                opacity: 0;
             }
 
             .flag-unchecked {
@@ -151,7 +128,7 @@
             ?>
             <div class="logo_box_home">
                 <div  class="mb2 btn-3"><img style="width: 76vw; height: 50vh" src="{{$src}}" alt=""></div>
-                {{--<a class="act-but1 submit" href="<?= asset('/images/'.$bg.'Z.jpg')?>" style="color: #744323">保 存 图 片</a>--}}
+
                 <form action="#" name="f" method="post">
                     <?php
                         if ($type == "wb") {
@@ -181,17 +158,20 @@
 
 
     $(document).ready(function(){
+        var w = $(document).width(); //浏览器当前窗口文档的高度
         var h = $(document).height(); //浏览器当前窗口文档的高度
+        var b = h/w;
+        var size = b.toFixed(2);
 
         var type = "";
 
-        if (h < 780) {
+        if (size < 1.87) {
             type = "P";
         } else {
             type = "X";
         }
 
-        <?php if($flag_id == 8) { $dir = "image";} else { $dir = "jy";} ?>
+            <?php if($flag_id == 8) { $dir = "image";} else { $dir = "jy";} ?>
 
         var url = "<?= asset('/'.$dir.'/'.$bg)?>";
 

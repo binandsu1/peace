@@ -11,7 +11,6 @@
     <link rel="stylesheet" type="text/css" href="<?= asset('/jy/component.css') ?>">
     <style>
         .demo-1 .large-header {
-            background-image: url("<?= asset('/jy/'.$bg.'P.jpg')?>");
             background-size: 100vw 100vh;
             width: 100vw;
             height: 100vh;
@@ -28,7 +27,7 @@
             left: 50%;
             top: 100%;
             margin-left: -34vw;
-            margin-top: -32vh;
+            margin-top: -30vh;
         }
 
         .btn-2 {
@@ -40,26 +39,12 @@
             left: 50%;
             top: 100%;
             margin-left: -34vw;
-            margin-top: -22vh;
-            text-align: center;
-        }
-        .btn-3 {
-            width: 100vw;
-            height: 14vh;
-            padding: 1vh;
-            position: fixed;
-            overflow: hidden;
-            left: 0;
-            top: 100%;
-            margin-left: 0;
-            margin-top: -5.5vh;
-            font-size: 0.3rem;
+            margin-top: -20vh;
             text-align: center;
         }
 
         @media only screen and (min-width: 375px) and (min-height: 812px) {
             .demo-1 .large-header {
-                background-image: url("<?= asset('/jy/'.$bg.'X.jpg')?>");
                 background-size: 100vw 100vh;
                 width: 100vw;
                 height: 100vh;
@@ -76,7 +61,7 @@
                 left: 50%;
                 top: 100%;
                 margin-left: -34vw;
-                margin-top: -24vh;
+                margin-top: -25vh;
             }
             .btn-2 {
                 width: 70vw;
@@ -87,22 +72,10 @@
                 left: 50%;
                 top: 100%;
                 margin-left: -34vw;
-                margin-top: -16vh;
+                margin-top: -17vh;
                 text-align: center;
             }
-            .btn-3 {
-                width: 100vw;
-                height: 14vh;
-                padding: 1vh;
-                position: fixed;
-                overflow: hidden;
-                left: 0;
-                top: 100%;
-                margin-left: 0;
-                margin-top: -10vh;
-                font-size: 0.3rem;
-                text-align: center;
-            }
+
         }
     </style>
     <!--[if IE]>
@@ -125,9 +98,30 @@
 
 </div><!-- /container -->
 
-{{--<script src="<?=asset('/jy/clipboard.min.js')?>"></script>--}}
-{{--<script>--}}
-    {{--new Clipboard('.copy_btn');--}}
-{{--</script>--}}
+<script src="<?=asset('/jy/jquery-1.7.2.min.js')?>"></script>
+<script>
+    $(document).ready(function(){
+
+        var w = $(document).width(); //浏览器当前窗口文档的高度
+        var h = $(document).height(); //浏览器当前窗口文档的高度
+        var b = h/w;
+        var size = b.toFixed(2);
+
+        var type = "";
+
+        if (size < 1.87) {
+            type = "P";
+        } else {
+            type = "X";
+        }
+
+        var url = "<?= asset('/jy/'.$bg)?>";
+
+        var bg_image = url+type+".jpg";
+
+        $('#large-header').css('background-image',('url("'+bg_image+'")'));
+
+    });
+</script>
 </body>
 </html>

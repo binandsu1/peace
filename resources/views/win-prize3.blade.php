@@ -26,106 +26,10 @@
             background-color:transparent; /* 背景色透明 */
         }
 
-        {{--.demo-1 .large-header {--}}
-            {{--background-image: url("<?= asset('/jy/'.$bg.'P.jpg')?>");--}}
-            {{--background-size: 100vw 100vh;--}}
-            {{--width: 100vw;--}}
-            {{--height: 100vh;--}}
-            {{--background-repeat: no-repeat;--}}
-            {{--position: fixed;--}}
-        {{--}--}}
-
-        {{--.btn-1 {--}}
-            {{--width: 70vw;--}}
-            {{--height: 12vh;--}}
-            {{--padding: 1vh;--}}
-            {{--position: fixed;--}}
-            {{--overflow: hidden;--}}
-            {{--left: 50%;--}}
-            {{--top: 100%;--}}
-            {{--margin-left: -34vw;--}}
-            {{--margin-top: -26vh;--}}
-        {{--}--}}
-
-        {{--.btn-2 {--}}
-            {{--width: 70vw;--}}
-            {{--height: 12vh;--}}
-            {{--padding: 1vh;--}}
-            {{--position: fixed;--}}
-            {{--overflow: hidden;--}}
-            {{--left: 50%;--}}
-            {{--top: 100%;--}}
-            {{--margin-left: -10vw;--}}
-            {{--margin-top: -6vh;--}}
-        {{--}--}}
-        {{--.btn-3 {--}}
-            {{--width: 100vw;--}}
-            {{--height: 14vh;--}}
-            {{--padding: 1vh;--}}
-            {{--position: fixed;--}}
-            {{--overflow: hidden;--}}
-            {{--left: 0;--}}
-            {{--top: 100%;--}}
-            {{--margin-left: 0;--}}
-            {{--margin-top: -30vh;--}}
-            {{--font-size: 1rem;--}}
-            {{--text-align: center;--}}
-        {{--}--}}
-
-        {{--@media only screen and (min-width: 375px) and (min-height: 812px) {--}}
-            {{--.demo-1 .large-header {--}}
-                {{--background-image: url("<?= asset('/jy/'.$bg.'X.jpg')?>");--}}
-                {{--background-size: 100vw 100vh;--}}
-                {{--width: 100vw;--}}
-                {{--height: 100vh;--}}
-                {{--background-repeat: no-repeat;--}}
-                {{--position: fixed;--}}
-            {{--}--}}
-
-            {{--.btn-1 {--}}
-                {{--width: 70vw;--}}
-                {{--height: 14vh;--}}
-                {{--padding: 1vh;--}}
-                {{--position: fixed;--}}
-                {{--overflow: hidden;--}}
-                {{--left: 50%;--}}
-                {{--top: 100%;--}}
-                {{--margin-left: -34vw;--}}
-                {{--margin-top: -20vh;--}}
-            {{--}--}}
-            {{--.btn-2 {--}}
-                {{--width: 70vw;--}}
-                {{--height: 14vh;--}}
-                {{--padding: 1vh;--}}
-                {{--position: fixed;--}}
-                {{--overflow: hidden;--}}
-                {{--left: 50%;--}}
-                {{--top: 100%;--}}
-                {{--margin-left: -10vw;--}}
-                {{--margin-top: -10vh;--}}
-            {{--}--}}
-            {{--.btn-3 {--}}
-                {{--width: 100vw;--}}
-                {{--height: 14vh;--}}
-                {{--padding: 1vh;--}}
-                {{--position: fixed;--}}
-                {{--overflow: hidden;--}}
-                {{--left: 0;--}}
-                {{--top: 100%;--}}
-                {{--margin-left: 0;--}}
-                {{--margin-top: -24vh;--}}
-                {{--font-size: 1rem;--}}
-                {{--text-align: center;--}}
-            {{--}--}}
-        {{--}--}}
-
-
-        .line{}
-
 
         @media only screen and (min-height: 900px) and (max-height: 1000px){
             .demo-1 .large-header {
-                background-image: url("<?= asset('/jy/'.$bg.'P.jpg')?>");
+                {{--background-image: url("<?= asset('/jy/'.$bg.'P.jpg')?>");--}}
                 background-size: 100vw 100vh;
                 width: 100vw;
                 height: 100vh;
@@ -142,20 +46,9 @@
                 left: 50%;
                 top: 100%;
                 margin-left: -34vw;
-                margin-top: -26vh;
+                margin-top: -20vh;
             }
 
-            .btn-2 {
-                width: 70vw;
-                height: 12vh;
-                padding: 1vh;
-                position: fixed;
-                overflow: hidden;
-                left: 50%;
-                top: 100%;
-                margin-left: -10vw;
-                margin-top: -6vh;
-            }
             .btn-3 {
                 width: 100vw;
                 height: 14vh;
@@ -165,7 +58,7 @@
                 left: 0;
                 top: 100%;
                 margin-left: 0;
-                margin-top: -30vh;
+                margin-top: -24vh;
                 font-size: 1rem;
                 text-align: center;
             }
@@ -173,7 +66,7 @@
 
         @media only screen and (min-height: 800px) and (max-height: 900px){
             .demo-1 .large-header {
-                background-image: url("<?= asset('/jy/'.$bg.'X.jpg')?>");
+                {{--background-image: url("<?= asset('/jy/'.$bg.'X.jpg')?>");--}}
                 background-size: 100vw 100vh;
                 width: 100vw;
                 height: 100vh;
@@ -192,17 +85,7 @@
                 margin-left: -34vw;
                 margin-top: -20vh;
             }
-            .btn-2 {
-                width: 70vw;
-                height: 14vh;
-                padding: 1vh;
-                position: fixed;
-                overflow: hidden;
-                left: 50%;
-                top: 100%;
-                margin-left: -10vw;
-                margin-top: -10vh;
-            }
+
             .btn-3 {
                 width: 100vw;
                 height: 14vh;
@@ -220,7 +103,7 @@
 
         @media only screen and (min-height: 560px) and (max-height: 800px){
             .demo-1 .large-header {
-                background-image: url("<?= asset('/jy/'.$bg.'P.jpg')?>");
+                {{--background-image: url("<?= asset('/jy/'.$bg.'P.jpg')?>");--}}
                 background-size: 100vw 100vh;
                 width: 100vw;
                 height: 100vh;
@@ -237,20 +120,9 @@
                 left: 50%;
                 top: 100%;
                 margin-left: -34vw;
-                margin-top: -26vh;
+                margin-top: -20vh;
             }
 
-            .btn-2 {
-                width: 70vw;
-                height: 12vh;
-                padding: 1vh;
-                position: fixed;
-                overflow: hidden;
-                left: 50%;
-                top: 100%;
-                margin-left: -10vw;
-                margin-top: -6vh;
-            }
             .btn-3 {
                 width: 100vw;
                 height: 14vh;
@@ -260,7 +132,7 @@
                 left: 0;
                 top: 100%;
                 margin-left: 0;
-                margin-top: -30vh;
+                margin-top: -24vh;
                 font-size: 1rem;
                 text-align: center;
             }
@@ -304,7 +176,6 @@
 <script>
 
     $(document).ready(function(){
-        var h = $(document).height(); //浏览器当前窗口文档的高度
 
 //            var w_t =  window.location.href.split('#');
 //            if (w_t[1] == '0533') {
@@ -313,23 +184,29 @@
 //
 //        window.location.href = "#"+"0533";
 
-    });
-    function changeURLArg(url,arg,arg_val){
-        var pattern=arg+'=([^&]*)';
-        var replaceText=arg+'='+arg_val;
-        if(url.match(pattern)){
-            var tmp='/('+ arg+'=)([^&]*)/gi';
-            tmp=url.replace(eval(tmp),replaceText);
-            return tmp;
-        }else{
-            if(url.match('[\?]')){
-                return url+'&'+replaceText;
-            }else{
-                return url+'?'+replaceText;
-            }
+        var w = $(document).width(); //浏览器当前窗口文档的宽度
+        var h = $(document).height(); //浏览器当前窗口文档的高度
+        var b = h/w;
+        var size = b.toFixed(2);
+
+        var type = "";
+
+        if (size < 1.87) {
+            type = "P";
+        } else {
+            type = "X";
         }
-        return url+'\n'+arg+'\n'+arg_val;
-    }
+
+        var url = "<?= asset('/jy/'.$bg)?>";
+
+        var bg_image = url+type+".jpg";
+
+        $('#large-header').css('background-image',('url("'+bg_image+'")'));
+
+
+    });
+
+
 
 
     function winner1() {

@@ -10,17 +10,8 @@
 <!--必要样式-->
 <link rel="stylesheet" type="text/css" href="<?= asset('/jy/component.css') ?>">
 	<style>
-		/*@media screen and (min-width:320px){font-size: 12px;}*/
-		/*@media screen and (min-width:360px){font-size: 14px;}*/
-		/*@media screen and (min-width:420px){font-size: 16px;}*/
-		/*@media screen and (min-width:480px){font-size: 20px;}*/
-		/*@media screen and (min-width:520px){font-size: 24px;}*/
-		/*@media screen and (min-width:640px){font-size: 28px;}*/
-		/*@media screen and (min-width:750px){font-size: 32px;}*/
 
 			.demo-1 .large-header {
-				{{--background-image: url("<?= asset('/jy/home-1280.jpg')?>");--}}
-				{{--background-image: url("<?= asset('/jy/new-bgP.jpg')?>");--}}
 				background-size: 100vw 100vh;
 				width: 100vw;
 				height: 100vh;
@@ -28,37 +19,47 @@
 				position: fixed;
 			}
 
-			.logo_box_home {
-				width: 90vw;
-				height: 100vh;
-				padding: 4vh;
-				position: fixed;
-				left: 50%;
-				top: 50%;
-				margin-left: -44vw;
-				margin-top: 10vh;
-			}
-
-			.btn-2 {
-				width: 100vw;
-				height: 22vh;
+			.btn-1 {
+				width: 76vw;
+				height: 14vh;
 				padding: 1vh;
 				position: fixed;
 				overflow: hidden;
 				left: 50%;
 				top: 100%;
-				margin-left: -36vw;
+				margin-left: -37vw;
+				margin-top: -36vh;
+			}
+
+			.btn-2 {
+				width: 100vw;
+				height: 22vh;
+				padding: 1vw;
+				position: fixed;
+				overflow: hidden;
+				left: 50%;
+				top: 100%;
+				margin-left: -34vw;
 				margin-top: -19vh;
 				font-size: 0.5em;
-				/*text-align: center;*/
-				transform: scale(.75);
+				transform: scale(.70);
 				transform-origin: left;
+			}
+
+			.btn-3 {
+				width: 76vw;
+				height: 14vh;
+				padding: 1vh;
+				position: fixed;
+				overflow: hidden;
+				left: 50%;
+				top: 100%;
+				margin-left: -37vw;
+				margin-top: -27vh;
 			}
 
 		@media only screen and (max-width: 375px) and (min-height: 812px) {
 			.demo-1 .large-header {
-				{{--background-image: url("<?= asset('/jy/home-bg1.jpg')?>");--}}
-				{{--background-image: url("<?= asset('/jy/new-bgX.jpg')?>");--}}
 				background-size: 100vw 100vh;
 				width: 100vw;
 				height: 100vh;
@@ -66,15 +67,16 @@
 				position: fixed;
 			}
 
-			.logo_box_home {
-				width: 90vw;
-				height: 100vh;
-				padding: 4vh;
+			.btn-1 {
+				width: 70vw;
+				height: 14vh;
+				padding: 1vh;
 				position: fixed;
+				overflow: hidden;
 				left: 50%;
-				top: 50%;
-				margin-left: -44vw;
-				margin-top: 8vh;
+				top: 100%;
+				margin-left: -34vw;
+				margin-top: -34vh;
 			}
 
 			.btn-2 {
@@ -86,11 +88,22 @@
 				left: 50%;
 				top: 100%;
 				margin-left: -32vw;
-				margin-top: -22vh;
+				margin-top: -19vh;
 				font-size: 0.5em;
 				transform: scale(.76);
 				transform-origin: left;
-				/*text-align: center;*/
+			}
+
+			.btn-3 {
+				width: 70vw;
+				height: 14vh;
+				padding: 1vh;
+				position: fixed;
+				overflow: hidden;
+				left: 50%;
+				top: 100%;
+				margin-left: -34vw;
+				margin-top: -26vh;
 			}
 		}
 	</style>
@@ -107,8 +120,8 @@
 					<canvas id="demo-canvas"></canvas>
 					<div class="logo_box_home">
 						<form action="#" name="f" method="post">
-							<div class="mb2"><a class="act-but submit" onclick="up()" style="color: #744323">线 上 点 亮</a></div>
-							<div class="mb2"><a class="act-but2 submit" onclick="down()" style="color: #744323">线 下 点 亮</a></div>
+							<div class="mb2 btn-1"><a class="act-but submit" onclick="up()" style="color: #744323">线 上 点 亮</a></div>
+							<div class="mb2 btn-3"><a class="act-but2 submit" onclick="down()" style="color: #744323">线 下 点 亮</a></div>
 						</form>
 						<div class="mb2 btn-2">
 							<p>
@@ -155,7 +168,6 @@
                 var url = "<?= asset('/jy/new-bg')?>";
 
                 var bg_image = url+type+".jpg";
-//        alert(bg_image);
 
                 $('#large-header').css('background-image',('url("'+bg_image+'")'));
 

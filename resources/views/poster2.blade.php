@@ -28,13 +28,13 @@
             overflow: hidden;
             left: 50%;
             top: 100%;
-            margin-left: -33vw;
-            margin-top: -25vh;
+            margin-left: -35vw;
+            margin-top: -23vh;
             text-align: center;
         }
 
         .btn-3 {
-            background-image: url("<?= asset('/jy/不加班.jpg')?>");
+            background-image: url("<?= asset('/jy/'.$bg.'.jpg')?>");
             background-size: 100vw 60vh;
             width: 62vw;
             height: 50vh;
@@ -60,7 +60,7 @@
         }
 
 
-        @media only screen and (max-width: 375px) and (min-height: 812px) {
+        @media only screen and (min-height: 812px) {
             .demo-1 .large-header {
                 background-size: 100vw 100vh;
                 width: 100vw;
@@ -83,7 +83,7 @@
             }
 
             .btn-3 {
-                background-image: url("<?= asset('/jy/不加班.jpg')?>");
+                background-image: url("<?= asset('/jy/'.$bg.'.jpg')?>");
                 background-size: 100vw 60vh;
                 width: 76vw;
                 height: 50vh;
@@ -93,10 +93,10 @@
                 left: 0;
                 top: 100%;
                 margin-left: 12vw;
-                margin-top: -74vh;
+                margin-top: -80vh;
                 font-size: 1rem;
                 text-align: center;
-                /*opacity: 0;*/
+                opacity: 0;
             }
 
             .flag-unchecked {
@@ -119,7 +119,6 @@
 <div class="container demo-1">
     <div class="content">
         <div id="large-header" class="large-header">
-            <canvas id="demo-canvas"></canvas>
             <?php
                 if ($flag_id == 8) {
                     $src = asset('/images/'.$bg.'Z.jpg');
@@ -128,7 +127,7 @@
                 }
             ?>
             <div class="logo_box_home">
-                <div  class="mb2 btn-3"><img style="width: 76vw; height: 50vh" src="{{$src}}" alt=""></div>
+                <div  class="mb2 btn-3"><img style="width: 60vw; height: 50vh" src="{{$src}}" alt=""></div>
                 <form action="#" name="f" method="post">
                     <?php
                     if ($type == "wb") {
@@ -173,11 +172,10 @@
         var h = $(document).height(); //浏览器当前窗口文档的高度
         var b = h/w;
         var size = b.toFixed(2);
-        alert(size);
 
         var type = "";
 
-        if (size < 1.8) {
+        if (size < 1.87) {
             type = "P";
         } else {
             type = "X";
@@ -188,7 +186,6 @@
         var url = "<?= asset('/'.$dir.'/'.$bg)?>";
 
         var bg_image = url+type+".jpg";
-//        alert(bg_image);
 
         $('#large-header').css('background-image',('url("'+bg_image+'")'));
 

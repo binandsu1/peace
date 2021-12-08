@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="<?= asset("/jy/lottery1.css") ?>">
     <style>
         .demo-1 .large-header {
-            background-image: url("<?= asset('/jy/背景P.jpg')?>");
+            {{--background-image: url("<?= asset('/jy/背景P.jpg')?>");--}}
             background-size: 100vw 100vh;
             width: 100vw;
             height: 100vh;
@@ -27,7 +27,7 @@
 
         @media only screen and (max-width: 375px) and (min-height: 812px) {
             .demo-1 .large-header {
-                background-image: url("<?= asset('/jy/背景X.jpg')?>");
+                {{--background-image: url("<?= asset('/jy/背景X.jpg')?>");--}}
                 background-size: 100vw 100vh;
                 width: 100vw;
                 height: 100vh;
@@ -69,6 +69,27 @@
 <script src="<?=asset('/jy/jquery-1.7.2.min.js')?>"></script>
 
 <script>
+
+    var w = $(document).width(); //浏览器当前窗口文档的高度
+    var h = $(document).height(); //浏览器当前窗口文档的高度
+    var b = h/w;
+    var size = b.toFixed(2);
+
+    var type = "";
+
+    if (size < 1.87) {
+        type = "P";
+    } else {
+        type = "X";
+    }
+
+
+    var url = "<?= asset('/jy/背景')?>";
+
+    var bg_image = url+type+".jpg";
+
+    $('#large-header').css('background-image',('url("'+bg_image+'")'));
+
     var probability1 = "<?php if($prize_type == 11) {echo '100%';} else{ echo '0%';} ?>";
     var probability2 = "<?php if($prize_type == 12) {echo '100%';} else{ echo '0%';} ?>";
     var probability3 = "<?php if($prize_type == 13) {echo '100%';} else{ echo '0%';} ?>";

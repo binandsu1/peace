@@ -15,7 +15,7 @@
 
     <style>
         .demo-1 .large-header {
-            background-image: url("<?= asset('/jy/背景P.jpg')?>");
+            {{--background-image: url("<?= asset('/jy/背景P.jpg')?>");--}}
             background-size: 100vw 100vh;
             width: 100vw;
             height: 100vh;
@@ -28,7 +28,7 @@
 
         @media only screen and (max-width: 375px) and (min-height: 812px) {
             .demo-1 .large-header {
-                background-image: url("<?= asset('/jy/背景X.jpg')?>");
+                {{--background-image: url("<?= asset('/jy/背景X.jpg')?>");--}}
                 background-size: 100vw 100vh;
                 width: 100vw;
                 height: 100vh;
@@ -70,14 +70,41 @@
 <script src="<?=asset('/jy/jquery-1.7.2.min.js')?>"></script>
 
 <script>
-    var probability1 = "<?php if($prize_type == 1) {echo '100%';} else{ echo '0%';} ?>";
-    var probability2 = "<?php if($prize_type == 2) {echo '100%';} else{ echo '0%';} ?>";
-    var probability3 = "<?php if($prize_type == 3) {echo '100%';} else{ echo '0%';} ?>";
-    var probability4 = "<?php if($prize_type == 4) {echo '100%';} else{ echo '0%';} ?>";
-    var probability5 = "<?php if($prize_type == 5) {echo '100%';} else{ echo '0%';} ?>";
-    var probability6 = "<?php if($prize_type == 6) {echo '100%';} else{ echo '0%';} ?>";
-    var probability7 = "<?php if($prize_type == 7) {echo '100%';} else{ echo '0%';} ?>";
-    var token = "<?php echo request('api_token'); ?>";
+
+    $(document).ready(function(){
+
+        var w = $(document).width(); //浏览器当前窗口文档的高度
+        var h = $(document).height(); //浏览器当前窗口文档的高度
+        var b = h/w;
+        var size = b.toFixed(2);
+
+        var type = "";
+
+        if (size < 1.87) {
+            type = "P";
+        } else {
+            type = "X";
+        }
+
+
+        var url = "<?= asset('/jy/背景')?>";
+
+        var bg_image = url+type+".jpg";
+
+        $('#large-header').css('background-image',('url("'+bg_image+'")'));
+
+        var probability1 = "<?php if($prize_type == 1) {echo '100%';} else{ echo '0%';} ?>";
+        var probability2 = "<?php if($prize_type == 2) {echo '100%';} else{ echo '0%';} ?>";
+        var probability3 = "<?php if($prize_type == 3) {echo '100%';} else{ echo '0%';} ?>";
+        var probability4 = "<?php if($prize_type == 4) {echo '100%';} else{ echo '0%';} ?>";
+        var probability5 = "<?php if($prize_type == 5) {echo '100%';} else{ echo '0%';} ?>";
+        var probability6 = "<?php if($prize_type == 6) {echo '100%';} else{ echo '0%';} ?>";
+        var probability7 = "<?php if($prize_type == 7) {echo '100%';} else{ echo '0%';} ?>";
+        var token = "<?php echo request('api_token'); ?>";
+
+    });
+
+
 </script>
 
 <!--大转盘-->
