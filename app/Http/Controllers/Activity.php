@@ -8,6 +8,7 @@ use App\Jobs\tt;
 use App\Jobs\UpPicJob;
 use App\Models\Jiayu;
 use App\Models\PrizeNum;
+use App\Models\Store;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -1126,6 +1127,21 @@ class Activity extends Controller
 
     }
 
+    public function storeMap2()
+    {
+        return view('weiyi2');
+    }
+
+    public function storeMapList(Request $request)
+    {
+        $city = $request->input('city');
+        $city = substr($city,0,strlen($city)-1);
+        $re = Store::where("city_name",$city)->get();
+        if($re){
+            return $re;
+        }
+        return [];
+    }
 
 
 }
