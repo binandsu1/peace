@@ -39,7 +39,7 @@
 
             .flag-unchecked {
                 /*margin: 1.6vh 1vw;*/
-                /*font-size: 1.6vh;*/
+                font-size: 1.6vh;
                 /*padding: 0.5vw;*/
                 border-radius: 50px;
                 color: #6e4531;
