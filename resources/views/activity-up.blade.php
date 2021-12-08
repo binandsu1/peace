@@ -116,49 +116,8 @@
             }
         }
 
-        /*@media only screen and (min-height: 500px) and (max-height: 800px) {*/
-            /*.demo-1 .large-header {*/
-                /*background-size: 100vw 100vh;*/
-                /*width: 100vw;*/
-                /*height: 100vh;*/
-                /*background-repeat: no-repeat;*/
-                /*position: fixed;*/
-            /*}*/
 
-            /*.flag-unchecked {*/
-                /*!*margin: 2vh 2vw;*!*/
-                /*font-size: 1.6vh;*/
-                /*padding: 0;*/
-                /*border-radius: 50px;*/
-                /*color: #6e4531;*/
-            /*}*/
-
-            /*.logo_box_flag {*/
-                /*width: 70vw;*/
-                /*height: 70vh;*/
-                /*padding: 0;*/
-                /*position: fixed;*/
-                /*overflow: hidden;*/
-                /*left: 60%;*/
-                /*top: 50%;*/
-                /*margin-left: -44vw;*/
-                /*margin-top: -22vh;*/
-            /*}*/
-
-            /*.btn-1 {*/
-                /*width: 70vw;*/
-                /*height: 14vh;*/
-                /*padding: 1vh;*/
-                /*position: fixed;*/
-                /*overflow: hidden;*/
-                /*left: 50%;*/
-                /*top: 100%;*/
-                /*margin-left: -34vw;*/
-                /*margin-top: -22vh;*/
-            /*}*/
-        /*}*/
-
-        @media only screen and (min-height: 568px) and (max-height: 800px) {
+        @media only screen and (min-height: 500px) and (max-height: 800px) {
             .demo-1 .large-header {
                 background-size: 100vw 100vh;
                 width: 100vw;
@@ -168,8 +127,8 @@
             }
 
             .flag-unchecked {
-                margin: 1.6vh 2vw;
-                font-size: 1.8vh;
+                margin: 1.8vh 2vw;
+                font-size: 1.6vh;
                 padding: 0;
                 border-radius: 50px;
                 color: #6e4531;
@@ -253,7 +212,6 @@
         } else {
             type = "X";
         }
-        alert(h);
 
         var url = "<?= asset('/jy/新年新愿')?>";
 
@@ -285,7 +243,7 @@
                 padding:"1vh",
             });
             $(".logo_box_flag").css({
-                width:"28vh",margin:"-20vh -42vw"
+                width:"27vh",margin:"-20vh -42vw"
             });
         }
 
@@ -318,13 +276,6 @@
         }
 
 
-//        if() {
-//
-//        }
-
-
-
-
     });
 
         function click_set (){
@@ -346,7 +297,7 @@
                 },
                 success: function (data) {
                     if(data.code == '200') {
-                        $("#self_flag").text(flag_wb);
+                        $("#self_flag").text(' '+flag_wb);
                         $("#cus_div").css('display','none');
                         $("#customize_li").css('display','block');
                     } else {
