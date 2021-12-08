@@ -1168,7 +1168,6 @@ class Activity extends Controller
     {
         $city = $request->input('city');
         $city = substr($city,0,strlen($city)-1);
-        $city = "北京";
         $re = Store::where("city_name",$city)->get();
         if($re){
             return $re;
