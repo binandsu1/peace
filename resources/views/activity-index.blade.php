@@ -20,7 +20,7 @@
 
 			.demo-1 .large-header {
 				{{--background-image: url("<?= asset('/jy/home-1280.jpg')?>");--}}
-				background-image: url("<?= asset('/jy/new-bgP.jpg')?>");
+				{{--background-image: url("<?= asset('/jy/new-bgP.jpg')?>");--}}
 				background-size: 100vw 100vh;
 				width: 100vw;
 				height: 100vh;
@@ -58,7 +58,7 @@
 		@media only screen and (max-width: 375px) and (min-height: 812px) {
 			.demo-1 .large-header {
 				{{--background-image: url("<?= asset('/jy/home-bg1.jpg')?>");--}}
-				background-image: url("<?= asset('/jy/new-bgX.jpg')?>");
+				{{--background-image: url("<?= asset('/jy/new-bgX.jpg')?>");--}}
 				background-size: 100vw 100vh;
 				width: 100vw;
 				height: 100vh;
@@ -136,7 +136,31 @@
 		{{--<script src="<?=asset('/jy/rAF.js')?>"></script>--}}
 		{{--<script src="<?=asset('/jy/demo-1.js')?>"></script>--}}
 		<script>
-//			var $sq = $("#sqbtn").val();
+            $(document).ready(function(){
+
+                var w = $(document).width(); //浏览器当前窗口文档的高度
+                var h = $(document).height(); //浏览器当前窗口文档的高度
+                var b = h/w;
+                var size = b.toFixed(2);
+
+                var type = "";
+
+                if (size < 1.87) {
+                    type = "P";
+                } else {
+                    type = "X";
+                }
+
+                    <?php if($flag_id == 8) { $dir = "image";} else { $dir = "jy";} ?>
+
+                var url = "<?= asset('/'.$dir.'/'.$bg)?>";
+
+                var bg_image = url+type+".jpg";
+//        alert(bg_image);
+
+                $('#large-header').css('background-image',('url("'+bg_image+'")'));
+
+            });
 
 
             function up() {
