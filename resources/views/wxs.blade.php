@@ -4,7 +4,18 @@ require_once public_path("jssdk.php");//引入相应路径下的jssdk文件
 //wx1647b3429377748f
 //appsecret
 //7c837f2ff2887845c13558742232a43d
-$jssdk = new JSSDK("wx1647b3429377748f","7c837f2ff2887845c13558742232a43d");//按照自己的公众号填写
+
+//第三方平台APPID：wx062a1b8f9e01e151
+//微信公众号APPID：wx2055b6314cd25ac1
+//skey：gb6hs2up
+
+//$jssdk = new JSSDK("wx062a1b8f9e01e151","gb6hs2up");//按照自己的公众号填写
+//$jssdk = new JSSDK("wx062a1b8f9e01e151","gb6hs2up");//按照自己的公众号填写
+//$signPackage = $jssdk->GetSignPackage();
+
+
+$jssdk = new JSSDK("wx062a1b8f9e01e151");//按照自己的公众号填写
+
 $signPackage = $jssdk->GetSignPackage();
 
 $data = array(
@@ -26,10 +37,10 @@ $data = array(
     </style>
 </head>
 <body>
-haha
+haha <button onclick="a()"></button>
 </body>
 </html>
-<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
 <script>
 
     var url=window.location.href;
@@ -41,48 +52,41 @@ haha
         signature: '<?php echo $data["signature"];?>',
         url:url,
         jsApiList: [
-            "onMenuShareTimeline", //分享给好友
-            "onMenuShareAppMessage", //分享到朋友圈
-            "onMenuShareQQ",  //分享到QQ
-            "onMenuShareWeibo" //分享到微博
+            'updateAppMessageShareData',
+            'updateTimelineShareData',
+            'onMenuShareAppMessage',
+            'onMenuShareTimeline',
+            'onMenuShareQQ',
+            'onMenuShareQZone'
         ]
     });
-
-    wx.ready(function (){
-        // alert(111);
-        var shareData = {
-            title: '标题',
-            desc: ' 摘要',
-            link: url,
-            imgUrl: '图片url'};
-        // wx.onMenuShareAppMessage(shareData);
-        // wx.onMenuShareTimeline(shareData);
-        // wx.onMenuShareQQ(shareData);
-        // wx.onMenuShareWeibo(shareData);
-
-        wx.onMenuShareAppMessage({
-            title: '标题',
-            desc: '标题',
-            link: '标题',
-            imgUrl: '标题',
-            trigger: function (res) {
-                // 不要尝试在trigger中使用ajax异步请求修改本次分享的内容，因为客户端分享操作是一个同步操作，这时候使用ajax的回包会还没有返回
-                alert('用户点击发送给朋友');
-            },
-            success: function (res) {
-                alert('已分享');
-            },
-            cancel: function (res) {
-                alert('已取消');
-            },
-            fail: function (res) {
-                alert(JSON.stringify(res));
-            }
-        });
-
-
-
+    wx.error(function(res){
+        console.log(res);
+        // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
     });
+
+    wx.checkJsApi({
+        jsApiList: ['updateTimelineShareData','updateAppMessageShareData'], // 需要检测的JS接口列表，所有JS接口列表见附录2,
+        success: function(res) {
+            // alert(res);
+            // 以键值对的形式返回，可用的api值true，不可用为false
+            // 如：{"checkResult":{"chooseImage":true},"errMsg":"checkJsApi:ok"}
+        }
+    });
+
+
+    wx.ready(function () {      //需在用户可能点击分享按钮前就先调用
+        wx.updateTimelineShareData({
+            title: '我是自定义文案', // 分享标题
+            link: 'https://mssocial.una-ad.com/api/wxs', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+            imgUrl: 'https://mssocial.una-ad.com/offline/176.jpg', // 分享图标
+            success: function () {
+                alert('su');
+                // 设置成功
+            }
+        })
+    });
+
 
 </script>
 

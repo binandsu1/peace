@@ -6,14 +6,14 @@
  */
 class JSSDK{
     private $appId;
-    private $appSecret;
+//    private $appSecret;
 
-    public function __construct($appId, $appSecret)
+    public function __construct($appId)
     {
         $this->appId = $appId;
-        $this->appSecret = $appSecret;
-       
-       
+//        $this->appSecret = $appSecret;
+
+
     }
     /*
      * 获取access_token
@@ -32,7 +32,8 @@ class JSSDK{
     private function getAccessToken(){
         $appId = $this->appId;
         $appSecret = $this->appSecret;
-        $url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=$this->appId&secret=$this->appSecret";  
+        $url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=$this->appId&secret=$this->appSecret";
+        $url = "http://wechatmessage.una-ad.com/wxapi/get_wx_access_token";
         $res = $this->api_request($url);
         if(isset($res->access_token)){
             return array(
@@ -64,14 +65,14 @@ class JSSDK{
             "expires_in":7200
         }
      * */
-    private function getJsApiTicket(){
-        $access_token_data = $this->getAccessToken();
+    private function getJsApiTicket($token){
+        $access_token_data = $token;
         if($access_token_data['errcode']==0){
             $access_token = $access_token_data['access_token'];
             $url = 'https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token='.$access_token.'&type=jsapi';
-            //$url = "https://api.weixin.qq.com/cgi-bin/ticket/getticket?type=jsapi&access_token=$accessToken";  
+            //$url = "https://api.weixin.qq.com/cgi-bin/ticket/getticket?type=jsapi&access_token=$accessToken";
             $res = $this->api_request($url);
-            
+
             if($res->errcode==0){
                 return array(
                     'errcode'     =>$res->errcode,
@@ -80,7 +81,7 @@ class JSSDK{
                     'expires_in'  =>$res->expires_in
                 );
             }else{
-             
+
                 return array(
                     'errcode'     =>$res->errcode,
                     'errmsg'      =>$res->errmsg,
@@ -89,7 +90,7 @@ class JSSDK{
                 );
             }
         }else{
-          
+
             return array(
                 'errcode'         =>$access_token_data['errcode'],
                 'errmsg'          =>$access_token_data['errmsg'],
@@ -123,13 +124,13 @@ class JSSDK{
      * */
     public function getSignPackage()
     {
-        $jsapiTicket_data = $this->getJsApiTicket();
+        $as = app('weibo');
+        $jsapiTicket_data = $as->getWxJsticketToken();
         $url = $this->getUrl();
         $timestamp = time();
         $nonceStr = $this->getNonceStr();
-       
-        if($jsapiTicket_data['errcode']==0){
-            $jsapiTicket = $jsapiTicket_data['ticket'];
+        if($jsapiTicket_data['code']==0){
+            $jsapiTicket = $jsapiTicket_data['data']['js_ticket'];
             // 这里参数的顺序要按照 key 值 ASCII 码升序排序
             $string = "jsapi_ticket=$jsapiTicket&noncestr=$nonceStr&timestamp=$timestamp&url=$url";
             $signature = sha1($string);
@@ -140,8 +141,8 @@ class JSSDK{
                 "url"           => $url,
                 "signature"     => $signature,
                 "rawString"     => $string,
-                "errcode"       => $jsapiTicket_data['errcode'],
-                "errmsg"        => $jsapiTicket_data['errmsg']
+                "errcode"       => $jsapiTicket_data['code'],
+                "errmsg"        => $jsapiTicket_data['msg']
             );
         }else{
             return  array(
@@ -151,8 +152,8 @@ class JSSDK{
                 "url"           => $url,
                 "signature"     => null,
                 "rawString"     => null,
-                "errcode"       => $jsapiTicket_data['errcode'],
-                "errmsg"        => $jsapiTicket_data['errmsg']
+                "errcode"       => $jsapiTicket_data['code'],
+                "errmsg"        => $jsapiTicket_data['msg']
             );
         }
     }
@@ -213,5 +214,5 @@ class JSSDK{
 
 }
 
-      
+
 
