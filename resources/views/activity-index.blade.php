@@ -11,6 +11,7 @@
 <link rel="stylesheet" type="text/css" href="<?= asset('/jy/component.css') ?>">
 	<style>
 
+		@media only screen and (min-height: 890px) and (max-height: 1000px) {
 			.demo-1 .large-header {
 				background-size: 100vw 100vh;
 				width: 100vw;
@@ -28,7 +29,7 @@
 				left: 50%;
 				top: 100%;
 				margin-left: -37vw;
-				margin-top: -36vh;
+				margin-top: -33vh;
 			}
 
 			.btn-2 {
@@ -40,7 +41,7 @@
 				left: 50%;
 				top: 100%;
 				margin-left: -34vw;
-				margin-top: -19vh;
+				margin-top: -18vh;
 				font-size: 0.5em;
 				transform: scale(.70);
 				transform-origin: left;
@@ -55,10 +56,11 @@
 				left: 50%;
 				top: 100%;
 				margin-left: -37vw;
-				margin-top: -27vh;
+				margin-top: -25vh;
 			}
+		}
 
-		@media only screen and (max-width: 375px) and (min-height: 812px) {
+		@media only screen and (min-height: 800px) and (max-height: 890px) {
 			.demo-1 .large-header {
 				background-size: 100vw 100vh;
 				width: 100vw;
@@ -76,7 +78,7 @@
 				left: 50%;
 				top: 100%;
 				margin-left: -34vw;
-				margin-top: -34vh;
+				margin-top: -33vh;
 			}
 
 			.btn-2 {
@@ -106,6 +108,57 @@
 				margin-top: -26vh;
 			}
 		}
+
+		@media only screen and (min-height: 568px) and (max-height: 800px) {
+			.demo-1 .large-header {
+				background-size: 100vw 100vh;
+				width: 100vw;
+				height: 100vh;
+				background-repeat: no-repeat;
+				position: fixed;
+			}
+
+			.btn-1 {
+				width: 76vw;
+				height: 14vh;
+				padding: 1vh;
+				position: fixed;
+				overflow: hidden;
+				left: 50%;
+				top: 100%;
+				margin-left: -37vw;
+				margin-top: -35vh;
+			}
+
+			.btn-2 {
+				width: 100vw;
+				height: 22vh;
+				padding: 1vw;
+				position: fixed;
+				overflow: hidden;
+				left: 50%;
+				top: 100%;
+				margin-left: -34vw;
+				margin-top: -18vh;
+				font-size: 0.5em;
+				transform: scale(.70);
+				transform-origin: left;
+			}
+
+			.btn-3 {
+				width: 76vw;
+				height: 14vh;
+				padding: 1vh;
+				position: fixed;
+				overflow: hidden;
+				left: 50%;
+				top: 100%;
+				margin-left: -37vw;
+				margin-top: -26vh;
+			}
+		}
+
+
 	</style>
 
 

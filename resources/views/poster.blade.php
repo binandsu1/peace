@@ -154,7 +154,6 @@ $data = array(
                             <p class="flag-unchecked">长按图片保存专属海报</p>
                             <p class="flag-unchecked">点击右上角“…”分享到微信中</p>
                         </div>
-                        <div id="cy_btn" class="mb2 btn-1" style="display: none;"><a class="act-but submit" onclick="go_home()" style="color: #744323">立 即 参 与</a></div>
                     <?php
                         }
                     ?>
@@ -184,7 +183,7 @@ $data = array(
             type = "X";
         }
 
-            <?php if($flag_id == 8) { $dir = "image";} else { $dir = "jy";} ?>
+            <?php if($flag_id == 8) { $dir = "images";} else { $dir = "jy";} ?>
 
         var url = "<?= asset('/'.$dir.'/'.$bg)?>";
 
@@ -192,19 +191,7 @@ $data = array(
 
         $('#large-header').css('background-image',('url("'+bg_image+'")'));
 
-        var w_t =  window.location.href.split('#');
-        if (w_t[1] == '0533') {
-            $("#cy_btn").css("display","block");
-            $("#fx_btn").css("display","none");
-        }
-
-        window.location.href = "#"+"0533";
-
     });
-
-    function go_home() {
-        window.location.replace("/api/activityIndex?type=wx");
-    }
 
     function up() {
 
@@ -223,29 +210,6 @@ $data = array(
 
     }
 
-//    $(function(){
-//        $("#touchArea").on({
-//            touchstart: function(e){
-//                timeOutEvent = setTimeout("longPress()",500);
-//                e.preventDefault();
-//            },
-//            touchmove: function(){
-//                clearTimeout(timeOutEvent);
-//                timeOutEvent = 0;
-//            },
-//            touchend: function(){
-//                clearTimeout(timeOutEvent);
-//                if(timeOutEvent!=0){
-//                    alert("你这是点击，不是长按");
-//                }
-//                return false;
-//            }
-//        })
-//    });
-//    function longPress(){
-//        timeOutEvent = 0;
-//        alert("长按事件触发发");
-//    }
 
 </script>
 <script src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
