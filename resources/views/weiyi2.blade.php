@@ -10,9 +10,11 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
 </head>
 <body>
-<h3>当前所在城市：<span id="city_name"></span></h3>
+<h4><span id="city_name"></span>的微软授权店地址如下：</h4>
 <b><span id="city" style="height: 30rem;font-size: small"></span></b>
+
 <ul class="list-group" id="list-group">
+
 </ul>
 </body>
 </html>
@@ -38,7 +40,7 @@
                 success: function (data) {
                      console.log(data);
                     $.each(data,function(i,n){
-                            $("#list-group").append(" <li class=\"list-group-item\"><span class=\"badge\">"+n.store_id+"</span></li>");
+                            $("#list-group").append(" <li class=\"list-group-item\">"+n.store_name+"</li>");
                             console.log('索引' + i + ';对应值为：' + n.store_name +';');
                     });
                 },
