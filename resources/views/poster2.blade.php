@@ -173,6 +173,7 @@
         var h = $(document).height(); //浏览器当前窗口文档的高度
         var b = h/w;
         var size = b.toFixed(2);
+        alert(size);
 
         var type = "";
 
