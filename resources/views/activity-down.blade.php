@@ -276,7 +276,7 @@
                 },
                 success: function (data) {
                     if(data.code == '200') {
-                        $("#self_flag").text(flag_wb);
+                        $("#self_flag").text(' '+flag_wb);
                         $("#cus_div").css('display','none');
                         $("#customize_li").css('display','block');
                     } else {
