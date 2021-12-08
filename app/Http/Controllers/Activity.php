@@ -436,40 +436,47 @@ class Activity extends Controller
         $user = Auth::guard('api')->user();
         $uid = $user->id;
 
-        $prize_code = DB::table("prize_num")->where('u_id', $uid)->get(['gift_id']);
+        try {
+            $prize_code = DB::table("prize_num")->where('u_id', $uid)->get(['gift_id']);
 
-        $prize_num = $prize_code[0]->gift_id;
+            $prize_num = $prize_code[0]->gift_id;
 
-        switch ($prize_num) {
-            case 1:
-                $bg = "线上上海报";
-                $url = "";
-                break;
-            case 2:
-                $bg = "TMA";
-                $url = "https://m.tb.cn/h.f6eDzQa";
-                break;
-            case 3:
-                $bg = "TMB";
-                $url = "https://m.tb.cn/h.fhnjkXn";
-                break;
-            case 4:
-                $bg = "TMC";
-                $url = "https://s.tb.cn/c.0uj2Le";
-                break;
-            case 5:
-                $bg = "JDA";
-                $url = "https://item.jd.com/100027348974.html";
-                break;
-            case 6:
-                $bg = "JDB";
-                $url = "https://item.jd.com/100028456980.html";
-                break;
-            case 7:
-                $bg = "JDC";
-                $url = "https://item.jd.com/100027416804.html";
-                break;
+            switch ($prize_num) {
+                case 1:
+                    $bg = "线上上海报";
+                    $url = "";
+                    break;
+                case 2:
+                    $bg = "TMA";
+                    $url = "https://m.tb.cn/h.f6eDzQa";
+                    break;
+                case 3:
+                    $bg = "TMB";
+                    $url = "https://m.tb.cn/h.fhnjkXn";
+                    break;
+                case 4:
+                    $bg = "TMC";
+                    $url = "https://s.tb.cn/c.0uj2Le";
+                    break;
+                case 5:
+                    $bg = "JDA";
+                    $url = "https://item.jd.com/100027348974.html";
+                    break;
+                case 6:
+                    $bg = "JDB";
+                    $url = "https://item.jd.com/100028456980.html";
+                    break;
+                case 7:
+                    $bg = "JDC";
+                    $url = "https://item.jd.com/100027416804.html";
+                    break;
+            }
+        } catch (Exception $e) {
+//            return  $e->getMessage();
+            return false;
         }
+
+
 
 
         return view('win-prize')->with(['url' => $url, 'bg' => $bg, 'prize_num' => $prize_num]);
@@ -480,33 +487,41 @@ class Activity extends Controller
     {
         $user = Auth::guard('api')->user();
         $uid = $user->id;
-        $prize_code = DB::table("prize_num")->where('u_id', $uid)->get(['gift_id']);
 
-        $prize_num = $prize_code[0]->gift_id;
+        try {
+            $prize_code = DB::table("prize_num")->where('u_id', $uid)->get(['gift_id']);
 
-        switch ($prize_num) {
-            case 11:
-                $bg = "线下上海报";
-                break;
-            case 12:
-                $bg = "李现海报";
-                break;
-            case 13:
-                $bg = "帽子";
-                break;
-            case 14:
-                $bg = "背包";
-                break;
-            case 15:
-                $bg = "袜子";
-                break;
-            case 16:
-                $bg = "贴纸";
-                break;
-            case 17:
-                $bg = "优惠券";
-                break;
+            $prize_num = $prize_code[0]->gift_id;
+
+            switch ($prize_num) {
+                case 11:
+                    $bg = "线下上海报";
+                    break;
+                case 12:
+                    $bg = "李现海报";
+                    break;
+                case 13:
+                    $bg = "帽子";
+                    break;
+                case 14:
+                    $bg = "背包";
+                    break;
+                case 15:
+                    $bg = "袜子";
+                    break;
+                case 16:
+                    $bg = "贴纸";
+                    break;
+                case 17:
+                    $bg = "优惠券";
+                    break;
+            }
+        } catch (Exception $e) {
+//            return  $e->getMessage();
+            return false;
         }
+
+
 
         return view('win-prize2')->with(['bg' => $bg, 'prize_num' => $prize_num]);
     }
