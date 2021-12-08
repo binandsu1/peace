@@ -25,22 +25,26 @@ class Activity extends Controller
         $type = $request->input('type');
         $storeCode = $request->input('storeCode');
         $state = $request->input('state');
+        try {
+            $weiboSer = app('weibo');
+            if ($type == 'wx') {
+                if (empty($code)) {
+                    return $weiboSer->getCode('wx',$storeCode);
+                }
 
-        $weiboSer = app('weibo');
-        if ($type == 'wx') {
-            if (empty($code)) {
-                return $weiboSer->getCode('wx',$storeCode);
+                $tokenArr = $weiboSer->getToken($code, 'wx');
+                $api_token = $weiboSer->getwxUserInfo($tokenArr['access_token'],$tokenArr['openid'],$state);
             }
-
-            $tokenArr = $weiboSer->getToken($code, 'wx');
-            $api_token = $weiboSer->getwxUserInfo($tokenArr['access_token'],$tokenArr['openid'],$state);
-        }
-        if ($type == 'wb') {
-            if (empty($code)) {
-                return $weiboSer->getCode('wb');
+            if ($type == 'wb') {
+                if (empty($code)) {
+                    return $weiboSer->getCode('wb');
+                }
+                $tokenArr = $weiboSer->getToken($code,'wb');
+                $api_token = $weiboSer->getUserInfo($tokenArr['access_token'], $tokenArr['uid']);
             }
-            $tokenArr = $weiboSer->getToken($code,'wb');
-            $api_token = $weiboSer->getUserInfo($tokenArr['access_token'], $tokenArr['uid']);
+        } catch (Exception $e) {
+//            return  $e->getMessage();
+           return false;
         }
 
         return redirect()->route('activity-index-new', ['api_token' => $api_token]);
@@ -62,96 +66,101 @@ class Activity extends Controller
 //        if ($authorization == 1) {
 //            return redirect()->route('authorization', ['api_token' => $api_token]);
 //        }
+        try {
+            if ($is_draw == 2 && $way == 2) {
 
-        if ($is_draw == 2 && $way == 2) {
+                if ($use_code == 2) {
 
-            if ($use_code == 2) {
+                    $flag_id = $user->flag_id;
+                    $type = $user->type;
 
-                $flag_id = $user->flag_id;
-                $type = $user->type;
+                    if($flag_id == 8) {
+                        $flag = DB::table('customize_flag')->where('uid', $uid)->get(['customize_flag']);
+                        if (!$flag->isEmpty()) {
+                            $flag_info = $flag[0]->customize_flag;
+                            $pic_re = Jiayu::where('id', $uid)->first();
+                            $range = 'new' . date("YmdHis").time() . rand(10000, 99999);
+                            if(empty($pic_re->path)){
+                                $pic_re->path = $this->flagP($flag_info,$range);
+                                $pic_re->path = $this->flagX($flag_info,$range);
+                                $this->flagZ($flag_info,$range);
+                                $pic_re->save();
+                            }
 
-                if($flag_id == 8) {
-                    $flag = DB::table('customize_flag')->where('uid', $uid)->get(['customize_flag']);
-                    if (!$flag->isEmpty()) {
-                        $flag_info = $flag[0]->customize_flag;
-                        $pic_re = Jiayu::where('id', $uid)->first();
-                        $range = 'new' . date("YmdHis").time() . rand(10000, 99999);
-                        if(empty($pic_re->path)){
-                            $pic_re->path = $this->flagP($flag_info,$range);
-                            $pic_re->path = $this->flagX($flag_info,$range);
-                            $this->flagZ($flag_info,$range);
-                            $pic_re->save();
+                            return redirect()->route('poster2', ['api_token' => $api_token])->with(['flag_id'=>$flag_id, 'bg' => $pic_re->path, 'type'=>$type]);
+                        }
+                    } else {
+
+                        switch ($flag_id) {
+                            case 1:
+                                $bg = "不加班";
+                                break;
+                            case 2:
+                                $bg = "工作生活";
+                                break;
+                            case 3:
+                                $bg = "门店看看";
+                                break;
+                            case 4:
+                                $bg = "锻炼身体";
+                                break;
+                            case 5:
+                                $bg = "找男朋友";
+                                break;
+                            case 6:
+                                $bg = "拒绝熬夜";
+                                break;
+                            case 7:
+                                $bg = "保持创新";
+                                break;
                         }
 
-                        return redirect()->route('poster2', ['api_token' => $api_token])->with(['flag_id'=>$flag_id, 'bg' => $pic_re->path, 'type'=>$type]);
-                    }
-                } else {
-
-                    switch ($flag_id) {
-                        case 1:
-                            $bg = "不加班";
-                            break;
-                        case 2:
-                            $bg = "工作生活";
-                            break;
-                        case 3:
-                            $bg = "门店看看";
-                            break;
-                        case 4:
-                            $bg = "锻炼身体";
-                            break;
-                        case 5:
-                            $bg = "找男朋友";
-                            break;
-                        case 6:
-                            $bg = "拒绝熬夜";
-                            break;
-                        case 7:
-                            $bg = "保持创新";
-                            break;
+                        return redirect()->route('poster2', ['api_token' => $api_token])->with(['flag_id'=>$flag_id, 'bg' => $bg, 'type'=>$type]);
                     }
 
-                    return redirect()->route('poster2', ['api_token' => $api_token])->with(['flag_id'=>$flag_id, 'bg' => $bg, 'type'=>$type]);
                 }
 
+                $user = Auth::guard('api')->user();
+                $uid = $user->id;
+                $prize_code = DB::table("prize_num")->where('u_id', $uid)->get(['gift_id']);
+
+                $prize_num = $prize_code[0]->gift_id;
+
+                switch ($prize_num) {
+                    case 11:
+                        $bg = "线下上海报";
+                        break;
+                    case 12:
+                        $bg = "李现海报";
+                        break;
+                    case 13:
+                        $bg = "帽子";
+                        break;
+                    case 14:
+                        $bg = "背包";
+                        break;
+                    case 15:
+                        $bg = "袜子";
+                        break;
+                    case 16:
+                        $bg = "贴纸";
+                        break;
+                    case 17:
+                        $bg = "优惠券";
+                        break;
+                }
+
+                return redirect()->route('win-prize3', ['api_token' => $api_token])->with(['bg' => $bg, 'prize_num' => $prize_num]);
             }
 
-            $user = Auth::guard('api')->user();
-            $uid = $user->id;
-            $prize_code = DB::table("prize_num")->where('u_id', $uid)->get(['gift_id']);
-
-            $prize_num = $prize_code[0]->gift_id;
-
-            switch ($prize_num) {
-                case 11:
-                    $bg = "线下上海报";
-                    break;
-                case 12:
-                    $bg = "李现海报";
-                    break;
-                case 13:
-                    $bg = "帽子";
-                    break;
-                case 14:
-                    $bg = "背包";
-                    break;
-                case 15:
-                    $bg = "袜子";
-                    break;
-                case 16:
-                    $bg = "贴纸";
-                    break;
-                case 17:
-                    $bg = "优惠券";
-                    break;
+            if ($is_draw == 2 && $way == 1) {
+                return redirect()->route('win-prize', ['api_token' => $api_token]);
             }
-
-            return redirect()->route('win-prize3', ['api_token' => $api_token])->with(['bg' => $bg, 'prize_num' => $prize_num]);
+        } catch (Exception $e) {
+//            return  $e->getMessage();
+            return false;
         }
 
-        if ($is_draw == 2 && $way == 1) {
-            return redirect()->route('win-prize', ['api_token' => $api_token]);
-        }
 
         return view('activity-index');
     }
