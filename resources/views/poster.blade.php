@@ -302,7 +302,7 @@ $data = array(
     });
     wx.ready(function () {      //需在用户可能点击分享按钮前就先调用
         wx.updateTimelineShareData({
-            title: '微软零售全品牌大使李现的特殊海报上还有位置，等你哟！', // 分享标题
+            title: '微软零售全品牌大使李现的新年新愿海报上还有位置，等你哟！', // 分享标题
             link: 'https://mssocial.una-ad.com/api/activityIndex?type=wx', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
             imgUrl: 'https://mssocial.una-ad.com/offline/share.jpg', // 分享图标
             success: function () {
