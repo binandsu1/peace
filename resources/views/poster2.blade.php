@@ -46,7 +46,6 @@ $data = array(
         }
 
         .btn-3 {
-            background-image: url("<?= asset('/jy/'.$bg.'.jpg')?>");
             background-size: 100vw 60vh;
             width: 62vw;
             height: 50vh;
@@ -95,7 +94,6 @@ $data = array(
             }
 
             .btn-3 {
-                background-image: url("<?= asset('/jy/'.$bg.'.jpg')?>");
                 background-size: 100vw 60vh;
                 width: 76vw;
                 height: 50vh;
