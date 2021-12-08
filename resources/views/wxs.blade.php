@@ -31,9 +31,10 @@ haha
 </html>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script>
+
     var url=window.location.href;
     wx.config({
-        debug:false,
+        debug:true,
         appId: '<?php echo $data["appId"];?>',
         timestamp: <?php echo $data["timestamp"];?>,
         nonceStr: '<?php echo $data["nonceStr"];?>',
@@ -48,16 +49,39 @@ haha
     });
 
     wx.ready(function (){
-        alert(111);
+        // alert(111);
         var shareData = {
             title: '标题',
             desc: ' 摘要',
             link: url,
             imgUrl: '图片url'};
-        wx.onMenuShareAppMessage(shareData);
-        wx.onMenuShareTimeline(shareData);
-        wx.onMenuShareQQ(shareData);
-        wx.onMenuShareWeibo(shareData);
+        // wx.onMenuShareAppMessage(shareData);
+        // wx.onMenuShareTimeline(shareData);
+        // wx.onMenuShareQQ(shareData);
+        // wx.onMenuShareWeibo(shareData);
+
+        wx.onMenuShareAppMessage({
+            title: '标题',
+            desc: '标题',
+            link: '标题',
+            imgUrl: '标题',
+            trigger: function (res) {
+                // 不要尝试在trigger中使用ajax异步请求修改本次分享的内容，因为客户端分享操作是一个同步操作，这时候使用ajax的回包会还没有返回
+                alert('用户点击发送给朋友');
+            },
+            success: function (res) {
+                alert('已分享');
+            },
+            cancel: function (res) {
+                alert('已取消');
+            },
+            fail: function (res) {
+                alert(JSON.stringify(res));
+            }
+        });
+
+
+
     });
 
 </script>
