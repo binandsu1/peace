@@ -145,4 +145,14 @@ class Weibo
 
     }
 
+    public function getWxJsticketToken(){
+        $url = "http://wechatmessage.una-ad.com/wxapi/get_wx_jsticket?appid=".self::$WxAppkey."&skey=".self::$Skey;
+//        $url = "http://wechatmessage.una-ad.com/wxapi/get_component_token?appid=".self::$WxAppkey."&skey=".self::$Skey;
+        $response = self::$client->request('GET', $url);
+        $body = $response->getBody()->getContents();
+        $result = json_decode($body, TRUE);
+        return $result;
+    }
+
+
 }
