@@ -89,7 +89,7 @@
             <div class="logo_box">
 
                 <div class="mb2 btn-2"><a class="act-but submit" href="{{route('win-prize3',['api_token'=>request('api_token')])}}" style="color: #744323">我 在 店 内</a></div><br>
-                <div class="mb2 btn-1"><a class="act-but submit" href="{{route('store-map',['api_token'=>request('api_token')])}}" style="color: #744323">查询线下门店</a></div><br>
+                <div class="mb2 btn-1"><a class="act-but submit" href="{{route('store-map2',['api_token'=>request('api_token')])}}" style="color: #744323">查询线下门店</a></div><br>
 
             </div>
         </div>

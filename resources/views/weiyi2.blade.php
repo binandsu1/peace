@@ -44,7 +44,7 @@
             });
 
         }, function(e) {
-            alert("获取百度定位位置信息失败");
+            alert("获取定位位置信息失败");
         }, {provider: 'baidu'});
     }
 
