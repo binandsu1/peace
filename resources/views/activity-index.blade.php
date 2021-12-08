@@ -151,9 +151,8 @@
                     type = "X";
                 }
 
-                    <?php if($flag_id == 8) { $dir = "image";} else { $dir = "jy";} ?>
 
-                var url = "<?= asset('/'.$dir.'/'.$bg)?>";
+                var url = "<?= asset('/jy/new-bg')?>";
 
                 var bg_image = url+type+".jpg";
 //        alert(bg_image);
