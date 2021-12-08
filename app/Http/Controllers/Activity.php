@@ -1022,7 +1022,7 @@ class Activity extends Controller
 //        $range = 'new' . time() . rand(10000, 99999);
         $newimageName = $range. 'X.jpg';
         $newpath = 'images/' . $newimageName;
-        $face_img = $image::make($path)->resize(1125, 2436);
+        $face_img = $image::make($path)->resize(1125, 2185);
         $face_img->text($flag_info, 315, 1435, function ($font) use ($path) {
             $font->file(public_path('SIMLI.TTF', 777, true));
             $font->size(69);
@@ -1144,6 +1144,8 @@ class Activity extends Controller
     }
 
     public function wxs(){
+        $flag_info="哈哈哈哈你吃饭了吗";
+        $this->flagX($flag_info,33);
         echo 'share';
         return view('wxs');
     }
