@@ -1142,9 +1142,15 @@ class Activity extends Controller
                     return response()->json(['code' => 500]);
                 }
             } else {
-                DB::table("prize_num")->where("u_id", $uid)->update(['md_code'=>$md_code]);
-                DB::table("jiayus")->where("id", $uid)->update(['use_code'=>2]);
-                return response()->json(['code' => 200]);
+                $result = DB::table("store")->where("store_id", $md_code)->get();
+                if ($result->isEmpty()) {
+                    return response()->json(['code' => 500]);
+                } else {
+                    DB::table("prize_num")->where("u_id", $uid)->update(['md_code'=>$md_code]);
+                    DB::table("jiayus")->where("id", $uid)->update(['use_code'=>2]);
+                    return response()->json(['code' => 200]);
+                }
+
             }
 
         } else {
@@ -1162,6 +1168,7 @@ class Activity extends Controller
     {
         $city = $request->input('city');
         $city = substr($city,0,strlen($city)-1);
+        $city = "北京";
         $re = Store::where("city_name",$city)->get();
         if($re){
             return $re;
