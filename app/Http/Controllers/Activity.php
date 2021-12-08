@@ -1143,5 +1143,10 @@ class Activity extends Controller
         return [];
     }
 
+    public function wxs(){
+        echo 'share';
+        return view('wxs');
+    }
+
 
 }

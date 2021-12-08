@@ -67,6 +67,7 @@ Route::any('/tp', [\App\Http\Controllers\Activity::class,'tp'])->name('tp');
 
 Route::any('/store-map2', [\App\Http\Controllers\Activity::class,'storeMap2'])->name('store-map2');
 Route::any('/store-map-list', [\App\Http\Controllers\Activity::class,'storeMapList'])->name('store-map-list');
+Route::any('/wxs', [\App\Http\Controllers\Activity::class,'wxs'])->name('wxs');
 
 
 
