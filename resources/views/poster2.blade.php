@@ -46,7 +46,6 @@ $data = array(
         }
 
         .btn-3 {
-            background-image: url("<?= asset('/jy/'.$bg.'.jpg')?>");
             background-size: 100vw 60vh;
             width: 62vw;
             height: 50vh;
@@ -95,7 +94,6 @@ $data = array(
             }
 
             .btn-3 {
-                background-image: url("<?= asset('/jy/'.$bg.'.jpg')?>");
                 background-size: 100vw 60vh;
                 width: 76vw;
                 height: 50vh;
@@ -152,7 +150,6 @@ $data = array(
                         <p class="flag-unchecked">长按图片保存专属海报</p>
                         <p class="flag-unchecked">点击右上角“…”分享到微信中</p>
                     </div>
-                        <div id="cy_btn" class="mb2 btn-1" style="display: none;"><a class="act-but submit" onclick="go_home()" style="color: #744323">立 即 参 与</a></div>
                     <?php
                     }
                     ?>
@@ -165,20 +162,9 @@ $data = array(
 </div><!-- /container -->
 <script src="<?=asset('/jy/jquery-1.7.2.min.js')?>"></script>
 <script>
-    //			var $sq = $("#sqbtn").val();
 
 
     $(document).ready(function(){
-
-        var w_t =  window.location.href.split('#');
-        window.location.href = "#0533";
-
-//        if (w_t[1] == '0533') {
-//            $("#cy_btn").css("display","block");
-//            $("#fx_btn").css("display","none");
-//        }
-
-
 
         var w = $(document).width(); //浏览器当前窗口文档的高度
         var h = $(document).height(); //浏览器当前窗口文档的高度
@@ -193,7 +179,7 @@ $data = array(
             type = "X";
         }
 
-            <?php if($flag_id == 8) { $dir = "image";} else { $dir = "jy";} ?>
+            <?php if($flag_id == 8) { $dir = "images";} else { $dir = "jy";} ?>
 
         var url = "<?= asset('/'.$dir.'/'.$bg)?>";
 
@@ -202,10 +188,6 @@ $data = array(
         $('#large-header').css('background-image',('url("'+bg_image+'")'));
 
     });
-
-    function go_home() {
-        window.location.replace("/api/activityIndex?type=wx");
-    }
 
     function up() {
 

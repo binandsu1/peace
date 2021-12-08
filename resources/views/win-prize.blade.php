@@ -11,7 +11,6 @@
     <link rel="stylesheet" type="text/css" href="<?= asset('/jy/component.css') ?>">
     <style>
         .demo-1 .large-header {
-            {{--background-image: url("<?= asset('/jy/'.$bg.'P.jpg')?>");--}}
             background-size: 100vw 100vh;
             width: 100vw;
             height: 99vh;

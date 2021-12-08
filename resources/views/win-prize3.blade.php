@@ -177,13 +177,6 @@
 
     $(document).ready(function(){
 
-//            var w_t =  window.location.href.split('#');
-//            if (w_t[1] == '0533') {
-//                window.location.replace("/api/activityIndex?type=wx");
-//            }
-//
-//        window.location.href = "#"+"0533";
-
         var w = $(document).width(); //浏览器当前窗口文档的宽度
         var h = $(document).height(); //浏览器当前窗口文档的高度
         var b = h/w;
