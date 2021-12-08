@@ -93,16 +93,17 @@
 
         $('#large-header').css('background-image',('url("'+bg_image+'")'));
 
-        var probability1 = "<?php if($prize_type == 1) {echo '100%';} else{ echo '0%';} ?>";
-        var probability2 = "<?php if($prize_type == 2) {echo '100%';} else{ echo '0%';} ?>";
-        var probability3 = "<?php if($prize_type == 3) {echo '100%';} else{ echo '0%';} ?>";
-        var probability4 = "<?php if($prize_type == 4) {echo '100%';} else{ echo '0%';} ?>";
-        var probability5 = "<?php if($prize_type == 5) {echo '100%';} else{ echo '0%';} ?>";
-        var probability6 = "<?php if($prize_type == 6) {echo '100%';} else{ echo '0%';} ?>";
-        var probability7 = "<?php if($prize_type == 7) {echo '100%';} else{ echo '0%';} ?>";
-        var token = "<?php echo request('api_token'); ?>";
 
     });
+
+    var probability1 = "<?php if($prize_type == 1) {echo '100%';} else{ echo '0%';} ?>";
+    var probability2 = "<?php if($prize_type == 2) {echo '100%';} else{ echo '0%';} ?>";
+    var probability3 = "<?php if($prize_type == 3) {echo '100%';} else{ echo '0%';} ?>";
+    var probability4 = "<?php if($prize_type == 4) {echo '100%';} else{ echo '0%';} ?>";
+    var probability5 = "<?php if($prize_type == 5) {echo '100%';} else{ echo '0%';} ?>";
+    var probability6 = "<?php if($prize_type == 6) {echo '100%';} else{ echo '0%';} ?>";
+    var probability7 = "<?php if($prize_type == 7) {echo '100%';} else{ echo '0%';} ?>";
+    var token = "<?php echo request('api_token'); ?>";
 
 
 </script>
