@@ -117,7 +117,7 @@
         }
 
 
-        @media only screen and (min-height: 500px) and (max-height: 800px) {
+        @media only screen and (min-height: 600px) and (max-height: 800px) {
             .demo-1 .large-header {
                 background-size: 100vw 100vh;
                 width: 100vw;
@@ -161,7 +161,7 @@
             }
         }
 
-        @media only screen and (min-height: 200px) and (max-height: 500px) {
+        @media only screen and (min-height: 200px) and (max-height: 600px) {
             .demo-1 .large-header {
                 background-size: 100vw 100vh;
                 width: 100vw;
@@ -309,24 +309,26 @@
                 width:"34vh",margin:"-21vh"
             });
         }
-//        if (h>550 && h<=700 && w<=400) {
-//            $(".flag-unchecked").css({
-//                padding:"0.4vh",margin:"1vh"
-//            });
-//
-//            $(".logo_box_flag").css({
-//                width:"34vh",margin:"-23vh"
-//            });
-//        }
-//        if (h>450 && h<=550) {
-//            $(".flag-unchecked").css({
-//                padding:"0.2vh",margin:"1vh"
-//            });
-//
-//            $(".logo_box_flag").css({
-//                width:"44vh",margin:"-32vh"
-//            });
-//        }
+        if (h>550 && h<=700 && w<=400) {
+            $(".flag-unchecked").css({
+                padding:"0.4vh",margin:"1vh"
+            });
+
+            $(".logo_box_flag").css({
+                width:"34vh",margin:"-23vh"
+            });
+        }
+        if (h>450 && h<=550) {
+            $(".flag-unchecked").css({
+                padding:"0.2vh",margin:"1vh"
+            });
+
+            $(".logo_box_flag").css({
+                width:"44vh",margin:"-32vh"
+            });
+        }
+
+        $('body').css({'height':$(window).height()});
 
 
     });
