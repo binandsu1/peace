@@ -315,70 +315,70 @@
 
 
 
-//        if (h>900 && w>400) {
-//            $(".flag-unchecked").css({
-//                padding:"0.8vh",
-//            });
-//            $(".logo_box_flag").css({
-//                width:"30vh",margin:"-20vh"
-//            });
-//        }
-//
-//        if (h>900 && w<400) {
-//            $(".flag-unchecked").css({
-//                padding:"0.8vh",
-//            });
-//            $(".logo_box_flag").css({
-//                width:"29vh",margin:"-19vh"
-//            });
-//        }
-//
-//        if (h>800 && h<=900 && w<400) {
-//            $(".flag-unchecked").css({
-//                padding:"1vh",
-//            });
-//            $(".logo_box_flag").css({
-//                width:"27vh",margin:"-20vh -42vw"
-//            });
-//        }
-//
-//        if (h>800 && h<=900 && w>400) {
-//            $(".flag-unchecked").css({
-//                padding:"1vh",
-//            });
-//            $(".logo_box_flag").css({
-//                width:"36vh",margin:"-20vh -42vw"
-//            });
-//        }
-//
-//        if (h>700 && h<=800 && w<=400) {
-//            $(".flag-unchecked").css({
-//                padding:"0.4vh",margin:"1vh"
-//            });
-//
-//            $(".logo_box_flag").css({
-//                width:"34vh",margin:"-21vh"
-//            });
-//        }
-//
-//        if (h>550 && h<=700 && w<=400) {
-//            $(".flag-unchecked").css({
-//                padding:"0.4vh",margin:"1vh"
-//            });
-//
-//            $(".logo_box_flag").css({
-//                width:"34vh",margin:"-23vh"
-//            });
-//        }
-//        if (h>450 && h<=550) {
-//            $(".flag-unchecked").css({
-//                padding:"0.2vh",margin:"1vh"
-//            });
-//
-//            $(".logo_box_flag").css({
-//                width:"44vh",margin:"-32vh"
-//            });
-//        }
+        if (h>900 && w>400) {
+            $(".flag-unchecked").css({
+                padding:"0.8vh",
+            });
+            $(".logo_box_flag").css({
+                width:"30vh",margin:"-20vh"
+            });
+        }
+
+        if (h>900 && w<400) {
+            $(".flag-unchecked").css({
+                padding:"0.8vh",
+            });
+            $(".logo_box_flag").css({
+                width:"29vh",margin:"-19vh"
+            });
+        }
+
+        if (h>800 && h<=900 && w<400) {
+            $(".flag-unchecked").css({
+                padding:"1vh",
+            });
+            $(".logo_box_flag").css({
+                width:"27vh",margin:"-20vh -42vw"
+            });
+        }
+
+        if (h>800 && h<=900 && w>400) {
+            $(".flag-unchecked").css({
+                padding:"1vh",
+            });
+            $(".logo_box_flag").css({
+                width:"36vh",margin:"-20vh -42vw"
+            });
+        }
+
+        if (h>700 && h<=800 && w<=400) {
+            $(".flag-unchecked").css({
+                padding:"0.4vh",margin:"1vh"
+            });
+
+            $(".logo_box_flag").css({
+                width:"34vh",margin:"-21vh"
+            });
+        }
+
+        if (h>550 && h<=700 && w<=400) {
+            $(".flag-unchecked").css({
+                padding:"0.4vh",margin:"1vh"
+            });
+
+            $(".logo_box_flag").css({
+                width:"34vh",margin:"-23vh"
+            });
+        }
+        if (h>450 && h<=550) {
+            $(".flag-unchecked").css({
+                padding:"0.2vh",margin:"1vh"
+            });
+
+            $(".logo_box_flag").css({
+                width:"44vh",margin:"-32vh"
+            });
+        }
 
 
 
