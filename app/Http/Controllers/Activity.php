@@ -817,15 +817,16 @@ class Activity extends Controller
 //        }
         try {
             DB::beginTransaction();
-            $is = PrizeNum::where('status', 0)->first();
-            $is->u_id = $uid;
-            $is->gift_id = $gid;
-            $is->status = 1;
-            if (!$is->save()) {
-                return -1;
-            }
+            DB::table("prize_num")->insert(['u_id'=>$uid, 'gift_id'=>$gid, 'status'=>1]);
+//            $is = PrizeNum::where('status', 0)->first();
+//            $is->u_id = $uid;
+//            $is->gift_id = $gid;
+//            $is->status = 1;
+//            if (!$is->save()) {
+//                return -1;
+//            }
             DB::commit();
-            return $is->num;
+//            return $is->num;
         } catch (\Exception $exception) {
             DB::rollback();
             return 0;
