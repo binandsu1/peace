@@ -250,8 +250,8 @@
     $(document).ready(function(){
 
         var w = $(document).width(); //浏览器当前窗口文档的高度
-        var h1 = $(document).height(); //浏览器当前窗口文档的高度
-        var b = h1/w;
+        var h = $(document).height(); //浏览器当前窗口文档的高度
+        var b = h/w;
         var size = b.toFixed(2);
 
         var type = "";
@@ -268,8 +268,6 @@
 
         $('#large-header').css('background-image',('url("'+bg_image+'")'));
 
-        var h = $(this).height();
-        alert(h);
         if (h>900 && w>400) {
             $(".flag-unchecked").css({
                 padding:"0.8vh",
@@ -334,16 +332,22 @@
             });
         }
 //
-//        var winHeight = $(window).height();  //获取当前页面高度
-//        $(window).resize(function () {
-//
-//            if ( winHeight - thisHeight > 140 ) {
-//                //键盘弹出
-//
-//            } else {
-//
-//            }
-//        })
+        var winHeight = $(window).height();  //获取当前页面高度
+        $(window).resize(function () {
+
+            if ( winHeight - thisHeight > 140 ) {
+                //键盘弹出
+                $(".flag-unchecked").css({
+                    padding:"0.4vh",margin:"1vh"
+                });
+
+                $(".logo_box_flag").css({
+                    width:"44vw",margin:"-26vh"
+                });
+            } else {
+
+            }
+        })
 
 
     });
