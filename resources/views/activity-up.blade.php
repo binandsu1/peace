@@ -339,9 +339,9 @@
             if ( winHeight - thisHeight > 140 ) {
                 //键盘弹出
                 $('.logo_box_flag').css('position','static');
-                alert("1");
+//                alert("1");
             } else {
-                alert("2");
+//                alert("2");
                 //键盘收起
                 $('.logo_box_flag').css({'position':'fixed','bottom':'0'});
             }
