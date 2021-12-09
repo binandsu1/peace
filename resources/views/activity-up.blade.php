@@ -246,6 +246,7 @@
 
         var w = $(document).width(); //浏览器当前窗口文档的高度
         var h = $(document).height(); //浏览器当前窗口文档的高度
+        alert(h);
         var b = h/w;
         var size = b.toFixed(2);
 
