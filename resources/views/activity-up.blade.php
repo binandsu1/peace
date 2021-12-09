@@ -183,7 +183,7 @@
                    <div class="flag-unchecked"><li id="customize_li" style="list-style: none; display: none;"><input type="radio" name="flags" value="8"><span id="self_flag"></span></li></div>
 
                     <div id="cus_div" class="input-group flag-unchecked">
-                        <input id="customize_flag" type="text" name="flag" class="form-control" placeholder="其他（限15字以内）" aria-describedby="basic-addon1"><span onclick="click_set()"><b> 点击保存</b></span>
+                        <input id="customize_flag" type="text" name="flag" class="form-control" placeholder="其他（限14字以内）" maxlength="14" aria-describedby="basic-addon1"><span onclick="click_set()"><b> 点击保存</b></span>
 
                     </div>
 
@@ -284,8 +284,9 @@
             if (flag_wb.length==0) {
                 return false;
             }
-            if (flag_wb.length>15) {
+            if (flag_wb.length>=15) {
                 alert("字数超限！");
+                return false;
             }
             $.ajax({
                 type: "POST",

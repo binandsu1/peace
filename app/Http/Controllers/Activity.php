@@ -1005,7 +1005,7 @@ class Activity extends Controller
     public function flagP($flag_info='',$range=''){
 
         $str_len = strlen($flag_info);
-        if($str_len > 21 && $str_len < 45){
+        if($str_len > 21 && $str_len < 46){
             $flag_info = $this->str_insert($flag_info,21,"\n");
         }
 
@@ -1035,7 +1035,7 @@ class Activity extends Controller
     public function flagX($flag_info='',$range=''){
 
         $str_len = strlen($flag_info);
-        if($str_len > 21 && $str_len < 45){
+        if($str_len > 21 && $str_len < 46){
             $flag_info = $this->str_insert($flag_info,21,"\n");
         }
 
@@ -1063,7 +1063,7 @@ class Activity extends Controller
     public function flagZ($flag_info='',$range=''){
 
         $str_len = strlen($flag_info);
-        if($str_len > 21 && $str_len < 45){
+        if($str_len > 21 && $str_len < 46){
             $flag_info = $this->str_insert($flag_info,21,"\n");
         }
 
@@ -1075,7 +1075,7 @@ class Activity extends Controller
         $newimageName = $range. 'Z.jpg';
         $newpath = 'images/' . $newimageName;
         $face_img = $image::make($path)->resize(2160, 3772);
-        $face_img->text($flag_info, 420, 3025, function ($font) use ($path) {
+        $face_img->text($flag_info, 380, 3025, function ($font) use ($path) {
             $font->file(public_path('SIMLI.TTF', 777, true));
             $font->size(189);
             $font->color('#CCCC33');
@@ -1176,8 +1176,13 @@ class Activity extends Controller
     }
 
     public function wxs(){
-        $flag_info="哈哈哈哈你吃饭了吗";
-        $this->flagX($flag_info,33);
+        $flag_info="一二三四五一二三四五一二三四五";
+        $str_len = strlen($flag_info);
+        echo $str_len;die;
+        $this->flagP($flag_info,331);
+         $this->flagX($flag_info,331);
+        $this->flagZ($flag_info,'sssa');
+        die;
         echo 'share';
         return view('wxs');
     }
