@@ -166,7 +166,51 @@
             }
         }
 
-        @media only screen and (min-height: 200px) and (max-height: 600px) {
+        @media only screen and (min-height: 500px) and (max-height: 600px) {
+            .demo-1 .large-header {
+                background-size: 100vw 100vh;
+                width: 100vw;
+                height: 100vh;
+                background-repeat: no-repeat;
+                position: fixed;
+            }
+
+            .flag-unchecked {
+                margin: 1vh 2vw;
+                font-size: 1vh;
+                padding: 0;
+                border-radius: 50px;
+                color: #6e4531;
+                /*transform: scale(.76);*/
+                /*transform-origin: left;*/
+            }
+
+            .logo_box_flag {
+                width: 80vw;
+                height: 80vh;
+                padding: 0;
+                position: fixed;
+                overflow: hidden;
+                left: 60%;
+                top: 50%;
+                margin-left: -39vw;
+                margin-top: -30vw;
+            }
+
+            .btn-1 {
+                width: 70vw;
+                height: 18vh;
+                padding: 1vh;
+                position: fixed;
+                overflow: hidden;
+                left: 50%;
+                top: 100%;
+                margin-left: -34vw;
+                margin-top: -26vh;
+            }
+        }
+
+        @media only screen and (max-height: 500px) {
             .demo-1 .large-header {
                 background-size: 100vw 100vh;
                 width: 100vw;
@@ -220,9 +264,6 @@
 <div class="container demo-1">
     <div class="content">
         <div id="large-header" class="large-header">
-            <span id="cnm"></span>
-            <span id="w"></span>
-            <span id="winHeight"></span>
             <div class="logo_box_flag">
 
                    <div class="flag-unchecked"><li style="list-style: none"><input type="radio" name="flags" value="1"> 告别拖延君，365天天天不加班</li></div>
@@ -253,8 +294,8 @@
     $(document).ready(function(){
 
         var w = $(document).width(); //浏览器当前窗口文档的高度
-        var h1 = $(document).height(); //浏览器当前窗口文档的高度
-        var b = h1/w;
+        var h = $(document).height(); //浏览器当前窗口文档的高度
+        var b = h/w;
         var size = b.toFixed(2);
 
         var type = "";
@@ -271,153 +312,87 @@
 
         $('#large-header').css('background-image',('url("'+bg_image+'")'));
 
+        if (h>900 && w>400) {
+            $(".flag-unchecked").css({
+                padding:"0.8vh",
+            });
+            $(".logo_box_flag").css({
+                width:"30vh",margin:"-20vh"
+            });
+        }
 
-//
+        if (h>900 && w<400) {
+            $(".flag-unchecked").css({
+                padding:"0.8vh",
+            });
+            $(".logo_box_flag").css({
+                width:"29vh",margin:"-19vh"
+            });
+        }
+
+        if (h>800 && h<=900 && w<400) {
+            $(".flag-unchecked").css({
+                padding:"1vh",
+            });
+            $(".logo_box_flag").css({
+                width:"27vh",margin:"-20vh -42vw"
+            });
+        }
+
+        if (h>800 && h<=900 && w>400) {
+            $(".flag-unchecked").css({
+                padding:"1vh",
+            });
+            $(".logo_box_flag").css({
+                width:"36vh",margin:"-20vh -42vw"
+            });
+        }
+
+        if (h>700 && h<=800 && w<=400) {
+            $(".flag-unchecked").css({
+                padding:"0.4vh",margin:"1vh"
+            });
+
+            $(".logo_box_flag").css({
+                width:"34vh",margin:"-21vh"
+            });
+        }
+
+        if (h>550 && h<=700 && w<=400) {
+            $(".flag-unchecked").css({
+                padding:"0.4vh",margin:"1vh"
+            });
+
+            $(".logo_box_flag").css({
+                width:"34vh",margin:"-23vh"
+            });
+        }
+        if (h>450 && h<=550) {
+            $(".flag-unchecked").css({
+                padding:"0.2vh",margin:"1vh"
+            });
+
+            $(".logo_box_flag").css({
+                width:"44vh",margin:"-32vh"
+            });
+        }
+
+
         var winHeight = $(window).height();  //获取当前页面高度
         $(window).resize(function () {
-            var h = $(this).height();
-            if ( winHeight - h > 140 ) {
-                $("#cnm").text(h);
-                $("#w").text(w);
-                $("#winHeight").text(winHeight);
+            var thisHeight = $(this).height();
+            if ( winHeight - thisHeight > 140 ) {
                 //键盘弹出
-                if (h>900 && w>400) {
-                    alert(7);
-                    $(".flag-unchecked").css({
-                        padding:"0.8vh",
-                    });
-                    $(".logo_box_flag").css({
-                        width:"30vh",margin:"-20vh"
-                    });
-                }
+                $(".flag-unchecked").css({
+                    padding:"0.3vh",margin:"0.2vw"
+                });
 
-                if (h>900 && w<400) {
-                    alert(6);
-                    $(".flag-unchecked").css({
-                        padding:"0.8vh",
-                    });
-                    $(".logo_box_flag").css({
-                        width:"29vh",margin:"-19vh"
-                    });
-                }
+                $(".logo_box_flag").css({
+                    width:"56vw",height:"",margin:"-22vh -38vw"
+                });
 
-                if (h>800 && h<=900 && w<400) {
-                    alert(5);
-                    $(".flag-unchecked").css({
-                        padding:"1vh",
-                    });
-                    $(".logo_box_flag").css({
-                        width:"27vh",margin:"-20vh -42vw"
-                    });
-                }
-
-                if (h>800 && h<=900 && w>400) {
-                    alert(4);
-                    $(".flag-unchecked").css({
-                        padding:"1vh",
-                    });
-                    $(".logo_box_flag").css({
-                        width:"36vh",margin:"-20vh -42vw"
-                    });
-                }
-
-                if (h>700 && h<=800 && w<=400) {
-                    alert(3);
-                    $(".flag-unchecked").css({
-                        padding:"0.4vh",margin:"1vh"
-                    });
-
-                    $(".logo_box_flag").css({
-                        width:"34vh",margin:"-21vh"
-                    });
-                }
-                if (h>600 && h<=700) {
-                    alert(2);
-                    $(".flag-unchecked").css({
-                        padding:"0.4vh",margin:"1vh"
-                    });
-
-                    $(".logo_box_flag").css({
-                        width:"34vh",margin:"-23vh"
-                    });
-                }
-                if (h<=600) {
-                    $(".flag-unchecked").css({
-                        padding:"0.4vh",margin:"1vh"
-                    });
-
-                    $(".logo_box_flag").css({
-                        width:"32vh",margin:"-25vh"
-                    });
-                }
             } else {
-
-
-                if (h1>900 && w>400) {
-                    $(".flag-unchecked").css({
-                        padding:"0.8vh",
-                    });
-                    $(".logo_box_flag").css({
-                        width:"30vh",margin:"-20vh"
-                    });
-                }
-
-                if (h1>900 && w<400) {
-                    $(".flag-unchecked").css({
-                        padding:"0.8vh",
-                    });
-                    $(".logo_box_flag").css({
-                        width:"29vh",margin:"-19vh"
-                    });
-                }
-
-                if (h1>800 && h1<=900 && w<400) {
-                    $(".flag-unchecked").css({
-                        padding:"1vh",
-                    });
-                    $(".logo_box_flag").css({
-                        width:"27vh",margin:"-20vh -42vw"
-                    });
-                }
-
-                if (h1>800 && h1<=900 && w>400) {
-                    $(".flag-unchecked").css({
-                        padding:"1vh",
-                    });
-                    $(".logo_box_flag").css({
-                        width:"36vh",margin:"-20vh -42vw"
-                    });
-                }
-
-                if (h1>700 && h1<=800 && w<=400) {
-                    $(".flag-unchecked").css({
-                        padding:"0.4vh",margin:"1vh"
-                    });
-
-                    $(".logo_box_flag").css({
-                        width:"34vh",margin:"-21vh"
-                    });
-                }
-                if (h1>600 && h1<=700 && w<=400) {
-                    $(".flag-unchecked").css({
-                        padding:"0.4vh",margin:"1vh"
-                    });
-
-                    $(".logo_box_flag").css({
-                        width:"34vh",margin:"-23vh"
-                    });
-                }
-                if (h1>450 && h1<=600) {
-                    $(".flag-unchecked").css({
-                        padding:"0.4vh",margin:"1vh"
-                    });
-
-                    $(".logo_box_flag").css({
-                        width:"44vw",margin:"-26vh"
-                    });
-                }
-
-
+                //键盘收起
             }
         })
 
