@@ -45,8 +45,11 @@
      <input id="lat" type="hidden" value="{{request('w')}}"/>
 <script>
     // 百度地图API功能
-    var map = new BMapGL.Map("allmap");
-    map.centerAndZoom(new BMapGL.Point(116.331398,39.897445),11);
+    var map = new BMapGL.Map('allmap', {
+        minZoom: 7,
+        maxZoom: 20
+    });
+    map.centerAndZoom(new BMapGL.Point(116.331398,39.897445),15);
     map.enableScrollWheelZoom(true);
     window.onload = theLocation();
 
