@@ -42,7 +42,7 @@
         width: 100vw;
         height: 100vh;
         background-repeat: no-repeat;
-        position: fixed;
+        /*position: fixed;*/
     }
 
     @media only screen and (max-width: 375px) and (min-height: 812px) {
@@ -52,13 +52,13 @@
             width: 100vw;
             height: 100vh;
             background-repeat: no-repeat;
-            position: fixed;
+            /*position: fixed;*/
         }
     }
 
     </style>
-<body>
-<div id="large-header" class="large-header">
+<body id="large-header" class="large-header">
+<div>
     <div style="margin-top:18vh;">
         <h4>&nbsp;&nbsp;&nbsp;<span id="city_name"></span>的微软授权店地址如下：</h4>
         <b><span id="city" style="height: 30rem;font-size: small"></span></b>
