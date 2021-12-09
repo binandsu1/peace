@@ -9,8 +9,31 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
 </head>
+<style>
+
+    a:link {
+        color:white;
+        text-decoration:none;
+    }
+
+    a:visited {
+        color:white;
+        text-decoration:none;
+    }
+
+    a:hover {
+        color:white;
+        text-decoration:none;
+    }
+
+    a:active {
+        color:white;
+        text-decoration:none;
+    }
+
+    </style>
 <body>
-<h4><span id="city_name"></span>的微软授权店地址如下：</h4>
+<h4>&nbsp;&nbsp;&nbsp;<span id="city_name"></span>的微软授权店地址如下：</h4>
 <b><span id="city" style="height: 30rem;font-size: small"></span></b>
 
 <ul class="list-group" id="list-group">
@@ -40,7 +63,10 @@
                 success: function (data) {
                      console.log(data);
                     $.each(data,function(i,n){
-                            $("#list-group").append(" <li class=\"list-group-item\">"+n.store_name+"</li>");
+                        // alert(n.j);return false;
+                             var url= "store-map3?j="+n.j+"&w="+n.w;
+
+                            $("#list-group").append(" <li class=\"list-group-item\"><span class=\"badge\"><a href=\""+url+"\">跳转地图</a></span>"+n.store_name+"</li>");
                             console.log('索引' + i + ';对应值为：' + n.store_name +';');
                     });
                 },

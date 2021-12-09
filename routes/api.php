@@ -69,7 +69,7 @@ Route::any('/store-map2', [\App\Http\Controllers\Activity::class,'storeMap2'])->
 Route::any('/store-map-list', [\App\Http\Controllers\Activity::class,'storeMapList'])->name('store-map-list');
 Route::any('/wxs', [\App\Http\Controllers\Activity::class,'wxs'])->name('wxs');
 Route::any('/wxsi', [\App\Http\Controllers\wxtestController::class,'index'])->name('wxs-index');
-
+Route::any('/store-map3', [\App\Http\Controllers\Activity::class,'storeMap3'])->name('store-map3');
 
 
 
