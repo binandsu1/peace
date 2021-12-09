@@ -1188,5 +1188,10 @@ class Activity extends Controller
         return view('wxs');
     }
 
+    public function storeMap3()
+    {
+        return view('weiyi3');
+    }
+
 
 }
