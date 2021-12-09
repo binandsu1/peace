@@ -269,6 +269,7 @@
         $('#large-header').css('background-image',('url("'+bg_image+'")'));
 
         var h = $(this).height();
+        alert(h);
         if (h>900 && w>400) {
             $(".flag-unchecked").css({
                 padding:"0.8vh",
