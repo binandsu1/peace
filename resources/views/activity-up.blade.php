@@ -250,8 +250,8 @@
     $(document).ready(function(){
 
         var w = $(document).width(); //浏览器当前窗口文档的高度
-        var h = $(document).height(); //浏览器当前窗口文档的高度
-        var b = h/w;
+        var h1 = $(document).height(); //浏览器当前窗口文档的高度
+        var b = h1/w;
         var size = b.toFixed(2);
 
         var type = "";
@@ -268,7 +268,7 @@
 
         $('#large-header').css('background-image',('url("'+bg_image+'")'));
 
-
+        var h = $(this).height();
         if (h>900 && w>400) {
             $(".flag-unchecked").css({
                 padding:"0.8vh",
@@ -332,147 +332,17 @@
                 width:"44vh",margin:"-32vh"
             });
         }
-
-        var winHeight = $(window).height();  //获取当前页面高度
-        $(window).resize(function () {
-            var thisHeight = $(this).height();
-            if ( winHeight - thisHeight > 140 ) {
-                //键盘弹出
-                if (h>900 && w>400) {
-                    $(".flag-unchecked").css({
-                        padding:"0.8vh",
-                    });
-                    $(".logo_box_flag").css({
-                        width:"30vh",margin:"-20vh"
-                    });
-                }
-
-                if (h>900 && w<400) {
-                    $(".flag-unchecked").css({
-                        padding:"0.8vh",
-                    });
-                    $(".logo_box_flag").css({
-                        width:"29vh",margin:"-19vh"
-                    });
-                }
-
-                if (h>800 && h<=900 && w<400) {
-                    $(".flag-unchecked").css({
-                        padding:"1vh",
-                    });
-                    $(".logo_box_flag").css({
-                        width:"27vh",margin:"-20vh -42vw"
-                    });
-                }
-
-                if (h>800 && h<=900 && w>400) {
-                    $(".flag-unchecked").css({
-                        padding:"1vh",
-                    });
-                    $(".logo_box_flag").css({
-                        width:"36vh",margin:"-20vh -42vw"
-                    });
-                }
-
-                if (h>700 && h<=800 && w<=400) {
-                    $(".flag-unchecked").css({
-                        padding:"0.4vh",margin:"1vh"
-                    });
-
-                    $(".logo_box_flag").css({
-                        width:"34vh",margin:"-21vh"
-                    });
-                }
-                if (h>550 && h<=700 && w<=400) {
-                    $(".flag-unchecked").css({
-                        padding:"0.4vh",margin:"1vh"
-                    });
-
-                    $(".logo_box_flag").css({
-                        width:"34vh",margin:"-23vh"
-                    });
-                }
-                if (h>450 && h<=550) {
-                    $(".flag-unchecked").css({
-                        padding:"0.2vh",margin:"1vh"
-                    });
-
-                    $(".logo_box_flag").css({
-                        width:"44vh",margin:"-32vh"
-                    });
-                }
-
-
-
-            } else {
-
-
-
-                if (h>900 && w>400) {
-                    $(".flag-unchecked").css({
-                        padding:"0.8vh",
-                    });
-                    $(".logo_box_flag").css({
-                        width:"30vh",margin:"-20vh"
-                    });
-                }
-
-                if (h>900 && w<400) {
-                    $(".flag-unchecked").css({
-                        padding:"0.8vh",
-                    });
-                    $(".logo_box_flag").css({
-                        width:"29vh",margin:"-19vh"
-                    });
-                }
-
-                if (h>800 && h<=900 && w<400) {
-                    $(".flag-unchecked").css({
-                        padding:"1vh",
-                    });
-                    $(".logo_box_flag").css({
-                        width:"27vh",margin:"-20vh -42vw"
-                    });
-                }
-
-                if (h>800 && h<=900 && w>400) {
-                    $(".flag-unchecked").css({
-                        padding:"1vh",
-                    });
-                    $(".logo_box_flag").css({
-                        width:"36vh",margin:"-20vh -42vw"
-                    });
-                }
-
-                if (h>700 && h<=800 && w<=400) {
-                    $(".flag-unchecked").css({
-                        padding:"0.4vh",margin:"1vh"
-                    });
-
-                    $(".logo_box_flag").css({
-                        width:"34vh",margin:"-21vh"
-                    });
-                }
-                if (h>550 && h<=700 && w<=400) {
-                    $(".flag-unchecked").css({
-                        padding:"0.4vh",margin:"1vh"
-                    });
-
-                    $(".logo_box_flag").css({
-                        width:"34vh",margin:"-23vh"
-                    });
-                }
-                if (h>450 && h<=550) {
-                    $(".flag-unchecked").css({
-                        padding:"0.2vh",margin:"1vh"
-                    });
-
-                    $(".logo_box_flag").css({
-                        width:"44vh",margin:"-32vh"
-                    });
-                }
-            }
-        })
+//
+//        var winHeight = $(window).height();  //获取当前页面高度
+//        $(window).resize(function () {
+//
+//            if ( winHeight - thisHeight > 140 ) {
+//                //键盘弹出
+//
+//            } else {
+//
+//            }
+//        })
 
 
     });
