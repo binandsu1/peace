@@ -276,6 +276,7 @@
             if ( winHeight - h > 140 ) {
                 //键盘弹出
                 if (h>900 && w>400) {
+                    alert(7);
                     $(".flag-unchecked").css({
                         padding:"0.8vh",
                     });
@@ -285,6 +286,7 @@
                 }
 
                 if (h>900 && w<400) {
+                    alert(6);
                     $(".flag-unchecked").css({
                         padding:"0.8vh",
                     });
@@ -294,6 +296,7 @@
                 }
 
                 if (h>800 && h<=900 && w<400) {
+                    alert(5);
                     $(".flag-unchecked").css({
                         padding:"1vh",
                     });
@@ -303,6 +306,7 @@
                 }
 
                 if (h>800 && h<=900 && w>400) {
+                    alert(4);
                     $(".flag-unchecked").css({
                         padding:"1vh",
                     });
@@ -312,6 +316,7 @@
                 }
 
                 if (h>700 && h<=800 && w<=400) {
+                    alert(3);
                     $(".flag-unchecked").css({
                         padding:"0.4vh",margin:"1vh"
                     });
@@ -321,6 +326,7 @@
                     });
                 }
                 if (h>600 && h<=700) {
+                    alert(2);
                     $(".flag-unchecked").css({
                         padding:"0.4vh",margin:"1vh"
                     });
@@ -330,6 +336,7 @@
                     });
                 }
                 if (h>450 && h<=600) {
+                    alert(1);
                     $(".flag-unchecked").css({
                         padding:"0.4vh",margin:"1vh"
                     });
