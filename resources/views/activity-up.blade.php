@@ -339,7 +339,7 @@
             if ( winHeight - thisHeight > 140 ) {
                 //键盘弹出
 //                $('.logo_box_flag').css('position','static');
-//                alert("1");
+                alert(h);
                 $(".flag-unchecked").css({
                     padding:"0.2vh",margin:"1vh"
                 });
