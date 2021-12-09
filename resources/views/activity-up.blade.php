@@ -181,8 +181,8 @@
                 padding: 0;
                 border-radius: 50px;
                 color: #6e4531;
-                transform: scale(.76);
-                transform-origin: left;
+                /*transform: scale(.76);*/
+                /*transform-origin: left;*/
             }
 
             .logo_box_flag {
@@ -314,7 +314,7 @@
                 width:"34vh",margin:"-21vh"
             });
         }
-        if (h>550 && h<=700 && w<=400) {
+        if (h>600 && h<=700 && w<=400) {
             $(".flag-unchecked").css({
                 padding:"0.4vh",margin:"1vh"
             });
@@ -323,13 +323,13 @@
                 width:"34vh",margin:"-23vh"
             });
         }
-        if (h>450 && h<=550) {
+        if (h>450 && h<=600) {
             $(".flag-unchecked").css({
-                padding:"0.2vh",margin:"1vh"
+                padding:"0.4vh",margin:"1vh"
             });
 
             $(".logo_box_flag").css({
-                width:"44vh",margin:"-32vh"
+                width:"44vw",margin:"-26vh"
             });
         }
 //
