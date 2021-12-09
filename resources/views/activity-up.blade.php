@@ -334,11 +334,11 @@
 //
         var winHeight = $(window).height();  //获取当前页面高度
         $(window).resize(function () {
-
+            var thisHeight = $(this).height();
             if ( winHeight - thisHeight > 140 ) {
                 //键盘弹出
                 $(".flag-unchecked").css({
-                    padding:"0.4vh",margin:"1vh"
+                    padding:"0.1vh",margin:"0.5vh"
                 });
 
                 $(".logo_box_flag").css({
