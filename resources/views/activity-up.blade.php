@@ -38,9 +38,9 @@
             }
 
             .flag-unchecked {
-                margin: 1.6vh 1vw;
+                /*margin: 1.6vh 1vw;*/
                 font-size: 1.6vh;
-                padding: 0.5vw;
+                /*padding: 0.5vw;*/
                 border-radius: 50px;
                 color: #6e4531;
                 /*transform: scale(.88);*/
@@ -72,7 +72,7 @@
             }
         }
 
-        @media only screen and (min-height: 813px) and (max-height: 900px) {
+        @media only screen and (min-height: 800px) and (max-height: 900px) {
             .demo-1 .large-header {
                 background-size: 100vw 100vh;
                 width: 100vw;
@@ -82,9 +82,9 @@
             }
 
             .flag-unchecked {
-                margin: 1.8vh 1vw;
+                /*margin: 1.2vh 1vw;*/
                 font-size: 1.6vh;
-                padding: 0;
+                /*padding: 0;*/
                 border-radius: 50px;
                 color: #6e4531;
                 /*transform: scale(.88);*/
@@ -116,7 +116,8 @@
             }
         }
 
-        @media only screen and (min-height: 810px) and (max-height: 812px) {
+
+        @media only screen and (min-height: 500px) and (max-height: 800px) {
             .demo-1 .large-header {
                 background-size: 100vw 100vh;
                 width: 100vw;
@@ -126,50 +127,8 @@
             }
 
             .flag-unchecked {
-                margin: 2vh 2vw;
-                font-size: 1.8vh;
-                padding: 0;
-                border-radius: 50px;
-                color: #6e4531;
-            }
-
-            .logo_box_flag {
-                width: 70vw;
-                height: 70vh;
-                padding: 0;
-                position: fixed;
-                overflow: hidden;
-                left: 60%;
-                top: 50%;
-                margin-left: -44vw;
-                margin-top: -22vh;
-            }
-
-            .btn-1 {
-                width: 70vw;
-                height: 14vh;
-                padding: 1vh;
-                position: fixed;
-                overflow: hidden;
-                left: 50%;
-                top: 100%;
-                margin-left: -34vw;
-                margin-top: -22vh;
-            }
-        }
-
-        @media only screen and (min-height: 568px) and (max-height: 810px) {
-            .demo-1 .large-header {
-                background-size: 100vw 100vh;
-                width: 100vw;
-                height: 100vh;
-                background-repeat: no-repeat;
-                position: fixed;
-            }
-
-            .flag-unchecked {
-                margin: 1.6vh 2vw;
-                font-size: 1.8vh;
+                margin: 1.8vh 2vw;
+                font-size: 1.6vh;
                 padding: 0;
                 border-radius: 50px;
                 color: #6e4531;
@@ -254,12 +213,68 @@
             type = "X";
         }
 
-
         var url = "<?= asset('/jy/新年新愿')?>";
 
         var bg_image = url+type+".jpg";
 
         $('#large-header').css('background-image',('url("'+bg_image+'")'));
+
+
+        if (h>900 && w>400) {
+            $(".flag-unchecked").css({
+                padding:"0.8vh",
+            });
+            $(".logo_box_flag").css({
+                width:"30vh",margin:"-20vh"
+            });
+        }
+
+        if (h>900 && w<400) {
+            $(".flag-unchecked").css({
+                padding:"0.8vh",
+            });
+            $(".logo_box_flag").css({
+                width:"29vh",margin:"-19vh"
+            });
+        }
+
+        if (h>800 && h<=900 && w<400) {
+            $(".flag-unchecked").css({
+                padding:"1vh",
+            });
+            $(".logo_box_flag").css({
+                width:"27vh",margin:"-20vh -42vw"
+            });
+        }
+
+        if (h>800 && h<=900 && w>400) {
+            $(".flag-unchecked").css({
+                padding:"1vh",
+            });
+            $(".logo_box_flag").css({
+                width:"36vh",margin:"-20vh -42vw"
+            });
+        }
+
+        if (h>700 && h<=800 && w<=400) {
+            $(".flag-unchecked").css({
+                padding:"0.4vh",margin:"1vh"
+            });
+
+            $(".logo_box_flag").css({
+                width:"34vh",margin:"-21vh"
+            });
+        }
+        if (h<700 && w<=400) {
+            $(".flag-unchecked").css({
+                padding:"0.4vh",margin:"1vh"
+            });
+
+            $(".logo_box_flag").css({
+                width:"34vh",margin:"-23vh"
+            });
+        }
+
 
     });
 
@@ -283,7 +298,7 @@
                 },
                 success: function (data) {
                     if(data.code == '200') {
-                        $("#self_flag").text(flag_wb);
+                        $("#self_flag").text(' '+flag_wb);
                         $("#cus_div").css('display','none');
                         $("#customize_li").css('display','block');
                     } else {
