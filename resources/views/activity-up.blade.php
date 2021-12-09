@@ -314,7 +314,6 @@
 
 
 
-
         if (h>900 && w>400) {
             $(".flag-unchecked").css({
                 padding:"0.8vh",
