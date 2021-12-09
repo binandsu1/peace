@@ -978,6 +978,22 @@ class Activity extends Controller
     // 中奖统计后台
     public function prizeAdmin()
     {
+
+        $online1 = Redis::set('a_online',0);
+        $online2 = Redis::set('b_online',0);
+        $online3 = Redis::set('c_online',0);
+        $online4 = Redis::set('d_online',0);
+        $online5 = Redis::set('e_online',0);
+        $online6 = Redis::set('f_online',0);
+        $online7 = Redis::set('g_online',0);
+        $offline1 = Redis::set('a_offline',0);
+        $offline2 = Redis::set('b_offline',0);
+        $offline3 = Redis::set('c_offline',0);
+        $offline4 = Redis::set('d_offline',0);
+        $offline5 = Redis::set('e_offline',0);
+        $offline6 = Redis::set('f_offline',0);
+        $offline7 = Redis::set('g_offline',0);
+
         $online1 = Redis::get('a_online');
         $online2 = Redis::get('b_online');
         $online3 = Redis::get('c_online');
