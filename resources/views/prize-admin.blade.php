@@ -18,26 +18,23 @@
 <div class="container demo-1">
     <div class="content">
         <div id="large-header" class="large-header">
-            <canvas id="demo-canvas"></canvas>
             <div class="logo_box">
-                <h3>中奖信息：</h3>
+                <li>中奖信息：</li>
+                <li>线上上海报 1019：{{$online1}}</li>
+                <li>天猫A 365+腾讯季卡（20000）：{{$online2}}</li>
+                <li>天猫B 365+帆布袋+袜子（30000）：{{$online3}}</li>
+                <li>天猫C Surface GO3+闪迪卡128G+ING杯子（12000）：{{$online4}}</li>
+                <li>京东A 365+电影兑换券（60000）：{{$online5}}</li>
+                <li>京东B 365+鼠标+布袋（60000）：{{$online6}}</li>
+                <li>京东C Surface GO3+闪迪卡128G+ING杯子（40000）：{{$online7}}</li>
 
-                <br>
-                <h3>线上上海报 1019：{{$online1}}</h3>
-                <h3>天猫A 365+腾讯季卡（20000）：{{$online2}}</h3>
-                <h3>天猫B 365+帆布袋+袜子（30000）：{{$online3}}</h3>
-                <h3>天猫C Surface GO3+闪迪卡128G+ING杯子（12000）：{{$online4}}</h3>
-                <h3>京东A 365+电影兑换券（60000）：{{$online5}}</h3>
-                <h3>京东B 365+鼠标+布袋（60000）：{{$online6}}</h3>
-                <h3>京东C Surface GO3+闪迪卡128G+ING杯子（40000）：{{$online7}}</h3>
-
-                <h3>线下上海报 520：{{$offline1}}</h3>
-                <h3>李现海报（2500）：{{$offline2}}</h3>
-                <h3>帽子（400）：{{$offline3}}</h3>
-                <h3>背包（2000）：{{$offline4}}</h3>
-                <h3>袜子（1800）：{{$offline5}}</h3>
-                <h3>贴纸（2500）：{{$offline6}}</h3>
-                <h3>优惠券（10000）：{{$offline7}}</h3>
+                <li>线下上海报 520：{{$offline1}}</li>
+                <li>李现海报（2500）：{{$offline2}}</li>
+                <li>帽子（400）：{{$offline3}}</li>
+                <li>背包（2000）：{{$offline4}}</li>
+                <li>袜子（1800）：{{$offline5}}</li>
+                <li>贴纸（2500）：{{$offline6}}</li>
+                <li>优惠券（10000）：{{$offline7}}</li>
                 {{--<div class="mb2"><a class="act-but submit" href="{{route('counter',['api_token'=>request('api_token')])}}" style="color: #FFFFFF">归零计数器</a></div><br>--}}
 
             </div>
@@ -46,10 +43,6 @@
 
 
 </div><!-- /container -->
-<script src="<?=asset('/jy/TweenLite.min.js')?>"></script>
-<script src="<?=asset('/jy/EasePack.min.js')?>"></script>
-<script src="<?=asset('/jy/rAF.js')?>"></script>
-<script src="<?=asset('/jy/demo-1.js')?>"></script>
 <script src="<?=asset('/jy/clipboard.min.js')?>"></script>
 <script>
     new Clipboard('.copy_btn');

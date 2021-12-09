@@ -7,6 +7,7 @@
     <script type="text/javascript" src="https://libs.baidu.com/jquery/1.7.2/jquery.min.js"></script>
     <title>线下授权门店列表</title>
 
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
 </head>
 <style>
@@ -31,17 +32,72 @@
         text-decoration:none;
     }
 
+    .badge{
+        background-color: skyblue;
+    }
+
+    .large-header {
+        {{--background-image: url("<?= asset('/jy/背景P.jpg')?>");--}}
+        background-size: 100vw 100vh;
+        width: 100vw;
+        height: 100vh;
+        background-repeat: no-repeat;
+        position: fixed;
+    }
+
+    @media only screen and (max-width: 375px) and (min-height: 812px) {
+        .demo-1 .large-header {
+            {{--background-image: url("<?= asset('/jy/背景X.jpg')?>");--}}
+            background-size: 100vw 100vh;
+            width: 100vw;
+            height: 100vh;
+            background-repeat: no-repeat;
+            position: fixed;
+        }
+    }
+
     </style>
 <body>
-<h4>&nbsp;&nbsp;&nbsp;<span id="city_name"></span>的微软授权店地址如下：</h4>
-<b><span id="city" style="height: 30rem;font-size: small"></span></b>
+<div id="large-header" class="large-header">
+    <div style="margin-top:18vh;">
+        <h4>&nbsp;&nbsp;&nbsp;<span id="city_name"></span>的微软授权店地址如下：</h4>
+        <b><span id="city" style="height: 30rem;font-size: small"></span></b>
 
-<ul class="list-group" id="list-group">
+        <ul class="list-group" id="list-group">
 
-</ul>
+        </ul>
+    </div>
+
+</div>
 </body>
 </html>
 <script type="text/javascript">
+
+    $(document).ready(function(){
+
+        var w = $(document).width(); //浏览器当前窗口文档的高度
+        var h = $(document).height(); //浏览器当前窗口文档的高度
+        var b = h/w;
+        var size = b.toFixed(2);
+
+        var type = "";
+
+        if (size < 1.87) {
+            type = "P";
+        } else {
+            type = "X";
+        }
+
+
+        var url = "<?= asset('/jy/背景')?>";
+
+        var bg_image = url+type+".jpg";
+
+        $('#large-header').css('background-image',('url("'+bg_image+'")'));
+
+
+    });
+
     window.onload = dz();
 
     function dz() {
