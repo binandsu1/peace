@@ -341,8 +341,7 @@
                         width:"34vh",margin:"-23vh"
                     });
                 }
-                if (h>450 && h<=600) {
-                    alert(1);
+                if (h<=600) {
                     $(".flag-unchecked").css({
                         padding:"0.4vh",margin:"1vh"
                     });
@@ -354,7 +353,7 @@
             } else {
 
 
-                if (h>900 && w>400) {
+                if (h1>900 && w>400) {
                     $(".flag-unchecked").css({
                         padding:"0.8vh",
                     });
@@ -363,7 +362,7 @@
                     });
                 }
 
-                if (h>900 && w<400) {
+                if (h1>900 && w<400) {
                     $(".flag-unchecked").css({
                         padding:"0.8vh",
                     });
@@ -372,7 +371,7 @@
                     });
                 }
 
-                if (h>800 && h<=900 && w<400) {
+                if (h1>800 && h1<=900 && w<400) {
                     $(".flag-unchecked").css({
                         padding:"1vh",
                     });
@@ -381,7 +380,7 @@
                     });
                 }
 
-                if (h>800 && h<=900 && w>400) {
+                if (h1>800 && h1<=900 && w>400) {
                     $(".flag-unchecked").css({
                         padding:"1vh",
                     });
@@ -390,7 +389,7 @@
                     });
                 }
 
-                if (h>700 && h<=800 && w<=400) {
+                if (h1>700 && h1<=800 && w<=400) {
                     $(".flag-unchecked").css({
                         padding:"0.4vh",margin:"1vh"
                     });
@@ -399,7 +398,7 @@
                         width:"34vh",margin:"-21vh"
                     });
                 }
-                if (h>600 && h<=700 && w<=400) {
+                if (h1>600 && h1<=700 && w<=400) {
                     $(".flag-unchecked").css({
                         padding:"0.4vh",margin:"1vh"
                     });
@@ -408,7 +407,7 @@
                         width:"34vh",margin:"-23vh"
                     });
                 }
-                if (h>450 && h<=600) {
+                if (h1>450 && h1<=600) {
                     $(".flag-unchecked").css({
                         padding:"0.4vh",margin:"1vh"
                     });
