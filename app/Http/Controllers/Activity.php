@@ -285,7 +285,6 @@ class Activity extends Controller
 
             switch ($v) {
                 case $v >= $a_start && $v <= $a_end:
-                    // TODO::上线前清空Redis计数器
                     Redis::incr('a_online', 1);
                     $count1 = Redis::get('a_online');
                     if ($count1 > 1019) {
@@ -296,32 +295,26 @@ class Activity extends Controller
                     }
                     break;
                 case $v >= $b_start && $v <= $b_end:
-                    // TODO::上线前清空Redis计数器
                     Redis::incr('b_online', 1);
                     $prize_type = 2;
                     break;
                 case $v >= $c_start && $v <= $c_end:
-                    // TODO::上线前清空Redis计数器
                     Redis::incr('c_online', 1);
                     $prize_type = 3;
                     break;
                 case $v >= $d_start && $v <= $d_end:
-                    // TODO::上线前清空Redis计数器
                     Redis::incr('d_online', 1);
                     $prize_type = 4;
                     break;
                 case $v >= $e_start && $v <= $e_end:
-                    // TODO::上线前清空Redis计数器
                     Redis::incr('e_online', 1);
                     $prize_type = 5;
                     break;
                 case $v >= $f_start && $v <= $f_end:
-                    // TODO::上线前清空Redis计数器
                     Redis::incr('f_online', 1);
                     $prize_type = 6;
                     break;
                 case $v >= $g_start && $v <= $g_end:
-                    // TODO::上线前清空Redis计数器
                     Redis::incr('g_online', 1);
                     $prize_type = 7;
                     break;
@@ -376,7 +369,6 @@ class Activity extends Controller
 
             switch ($v) {
                 case $v >= $a_start && $v <= $a_end:
-                    // TODO::上线前清空Redis计数器
                     Redis::incr('a_offline', 1);
                     $count1 = Redis::get('a_online');
                     if ($count1 > 520) {
@@ -387,32 +379,26 @@ class Activity extends Controller
                     }
                     break;
                 case $v >= $b_start && $v <= $b_end:
-                    // TODO::上线前清空Redis计数器
                     Redis::incr('b_offline', 1);
                     $prize_type = 12;
                     break;
                 case $v >= $c_start && $v <= $c_end:
-                    // TODO::上线前清空Redis计数器
                     Redis::incr('c_offline', 1);
                     $prize_type = 13;
                     break;
                 case $v >= $d_start && $v <= $d_end:
-                    // TODO::上线前清空Redis计数器
                     Redis::incr('d_offline', 1);
                     $prize_type = 14;
                     break;
                 case $v >= $e_start && $v <= $e_end:
-                    // TODO::上线前清空Redis计数器
                     Redis::incr('e_offline', 1);
                     $prize_type = 15;
                     break;
                 case $v >= $f_start && $v <= $f_end:
-                    // TODO::上线前清空Redis计数器
                     Redis::incr('f_offline', 1);
                     $prize_type = 16;
                     break;
                 case $v >= $g_start && $v <= $g_end:
-                    // TODO::上线前清空Redis计数器
                     Redis::incr('g_offline', 1);
                     $prize_type = 17;
                     break;
@@ -978,21 +964,21 @@ class Activity extends Controller
     // 中奖统计后台
     public function prizeAdmin()
     {
-
-        $online1 = Redis::set('a_online',0);
-        $online2 = Redis::set('b_online',0);
-        $online3 = Redis::set('c_online',0);
-        $online4 = Redis::set('d_online',0);
-        $online5 = Redis::set('e_online',0);
-        $online6 = Redis::set('f_online',0);
-        $online7 = Redis::set('g_online',0);
-        $offline1 = Redis::set('a_offline',0);
-        $offline2 = Redis::set('b_offline',0);
-        $offline3 = Redis::set('c_offline',0);
-        $offline4 = Redis::set('d_offline',0);
-        $offline5 = Redis::set('e_offline',0);
-        $offline6 = Redis::set('f_offline',0);
-        $offline7 = Redis::set('g_offline',0);
+// 清除Redis
+//        $online1 = Redis::set('a_online',0);
+//        $online2 = Redis::set('b_online',0);
+//        $online3 = Redis::set('c_online',0);
+//        $online4 = Redis::set('d_online',0);
+//        $online5 = Redis::set('e_online',0);
+//        $online6 = Redis::set('f_online',0);
+//        $online7 = Redis::set('g_online',0);
+//        $offline1 = Redis::set('a_offline',0);
+//        $offline2 = Redis::set('b_offline',0);
+//        $offline3 = Redis::set('c_offline',0);
+//        $offline4 = Redis::set('d_offline',0);
+//        $offline5 = Redis::set('e_offline',0);
+//        $offline6 = Redis::set('f_offline',0);
+//        $offline7 = Redis::set('g_offline',0);
 
         $online1 = Redis::get('a_online');
         $online2 = Redis::get('b_online');
