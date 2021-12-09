@@ -176,20 +176,20 @@
                 padding: 0;
                 border-radius: 50px;
                 color: #6e4531;
-                /*transform: scale(.88);*/
-                /*transform-origin: left;*/
+                transform: scale(.76);
+                transform-origin: left;
             }
 
             .logo_box_flag {
-                width: 60vw;
-                height: 100vh;
+                width: 80vw;
+                height: 80vh;
                 padding: 0;
                 position: fixed;
                 overflow: hidden;
                 left: 60%;
                 top: 50%;
                 margin-left: -39vw;
-                margin-top: -24vh;
+                margin-top: -30vw;
             }
 
             .btn-1 {
@@ -246,7 +246,6 @@
 
         var w = $(document).width(); //浏览器当前窗口文档的高度
         var h = $(document).height(); //浏览器当前窗口文档的高度
-        alert(h);
         var b = h/w;
         var size = b.toFixed(2);
 
@@ -310,24 +309,24 @@
                 width:"34vh",margin:"-21vh"
             });
         }
-        if (h>550 && h<=700 && w<=400) {
-            $(".flag-unchecked").css({
-                padding:"0.4vh",margin:"1vh"
-            });
-
-            $(".logo_box_flag").css({
-                width:"34vh",margin:"-23vh"
-            });
-        }
-        if (h>450 && h<=550) {
-            $(".flag-unchecked").css({
-                padding:"0.2vh",margin:"1vh"
-            });
-
-            $(".logo_box_flag").css({
-                width:"44vh",margin:"-32vh"
-            });
-        }
+//        if (h>550 && h<=700 && w<=400) {
+//            $(".flag-unchecked").css({
+//                padding:"0.4vh",margin:"1vh"
+//            });
+//
+//            $(".logo_box_flag").css({
+//                width:"34vh",margin:"-23vh"
+//            });
+//        }
+//        if (h>450 && h<=550) {
+//            $(".flag-unchecked").css({
+//                padding:"0.2vh",margin:"1vh"
+//            });
+//
+//            $(".logo_box_flag").css({
+//                width:"44vh",margin:"-32vh"
+//            });
+//        }
 
 
     });

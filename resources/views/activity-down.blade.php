@@ -175,20 +175,20 @@
                 padding: 0;
                 border-radius: 50px;
                 color: #6e4531;
-                /*transform: scale(.88);*/
-                /*transform-origin: left;*/
+                transform: scale(.76);
+                transform-origin: left;
             }
 
             .logo_box_flag {
-                width: 60vw;
-                height: 100vh;
+                width: 80vw;
+                height: 80vh;
                 padding: 0;
                 position: fixed;
                 overflow: hidden;
                 left: 60%;
                 top: 50%;
                 margin-left: -39vw;
-                margin-top: -24vh;
+                margin-top: -30vw;
             }
 
             .btn-1 {
