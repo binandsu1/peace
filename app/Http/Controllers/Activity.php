@@ -811,10 +811,10 @@ class Activity extends Controller
 
     public function makePrizeNum($uid = '0', $gid = '0')
     {
-        $is = PrizeNum::whereIn('status', [1, 2])->where('u_id', $uid)->first();
-        if ($is) {
-            return -1;
-        }
+//        $is = PrizeNum::whereIn('status', [1, 2])->where('u_id', $uid)->first();
+//        if ($is) {
+//            return -1;
+//        }
         try {
             DB::beginTransaction();
             $is = PrizeNum::where('status', 0)->first();
