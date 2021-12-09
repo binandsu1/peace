@@ -320,7 +320,7 @@
                         width:"34vh",margin:"-21vh"
                     });
                 }
-                if (h>600 && h<=700 && w<=400) {
+                if (h>600 && h<=700) {
                     $(".flag-unchecked").css({
                         padding:"0.4vh",margin:"1vh"
                     });
@@ -335,7 +335,7 @@
                     });
 
                     $(".logo_box_flag").css({
-                        width:"44vw",margin:"-26vh"
+                        width:"32vh",margin:"-25vh"
                     });
                 }
             } else {
