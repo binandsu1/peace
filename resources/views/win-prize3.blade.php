@@ -222,7 +222,8 @@
                 if(data.code == '200'){
                     window.location="{{route('phone',['api_token'=>request('api_token')])}}";
                 } else if (data.code == '300') {
-                    window.location="{{route('phone',['api_token'=>request('api_token')])}}";
+                    alert("照片已上传成功！请勿重复上传！");
+                    window.location="{{route('poster2',['api_token'=>request('api_token')])}}";
                 } else {
                     alert("请输入正确的门店ID");
                 }
