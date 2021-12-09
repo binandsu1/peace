@@ -342,7 +342,7 @@
                 });
 
                 $(".logo_box_flag").css({
-                    width:"44vw",margin:"-26vh"
+                    width:"44vw",margin:"-32vh"
                 });
             } else {
 
