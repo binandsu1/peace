@@ -220,6 +220,9 @@
 <div class="container demo-1">
     <div class="content">
         <div id="large-header" class="large-header">
+            <span id="cnm"></span>
+            <span id="w"></span>
+            <span id="winHeight"></span>
             <div class="logo_box_flag">
 
                    <div class="flag-unchecked"><li style="list-style: none"><input type="radio" name="flags" value="1"> 告别拖延君，365天天天不加班</li></div>
@@ -274,6 +277,9 @@
         $(window).resize(function () {
             var h = $(this).height();
             if ( winHeight - h > 140 ) {
+                $("#cnm").text(h);
+                $("#w").text(w);
+                $("#winHeight").text(winHeight);
                 //键盘弹出
                 if (h>900 && w>400) {
                     alert(7);
