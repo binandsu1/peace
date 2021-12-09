@@ -160,6 +160,50 @@
             }
         }
 
+        @media only screen and (min-height: 200px) and (max-height: 500px) {
+            .demo-1 .large-header {
+                background-size: 100vw 100vh;
+                width: 100vw;
+                height: 100vh;
+                background-repeat: no-repeat;
+                position: fixed;
+            }
+
+            .flag-unchecked {
+                margin: 1vh 2vw;
+                font-size: 1vh;
+                padding: 0;
+                border-radius: 50px;
+                color: #6e4531;
+                /*transform: scale(.88);*/
+                /*transform-origin: left;*/
+            }
+
+            .logo_box_flag {
+                width: 60vw;
+                height: 100vh;
+                padding: 0;
+                position: fixed;
+                overflow: hidden;
+                left: 60%;
+                top: 50%;
+                margin-left: -39vw;
+                margin-top: -24vh;
+            }
+
+            .btn-1 {
+                width: 70vw;
+                height: 18vh;
+                padding: 1vh;
+                position: fixed;
+                overflow: hidden;
+                left: 50%;
+                top: 100%;
+                margin-left: -34vw;
+                margin-top: -26vh;
+            }
+        }
+
     </style>
     <!--[if IE]>
     <script src="<?=asset('/jy/html5.js')?>"></script>
@@ -259,13 +303,23 @@
                 width:"34vh",margin:"-21vh"
             });
         }
-        if (h<700 && w<=400) {
+
+        if (h>550 && h<=700 && w<=400) {
             $(".flag-unchecked").css({
                 padding:"0.4vh",margin:"1vh"
             });
 
             $(".logo_box_flag").css({
                 width:"34vh",margin:"-23vh"
+            });
+        }
+        if (h>450 && h<=550) {
+            $(".flag-unchecked").css({
+                padding:"0.2vh",margin:"1vh"
+            });
+
+            $(".logo_box_flag").css({
+                width:"44vh",margin:"-32vh"
             });
         }
 
