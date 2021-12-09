@@ -27,6 +27,11 @@
             background-color:transparent; /* 背景色透明 */
         }
 
+        body{
+            height: calc(100% - 250px);
+            min-height: 200px;
+        }
+
 
         @media only screen and (min-height: 900px) and (max-height: 1000px) {
             .demo-1 .large-header {
@@ -328,7 +333,19 @@
             });
         }
 
-        $('body').css({'height':$(window).height()});
+        var winHeight = $(window).height();  //获取当前页面高度
+        $(window).resize(function () {
+            var thisHeight = $(this).height();
+            if ( winHeight - thisHeight > 140 ) {
+                //键盘弹出
+                $('.logo_box_flag').css('position','static');
+                alert("1");
+            } else {
+                alert("2");
+                //键盘收起
+                $('.logo_box_flag').css({'position':'fixed','bottom':'0'});
+            }
+        })
 
 
     });
