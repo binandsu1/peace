@@ -117,13 +117,13 @@
                     "city":city,
                 },
                 success: function (data) {
-                     console.log(data);
+//                     console.log(data);
                     $.each(data,function(i,n){
                         // alert(n.j);return false;
                              var url= "store-map3?j="+n.j+"&w="+n.w;
 
                             $("#list-group").append(" <li class=\"list-group-item\"><span class=\"badge\"><a href=\""+url+"\">跳转地图</a></span>"+n.store_name+"</li>");
-                            console.log('索引' + i + ';对应值为：' + n.store_name +';');
+//                            console.log('索引' + i + ';对应值为：' + n.store_name +';');
                     });
                 },
 
