@@ -338,12 +338,19 @@
             var thisHeight = $(this).height();
             if ( winHeight - thisHeight > 140 ) {
                 //键盘弹出
-                $('.logo_box_flag').css('position','static');
+//                $('.logo_box_flag').css('position','static');
 //                alert("1");
+                $(".flag-unchecked").css({
+                    padding:"0.2vh",margin:"1vh"
+                });
+
+                $(".logo_box_flag").css({
+                    width:"44vh",margin:"-32vh"
+                });
             } else {
 //                alert("2");
                 //键盘收起
-                $('.logo_box_flag').css({'position':'fixed','bottom':'0'});
+//                $('.logo_box_flag').css({'position':'fixed','bottom':'0'});
             }
         })
 
