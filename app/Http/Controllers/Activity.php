@@ -150,7 +150,7 @@ class Activity extends Controller
                         break;
                 }
 
-                return redirect()->route('win-prize3', ['api_token' => $api_token])->with(['bg' => $bg, 'prize_num' => $prize_num]);
+                return redirect()->route('win-prize2', ['api_token' => $api_token])->with(['bg' => $bg, 'prize_num' => $prize_num]);
             }
 
             if ($is_draw == 2 && $way == 1) {
@@ -673,13 +673,18 @@ class Activity extends Controller
         }
 
         if ($request->method() == 'POST') {
-            $image = $request->file('image');
-            $imageName = $uid.'.jpg';
-            $path = 'offline/';
-            $image->move(public_path($path), $imageName);
-            $userinfo->pic_name = $imageName;
-            $userinfo->save();
 
+                $image = $request->file('image');
+                if(empty($image)) {
+                    return view('phone');
+                }
+                $imageName = $uid.'.jpg';
+                $path = 'offline/';
+                $image->move(public_path($path), $imageName);
+                $userinfo->pic_name = $imageName;
+                $userinfo->save();
+
+            DB::table("jiayus")->where("id", $uid)->update(['use_code'=>2]);
             $flag_id = $user->flag_id;
             if($flag_id == 8) {
                 $flag = DB::table('customize_flag')->where('uid', $uid)->get(['customize_flag']);
@@ -1134,12 +1139,15 @@ class Activity extends Controller
         }
 
         $md_code = $request->input("md_code");
+        $t = $request->input("t");
 
         if (!empty($md_code)) {
             if (!empty($storeCode)) {
                 if ($storeCode == $md_code) {
                     DB::table("prize_num")->where("u_id", $uid)->update(['md_code'=>$md_code]);
-                    DB::table("jiayus")->where("id", $uid)->update(['use_code'=>2]);
+                    if ($t != 11) {
+                        DB::table("jiayus")->where("id", $uid)->update(['use_code'=>2]);
+                    }
                     return response()->json(['code' => 200]);
                 } else {
                     return response()->json(['code' => 500]);
@@ -1150,7 +1158,9 @@ class Activity extends Controller
                     return response()->json(['code' => 500]);
                 } else {
                     DB::table("prize_num")->where("u_id", $uid)->update(['md_code'=>$md_code]);
-                    DB::table("jiayus")->where("id", $uid)->update(['use_code'=>2]);
+                    if ($t != 11) {
+                        DB::table("jiayus")->where("id", $uid)->update(['use_code'=>2]);
+                    }
                     return response()->json(['code' => 200]);
                 }
 
