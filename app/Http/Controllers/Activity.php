@@ -346,16 +346,16 @@ class Activity extends Controller
             // 抽奖方法
             $v = rand(1, 100);
 
-            $a_start = 1; //10%中奖率 上海报 520
-            $a_end = 10;
+            $a_start = 1; //10%中奖率 上海报 520 15%
+            $a_end = 15;
 
-            $b_start = 11; // 20% 海报 2500
-            $b_end = 30;
+            $b_start = 16; // 20% 海报 2500
+            $b_end = 35;
 
-            $c_start = 31; // 5% 帽子 400
-            $c_end = 35;
+            $c_start = 36; // 5% 帽子 400
+            $c_end = 40;
 
-            $d_start = 36; // 20% 背包 2000
+            $d_start = 41; // 20% 背包 2000 15%
             $d_end = 55;
 
             $e_start = 56; // 15%中奖率 袜子 1800
