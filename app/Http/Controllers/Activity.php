@@ -972,7 +972,7 @@ class Activity extends Controller
 //        $online5 = Redis::set('e_online',0);
 //        $online6 = Redis::set('f_online',0);
 //        $online7 = Redis::set('g_online',0);
-        $offline1 = Redis::set('a_offline',0);
+//        $offline1 = Redis::set('a_offline',0);
 //        $offline2 = Redis::set('b_offline',0);
 //        $offline3 = Redis::set('c_offline',0);
 //        $offline4 = Redis::set('d_offline',0);
