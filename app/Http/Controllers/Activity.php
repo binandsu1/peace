@@ -346,25 +346,25 @@ class Activity extends Controller
             // 抽奖方法
             $v = rand(1, 100);
 
-            $a_start = 1; //10%中奖率 上海报 520 15%
-            $a_end = 15;
+            $a_start = 1; //10%中奖率 上海报 520 15% 5%
+            $a_end = 5;
 
-            $b_start = 16; // 20% 海报 2500
-            $b_end = 35;
+            $b_start = 6; // 20% 海报 2500
+            $b_end = 25;
 
-            $c_start = 36; // 5% 帽子 400
-            $c_end = 40;
+            $c_start = 26; // 5% 帽子 400
+            $c_end = 30;
 
-            $d_start = 41; // 20% 背包 2000 15%
-            $d_end = 55;
+            $d_start = 31; // 20% 背包 2000 15%
+            $d_end = 45;
 
-            $e_start = 56; // 15%中奖率 袜子 1800
-            $e_end = 70;
+            $e_start = 46; // 15%中奖率 袜子 1800
+            $e_end = 60;
 
-            $f_start = 71; // 20%中奖率 贴纸 2500
-            $f_end = 90;
+            $f_start = 61; // 20%中奖率 贴纸 2500
+            $f_end = 80;
 
-            $g_start = 91; // 优惠券（10000）。10%
+            $g_start = 81; // 优惠券（10000）。10% 20%
             $g_end = 100;
 
             switch ($v) {
@@ -374,6 +374,7 @@ class Activity extends Controller
                     if ($count1 > 520) {
                         Redis::incr('g_offline', 1);
                         $prize_type = 17;
+                        Redis::incr('zh_1',1); // 超卖后转化数量
                     } else {
                         $prize_type = 11;
                     }
@@ -384,7 +385,14 @@ class Activity extends Controller
                     break;
                 case $v >= $c_start && $v <= $c_end:
                     Redis::incr('c_offline', 1);
-                    $prize_type = 13;
+                    $count2 = Redis::get('a_online');
+                    if ($count2 > 400) {
+                        Redis::incr('g_offline', 1);
+                        $prize_type = 17;
+                        Redis::incr('zh_2',1); // 超卖后转化数量
+                    } else {
+                        $prize_type = 13;
+                    }
                     break;
                 case $v >= $d_start && $v <= $d_end:
                     Redis::incr('d_offline', 1);
