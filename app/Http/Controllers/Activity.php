@@ -371,7 +371,7 @@ class Activity extends Controller
                 case $v >= $a_start && $v <= $a_end:
                     Redis::incr('a_offline', 1);
                     $count1 = Redis::get('a_online');
-                    if ($count1 > 520) {
+                    if ($count1 > 620) {
                         Redis::incr('g_offline', 1);
                         $prize_type = 17;
                         Redis::incr('zh_1',1); // 超卖后转化数量
