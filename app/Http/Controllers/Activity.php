@@ -261,22 +261,22 @@ class Activity extends Controller
             // 抽奖方法
             $v = rand(1, 100);
 
-            $a_start = 1; //10%中奖率 上海报资格1019名 20%
-            $a_end = 20;
+            $a_start = 1; //10%中奖率 上海报资格1019名 20% 50%
+            $a_end = 50;
 
-            $b_start = 21; // 10%中奖率 天猫A、Microsoft 365 家庭版+腾讯视频季卡促销套餐：20000份；
-            $b_end = 30;
+            $b_start = 51; // 10%中奖率 天猫A、Microsoft 365 家庭版+腾讯视频季卡促销套餐：20000份； 5%
+            $b_end = 55;
 
-            $c_start = 31; // 10%中奖率 天猫B、Microsoft 365 家庭版+ING帆布袋+ING袜子促销套餐：30000份；10%
-            $c_end = 40;
+            $c_start = 56; // 10%中奖率 天猫B、Microsoft 365 家庭版+ING帆布袋+ING袜子促销套餐：30000份；10% 5%
+            $c_end = 60;
 
-            $d_start = 41; // 5%中奖率 天猫C、Surface GO3+闪迪卡128G+ING杯子促销套餐：12000份。5%
-            $d_end = 45;
+            $d_start = 61; // 5%中奖率 天猫C、Surface GO3+闪迪卡128G+ING杯子促销套餐：12000份。5% 10%
+            $d_end = 70;
 
-            $e_start = 46; // 25%中奖率 京东：A、Microsoft 365 个人盒装+电影兑换券促销套餐：60000份；25% 20%
-            $e_end = 65;
+            $e_start = 71; // 25%中奖率 京东：A、Microsoft 365 个人盒装+电影兑换券促销套餐：60000份；25% 20% 10%
+            $e_end = 80;
 
-            $f_start = 66; // 25%中奖率 B、Microsoft 365 个人盒装+精巧鼠标+ING 帆布袋促销套餐：60000份；25%
+            $f_start = 81; // 25%中奖率 B、Microsoft 365 个人盒装+精巧鼠标+ING 帆布袋促销套餐：60000份；25% 10%
             $f_end = 90;
 
             $g_start = 91; // C、Surface GO3 + 闪迪卡 128G TF卡+ ING 袜子促销套餐：40000份。15% 10%
@@ -346,32 +346,32 @@ class Activity extends Controller
             // 抽奖方法
             $v = rand(1, 100);
 
-            $a_start = 1; //10%中奖率 上海报 520 15% 5% 10%
-            $a_end = 10;
+            $a_start = 1; //10%中奖率 上海报 520 15% 5% 10% 50%
+            $a_end = 50;
 
-            $b_start = 11; // 20% 海报 2500 10%
-            $b_end = 20;
+            $b_start = 51; // 20% 海报 2500 10% 5%
+            $b_end = 55;
 
-            $c_start = 21; // 5% 帽子 400 5%
-            $c_end = 25;
+            $c_start = 56; // 5% 帽子 400 5% 5%
+            $c_end = 60;
 
-            $d_start = 26; // 20% 背包 2000 15% 10%
-            $d_end = 35;
+            $d_start = 61; // 20% 背包 2000 15% 10% 5%
+            $d_end = 65;
 
-            $e_start = 36; // 15%中奖率 袜子 1800 10%
-            $e_end = 45;
+            $e_start = 66; // 15%中奖率 袜子 1800 10% 5%
+            $e_end = 70;
 
-            $f_start = 46; // 20%中奖率 贴纸 2500 25%
-            $f_end = 70;
+            $f_start = 71; // 20%中奖率 贴纸 2500 25% 15%
+            $f_end = 85;
 
-            $g_start = 71; // 优惠券（10000）。10% 20% 30%
+            $g_start = 86; // 优惠券（10000）。10% 20% 30% 15%
             $g_end = 100;
 
             switch ($v) {
                 case $v >= $a_start && $v <= $a_end:
                     Redis::incr('a_offline', 1);
                     $count1 = Redis::get('a_online');
-                    if ($count1 > 620) {
+                    if ($count1 > 920) {
                         Redis::incr('g_offline', 1);
                         $prize_type = 17;
                         Redis::incr('zh_1',1); // 超卖后转化数量
