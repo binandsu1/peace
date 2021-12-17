@@ -344,7 +344,8 @@ class Activity extends Controller
 
         if ($is_draw == 1) {
             // 抽奖方法
-            $v = rand(1, 100);
+//            $v = rand(1, 100);
+            $v = rand(1, 50);
 
             $a_start = 1; //10%中奖率 上海报 520 15% 5% 10% 50%
             $a_end = 50;
@@ -371,7 +372,7 @@ class Activity extends Controller
                 case $v >= $a_start && $v <= $a_end:
                     Redis::incr('a_offline', 1);
                     $count1 = Redis::get('a_online');
-                    if ($count1 > 920) {
+                    if ($count1 > 1320) {
                         Redis::incr('g_offline', 1);
                         $prize_type = 17;
                         Redis::incr('zh_1',1); // 超卖后转化数量
