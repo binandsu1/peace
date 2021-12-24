@@ -226,16 +226,17 @@
 
             });
 
-
+// 活动结束关闭访问请求
             function up() {
+                alert("本次活动已于2021年12月23日结束！感谢您的惠顾！");
 
-				window.location="{{route('activity-up',['api_token'=>request('api_token')])}}";
+				// window.location="{{route('activity-up',['api_token'=>request('api_token')])}}";
 
 			}
 
 			function down() {
-
-                window.location="{{route('activity-down',['api_token'=>request('api_token')])}}";
+                alert("本次活动已于2021年12月23日结束！感谢您的惠顾！");
+               // window.location="{{route('activity-down',['api_token'=>request('api_token')])}}";
 
 			}
 		</script>
